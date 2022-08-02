@@ -28,11 +28,12 @@ namespace LoaCalc
         public static int CombatStat_ControllerMaxNum = 6;
         public static int Engraving_ControllerMaxNum = 7;
         public static int Card_ControllerMaxNum = 3;
-        public static int Gem_ControllerMaxNum = 11;
+        public static int Gem_ControllerMaxNum = 22;
         public static int Gear_ControllerMaxNum = 3;
         public static int Weapon_ControllerMaxNum = 1;
         public static int Buff_ControllerMaxNum = 7;
         public static int Skill_ControllerMaxNum = 15;
+        public static int Preset_ControllerMaxNum = 4;
 
         private List<SettingInfo.Engraving.NAME> engravingNameList = new List<SettingInfo.Engraving.NAME>();
         private List<SettingInfo.Engraving.LEV> engravingLevList = new List<SettingInfo.Engraving.LEV>();
@@ -66,7 +67,7 @@ namespace LoaCalc
         {
             InitializeComponent();
             Construct();
-            Initializer();
+            Initializer();         
         }
 
 
@@ -125,7 +126,7 @@ namespace LoaCalc
 
 
         /// <summary>
-        /// 모든 컨트롤의 값을 초기화 한다.
+        /// 모든 컨트롤에 데이터를 추가하고, 값을 초기화 한다.
         /// </summary>
         private void Initializer()
         {
@@ -199,6 +200,18 @@ namespace LoaCalc
             }
 
             // 모든 컨트롤 값 초기화
+            FormCtrlInitializer();
+
+            // 저장된 설정이 불러오기
+            FormCtrlDataLoad();
+        }
+
+
+        /// <summary>
+        /// 모든 컨트롤의 값을 초기화 한다.
+        /// </summary>
+        private void FormCtrlInitializer()
+        {
             foreach (Control control in allControls.Values)
             {
                 if (control.GetType() == typeof(TextBox))
@@ -218,9 +231,6 @@ namespace LoaCalc
                     }
                 }
             }
-
-            // 저장된 설정이 불러오기
-            FormCtrlDataLoad();
         }
 
 
@@ -251,89 +261,6 @@ namespace LoaCalc
         }
 
 
-        /// <summary>
-        /// Form Control 데이터 저장하기
-        /// </summary>
-        private void FormCtrlDataSave()
-        {
-            List<FormCtrl> FormCtrlList = new List<FormCtrl>();
-
-            // 전투 특성
-            FormCtrlList.Add(new FormCtrl(CombatStat_Crit.GetType(), CombatStat_Crit.Name, CombatStat_Crit.Text));
-            FormCtrlList.Add(new FormCtrl(CombatStat_Specialization.GetType(), CombatStat_Specialization.Name, CombatStat_Specialization.Text));
-            FormCtrlList.Add(new FormCtrl(CombatStat_Swiftness.GetType(), CombatStat_Swiftness.Name, CombatStat_Swiftness.Text));
-
-            // 각인
-            for (int i = 0; i < Engraving_ControllerMaxNum; i++)
-            {
-                ComboBox engravingName = GetControlByName("Engraving" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox engravingLev = GetControlByName("Engraving" + (i + 1).ToString() + "_Lev") as ComboBox;
-                FormCtrlList.Add(new FormCtrl(engravingName.GetType(), engravingName.Name, engravingName.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(engravingLev.GetType(), engravingLev.Name, engravingLev.SelectedIndex.ToString()));
-            }
-
-            // 카드
-            for (int i = 0; i < Card_ControllerMaxNum; i++)
-            {
-                ComboBox cardName = GetControlByName("Card" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox cardSet = GetControlByName("Card" + (i + 1).ToString() + "_Sets") as ComboBox;
-                ComboBox cardAwakening = GetControlByName("Card" + (i + 1).ToString() + "_Awakening") as ComboBox;
-                FormCtrlList.Add(new FormCtrl(cardName.GetType(), cardName.Name, cardName.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(cardSet.GetType(), cardSet.Name, cardSet.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(cardAwakening.GetType(), cardAwakening.Name, cardAwakening.SelectedIndex.ToString()));
-            }
-
-            // 보석
-            for (int i = 0; i < Gem_ControllerMaxNum; i++)
-            {
-                ComboBox gemName = GetControlByName("Gem" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox gemLev = GetControlByName("Gem" + (i + 1).ToString() + "_Lev") as ComboBox;
-                ComboBox gemTargetskill = GetControlByName("Gem" + (i + 1).ToString() + "_TargetSkillName") as ComboBox;
-                FormCtrlList.Add(new FormCtrl(gemName.GetType(), gemName.Name, gemName.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(gemLev.GetType(), gemLev.Name, gemLev.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(gemTargetskill.GetType(), gemTargetskill.Name, gemTargetskill.SelectedIndex.ToString()));
-            }
-
-            // 장비 세트
-            for (int i = 0; i < Gear_ControllerMaxNum; i++)
-            {
-                ComboBox gearName = GetControlByName("Gear" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox gearSet = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonus") as ComboBox;
-                ComboBox gearSetLev = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonusLev") as ComboBox;
-                FormCtrlList.Add(new FormCtrl(gearName.GetType(), gearName.Name, gearName.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(gearSet.GetType(), gearSet.Name, gearSet.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(gearSetLev.GetType(), gearSetLev.Name, gearSetLev.SelectedIndex.ToString()));
-            }
-
-            // 무기 품질
-            FormCtrlList.Add(new FormCtrl(Weapon_AdditionalDamage.GetType(), Weapon_AdditionalDamage.Name, Weapon_AdditionalDamage.Text));
-
-            // 버프 (시너지)
-            for (int i = 0; i < Buff_ControllerMaxNum; i++)
-            {
-                ComboBox buffName = GetControlByName("Buff" + (i + 1).ToString() + "_Name") as ComboBox;
-                FormCtrlList.Add(new FormCtrl(buffName.GetType(), buffName.Name, buffName.SelectedIndex.ToString()));
-            }
-
-            // 스킬
-            for (int i = 0; i < Skill_ControllerMaxNum; i++)
-            {
-                ComboBox skillName = GetControlByName("Skill" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox skillLev = GetControlByName("Skill" + (i + 1).ToString() + "_Lev") as ComboBox;
-                ComboBox skillTp1 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp1") as ComboBox;
-                ComboBox skillTp2 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp2") as ComboBox;
-                ComboBox skillTp3 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp3") as ComboBox;
-                FormCtrlList.Add(new FormCtrl(skillName.GetType(), skillName.Name, skillName.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(skillLev.GetType(), skillLev.Name, skillLev.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(skillTp1.GetType(), skillTp1.Name, skillTp1.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(skillTp2.GetType(), skillTp2.Name, skillTp2.SelectedIndex.ToString()));
-                FormCtrlList.Add(new FormCtrl(skillTp3.GetType(), skillTp3.Name, skillTp3.SelectedIndex.ToString()));
-            }
-
-            var directoryName = Application.StartupPath;
-            var serializedList = JsonConvert.SerializeObject(FormCtrlList, Formatting.Indented);
-            File.WriteAllText(directoryName + @"\FormCtrlList.json", serializedList);
-        }
 
 
         //*********************************************************//
@@ -636,7 +563,7 @@ namespace LoaCalc
                 string id = (sender as ComboBox).Name.Split('_')[0];
 
                 if (num.Length == id.Count(c => ('0' <= c && c <= '9')) && id.Contains(num))
-                {
+                {                 
                     controlnum = i + 1;
                     break;
                 }
@@ -758,7 +685,7 @@ namespace LoaCalc
                 Buff_Name_PrevSelectedIndex[controlnum] = buffName.SelectedIndex;
             }
         }
-        private List<int> Buff_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Gear_ControllerMaxNum + 1).ToList();
+        private List<int> Buff_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Buff_ControllerMaxNum + 1).ToList();
 
 
         /// <summary>
@@ -905,20 +832,191 @@ namespace LoaCalc
 
 
         /// <summary>
-        /// 설정 저장 버튼 클릭할 시 발생하는 이벤트.
-        /// </summary>
-        private void SaveSetting_Click(object sender, EventArgs e)
-        {
-            FormCtrlDataSave();
-        }
-
-
-        /// <summary>
         /// 계산 버튼 클릭할 시 발생하는 이벤트.
         /// </summary>
         private void Calculate_Click(object sender, EventArgs e)
         {
             SkillCalculate();
+        }
+
+
+        /// <summary>
+        /// 세팅 저장 버튼 클릭할 시 발생하는 이벤트.
+        /// </summary>
+        private void Preset_Save_Click(object sender, EventArgs e)
+        {
+            int controlnum = 1;
+
+            for (int i = 0; i < Preset_ControllerMaxNum; i++)
+            {
+                string num = (i + 1).ToString();
+                string id = (sender as Button).Name.Split('_')[0];
+
+                if (num.Length == id.Count(c => ('0' <= c && c <= '9')) && id.Contains(num))
+                {
+                    controlnum = i + 1;
+                    break;
+                }
+            }
+
+            List<FormCtrl> FormCtrlList = new List<FormCtrl>();
+
+            // 전투 특성
+            FormCtrlList.Add(new FormCtrl(CombatStat_Crit.GetType(), CombatStat_Crit.Name, CombatStat_Crit.Text));
+            FormCtrlList.Add(new FormCtrl(CombatStat_Specialization.GetType(), CombatStat_Specialization.Name, CombatStat_Specialization.Text));
+            FormCtrlList.Add(new FormCtrl(CombatStat_Swiftness.GetType(), CombatStat_Swiftness.Name, CombatStat_Swiftness.Text));
+
+            // 각인
+            for (int i = 0; i < Engraving_ControllerMaxNum; i++)
+            {
+                ComboBox engravingName = GetControlByName("Engraving" + (i + 1).ToString() + "_Name") as ComboBox;
+                ComboBox engravingLev = GetControlByName("Engraving" + (i + 1).ToString() + "_Lev") as ComboBox;
+                FormCtrlList.Add(new FormCtrl(engravingName.GetType(), engravingName.Name, engravingName.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(engravingLev.GetType(), engravingLev.Name, engravingLev.SelectedIndex.ToString()));
+            }
+
+            // 카드
+            for (int i = 0; i < Card_ControllerMaxNum; i++)
+            {
+                ComboBox cardName = GetControlByName("Card" + (i + 1).ToString() + "_Name") as ComboBox;
+                ComboBox cardSet = GetControlByName("Card" + (i + 1).ToString() + "_Sets") as ComboBox;
+                ComboBox cardAwakening = GetControlByName("Card" + (i + 1).ToString() + "_Awakening") as ComboBox;
+                FormCtrlList.Add(new FormCtrl(cardName.GetType(), cardName.Name, cardName.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(cardSet.GetType(), cardSet.Name, cardSet.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(cardAwakening.GetType(), cardAwakening.Name, cardAwakening.SelectedIndex.ToString()));
+            }
+
+            // 보석
+            for (int i = 0; i < Gem_ControllerMaxNum; i++)
+            {
+                ComboBox gemName = GetControlByName("Gem" + (i + 1).ToString() + "_Name") as ComboBox;
+                ComboBox gemLev = GetControlByName("Gem" + (i + 1).ToString() + "_Lev") as ComboBox;
+                ComboBox gemTargetskill = GetControlByName("Gem" + (i + 1).ToString() + "_TargetSkillName") as ComboBox;
+                FormCtrlList.Add(new FormCtrl(gemName.GetType(), gemName.Name, gemName.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(gemLev.GetType(), gemLev.Name, gemLev.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(gemTargetskill.GetType(), gemTargetskill.Name, gemTargetskill.SelectedIndex.ToString()));
+            }
+
+            // 장비 세트
+            for (int i = 0; i < Gear_ControllerMaxNum; i++)
+            {
+                ComboBox gearName = GetControlByName("Gear" + (i + 1).ToString() + "_Name") as ComboBox;
+                ComboBox gearSet = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonus") as ComboBox;
+                ComboBox gearSetLev = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonusLev") as ComboBox;
+                FormCtrlList.Add(new FormCtrl(gearName.GetType(), gearName.Name, gearName.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(gearSet.GetType(), gearSet.Name, gearSet.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(gearSetLev.GetType(), gearSetLev.Name, gearSetLev.SelectedIndex.ToString()));
+            }
+
+            // 무기 품질
+            FormCtrlList.Add(new FormCtrl(Weapon_AdditionalDamage.GetType(), Weapon_AdditionalDamage.Name, Weapon_AdditionalDamage.Text));
+
+            // 버프 (시너지)
+            for (int i = 0; i < Buff_ControllerMaxNum; i++)
+            {
+                ComboBox buffName = GetControlByName("Buff" + (i + 1).ToString() + "_Name") as ComboBox;
+                FormCtrlList.Add(new FormCtrl(buffName.GetType(), buffName.Name, buffName.SelectedIndex.ToString()));
+            }
+
+            // 스킬
+            for (int i = 0; i < Skill_ControllerMaxNum; i++)
+            {
+                ComboBox skillName = GetControlByName("Skill" + (i + 1).ToString() + "_Name") as ComboBox;
+                ComboBox skillLev = GetControlByName("Skill" + (i + 1).ToString() + "_Lev") as ComboBox;
+                ComboBox skillTp1 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp1") as ComboBox;
+                ComboBox skillTp2 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp2") as ComboBox;
+                ComboBox skillTp3 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp3") as ComboBox;
+                FormCtrlList.Add(new FormCtrl(skillName.GetType(), skillName.Name, skillName.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(skillLev.GetType(), skillLev.Name, skillLev.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(skillTp1.GetType(), skillTp1.Name, skillTp1.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(skillTp2.GetType(), skillTp2.Name, skillTp2.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(skillTp3.GetType(), skillTp3.Name, skillTp3.SelectedIndex.ToString()));
+            }
+
+            var currDirectory = Application.StartupPath;
+            var fileName = "Preset" + controlnum.ToString();
+            var serializedList = JsonConvert.SerializeObject(FormCtrlList, Formatting.Indented);
+
+            if (File.Exists(currDirectory + @"\" + fileName))
+            {
+                var result = MessageBox.Show("기존 프리셋에 덮어쓰겠습니까?", "", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    File.WriteAllText(currDirectory + @"\" + fileName, serializedList);
+                    if(File.Exists(currDirectory + @"\" + fileName)) MessageBox.Show("프리셋 저장 완료");
+                }
+            }
+            else
+            {
+                File.WriteAllText(currDirectory + @"\" + fileName, serializedList);
+                if (File.Exists(currDirectory + @"\" + fileName)) MessageBox.Show("프리셋 저장 완료");
+            }
+        }
+
+
+        /// <summary>
+        /// 세팅 불러오기 버튼 클릭할 시 발생하는 이벤트.
+        /// </summary>
+        private void Preset_Load_Click(object sender, EventArgs e)
+        {
+            int controlnum = 1;
+
+            for (int i = 0; i < Preset_ControllerMaxNum; i++)
+            {
+                string num = (i + 1).ToString();
+                string id = (sender as Button).Name.Split('_')[0];
+
+                if (num.Length == id.Count(c => ('0' <= c && c <= '9')) && id.Contains(num))
+                {
+                    controlnum = i + 1;
+                    break;
+                }
+            }
+
+            var currDirectory = Application.StartupPath;
+            var fileName = "Preset" + controlnum.ToString();
+
+            FormCtrlInitializer();
+
+            if (File.Exists(currDirectory + @"\" + fileName))
+            {
+                var serializedList = File.ReadAllText(currDirectory + @"\" + fileName);
+                var deserializedList = JsonConvert.DeserializeObject<List<FormCtrl>>(serializedList);
+
+                foreach (var formCtrl in deserializedList)
+                {
+                    var control = GetControlByName(formCtrl.name);
+                    if (control == null) continue;
+
+                    if (formCtrl.type == typeof(TextBox))
+                    {
+                        TextBox textBox = control as TextBox;
+                        textBox.Text = formCtrl.data;
+                    }
+                    else if (formCtrl.type == typeof(ComboBox))
+                    {
+                        ComboBox comboBox = control as ComboBox;
+                        comboBox.SelectedIndex = int.Parse(formCtrl.data);
+                    }
+                }
+
+                MessageBox.Show("프리셋 로딩 완료");
+            }
+            else
+            {
+                MessageBox.Show("프리셋 로딩 완료");
+            }
+        }
+
+
+        /// <summary>
+        /// 세팅 리셋 버튼 클릭할 시 발생하는 이벤트.
+        /// </summary>
+        private void ResetSetting_Click(object sender, EventArgs e)
+        {
+            FormCtrlInitializer();
+            MessageBox.Show("현재 프리셋 리셋 완료");
         }
 
 
@@ -943,6 +1041,7 @@ namespace LoaCalc
 
             SkillDetailed(controlnum);
         }
+
 
         private void GunslingerSetting_Load(object sender, EventArgs e)
         {

@@ -127,7 +127,34 @@ namespace LoaCalc
 
         public class Buff
         {
-            public enum NAME { 건슬링어_치적_시너지 , 갈망_6세트_버프 }
+            public enum NAME
+            {
+                건슬링어_치적_시너지, 
+                갈망_6세트_버프,
+                서폿_낙인,
+                서폿_공증,
+                서폿_2버블,
+                데빌헌터_치적_시너지,
+                아르카나_치적_시너지,
+                기상술사_치적_시너지,
+                배틀마스터_치적_시너지,
+                창술사_치적_시너지,
+                스트라이커_치적_시너지,
+                블래스터_방깍_시너지,
+                디스트로이어_방깍_시너지,
+                워로드_방깍_시너지,
+                서머너_방깍_시너지,
+                리퍼_방깍_시너지,
+                버서커_피증_시너지,
+                호크아이_피증_시너지,
+                인파이터_피증_시너지,
+                소서리스_피증_시너지,
+                데모닉_피증_시너지,
+                스카우터_공증_시너지,
+                기공사_공증_시너지,
+                워로드_백헤드_피증_시너지,
+                블레이드_백헤드_피증_시너지,
+            }
 
 
             public NAME name = NAME.건슬링어_치적_시너지;
@@ -257,7 +284,7 @@ namespace LoaCalc
 
     public class ValueM
     {
-        public enum Group { None, AttackPowerPer_Engraving, Damage_PeaceMakerRifleStance };
+        public enum Group { None, AttackPowerPer_Engraving, AttackPowerPer_Supporter, Damage_PeaceMakerRifleStance };
 
         private Dictionary<Group, decimal> groupValues = new Dictionary<Group, decimal>();
         

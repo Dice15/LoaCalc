@@ -521,6 +521,106 @@ namespace LoaCalc
                     stats.AddStat(new Stats { moveSpeed = new ValueP(12) });
                     stats.AddStat(new Stats { additionalDamage = new ValueP(12) });
                 }
+                else if (buff.name == SettingInfo.Buff.NAME.서폿_낙인)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(10) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.서폿_공증)
+                {
+                    stats.AddStat(new Stats { attackPowerPer = new ValueM(6, ValueM.Group.AttackPowerPer_Supporter) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.서폿_2버블)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(15) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.데빌헌터_치적_시너지)
+                {
+                    stats.AddStat(new Stats { criticalRate = new ValueP(10) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.아르카나_치적_시너지)
+                {
+                    stats.AddStat(new Stats { criticalRate = new ValueP(10) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.기상술사_치적_시너지)
+                {
+                    stats.AddStat(new Stats { criticalRate = new ValueP(10) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.배틀마스터_치적_시너지)
+                {
+                    stats.AddStat(new Stats { criticalRate = new ValueP(18) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.창술사_치적_시너지)
+                {
+                    stats.AddStat(new Stats { criticalRate = new ValueP(18) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.스트라이커_치적_시너지)
+                {
+                    stats.AddStat(new Stats { criticalRate = new ValueP(18) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.블래스터_방깍_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.디스트로이어_방깍_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.워로드_방깍_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.서머너_방깍_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.리퍼_방깍_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.버서커_피증_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(6) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.호크아이_피증_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(6) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.인파이터_피증_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(6) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.소서리스_피증_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(6) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.데모닉_피증_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(6) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.스카우터_공증_시너지)
+                {
+                    stats.AddStat(new Stats { attackPowerPer = new ValueM(6) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.기공사_공증_시너지)
+                {
+                    stats.AddStat(new Stats { attackPowerPer = new ValueM(6) });
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.워로드_백헤드_피증_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
+                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
+                }
+                else if (buff.name == SettingInfo.Buff.NAME.블레이드_백헤드_피증_시너지)
+                {
+                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
+                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
+                }
+
+
+                /*
+         워로드_백헤드_피증_시너지,
+                블레이드_백헤드_피증_시너지,
+                 */
             }
         }
 
