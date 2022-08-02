@@ -139,8 +139,19 @@ namespace LoaCalc
         
         public class Skill
         {
-            private static HashSet<NAME> awakeningName = new HashSet<NAME> { NAME.황혼의_눈, NAME.대구경_폭발_탄환 };
-            public enum NAME { 레인_오브_불릿, 샷건_연사, 최후의_만찬, 절멸의_탄환, 마탄의_사수, 대재앙, 퍼펙트_샷, 포커스_샷, 타겟_다운, 황혼의_눈, 대구경_폭발_탄환 };
+            private static HashSet<NAME> awakeningName = new HashSet<NAME>
+            { 
+                NAME.황혼의_눈, NAME.황혼의_눈_샷건활용, NAME.황혼의_눈_라이플활용, NAME.대구경_폭발_탄환, NAME.대구경_폭발_탄환_샷건활용, NAME.대구경_폭발_탄환_라이플활용
+            };
+            private static HashSet<NAME> customName = new HashSet<NAME> { NAME.대재앙_샷건활용 };
+            public enum NAME 
+            { 
+                레인_오브_불릿, 
+                샷건_연사, 최후의_만찬, 절멸의_탄환, 마탄의_사수, 
+                대재앙, 대재앙_샷건활용, 퍼펙트_샷, 포커스_샷, 타겟_다운,
+                황혼의_눈, 황혼의_눈_샷건활용, 황혼의_눈_라이플활용, 대구경_폭발_탄환, 대구경_폭발_탄환_샷건활용, 대구경_폭발_탄환_라이플활용
+            };
+            
             public enum LEV { __1레벨, __4레벨, __7레벨, __10레벨, __11레벨, __12레벨 };
             public enum TRIPOD
             {
@@ -168,9 +179,19 @@ namespace LoaCalc
             public TRIPOD tp3 = TRIPOD.화염_사격;
 
 
-            public static List<NAME> GetNameList(bool exceptAwakening = false) => exceptAwakening ? 
-                Enum.GetValues(typeof(NAME)).OfType<NAME>().Where(name => !awakeningName.Contains(name)).ToList() 
-                : Enum.GetValues(typeof(NAME)).OfType<NAME>().ToList();
+            public static List<NAME> GetNameList(bool exceptCustom = false, bool exceptAwakening = false)
+            {
+                List<NAME> nameList = new List<NAME>();
+
+                foreach (var name in Enum.GetValues(typeof(NAME)).OfType<NAME>().ToList())
+                {
+                    if (exceptCustom && customName.Contains(name)) continue;
+                    if (exceptAwakening && awakeningName.Contains(name)) continue;
+                    nameList.Add(name);
+                }
+
+                return nameList;
+            }            
             public static List<LEV> GetLevList() => Enum.GetValues(typeof(LEV)).OfType<LEV>().ToList();
             public static Dictionary<NAME, List<TRIPOD>> GetTripod1List() => new Dictionary<NAME, List<TRIPOD>>
             {
@@ -180,11 +201,16 @@ namespace LoaCalc
                 { NAME.절멸의_탄환, new List<TRIPOD> { TRIPOD.사면초가, TRIPOD.재빠른_손놀림, TRIPOD.다가오는_죽음 } },
                 { NAME.마탄의_사수, new List<TRIPOD> { TRIPOD.무한의_마탄, TRIPOD.원거리_사격, TRIPOD.사면초가 } },
                 { NAME.대재앙, new List<TRIPOD> { TRIPOD.강인함, TRIPOD.원거리_조준, TRIPOD.재빠른_조준 } },
+                { NAME.대재앙_샷건활용, new List<TRIPOD> { TRIPOD.강인함, TRIPOD.원거리_조준, TRIPOD.재빠른_조준 } },
                 { NAME.퍼펙트_샷, new List<TRIPOD> { TRIPOD.출혈_효과, TRIPOD.안정된_자세, TRIPOD.근육_경련 } },
                 { NAME.포커스_샷, new List<TRIPOD> { TRIPOD.방향_전환, TRIPOD.재빠른_조준, TRIPOD.근육_경련 } },
                 { NAME.타겟_다운, new List<TRIPOD> { TRIPOD.재빠른_조준, TRIPOD.숨_참기, TRIPOD.대구경_탄환 } },
                 { NAME.황혼의_눈, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈_샷건활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈_라이플활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
                 { NAME.대구경_폭발_탄환, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.대구경_폭발_탄환_샷건활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.대구경_폭발_탄환_라이플활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
             };
             public static Dictionary<NAME, List<TRIPOD>> GetTripod2List() => new Dictionary<NAME, List<TRIPOD>>
             {
@@ -194,11 +220,16 @@ namespace LoaCalc
                 { NAME.절멸의_탄환, new List<TRIPOD>{ TRIPOD.강인함, TRIPOD.강화_사격, TRIPOD.뇌진탕 } },
                 { NAME.마탄의_사수, new List<TRIPOD>{ TRIPOD.특수_탄환, TRIPOD.전방위_사격, TRIPOD.영혼의_일발 } },
                 { NAME.대재앙, new List<TRIPOD>{ TRIPOD.숨통_끊기, TRIPOD.무방비_표적, TRIPOD.뇌진탕 } },
+                { NAME.대재앙_샷건활용, new List<TRIPOD>{ TRIPOD.숨통_끊기, TRIPOD.무방비_표적, TRIPOD.뇌진탕 } },
                 { NAME.퍼펙트_샷, new List<TRIPOD>{ TRIPOD.정밀_사격, TRIPOD.완벽한_조준, TRIPOD.마무리_사격 } },
                 { NAME.포커스_샷, new List<TRIPOD>{ TRIPOD.강화_탄환, TRIPOD.섬광, TRIPOD.더블탭 } },
                 { NAME.타겟_다운, new List<TRIPOD>{ TRIPOD.대용량_탄창, TRIPOD.작렬철강탄, TRIPOD.반자동_라이플 } },
-                { NAME.황혼의_눈, new List<TRIPOD>{ TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈_샷건활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈_라이플활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
                 { NAME.대구경_폭발_탄환, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.대구경_폭발_탄환_샷건활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.대구경_폭발_탄환_라이플활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
             };
             public static Dictionary<NAME, List<TRIPOD>> GetTripod3List() => new Dictionary<NAME, List<TRIPOD>>
             {
@@ -208,11 +239,16 @@ namespace LoaCalc
                 { NAME.절멸의_탄환, new List<TRIPOD>{ TRIPOD.최후의_일격, TRIPOD.반동_회피 } },
                 { NAME.마탄의_사수, new List<TRIPOD>{ TRIPOD.가디언의_숨결, TRIPOD.혹한의_안식처 } },
                 { NAME.대재앙, new List<TRIPOD>{ TRIPOD.융단_폭격, TRIPOD.영원한_재앙 } },
+                { NAME.대재앙_샷건활용, new List<TRIPOD>{ TRIPOD.융단_폭격, TRIPOD.영원한_재앙 } },
                 { NAME.퍼펙트_샷, new List<TRIPOD>{ TRIPOD.준비된_사수, TRIPOD.강화된_사격 } },
                 { NAME.포커스_샷, new List<TRIPOD>{ TRIPOD.빠른_마무리, TRIPOD.최후의_일격 } },
                 { NAME.타겟_다운, new List<TRIPOD>{ TRIPOD.정조준, TRIPOD.천국의_계단 } },
-                { NAME.황혼의_눈, new List<TRIPOD>{ TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈_샷건활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.황혼의_눈_라이플활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
                 { NAME.대구경_폭발_탄환, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.대구경_폭발_탄환_샷건활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
+                { NAME.대구경_폭발_탄환_라이플활용, new List<TRIPOD> { TRIPOD.선택_불가 } },
             };
             public Skill Copy() => new Skill { name = name, lev = lev, tp1 = tp1, tp2 = tp2, tp3 = tp3 };
         }

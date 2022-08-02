@@ -11,6 +11,8 @@ namespace LoaCalc
         {
             string res = skill.ToString();
 
+            res = res.Replace("____", "(");
+            res = res.Replace("___", ")");
             res = res.Replace("__", "");
             res = res.Replace("_", " ");
 

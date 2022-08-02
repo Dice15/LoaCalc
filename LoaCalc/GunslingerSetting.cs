@@ -102,7 +102,7 @@ namespace LoaCalc
             // 보석
             gemNameList = SettingInfo.Gem.GetNameList();
             gemLevList = SettingInfo.Gem.GetLevList();
-            gemTargetSkillList = SettingInfo.Skill.GetNameList(exceptAwakening: true);
+            gemTargetSkillList = SettingInfo.Skill.GetNameList(exceptCustom: true, exceptAwakening: true);
 
             // 장비 세트
             gearNameList = SettingInfo.Gear.GetNameList();
