@@ -1,0 +1,15 @@
+E:\document\github\LoaCalc\LoaCalc\bin\Debug\LoaCalc.exe
+E:\document\github\LoaCalc\LoaCalc\bin\Debug\LoaCalc.pdb
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.csproj.AssemblyReference.cache
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.Properties.Resources.resources
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.csproj.GenerateResource.cache
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.csproj.CoreCompileInputs.cache
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.exe
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.pdb
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.DetailedInfo.resources
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.GunslingerSetting.resources
+E:\document\github\LoaCalc\LoaCalc\bin\Debug\LoaCalc.exe.config
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.csproj.SuggestedBindingRedirects.cache
+E:\document\github\LoaCalc\LoaCalc\bin\Debug\Newtonsoft.Json.dll
+E:\document\github\LoaCalc\LoaCalc\bin\Debug\Newtonsoft.Json.xml
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.csproj.CopyComplete

@@ -1,0 +1,106 @@
+CombatStat_Crit
+CombatStat_Specialization
+CombatStat_Domination
+CombatStat_Swiftness
+CombatStat_Endurance
+CombatStat_Expertise
+
+Engraving1_Name / Engraving1_Lev
+Engraving2_Name / Engraving2_Lev
+Engraving3_Name / Engraving3_Lev
+Engraving4_Name / Engraving4_Lev
+Engraving5_Name / Engraving5_Lev
+Engraving6_Name / Engraving6_Lev
+Engraving7_Name / Engraving7_Lev
+
+Card1_Name / Card1_Sets / Card1_Awakening
+Card2_Name / Card2_Sets / Card2_Awakening
+Card3_Name / Card3_Sets / Card3_Awakening
+
+Gem1_Name / Gem1_Lev / Gem1_TargetSkillName
+Gem2_Name / Gem2_Lev / Gem2_TargetSkillName
+Gem3_Name / Gem3_Lev / Gem3_TargetSkillName
+Gem4_Name / Gem4_Lev / Gem4_TargetSkillName
+Gem5_Name / Gem5_Lev / Gem5_TargetSkillName
+Gem6_Name / Gem6_Lev / Gem6_TargetSkillName
+Gem7_Name / Gem7_Lev / Gem7_TargetSkillName
+Gem8_Name / Gem8_Lev / Gem8_TargetSkillName
+Gem9_Name / Gem9_Lev / Gem9_TargetSkillName
+Gem10_Name / Gem10_Lev / Gem10_TargetSkillName
+Gem11_Name / Gem11_Lev / Gem11_TargetSkillName
+
+Gear1_Name / Gear1_SetsBonus / Gear1_SetsBonusLev
+Gear2_Name / Gear2_SetsBonus / Gear2_SetsBonusLev
+Gear3_Name / Gear3_SetsBonus / Gear3_SetsBonusLev
+
+Weapon1_AdditionalDamage
+
+Buff1_Name
+Buff2_Name
+
+Calculate
+
+Skill1_Name / Skill1_Lev / Skill1_Tp1 / Skill1_Tp2 / Skill1_Tp3 / Skill1_DamageBeforeHalf / Skill1_DamageAfterHalf / Skill1_DamageArithmeticAvg / Skill1_DamageHarmonicAvg / Skill1_DpsArithmeticAvg / Skill1_DpsHarmonicAvg / Skill1_CooldownTime / Skill1_SkillData
+Skill2_Name / Skill2_Lev / Skill2_Tp1 / Skill2_Tp2 / Skill2_Tp3 / Skill2_DamageBeforeHalf / Skill2_DamageAfterHalf / Skill2_DamageArithmeticAvg / Skill2_DamageHarmonicAvg / Skill2_DpsArithmeticAvg / Skill2_DpsHarmonicAvg / Skill2_CooldownTime  / Skill2_SkillData
+Skill3_Name / Skill3_Lev / Skill3_Tp1 / Skill3_Tp2 / Skill3_Tp3 / Skill3_DamageBeforeHalf / Skill3_DamageAfterHalf / Skill3_DamageArithmeticAvg / Skill3_DamageHarmonicAvg / Skill3_DpsArithmeticAvg / Skill3_DpsHarmonicAvg / Skill3_CooldownTime  / Skill3_SkillData
+Skill4_Name / Skill4_Lev / Skill4_Tp1 / Skill4_Tp2 / Skill4_Tp3 / Skill4_DamageBeforeHalf / Skill4_DamageAfterHalf / Skill4_DamageArithmeticAvg / Skill4_DamageHarmonicAvg / Skill4_DpsArithmeticAvg / Skill4_DpsHarmonicAvg / Skill4_CooldownTime  / Skill4_SkillData
+Skill5_Name / Skill5_Lev / Skill5_Tp1 / Skill5_Tp2 / Skill5_Tp3 / Skill5_DamageBeforeHalf / Skill5_DamageAfterHalf / Skill5_DamageArithmeticAvg / Skill5_DamageHarmonicAvg / Skill5_DpsArithmeticAvg / Skill5_DpsHarmonicAvg / Skill5_CooldownTime  / Skill5_SkillData
+Skill6_Name / Skill6_Lev / Skill6_Tp1 / Skill6_Tp2 / Skill6_Tp3 / Skill6_DamageBeforeHalf / Skill6_DamageAfterHalf / Skill6_DamageArithmeticAvg / Skill6_DamageHarmonicAvg / Skill6_DpsArithmeticAvg / Skill6_DpsHarmonicAvg / Skill6_CooldownTime  / Skill6_SkillData
+Skill7_Name / Skill7_Lev / Skill7_Tp1 / Skill7_Tp2 / Skill7_Tp3 / Skill7_DamageBeforeHalf / Skill7_DamageAfterHalf / Skill7_DamageArithmeticAvg / Skill7_DamageHarmonicAvg / Skill7_DpsArithmeticAvg / Skill7_DpsHarmonicAvg / Skill7_CooldownTime  / Skill7_SkillData
+Skill8_Name / Skill8_Lev / Skill8_Tp1 / Skill8_Tp2 / Skill8_Tp3 / Skill8_DamageBeforeHalf / Skill8_DamageAfterHalf / Skill8_DamageArithmeticAvg / Skill8_DamageHarmonicAvg / Skill8_DpsArithmeticAvg / Skill8_DpsHarmonicAvg / Skill8_CooldownTime  / Skill8_SkillData
+Skill9_Name / Skill9_Lev / Skill9_Tp1 / Skill9_Tp2 / Skill9_Tp3 / Skill9_DamageBeforeHalf / Skill9_DamageAfterHalf / Skill9_DamageArithmeticAvg / Skill9_DamageHarmonicAvg / Skill9_DpsArithmeticAvg / Skill9_DpsHarmonicAvg / Skill9_CooldownTime  / Skill9_SkillData
+Skill10_Name / Skill10_Lev / Skill10_Tp1 / Skill10_Tp2 / Skill10_Tp3 / Skill10_DamageBeforeHalf / Skill10_DamageAfterHalf / Skill10_DamageArithmeticAvg / Skill10_DamageHarmonicAvg / Skill10_DpsArithmeticAvg / Skill10_DpsHarmonicAvg / Skill10_CooldownTime  / Skill10_SkillData
+Skill11_Name / Skill11_Lev / Skill11_Tp1 / Skill11_Tp2 / Skill11_Tp3 / Skill11_DamageBeforeHalf / Skill11_DamageAfterHalf / Skill11_DamageArithmeticAvg / Skill11_DamageHarmonicAvg / Skill11_DpsArithmeticAvg / Skill11_DpsHarmonicAvg / Skill11_CooldownTime  / Skill11_SkillData
+Skill12_Name / Skill12_Lev / Skill12_Tp1 / Skill12_Tp2 / Skill12_Tp3 / Skill12_DamageBeforeHalf / Skill12_DamageAfterHalf / Skill12_DamageArithmeticAvg / Skill12_DamageHarmonicAvg / Skill12_DpsArithmeticAvg / Skill12_DpsHarmonicAvg / Skill12_CooldownTime  / Skill12_SkillData
+Skill13_Name / Skill13_Lev / Skill13_Tp1 / Skill13_Tp2 / Skill13_Tp3 / Skill13_DamageBeforeHalf / Skill13_DamageAfterHalf / Skill13_DamageArithmeticAvg / Skill13_DamageHarmonicAvg / Skill13_DpsArithmeticAvg / Skill13_DpsHarmonicAvg / Skill13_CooldownTime  / Skill13_SkillData
+Skill14_Name / Skill14_Lev / Skill14_Tp1 / Skill14_Tp2 / Skill14_Tp3 / Skill14_DamageBeforeHalf / Skill14_DamageAfterHalf / Skill14_DamageArithmeticAvg / Skill14_DamageHarmonicAvg / Skill14_DpsArithmeticAvg / Skill14_DpsHarmonicAvg / Skill14_CooldownTime  / Skill14_SkillData
+Skill15_Name / Skill15_Lev / Skill15_Tp1 / Skill15_Tp2 / Skill15_Tp3 / Skill15_DamageBeforeHalf / Skill15_DamageAfterHalf / Skill15_DamageArithmeticAvg / Skill15_DamageHarmonicAvg / Skill15_DpsArithmeticAvg / Skill15_DpsHarmonicAvg / Skill15_CooldownTime  / Skill15_SkillData
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
