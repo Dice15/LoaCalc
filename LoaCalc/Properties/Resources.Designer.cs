@@ -83,6 +83,16 @@ namespace LoaCalc.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap whiteLineBoxCollage4 {
+            get {
+                object obj = ResourceManager.GetObject("whiteLineBoxCollage4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap whiteLineBoxCollage6 {
             get {
                 object obj = ResourceManager.GetObject("whiteLineBoxCollage6", resourceCulture);

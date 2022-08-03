@@ -75,14 +75,23 @@ namespace LoaCalc
                     result.Dps_ArithmeticAvg = result.Damage_ArithmeticMean / result.CooldownTime;
                     result.Dps_HarmonicAvg = result.Damage_HarmonicMean / result.CooldownTime;
 
+                    // 소수 부분 제거 (쿨타임만 소수 둘째자리 까지 표현)
+                    result.Damage_BeforeHalf = Math.Round(result.Damage_BeforeHalf);
+                    result.Damage_AfterHalf = Math.Round(result.Damage_AfterHalf);
+                    result.Damage_ArithmeticMean = Math.Round(result.Damage_ArithmeticMean);
+                    result.Damage_HarmonicMean = Math.Round(result.Damage_HarmonicMean);
+                    result.Dps_ArithmeticAvg = Math.Round(result.Dps_ArithmeticAvg);
+                    result.Dps_HarmonicAvg = Math.Round(result.Dps_HarmonicAvg);
+                    result.CooldownTime = Math.Round(result.CooldownTime, 2);
+
                     // 소수 둘째자리 까지만 표기
-                    result.Damage_BeforeHalf = Math.Round(result.Damage_BeforeHalf, 2);
+                    /*result.Damage_BeforeHalf = Math.Round(result.Damage_BeforeHalf, 2);
                     result.Damage_AfterHalf = Math.Round(result.Damage_AfterHalf, 2);
                     result.Damage_ArithmeticMean = Math.Round(result.Damage_ArithmeticMean, 2);
                     result.Damage_HarmonicMean = Math.Round(result.Damage_HarmonicMean, 2);
                     result.Dps_ArithmeticAvg = Math.Round(result.Dps_ArithmeticAvg, 2);
                     result.Dps_HarmonicAvg = Math.Round(result.Dps_HarmonicAvg, 2);
-                    result.CooldownTime = Math.Round(result.CooldownTime, 2);
+                    result.CooldownTime = Math.Round(result.CooldownTime, 2);*/
                 }
 
                 resultList.Add(result);

@@ -67,7 +67,7 @@ namespace LoaCalc
         {
             InitializeComponent();
             Construct();
-            Initializer();         
+            Initializer();
         }
 
 
@@ -89,6 +89,7 @@ namespace LoaCalc
 
                 if (control.GetType() == typeof(TextBox)) (control as TextBox).Text = "";
                 else if (control.GetType() == typeof(ComboBox)) (control as ComboBox).Items.Clear();
+                else if (control.GetType() == typeof(CustomCheckBox)) (control as CustomCheckBox).Check = false;
             }
 
             // 각인
@@ -230,6 +231,10 @@ namespace LoaCalc
                         }
                     }
                 }
+                else if (control.GetType() == typeof(CustomCheckBox))
+                {
+                    (control as CustomCheckBox).Check = false;
+                }
             }
         }
 
@@ -256,6 +261,11 @@ namespace LoaCalc
                 {
                     ComboBox comboBox = control as ComboBox;
                     comboBox.SelectedIndex = int.Parse(formCtrl.data);
+                }
+                else if (control.GetType() == typeof(CustomCheckBox))
+                {
+                    CustomCheckBox customCheckBox = control as CustomCheckBox;
+                    customCheckBox.Check = formCtrl.data == "True" ? true : false;  //bool.Parse(formCtrl.data);
                 }
             }
         }
@@ -296,6 +306,56 @@ namespace LoaCalc
                 dpsHarmonicAvg.Text = calculateResult[i].Dps_HarmonicAvg.ToString();
                 cooldownTime.Text = calculateResult[i].CooldownTime.ToString();
             }
+
+            SumOfSelectedSkill();
+        }
+
+
+        /// <summary>
+        /// 선택한 스킬들로 데미지 합, 평균 데미지 합, DPS 합을 구함.
+        /// </summary>
+        private void SumOfSelectedSkill()
+        {
+            decimal sumOfDamageBeforeHalf = 0;
+            decimal sumOfDamageAfterHalf = 0;
+            decimal sumOfDamageArithmeticAvg = 0;
+            decimal sumOfDamageHarmonicAvg = 0;
+            decimal sumOfDpsArithmeticAvg = 0;
+            decimal sumOfDpsHarmonicAvg = 0;
+
+            for (int i = 0; i < Skill_ControllerMaxNum; i++)
+            {
+                CustomCheckBox selectedSkill = GetControlByName("Skill" + (i + 1).ToString() + "_IncludeInFinalDps") as CustomCheckBox;
+
+                if (selectedSkill.Check)
+                {
+                    sumOfDamageBeforeHalf += calculateResult[i].Damage_BeforeHalf;
+                    sumOfDamageAfterHalf += calculateResult[i].Damage_AfterHalf;
+                    sumOfDamageArithmeticAvg += calculateResult[i].Damage_ArithmeticMean;
+                    sumOfDamageHarmonicAvg += calculateResult[i].Damage_HarmonicMean;
+                    sumOfDpsArithmeticAvg += calculateResult[i].Dps_ArithmeticAvg;
+                    sumOfDpsHarmonicAvg += calculateResult[i].Dps_HarmonicAvg;
+                }
+            }
+
+            for (int i = 0; i < Skill_ControllerMaxNum; i++)
+            {
+                CustomCheckBox selectedSkill = GetControlByName("Skill" + (i + 1).ToString() + "_IncludeInFinalDps") as CustomCheckBox;
+                TextBox dpsShare = GetControlByName("Skill" + (i + 1).ToString() + "_DpsShare") as TextBox;
+
+                if (selectedSkill.Check)
+                {
+                    dpsShare.Text = Math.Round((calculateResult[i].Dps_HarmonicAvg / sumOfDpsHarmonicAvg) * 100, 2).ToString() + "%";
+                }
+                else dpsShare.Text = "0";
+            }
+
+            SkillSum_DamageBeforeHalf.Text = sumOfDamageBeforeHalf.ToString();
+            SkillSum_DamageAfterHalf.Text = sumOfDamageAfterHalf.ToString();
+            SkillSum_DamageArithmeticAvg.Text = sumOfDamageArithmeticAvg.ToString();
+            SkillSum_DamageHarmonicAvg.Text = sumOfDamageHarmonicAvg.ToString();
+            SkillSum_DpsArithmeticAvg.Text = sumOfDpsArithmeticAvg.ToString();
+            SkillSum_DpsHarmonicAvg.Text = sumOfDpsHarmonicAvg.ToString();
         }
 
 
@@ -432,7 +492,7 @@ namespace LoaCalc
         private IEnumerable<Control> GetAllControls(Control control)
         {
             var controls = control.Controls.Cast<Control>();
-            return controls.SelectMany(ctrl => GetAllControls(ctrl)).Concat(controls).Where(p => p is TextBox || p is ComboBox);
+            return controls.SelectMany(ctrl => GetAllControls(ctrl)).Concat(controls).Where(p => p is TextBox || p is ComboBox || p is CustomCheckBox);
         }
 
 
@@ -926,11 +986,13 @@ namespace LoaCalc
                 ComboBox skillTp1 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp1") as ComboBox;
                 ComboBox skillTp2 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp2") as ComboBox;
                 ComboBox skillTp3 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp3") as ComboBox;
+                CustomCheckBox selectedSkill = GetControlByName("Skill" + (i + 1).ToString() + "_IncludeInFinalDps") as CustomCheckBox;
                 FormCtrlList.Add(new FormCtrl(skillName.GetType(), skillName.Name, skillName.SelectedIndex.ToString()));
                 FormCtrlList.Add(new FormCtrl(skillLev.GetType(), skillLev.Name, skillLev.SelectedIndex.ToString()));
                 FormCtrlList.Add(new FormCtrl(skillTp1.GetType(), skillTp1.Name, skillTp1.SelectedIndex.ToString()));
                 FormCtrlList.Add(new FormCtrl(skillTp2.GetType(), skillTp2.Name, skillTp2.SelectedIndex.ToString()));
                 FormCtrlList.Add(new FormCtrl(skillTp3.GetType(), skillTp3.Name, skillTp3.SelectedIndex.ToString()));
+                FormCtrlList.Add(new FormCtrl(selectedSkill.GetType(), selectedSkill.Name, selectedSkill.Check.ToString()));
             }
 
             var currDirectory = Application.StartupPath;
@@ -999,14 +1061,16 @@ namespace LoaCalc
                         ComboBox comboBox = control as ComboBox;
                         comboBox.SelectedIndex = int.Parse(formCtrl.data);
                     }
+                    else if (control.GetType() == typeof(CustomCheckBox))
+                    {
+                        CustomCheckBox customCheckBox = control as CustomCheckBox;
+                        customCheckBox.Check = bool.Parse(formCtrl.data);
+                    }
                 }
+            }
 
-                MessageBox.Show("프리셋 로딩 완료");
-            }
-            else
-            {
-                MessageBox.Show("프리셋 로딩 완료");
-            }
+            SkillCalculate();
+            MessageBox.Show("프리셋 로딩 완료");
         }
 
 
@@ -1040,6 +1104,15 @@ namespace LoaCalc
             }
 
             SkillDetailed(controlnum);
+        }
+
+
+        /// <summary>
+        /// 총 합계에 포함할 스킬이 변경 되었을 때 발생하는 이벤트.
+        /// </summary>
+        private void Skill_IncludeInFinalDps_Click(object sender, EventArgs e)
+        {
+            SumOfSelectedSkill();
         }
 
 

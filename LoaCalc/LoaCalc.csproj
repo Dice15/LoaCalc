@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomCheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomCheckBox.Designer.cs">
+      <DependentUpon>CustomCheckBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailedInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\whiteLineBoxCollage6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\whiteLineBoxCollage4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
