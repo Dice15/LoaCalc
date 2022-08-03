@@ -27,8 +27,8 @@ namespace LoaCalc
             public decimal Damage_ArithmeticMean = 0;
             public decimal Damage_HarmonicMean = 0;
 
-            public decimal Dps_ArithmeticAvg = 0;
-            public decimal Dps_HarmonicAvg = 0;
+            public decimal Dps_ArithmeticMean = 0;
+            public decimal Dps_HarmonicMean = 0;
 
             public decimal CooldownTime = 0;
         }
@@ -72,16 +72,16 @@ namespace LoaCalc
                     // 평균 데미지 및 DPS
                     result.Damage_ArithmeticMean = ArithmeticMean(new List<decimal> { result.Damage_BeforeHalf, result.Damage_AfterHalf });
                     result.Damage_HarmonicMean = HarmonicMean(new List<decimal> { result.Damage_BeforeHalf, result.Damage_AfterHalf });
-                    result.Dps_ArithmeticAvg = result.Damage_ArithmeticMean / result.CooldownTime;
-                    result.Dps_HarmonicAvg = result.Damage_HarmonicMean / result.CooldownTime;
+                    result.Dps_ArithmeticMean = result.Damage_ArithmeticMean / result.CooldownTime;
+                    result.Dps_HarmonicMean = result.Damage_HarmonicMean / result.CooldownTime;
 
                     // 소수 부분 제거 (쿨타임만 소수 둘째자리 까지 표현)
                     result.Damage_BeforeHalf = Math.Round(result.Damage_BeforeHalf);
                     result.Damage_AfterHalf = Math.Round(result.Damage_AfterHalf);
                     result.Damage_ArithmeticMean = Math.Round(result.Damage_ArithmeticMean);
                     result.Damage_HarmonicMean = Math.Round(result.Damage_HarmonicMean);
-                    result.Dps_ArithmeticAvg = Math.Round(result.Dps_ArithmeticAvg);
-                    result.Dps_HarmonicAvg = Math.Round(result.Dps_HarmonicAvg);
+                    result.Dps_ArithmeticMean = Math.Round(result.Dps_ArithmeticMean);
+                    result.Dps_HarmonicMean = Math.Round(result.Dps_HarmonicMean);
                     result.CooldownTime = Math.Round(result.CooldownTime, 2);
 
                     // 소수 둘째자리 까지만 표기

@@ -13,3 +13,4 @@ E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.csproj.SuggestedBindingRedi
 E:\document\github\LoaCalc\LoaCalc\bin\Debug\Newtonsoft.Json.dll
 E:\document\github\LoaCalc\LoaCalc\bin\Debug\Newtonsoft.Json.xml
 E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.csproj.CopyComplete
+E:\document\github\LoaCalc\LoaCalc\obj\Debug\LoaCalc.MessageBox_ReqAutoCombatStats.resources

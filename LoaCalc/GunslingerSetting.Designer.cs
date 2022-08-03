@@ -420,21 +420,6 @@
             this.Preset4_Load = new System.Windows.Forms.Button();
             this.label72 = new System.Windows.Forms.Label();
             this.Preset4_Save = new System.Windows.Forms.Button();
-            this.Skill1_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill2_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill4_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill3_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill8_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill7_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill6_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill5_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill14_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill13_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill12_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill11_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill10_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill9_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
-            this.Skill15_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
             this.label76 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label77 = new System.Windows.Forms.Label();
@@ -462,6 +447,29 @@
             this.Skill2_DpsShare = new System.Windows.Forms.TextBox();
             this.Skill1_DpsShare = new System.Windows.Forms.TextBox();
             this.label73 = new System.Windows.Forms.Label();
+            this.Preset5_Load = new System.Windows.Forms.Button();
+            this.label74 = new System.Windows.Forms.Label();
+            this.Preset5_Save = new System.Windows.Forms.Button();
+            this.Preset6_Load = new System.Windows.Forms.Button();
+            this.label75 = new System.Windows.Forms.Label();
+            this.Preset6_Save = new System.Windows.Forms.Button();
+            this.AutoCombatStats = new System.Windows.Forms.Button();
+            this.ProcessingMessageCalcOptimalCombatStats = new System.Windows.Forms.Label();
+            this.Skill15_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill14_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill13_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill12_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill11_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill10_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill9_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill8_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill7_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill6_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill5_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill4_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill3_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill2_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.Skill1_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -477,8 +485,9 @@
             this.CombatStat_Crit.Location = new System.Drawing.Point(92, 41);
             this.CombatStat_Crit.Name = "CombatStat_Crit";
             this.CombatStat_Crit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CombatStat_Crit.Size = new System.Drawing.Size(245, 29);
+            this.CombatStat_Crit.Size = new System.Drawing.Size(76, 29);
             this.CombatStat_Crit.TabIndex = 0;
+            this.CombatStat_Crit.TextChanged += new System.EventHandler(this.CombatStat_TextChanged);
             // 
             // CombatStat_Specialization
             // 
@@ -486,7 +495,7 @@
             this.CombatStat_Specialization.Location = new System.Drawing.Point(92, 76);
             this.CombatStat_Specialization.Name = "CombatStat_Specialization";
             this.CombatStat_Specialization.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CombatStat_Specialization.Size = new System.Drawing.Size(245, 29);
+            this.CombatStat_Specialization.Size = new System.Drawing.Size(76, 29);
             this.CombatStat_Specialization.TabIndex = 1;
             // 
             // CombatStat_Swiftness
@@ -495,7 +504,7 @@
             this.CombatStat_Swiftness.Location = new System.Drawing.Point(92, 111);
             this.CombatStat_Swiftness.Name = "CombatStat_Swiftness";
             this.CombatStat_Swiftness.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CombatStat_Swiftness.Size = new System.Drawing.Size(245, 29);
+            this.CombatStat_Swiftness.Size = new System.Drawing.Size(76, 29);
             this.CombatStat_Swiftness.TabIndex = 3;
             // 
             // Skill1_Lev
@@ -2101,6 +2110,7 @@
             this.Weapon_AdditionalDamage.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Weapon_AdditionalDamage.Size = new System.Drawing.Size(195, 29);
             this.Weapon_AdditionalDamage.TabIndex = 156;
+            this.Weapon_AdditionalDamage.TextChanged += new System.EventHandler(this.Weapon_AdditionalDamage_TextChanged);
             // 
             // Buff1_Name
             // 
@@ -3355,7 +3365,7 @@
             // Preset1_Save
             // 
             this.Preset1_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset1_Save.Location = new System.Drawing.Point(2068, 685);
+            this.Preset1_Save.Location = new System.Drawing.Point(2068, 636);
             this.Preset1_Save.Name = "Preset1_Save";
             this.Preset1_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset1_Save.TabIndex = 282;
@@ -4666,7 +4676,7 @@
             // ResetSetting
             // 
             this.ResetSetting.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ResetSetting.Location = new System.Drawing.Point(2068, 604);
+            this.ResetSetting.Location = new System.Drawing.Point(2068, 561);
             this.ResetSetting.Name = "ResetSetting";
             this.ResetSetting.Size = new System.Drawing.Size(226, 33);
             this.ResetSetting.TabIndex = 399;
@@ -4680,7 +4690,7 @@
             this.label69.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label69.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label69.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label69.Location = new System.Drawing.Point(2126, 649);
+            this.label69.Location = new System.Drawing.Point(2126, 603);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(116, 30);
             this.label69.TabIndex = 400;
@@ -4689,7 +4699,7 @@
             // Preset1_Load
             // 
             this.Preset1_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset1_Load.Location = new System.Drawing.Point(2184, 685);
+            this.Preset1_Load.Location = new System.Drawing.Point(2184, 636);
             this.Preset1_Load.Name = "Preset1_Load";
             this.Preset1_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset1_Load.TabIndex = 401;
@@ -4700,7 +4710,7 @@
             // Preset2_Load
             // 
             this.Preset2_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset2_Load.Location = new System.Drawing.Point(2184, 767);
+            this.Preset2_Load.Location = new System.Drawing.Point(2184, 711);
             this.Preset2_Load.Name = "Preset2_Load";
             this.Preset2_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset2_Load.TabIndex = 404;
@@ -4714,7 +4724,7 @@
             this.label70.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label70.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label70.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label70.Location = new System.Drawing.Point(2126, 732);
+            this.label70.Location = new System.Drawing.Point(2126, 679);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(116, 30);
             this.label70.TabIndex = 403;
@@ -4723,7 +4733,7 @@
             // Preset2_Save
             // 
             this.Preset2_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset2_Save.Location = new System.Drawing.Point(2068, 767);
+            this.Preset2_Save.Location = new System.Drawing.Point(2068, 711);
             this.Preset2_Save.Name = "Preset2_Save";
             this.Preset2_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset2_Save.TabIndex = 402;
@@ -4734,7 +4744,7 @@
             // Preset3_Load
             // 
             this.Preset3_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset3_Load.Location = new System.Drawing.Point(2184, 848);
+            this.Preset3_Load.Location = new System.Drawing.Point(2184, 784);
             this.Preset3_Load.Name = "Preset3_Load";
             this.Preset3_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset3_Load.TabIndex = 407;
@@ -4748,7 +4758,7 @@
             this.label71.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label71.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label71.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label71.Location = new System.Drawing.Point(2126, 814);
+            this.label71.Location = new System.Drawing.Point(2126, 753);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(116, 30);
             this.label71.TabIndex = 406;
@@ -4757,7 +4767,7 @@
             // Preset3_Save
             // 
             this.Preset3_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset3_Save.Location = new System.Drawing.Point(2068, 848);
+            this.Preset3_Save.Location = new System.Drawing.Point(2068, 784);
             this.Preset3_Save.Name = "Preset3_Save";
             this.Preset3_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset3_Save.TabIndex = 405;
@@ -4768,7 +4778,7 @@
             // Preset4_Load
             // 
             this.Preset4_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset4_Load.Location = new System.Drawing.Point(2184, 928);
+            this.Preset4_Load.Location = new System.Drawing.Point(2184, 857);
             this.Preset4_Load.Name = "Preset4_Load";
             this.Preset4_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset4_Load.TabIndex = 410;
@@ -4782,7 +4792,7 @@
             this.label72.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label72.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label72.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label72.Location = new System.Drawing.Point(2126, 894);
+            this.label72.Location = new System.Drawing.Point(2126, 826);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(116, 30);
             this.label72.TabIndex = 409;
@@ -4791,148 +4801,13 @@
             // Preset4_Save
             // 
             this.Preset4_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset4_Save.Location = new System.Drawing.Point(2068, 928);
+            this.Preset4_Save.Location = new System.Drawing.Point(2068, 857);
             this.Preset4_Save.Name = "Preset4_Save";
             this.Preset4_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset4_Save.TabIndex = 408;
             this.Preset4_Save.Text = "저장";
             this.Preset4_Save.UseVisualStyleBackColor = true;
             this.Preset4_Save.Click += new System.EventHandler(this.Preset_Save_Click);
-            // 
-            // Skill1_IncludeInFinalDps
-            // 
-            this.Skill1_IncludeInFinalDps.Check = false;
-            this.Skill1_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 533);
-            this.Skill1_IncludeInFinalDps.Name = "Skill1_IncludeInFinalDps";
-            this.Skill1_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill1_IncludeInFinalDps.TabIndex = 415;
-            this.Skill1_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill2_IncludeInFinalDps
-            // 
-            this.Skill2_IncludeInFinalDps.Check = false;
-            this.Skill2_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 569);
-            this.Skill2_IncludeInFinalDps.Name = "Skill2_IncludeInFinalDps";
-            this.Skill2_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill2_IncludeInFinalDps.TabIndex = 416;
-            this.Skill2_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill4_IncludeInFinalDps
-            // 
-            this.Skill4_IncludeInFinalDps.Check = false;
-            this.Skill4_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 638);
-            this.Skill4_IncludeInFinalDps.Name = "Skill4_IncludeInFinalDps";
-            this.Skill4_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill4_IncludeInFinalDps.TabIndex = 418;
-            this.Skill4_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill3_IncludeInFinalDps
-            // 
-            this.Skill3_IncludeInFinalDps.Check = false;
-            this.Skill3_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 604);
-            this.Skill3_IncludeInFinalDps.Name = "Skill3_IncludeInFinalDps";
-            this.Skill3_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill3_IncludeInFinalDps.TabIndex = 417;
-            this.Skill3_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill8_IncludeInFinalDps
-            // 
-            this.Skill8_IncludeInFinalDps.Check = false;
-            this.Skill8_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 779);
-            this.Skill8_IncludeInFinalDps.Name = "Skill8_IncludeInFinalDps";
-            this.Skill8_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill8_IncludeInFinalDps.TabIndex = 422;
-            this.Skill8_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill7_IncludeInFinalDps
-            // 
-            this.Skill7_IncludeInFinalDps.Check = false;
-            this.Skill7_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 744);
-            this.Skill7_IncludeInFinalDps.Name = "Skill7_IncludeInFinalDps";
-            this.Skill7_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill7_IncludeInFinalDps.TabIndex = 421;
-            this.Skill7_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill6_IncludeInFinalDps
-            // 
-            this.Skill6_IncludeInFinalDps.Check = false;
-            this.Skill6_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 708);
-            this.Skill6_IncludeInFinalDps.Name = "Skill6_IncludeInFinalDps";
-            this.Skill6_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill6_IncludeInFinalDps.TabIndex = 420;
-            this.Skill6_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill5_IncludeInFinalDps
-            // 
-            this.Skill5_IncludeInFinalDps.Check = false;
-            this.Skill5_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 674);
-            this.Skill5_IncludeInFinalDps.Name = "Skill5_IncludeInFinalDps";
-            this.Skill5_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill5_IncludeInFinalDps.TabIndex = 419;
-            this.Skill5_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill14_IncludeInFinalDps
-            // 
-            this.Skill14_IncludeInFinalDps.Check = false;
-            this.Skill14_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 988);
-            this.Skill14_IncludeInFinalDps.Name = "Skill14_IncludeInFinalDps";
-            this.Skill14_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill14_IncludeInFinalDps.TabIndex = 428;
-            this.Skill14_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill13_IncludeInFinalDps
-            // 
-            this.Skill13_IncludeInFinalDps.Check = false;
-            this.Skill13_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 953);
-            this.Skill13_IncludeInFinalDps.Name = "Skill13_IncludeInFinalDps";
-            this.Skill13_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill13_IncludeInFinalDps.TabIndex = 427;
-            this.Skill13_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill12_IncludeInFinalDps
-            // 
-            this.Skill12_IncludeInFinalDps.Check = false;
-            this.Skill12_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 917);
-            this.Skill12_IncludeInFinalDps.Name = "Skill12_IncludeInFinalDps";
-            this.Skill12_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill12_IncludeInFinalDps.TabIndex = 426;
-            this.Skill12_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill11_IncludeInFinalDps
-            // 
-            this.Skill11_IncludeInFinalDps.Check = false;
-            this.Skill11_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 883);
-            this.Skill11_IncludeInFinalDps.Name = "Skill11_IncludeInFinalDps";
-            this.Skill11_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill11_IncludeInFinalDps.TabIndex = 425;
-            this.Skill11_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill10_IncludeInFinalDps
-            // 
-            this.Skill10_IncludeInFinalDps.Check = false;
-            this.Skill10_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 847);
-            this.Skill10_IncludeInFinalDps.Name = "Skill10_IncludeInFinalDps";
-            this.Skill10_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill10_IncludeInFinalDps.TabIndex = 424;
-            this.Skill10_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill9_IncludeInFinalDps
-            // 
-            this.Skill9_IncludeInFinalDps.Check = false;
-            this.Skill9_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 813);
-            this.Skill9_IncludeInFinalDps.Name = "Skill9_IncludeInFinalDps";
-            this.Skill9_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill9_IncludeInFinalDps.TabIndex = 423;
-            this.Skill9_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
-            // 
-            // Skill15_IncludeInFinalDps
-            // 
-            this.Skill15_IncludeInFinalDps.Check = false;
-            this.Skill15_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 1023);
-            this.Skill15_IncludeInFinalDps.Name = "Skill15_IncludeInFinalDps";
-            this.Skill15_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
-            this.Skill15_IncludeInFinalDps.TabIndex = 429;
-            this.Skill15_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
             // 
             // label76
             // 
@@ -4966,7 +4841,7 @@
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(125, 21);
             this.label77.TabIndex = 432;
-            this.label77.Text = "최종Dps에 포함";
+            this.label77.Text = "Dps합계에 포함";
             // 
             // label78
             // 
@@ -5211,12 +5086,246 @@
             this.label73.TabIndex = 456;
             this.label73.Text = "점유율";
             // 
+            // Preset5_Load
+            // 
+            this.Preset5_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Preset5_Load.Location = new System.Drawing.Point(2184, 931);
+            this.Preset5_Load.Name = "Preset5_Load";
+            this.Preset5_Load.Size = new System.Drawing.Size(110, 33);
+            this.Preset5_Load.TabIndex = 459;
+            this.Preset5_Load.Text = "불러오기";
+            this.Preset5_Load.UseVisualStyleBackColor = true;
+            this.Preset5_Load.Click += new System.EventHandler(this.Preset_Load_Click);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label74.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label74.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label74.Location = new System.Drawing.Point(2126, 900);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(116, 30);
+            this.label74.TabIndex = 458;
+            this.label74.Text = "5번 프리셋";
+            // 
+            // Preset5_Save
+            // 
+            this.Preset5_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Preset5_Save.Location = new System.Drawing.Point(2068, 931);
+            this.Preset5_Save.Name = "Preset5_Save";
+            this.Preset5_Save.Size = new System.Drawing.Size(110, 33);
+            this.Preset5_Save.TabIndex = 457;
+            this.Preset5_Save.Text = "저장";
+            this.Preset5_Save.UseVisualStyleBackColor = true;
+            this.Preset5_Save.Click += new System.EventHandler(this.Preset_Save_Click);
+            // 
+            // Preset6_Load
+            // 
+            this.Preset6_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Preset6_Load.Location = new System.Drawing.Point(2184, 1005);
+            this.Preset6_Load.Name = "Preset6_Load";
+            this.Preset6_Load.Size = new System.Drawing.Size(110, 33);
+            this.Preset6_Load.TabIndex = 462;
+            this.Preset6_Load.Text = "불러오기";
+            this.Preset6_Load.UseVisualStyleBackColor = true;
+            this.Preset6_Load.Click += new System.EventHandler(this.Preset_Load_Click);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label75.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label75.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label75.Location = new System.Drawing.Point(2126, 974);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(116, 30);
+            this.label75.TabIndex = 461;
+            this.label75.Text = "6번 프리셋";
+            // 
+            // Preset6_Save
+            // 
+            this.Preset6_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Preset6_Save.Location = new System.Drawing.Point(2068, 1005);
+            this.Preset6_Save.Name = "Preset6_Save";
+            this.Preset6_Save.Size = new System.Drawing.Size(110, 33);
+            this.Preset6_Save.TabIndex = 460;
+            this.Preset6_Save.Text = "저장";
+            this.Preset6_Save.UseVisualStyleBackColor = true;
+            this.Preset6_Save.Click += new System.EventHandler(this.Preset_Save_Click);
+            // 
+            // AutoCombatStats
+            // 
+            this.AutoCombatStats.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.AutoCombatStats.Location = new System.Drawing.Point(174, 39);
+            this.AutoCombatStats.Name = "AutoCombatStats";
+            this.AutoCombatStats.Size = new System.Drawing.Size(162, 104);
+            this.AutoCombatStats.TabIndex = 463;
+            this.AutoCombatStats.Text = "최적 특성비\r\n(현재 세팅 기준)";
+            this.AutoCombatStats.UseVisualStyleBackColor = true;
+            this.AutoCombatStats.Click += new System.EventHandler(this.CalcOptimalCombatStats_Click);
+            // 
+            // ProcessingMessageCalcOptimalCombatStats
+            // 
+            this.ProcessingMessageCalcOptimalCombatStats.AutoSize = true;
+            this.ProcessingMessageCalcOptimalCombatStats.BackColor = System.Drawing.Color.MediumPurple;
+            this.ProcessingMessageCalcOptimalCombatStats.Font = new System.Drawing.Font("맑은 고딕", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ProcessingMessageCalcOptimalCombatStats.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ProcessingMessageCalcOptimalCombatStats.Location = new System.Drawing.Point(571, 381);
+            this.ProcessingMessageCalcOptimalCombatStats.Name = "ProcessingMessageCalcOptimalCombatStats";
+            this.ProcessingMessageCalcOptimalCombatStats.Size = new System.Drawing.Size(1148, 106);
+            this.ProcessingMessageCalcOptimalCombatStats.TabIndex = 464;
+            this.ProcessingMessageCalcOptimalCombatStats.Text = "최적 특성비 구하는 중... 100%";
+            // 
+            // Skill15_IncludeInFinalDps
+            // 
+            this.Skill15_IncludeInFinalDps.Check = false;
+            this.Skill15_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 1023);
+            this.Skill15_IncludeInFinalDps.Name = "Skill15_IncludeInFinalDps";
+            this.Skill15_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill15_IncludeInFinalDps.TabIndex = 429;
+            this.Skill15_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill14_IncludeInFinalDps
+            // 
+            this.Skill14_IncludeInFinalDps.Check = false;
+            this.Skill14_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 988);
+            this.Skill14_IncludeInFinalDps.Name = "Skill14_IncludeInFinalDps";
+            this.Skill14_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill14_IncludeInFinalDps.TabIndex = 428;
+            this.Skill14_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill13_IncludeInFinalDps
+            // 
+            this.Skill13_IncludeInFinalDps.Check = false;
+            this.Skill13_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 953);
+            this.Skill13_IncludeInFinalDps.Name = "Skill13_IncludeInFinalDps";
+            this.Skill13_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill13_IncludeInFinalDps.TabIndex = 427;
+            this.Skill13_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill12_IncludeInFinalDps
+            // 
+            this.Skill12_IncludeInFinalDps.Check = false;
+            this.Skill12_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 917);
+            this.Skill12_IncludeInFinalDps.Name = "Skill12_IncludeInFinalDps";
+            this.Skill12_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill12_IncludeInFinalDps.TabIndex = 426;
+            this.Skill12_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill11_IncludeInFinalDps
+            // 
+            this.Skill11_IncludeInFinalDps.Check = false;
+            this.Skill11_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 883);
+            this.Skill11_IncludeInFinalDps.Name = "Skill11_IncludeInFinalDps";
+            this.Skill11_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill11_IncludeInFinalDps.TabIndex = 425;
+            this.Skill11_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill10_IncludeInFinalDps
+            // 
+            this.Skill10_IncludeInFinalDps.Check = false;
+            this.Skill10_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 847);
+            this.Skill10_IncludeInFinalDps.Name = "Skill10_IncludeInFinalDps";
+            this.Skill10_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill10_IncludeInFinalDps.TabIndex = 424;
+            this.Skill10_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill9_IncludeInFinalDps
+            // 
+            this.Skill9_IncludeInFinalDps.Check = false;
+            this.Skill9_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 813);
+            this.Skill9_IncludeInFinalDps.Name = "Skill9_IncludeInFinalDps";
+            this.Skill9_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill9_IncludeInFinalDps.TabIndex = 423;
+            this.Skill9_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill8_IncludeInFinalDps
+            // 
+            this.Skill8_IncludeInFinalDps.Check = false;
+            this.Skill8_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 779);
+            this.Skill8_IncludeInFinalDps.Name = "Skill8_IncludeInFinalDps";
+            this.Skill8_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill8_IncludeInFinalDps.TabIndex = 422;
+            this.Skill8_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill7_IncludeInFinalDps
+            // 
+            this.Skill7_IncludeInFinalDps.Check = false;
+            this.Skill7_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 744);
+            this.Skill7_IncludeInFinalDps.Name = "Skill7_IncludeInFinalDps";
+            this.Skill7_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill7_IncludeInFinalDps.TabIndex = 421;
+            this.Skill7_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill6_IncludeInFinalDps
+            // 
+            this.Skill6_IncludeInFinalDps.Check = false;
+            this.Skill6_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 708);
+            this.Skill6_IncludeInFinalDps.Name = "Skill6_IncludeInFinalDps";
+            this.Skill6_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill6_IncludeInFinalDps.TabIndex = 420;
+            this.Skill6_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill5_IncludeInFinalDps
+            // 
+            this.Skill5_IncludeInFinalDps.Check = false;
+            this.Skill5_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 674);
+            this.Skill5_IncludeInFinalDps.Name = "Skill5_IncludeInFinalDps";
+            this.Skill5_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill5_IncludeInFinalDps.TabIndex = 419;
+            this.Skill5_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill4_IncludeInFinalDps
+            // 
+            this.Skill4_IncludeInFinalDps.Check = false;
+            this.Skill4_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 638);
+            this.Skill4_IncludeInFinalDps.Name = "Skill4_IncludeInFinalDps";
+            this.Skill4_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill4_IncludeInFinalDps.TabIndex = 418;
+            this.Skill4_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill3_IncludeInFinalDps
+            // 
+            this.Skill3_IncludeInFinalDps.Check = false;
+            this.Skill3_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 604);
+            this.Skill3_IncludeInFinalDps.Name = "Skill3_IncludeInFinalDps";
+            this.Skill3_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill3_IncludeInFinalDps.TabIndex = 417;
+            this.Skill3_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill2_IncludeInFinalDps
+            // 
+            this.Skill2_IncludeInFinalDps.Check = false;
+            this.Skill2_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 569);
+            this.Skill2_IncludeInFinalDps.Name = "Skill2_IncludeInFinalDps";
+            this.Skill2_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill2_IncludeInFinalDps.TabIndex = 416;
+            this.Skill2_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
+            // Skill1_IncludeInFinalDps
+            // 
+            this.Skill1_IncludeInFinalDps.Check = false;
+            this.Skill1_IncludeInFinalDps.Location = new System.Drawing.Point(1992, 533);
+            this.Skill1_IncludeInFinalDps.Name = "Skill1_IncludeInFinalDps";
+            this.Skill1_IncludeInFinalDps.Size = new System.Drawing.Size(27, 27);
+            this.Skill1_IncludeInFinalDps.TabIndex = 415;
+            this.Skill1_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
+            // 
             // GunslingerSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(2340, 1138);
+            this.Controls.Add(this.ProcessingMessageCalcOptimalCombatStats);
+            this.Controls.Add(this.AutoCombatStats);
+            this.Controls.Add(this.Preset6_Load);
+            this.Controls.Add(this.label75);
+            this.Controls.Add(this.Preset6_Save);
+            this.Controls.Add(this.Preset5_Load);
+            this.Controls.Add(this.label74);
+            this.Controls.Add(this.Preset5_Save);
             this.Controls.Add(this.label73);
             this.Controls.Add(this.Skill15_DpsShare);
             this.Controls.Add(this.Skill14_DpsShare);
@@ -6102,6 +6211,14 @@
         private System.Windows.Forms.TextBox Skill2_DpsShare;
         private System.Windows.Forms.TextBox Skill1_DpsShare;
         private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Button Preset5_Load;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Button Preset5_Save;
+        private System.Windows.Forms.Button Preset6_Load;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Button Preset6_Save;
+        private System.Windows.Forms.Button AutoCombatStats;
+        private System.Windows.Forms.Label ProcessingMessageCalcOptimalCombatStats;
     }
 }
 

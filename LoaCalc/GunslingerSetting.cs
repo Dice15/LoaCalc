@@ -8,8 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.IO;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace LoaCalc
 {
@@ -33,7 +33,7 @@ namespace LoaCalc
         public static int Weapon_ControllerMaxNum = 1;
         public static int Buff_ControllerMaxNum = 7;
         public static int Skill_ControllerMaxNum = 15;
-        public static int Preset_ControllerMaxNum = 4;
+        public static int Preset_ControllerMaxNum = 6;
 
         private List<SettingInfo.Engraving.NAME> engravingNameList = new List<SettingInfo.Engraving.NAME>();
         private List<SettingInfo.Engraving.LEV> engravingLevList = new List<SettingInfo.Engraving.LEV>();
@@ -59,8 +59,7 @@ namespace LoaCalc
         private Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>> skillTp3List = new Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>>();
 
         private List<GunslingerCalculator.Result> calculateResult = new List<GunslingerCalculator.Result>();
-
-
+        private (decimal damageBeforeHalf, decimal damageAfterHalf, decimal damageArithmeticMean, decimal damageHarmonicMean, decimal dpsArithmeticMean, decimal dpsHarmonicMean) resultSum = (0, 0, 0, 0, 0, 0);
 
 
         public GunslingerSetting()
@@ -69,6 +68,7 @@ namespace LoaCalc
             Construct();
             Initializer();
         }
+
 
 
 
@@ -202,9 +202,6 @@ namespace LoaCalc
 
             // 모든 컨트롤 값 초기화
             FormCtrlInitializer();
-
-            // 저장된 설정이 불러오기
-            FormCtrlDataLoad();
         }
 
 
@@ -213,6 +210,8 @@ namespace LoaCalc
         /// </summary>
         private void FormCtrlInitializer()
         {
+            ProcessingMessageCalcOptimalCombatStats.Visible = false;
+
             foreach (Control control in allControls.Values)
             {
                 if (control.GetType() == typeof(TextBox))
@@ -239,38 +238,6 @@ namespace LoaCalc
         }
 
 
-        /// <summary>
-        /// 저장된 Form Control 데이터 불러오기
-        /// </summary>
-        private void FormCtrlDataLoad()
-        {
-            var directoryName = Application.StartupPath;
-            var serializedList = File.ReadAllText(directoryName + @"\FormCtrlList.json");
-            var deserializedList = JsonConvert.DeserializeObject<List<FormCtrl>>(serializedList);
-            foreach (var formCtrl in deserializedList)
-            {
-                var control = GetControlByName(formCtrl.name);
-                if (control == null) continue;
-
-                if (formCtrl.type == typeof(TextBox))
-                {
-                    TextBox textBox = control as TextBox;
-                    textBox.Text = formCtrl.data;
-                }
-                else if (formCtrl.type == typeof(ComboBox))
-                {
-                    ComboBox comboBox = control as ComboBox;
-                    comboBox.SelectedIndex = int.Parse(formCtrl.data);
-                }
-                else if (control.GetType() == typeof(CustomCheckBox))
-                {
-                    CustomCheckBox customCheckBox = control as CustomCheckBox;
-                    customCheckBox.Check = formCtrl.data == "True" ? true : false;  //bool.Parse(formCtrl.data);
-                }
-            }
-        }
-
-
 
 
         //*********************************************************//
@@ -280,7 +247,7 @@ namespace LoaCalc
         /// <summary>
         /// 캐릭터 세팅을 기준으로 스킬 데미지를 계산한다.
         /// </summary>
-        private void SkillCalculate()
+        private void SkillCalculate(bool printCalcRes = true)
         {
             var character = new Gunslinger();
 
@@ -288,40 +255,43 @@ namespace LoaCalc
 
             calculateResult = GunslingerCalculator.Calculate(character);
 
-            for (int i = 0; i < Skill_ControllerMaxNum; i++)
+            if (printCalcRes)
             {
-                TextBox damageBeforeHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageBeforeHalf") as TextBox;
-                TextBox damageAfterHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageAfterHalf") as TextBox;
-                TextBox damageArithmeticAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DamageArithmeticAvg") as TextBox;
-                TextBox damageHarmonicAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DamageHarmonicAvg") as TextBox;
-                TextBox dpsArithmeticAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DpsArithmeticAvg") as TextBox;
-                TextBox dpsHarmonicAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DpsHarmonicAvg") as TextBox;
-                TextBox cooldownTime = GetControlByName("Skill" + (i + 1).ToString() + "_CooldownTime") as TextBox;
+                for (int i = 0; i < Skill_ControllerMaxNum; i++)
+                {
+                    TextBox damageBeforeHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageBeforeHalf") as TextBox;
+                    TextBox damageAfterHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageAfterHalf") as TextBox;
+                    TextBox damageArithmeticAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DamageArithmeticAvg") as TextBox;
+                    TextBox damageHarmonicAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DamageHarmonicAvg") as TextBox;
+                    TextBox dpsArithmeticAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DpsArithmeticAvg") as TextBox;
+                    TextBox dpsHarmonicAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DpsHarmonicAvg") as TextBox;
+                    TextBox cooldownTime = GetControlByName("Skill" + (i + 1).ToString() + "_CooldownTime") as TextBox;
 
-                damageBeforeHalf.Text = calculateResult[i].Damage_BeforeHalf.ToString();
-                damageAfterHalf.Text = calculateResult[i].Damage_AfterHalf.ToString();
-                damageArithmeticAvg.Text = calculateResult[i].Damage_ArithmeticMean.ToString();
-                damageHarmonicAvg.Text = calculateResult[i].Damage_HarmonicMean.ToString();
-                dpsArithmeticAvg.Text = calculateResult[i].Dps_ArithmeticAvg.ToString();
-                dpsHarmonicAvg.Text = calculateResult[i].Dps_HarmonicAvg.ToString();
-                cooldownTime.Text = calculateResult[i].CooldownTime.ToString();
+                    damageBeforeHalf.Text = calculateResult[i].Damage_BeforeHalf.ToString();
+                    damageAfterHalf.Text = calculateResult[i].Damage_AfterHalf.ToString();
+                    damageArithmeticAvg.Text = calculateResult[i].Damage_ArithmeticMean.ToString();
+                    damageHarmonicAvg.Text = calculateResult[i].Damage_HarmonicMean.ToString();
+                    dpsArithmeticAvg.Text = calculateResult[i].Dps_ArithmeticMean.ToString();
+                    dpsHarmonicAvg.Text = calculateResult[i].Dps_HarmonicMean.ToString();
+                    cooldownTime.Text = calculateResult[i].CooldownTime.ToString();
+                }
             }
 
-            SumOfSelectedSkill();
+            SumOfSelectedSkill(printCalcRes);
         }
 
 
         /// <summary>
         /// 선택한 스킬들로 데미지 합, 평균 데미지 합, DPS 합을 구함.
         /// </summary>
-        private void SumOfSelectedSkill()
+        private void SumOfSelectedSkill(bool printCalcRes = true)
         {
             decimal sumOfDamageBeforeHalf = 0;
             decimal sumOfDamageAfterHalf = 0;
-            decimal sumOfDamageArithmeticAvg = 0;
-            decimal sumOfDamageHarmonicAvg = 0;
-            decimal sumOfDpsArithmeticAvg = 0;
-            decimal sumOfDpsHarmonicAvg = 0;
+            decimal sumOfDamageArithmeticMean = 0;
+            decimal sumOfDamageHarmonicMean = 0;
+            decimal sumOfDpsArithmeticMean = 0;
+            decimal sumOfDpsHarmonicMean = 0;
 
             for (int i = 0; i < Skill_ControllerMaxNum; i++)
             {
@@ -331,31 +301,41 @@ namespace LoaCalc
                 {
                     sumOfDamageBeforeHalf += calculateResult[i].Damage_BeforeHalf;
                     sumOfDamageAfterHalf += calculateResult[i].Damage_AfterHalf;
-                    sumOfDamageArithmeticAvg += calculateResult[i].Damage_ArithmeticMean;
-                    sumOfDamageHarmonicAvg += calculateResult[i].Damage_HarmonicMean;
-                    sumOfDpsArithmeticAvg += calculateResult[i].Dps_ArithmeticAvg;
-                    sumOfDpsHarmonicAvg += calculateResult[i].Dps_HarmonicAvg;
+                    sumOfDamageArithmeticMean += calculateResult[i].Damage_ArithmeticMean;
+                    sumOfDamageHarmonicMean += calculateResult[i].Damage_HarmonicMean;
+                    sumOfDpsArithmeticMean += calculateResult[i].Dps_ArithmeticMean;
+                    sumOfDpsHarmonicMean += calculateResult[i].Dps_HarmonicMean;
                 }
             }
 
-            for (int i = 0; i < Skill_ControllerMaxNum; i++)
+            resultSum.damageBeforeHalf = sumOfDamageBeforeHalf;
+            resultSum.damageAfterHalf = sumOfDamageAfterHalf;
+            resultSum.damageArithmeticMean = sumOfDamageArithmeticMean;
+            resultSum.damageHarmonicMean = sumOfDamageHarmonicMean;
+            resultSum.dpsArithmeticMean = sumOfDpsArithmeticMean;
+            resultSum.dpsHarmonicMean = sumOfDpsHarmonicMean;
+
+            if (printCalcRes)
             {
-                CustomCheckBox selectedSkill = GetControlByName("Skill" + (i + 1).ToString() + "_IncludeInFinalDps") as CustomCheckBox;
-                TextBox dpsShare = GetControlByName("Skill" + (i + 1).ToString() + "_DpsShare") as TextBox;
-
-                if (selectedSkill.Check)
+                for (int i = 0; i < Skill_ControllerMaxNum; i++)
                 {
-                    dpsShare.Text = Math.Round((calculateResult[i].Dps_HarmonicAvg / sumOfDpsHarmonicAvg) * 100, 2).ToString() + "%";
-                }
-                else dpsShare.Text = "0";
-            }
+                    CustomCheckBox selectedSkill = GetControlByName("Skill" + (i + 1).ToString() + "_IncludeInFinalDps") as CustomCheckBox;
+                    TextBox dpsShare = GetControlByName("Skill" + (i + 1).ToString() + "_DpsShare") as TextBox;
 
-            SkillSum_DamageBeforeHalf.Text = sumOfDamageBeforeHalf.ToString();
-            SkillSum_DamageAfterHalf.Text = sumOfDamageAfterHalf.ToString();
-            SkillSum_DamageArithmeticAvg.Text = sumOfDamageArithmeticAvg.ToString();
-            SkillSum_DamageHarmonicAvg.Text = sumOfDamageHarmonicAvg.ToString();
-            SkillSum_DpsArithmeticAvg.Text = sumOfDpsArithmeticAvg.ToString();
-            SkillSum_DpsHarmonicAvg.Text = sumOfDpsHarmonicAvg.ToString();
+                    if (selectedSkill.Check)
+                    {
+                        dpsShare.Text = Math.Round((calculateResult[i].Dps_HarmonicMean / sumOfDpsHarmonicMean) * 100, 2).ToString() + "%";
+                    }
+                    else dpsShare.Text = "0";
+                }
+
+                SkillSum_DamageBeforeHalf.Text = resultSum.damageBeforeHalf.ToString();
+                SkillSum_DamageAfterHalf.Text = resultSum.damageAfterHalf.ToString();
+                SkillSum_DamageArithmeticAvg.Text = resultSum.damageArithmeticMean.ToString();
+                SkillSum_DamageHarmonicAvg.Text = resultSum.damageHarmonicMean.ToString();
+                SkillSum_DpsArithmeticAvg.Text = resultSum.dpsArithmeticMean.ToString();
+                SkillSum_DpsHarmonicAvg.Text = resultSum.dpsHarmonicMean.ToString();
+            }
         }
 
 
@@ -378,6 +358,9 @@ namespace LoaCalc
             character.setting.Clear();
 
             // 전투 특성
+            if (CombatStat_Crit.Text == "") CombatStat_Crit.Text = "0";
+            if (CombatStat_Specialization.Text == "") CombatStat_Specialization.Text = "0";
+            if (CombatStat_Swiftness.Text == "") CombatStat_Swiftness.Text = "0";
             character.setting.SetCombatStats(CombatStat_Crit.Text, CombatStat_Specialization.Text, CombatStat_Swiftness.Text);
 
             // 각인
@@ -443,6 +426,7 @@ namespace LoaCalc
             }
 
             // 무기 품질
+            if (Weapon_AdditionalDamage.Text == "") Weapon_AdditionalDamage.Text = "0";
             character.setting.SetWeaponQual(Weapon_AdditionalDamage.Text);
 
             // 버프 (시너지)
@@ -481,6 +465,123 @@ namespace LoaCalc
 
 
 
+        private int ProcessingCountingCalcOptimalCombatStats = 0;
+        /// <summary>
+        /// 최적 특성을 구한다.
+        /// </summary>
+        private void CalculateOptimalCombatStats(int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper)
+        {
+            var accessoryValueList = new List<int> { 50, 50, 50, 120, 120, 500, 500, 300, 300, 200, 200 };
+            var combatStatsList = new List<int> { 0, 0, 0 };
+            var result = new List<decimal> { 0, 0, 0, 0 };
+
+            ProcessingMessageCalcOptimalCombatStats.Visible = true;
+            ProcessingCountingCalcOptimalCombatStats = 0;
+            Delay(1);
+
+            for (int x1 = 0; x1 < 3; x1++)
+            {
+                for (int x2 = 0; x2 < 3; x2++)
+                {
+                    if (x1 == x2) continue;
+                    for (int y1 = 0; y1 < 3; y1++)
+                    {
+                        for (int y2 = 0; y2 < 3; y2++)
+                        {
+                            if (y1 == y2) continue;
+                            combatStatsList[0] = accessoryValueList[0];
+                            combatStatsList[1] = accessoryValueList[1];
+                            combatStatsList[2] = accessoryValueList[2];
+                            combatStatsList[x1] += accessoryValueList[3];
+                            combatStatsList[x2] += accessoryValueList[4];
+                            combatStatsList[y1] += accessoryValueList[5];
+                            combatStatsList[y2] += accessoryValueList[6];
+                            SubCalcOptimalCombatStats(7, accessoryValueList, combatStatsList, result, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper);
+                        }
+                    }
+                }
+            }
+
+            ProcessingMessageCalcOptimalCombatStats.Visible = false;
+            Delay(1);
+
+            if (result[3] == 0)
+            {
+                MessageBox.Show("Dps합계에 포함되는 스킬이 없습니다. 적어도 한 개의 스킬을 체크해주세요!!");
+                CombatStat_Crit.Text = "0";
+                CombatStat_Specialization.Text = "0";
+                CombatStat_Swiftness.Text = "0";
+            }
+            else
+            {
+                CombatStat_Crit.Text = result[0].ToString();
+                CombatStat_Specialization.Text = result[1].ToString();
+                CombatStat_Swiftness.Text = result[2].ToString();
+            }
+
+            SkillCalculate();         
+        }
+
+        private void SubCalcOptimalCombatStats(
+            int index, List<int> accessoryValueList, List<int> combatStatsList, List<decimal> result, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper)
+        {
+            if (index == accessoryValueList.Count)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    ProcessingCountingCalcOptimalCombatStats++;
+
+                    int temp = combatStatsList[i];
+                    combatStatsList[i] = Decimal.ToInt32(Math.Round(combatStatsList[i] * 1.1m));
+
+                    if (!(critLower <= combatStatsList[0] && combatStatsList[0] <= critUpper) || !(specLower <= combatStatsList[1] && combatStatsList[1] <= specUpper) || !(swiftLower <= combatStatsList[2] && combatStatsList[2] <= swiftUpper))
+                    {
+                        combatStatsList[i] = temp;
+                        continue;
+                    }
+                    else
+                    {
+                        CombatStat_Crit.Text = combatStatsList[0].ToString();
+                        CombatStat_Specialization.Text = combatStatsList[1].ToString();
+                        CombatStat_Swiftness.Text = combatStatsList[2].ToString();
+
+                        SkillCalculate(printCalcRes: false);
+
+                        decimal dps = resultSum.dpsHarmonicMean;
+
+                        if (result[3] < dps)
+                        {
+                            result[0] = combatStatsList[0];
+                            result[1] = combatStatsList[1];
+                            result[2] = combatStatsList[2];
+                            result[3] = dps;
+                        }
+
+                        combatStatsList[i] = temp;
+                        ShowProcessing();
+                        Delay(1);
+                    }
+                }
+                return;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                combatStatsList[i] += accessoryValueList[index];
+                SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStatsList, result, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper);
+                combatStatsList[i] -= accessoryValueList[index];
+            }
+        }
+
+        
+        private void ShowProcessing()
+        {
+            string ProcessingString = "최적 특성비 구하는 중";
+            ProcessingMessageCalcOptimalCombatStats.Text = ProcessingString + " " + Math.Round((ProcessingCountingCalcOptimalCombatStats / 8748m) * 100m).ToString() + "%";
+        }
+        
+
+
 
         //*********************************************************//
         //                        컨트롤 제어                      //
@@ -505,10 +606,68 @@ namespace LoaCalc
         }
 
 
+        /// <summary>
+        ///  Delay 매서드.
+        /// </summary>
+        private static DateTime Delay(int ms)
+        {
+            DateTime ThisMoment = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, ms);
+            DateTime AfterWards = ThisMoment.Add(duration);
+            while (AfterWards >= ThisMoment)
+            {
+                System.Windows.Forms.Application.DoEvents(); ThisMoment = DateTime.Now;
+            }
+            return DateTime.Now;
+        }
+
 
         //*********************************************************//
         //                       컨트롤 이벤트                     //
         //*********************************************************//
+
+
+        /// <summary>
+        /// 전투 특성 값을 바꿨을 때 발생하는 이벤트.
+        /// </summary>
+        private void CombatStat_TextChanged(object sender, EventArgs e)
+        {
+            TextBox combatStat = sender as TextBox;
+
+            if (!CombatStat_PrevText.ContainsKey(combatStat.Name)) CombatStat_PrevText.Add(combatStat.Name, "0");
+
+            if (new Regex(@"^[0-9]*$").IsMatch(combatStat.Text) && combatStat.Text.Length < 5)
+            {
+                CombatStat_PrevText[combatStat.Name] = combatStat.Text;
+            }
+            else
+            {
+                combatStat.Text = CombatStat_PrevText[combatStat.Name];
+                combatStat.Select(combatStat.Text.Length, 0);
+            }
+        }
+        private Dictionary<string, string> CombatStat_PrevText = new Dictionary<string, string>();
+
+
+        /// <summary>
+        /// 최적 전투 특성을 구하는 버튼을 눌렀을 때 발생하는 이벤트.
+        /// </summary>
+        private void CalcOptimalCombatStats_Click(object sender, EventArgs e)
+        {
+            MessageBox_ReqAutoCombatStats reqAutoStats = new MessageBox_ReqAutoCombatStats();
+            reqAutoStats.ShowDialog();
+
+            var result = reqAutoStats.messageBoxResult;
+
+        /*    MessageBox.Show(result.dialogResult.ToString() +
+                ": [" + result.critLower + ", " + result.critUpper + "], [" + result.specLower + ", " + result.specUpper + "], [" + result.swiftLower + ", " + result.swiftUpper + "]");*/
+
+            if (result.dialogResult == DialogResult.Yes)
+            {
+                CalculateOptimalCombatStats(result.critLower, result.critUpper, result.specLower, result.specUpper, result.swiftLower, result.swiftUpper);
+            }
+        }
+
 
         /// <summary>
         /// 각인 선택 시 발생하는 이벤트.
@@ -716,6 +875,26 @@ namespace LoaCalc
             }
         }
         private List<int> Gear_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Gear_ControllerMaxNum + 1).ToList();
+
+
+        /// <summary>
+        /// 무기 추가 피해 값을 바꿨을 때 발생하는 이벤트.
+        /// </summary>
+        private void Weapon_AdditionalDamage_TextChanged(object sender, EventArgs e)
+        {
+            TextBox weaponAD = sender as TextBox;
+
+            if (new Regex(@"^[0-9]*$").IsMatch(weaponAD.Text) && weaponAD.Text.Length < 3)
+            {
+                Weapon_AdditionalDamage_PrevText = weaponAD.Text;
+            }
+            else
+            {
+                weaponAD.Text = Weapon_AdditionalDamage_PrevText;
+                weaponAD.Select(weaponAD.Text.Length, 0);
+            }
+        }
+        private string Weapon_AdditionalDamage_PrevText = "0";
 
 
         /// <summary>
@@ -995,22 +1174,14 @@ namespace LoaCalc
                 FormCtrlList.Add(new FormCtrl(selectedSkill.GetType(), selectedSkill.Name, selectedSkill.Check.ToString()));
             }
 
-            var currDirectory = Application.StartupPath;
-            var fileName = "Preset" + controlnum.ToString();
-            var serializedList = JsonConvert.SerializeObject(FormCtrlList, Formatting.Indented);
+            var result = MessageBox.Show(controlnum.ToString() + "번 프리셋에 저장하시겠습니까?", "", MessageBoxButtons.YesNo);
 
-            if (File.Exists(currDirectory + @"\" + fileName))
+            if (result == DialogResult.Yes)
             {
-                var result = MessageBox.Show("기존 프리셋에 덮어쓰겠습니까?", "", MessageBoxButtons.YesNo);
+                var currDirectory = Application.StartupPath;
+                var fileName = "Preset" + controlnum.ToString();
+                var serializedList = JsonConvert.SerializeObject(FormCtrlList, Formatting.Indented);
 
-                if (result == DialogResult.Yes)
-                {
-                    File.WriteAllText(currDirectory + @"\" + fileName, serializedList);
-                    if(File.Exists(currDirectory + @"\" + fileName)) MessageBox.Show("프리셋 저장 완료");
-                }
-            }
-            else
-            {
                 File.WriteAllText(currDirectory + @"\" + fileName, serializedList);
                 if (File.Exists(currDirectory + @"\" + fileName)) MessageBox.Show("프리셋 저장 완료");
             }
@@ -1036,41 +1207,46 @@ namespace LoaCalc
                 }
             }
 
-            var currDirectory = Application.StartupPath;
-            var fileName = "Preset" + controlnum.ToString();
+            var result = MessageBox.Show(controlnum.ToString() + "번 프리셋을 불러오시겠습니까?", "", MessageBoxButtons.YesNo);
 
-            FormCtrlInitializer();
-
-            if (File.Exists(currDirectory + @"\" + fileName))
+            if (result == DialogResult.Yes)
             {
-                var serializedList = File.ReadAllText(currDirectory + @"\" + fileName);
-                var deserializedList = JsonConvert.DeserializeObject<List<FormCtrl>>(serializedList);
+                FormCtrlInitializer();
 
-                foreach (var formCtrl in deserializedList)
+                var currDirectory = Application.StartupPath;
+                var fileName = "Preset" + controlnum.ToString();
+
+                if (File.Exists(currDirectory + @"\" + fileName))
                 {
-                    var control = GetControlByName(formCtrl.name);
-                    if (control == null) continue;
+                    var serializedList = File.ReadAllText(currDirectory + @"\" + fileName);
+                    var deserializedList = JsonConvert.DeserializeObject<List<FormCtrl>>(serializedList);
 
-                    if (formCtrl.type == typeof(TextBox))
+                    foreach (var formCtrl in deserializedList)
                     {
-                        TextBox textBox = control as TextBox;
-                        textBox.Text = formCtrl.data;
-                    }
-                    else if (formCtrl.type == typeof(ComboBox))
-                    {
-                        ComboBox comboBox = control as ComboBox;
-                        comboBox.SelectedIndex = int.Parse(formCtrl.data);
-                    }
-                    else if (control.GetType() == typeof(CustomCheckBox))
-                    {
-                        CustomCheckBox customCheckBox = control as CustomCheckBox;
-                        customCheckBox.Check = bool.Parse(formCtrl.data);
+                        var control = GetControlByName(formCtrl.name);
+                        if (control == null) continue;
+
+                        if (formCtrl.type == typeof(TextBox))
+                        {
+                            TextBox textBox = control as TextBox;
+                            textBox.Text = formCtrl.data;
+                        }
+                        else if (formCtrl.type == typeof(ComboBox))
+                        {
+                            ComboBox comboBox = control as ComboBox;
+                            comboBox.SelectedIndex = int.Parse(formCtrl.data);
+                        }
+                        else if (control.GetType() == typeof(CustomCheckBox))
+                        {
+                            CustomCheckBox customCheckBox = control as CustomCheckBox;
+                            customCheckBox.Check = bool.Parse(formCtrl.data);
+                        }
                     }
                 }
-            }
 
-            SkillCalculate();
-            MessageBox.Show("프리셋 로딩 완료");
+                SkillCalculate();
+                MessageBox.Show("프리셋 로딩 완료");
+            }
         }
 
 
@@ -1079,8 +1255,14 @@ namespace LoaCalc
         /// </summary>
         private void ResetSetting_Click(object sender, EventArgs e)
         {
-            FormCtrlInitializer();
-            MessageBox.Show("현재 프리셋 리셋 완료");
+            var result = MessageBox.Show(
+                "새 세팅을 만드시겠습니까?" + Environment.NewLine + "(기존에 불러온 프리셋에는 영향을 주지 않습니다)",
+                "", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                FormCtrlInitializer();
+            }
         }
 
 
@@ -1118,7 +1300,6 @@ namespace LoaCalc
 
         private void GunslingerSetting_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

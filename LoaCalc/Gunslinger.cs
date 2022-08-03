@@ -615,12 +615,6 @@ namespace LoaCalc
                     stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
                     stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
                 }
-
-
-                /*
-         워로드_백헤드_피증_시너지,
-                블레이드_백헤드_피증_시너지,
-                 */
             }
         }
 
