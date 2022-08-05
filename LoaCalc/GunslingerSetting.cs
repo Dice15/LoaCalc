@@ -58,8 +58,10 @@ namespace LoaCalc
         private Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>> skillTp2List = new Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>>();
         private Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>> skillTp3List = new Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>>();
 
-        private List<GunslingerCalculator.Result> calculateResult = new List<GunslingerCalculator.Result>();
-        private (decimal damageBeforeHalf, decimal damageAfterHalf, decimal damageArithmeticMean, decimal damageHarmonicMean, decimal dpsArithmeticMean, decimal dpsHarmonicMean) resultSum = (0, 0, 0, 0, 0, 0);
+        private List<GunslingerCalculator.Result> skillDamageList = new List<GunslingerCalculator.Result>();
+        private (decimal damageBeforeHalf, decimal damageAfterHalf, decimal damageArithmeticMean, decimal damageHarmonicMean, decimal dpsArithmeticMean, decimal dpsHarmonicMean) sumOfSkillDamage = (0, 0, 0, 0, 0, 0);
+
+
 
 
         public GunslingerSetting()
@@ -122,7 +124,8 @@ namespace LoaCalc
             skillTp3List = SettingInfo.Skill.GetTripod3List();
 
             // 계산 결과
-            calculateResult = Enumerable.Repeat(new GunslingerCalculator.Result(), Skill_ControllerMaxNum).ToList();
+            skillDamageList = Enumerable.Repeat(new GunslingerCalculator.Result(), Skill_ControllerMaxNum + 1).ToList();
+            sumOfSkillDamage = (0, 0, 0, 0, 0, 0);
         }
 
 
@@ -216,7 +219,7 @@ namespace LoaCalc
             {
                 if (control.GetType() == typeof(TextBox))
                 {
-                    (control as TextBox).Text = "0";
+                    (control as TextBox).Text = "";
                 }
                 else if (control.GetType() == typeof(ComboBox))
                 {
@@ -247,51 +250,65 @@ namespace LoaCalc
         /// <summary>
         /// 캐릭터 세팅을 기준으로 스킬 데미지를 계산한다.
         /// </summary>
-        private void SkillCalculate(bool printCalcRes = true)
+        private void CalculateSkillDamage(bool show = true)
         {
             var character = new Gunslinger();
 
             UpdateSetting(character);
 
-            calculateResult = GunslingerCalculator.Calculate(character);
+            skillDamageList = GunslingerCalculator.CalculateSkillDamage(character);
 
-            if (printCalcRes)
+            if (show) ShowSkillDamage();
+        }
+        private void ShowSkillDamage()
+        {
+            decimal minDamageHarmonicMean = skillDamageList.Where(damage => damage.damageHarmonicMean != 0).DefaultIfEmpty(new GunslingerCalculator.Result()).Min(damage => damage.damageHarmonicMean);
+            decimal minDpsHarmonicMean = skillDamageList.Where(damage => damage.dpsHarmonicMean != 0).DefaultIfEmpty(new GunslingerCalculator.Result()).Min(damage => damage.dpsHarmonicMean);
+
+            for (int i = 0; i < Skill_ControllerMaxNum; i++)
             {
-                for (int i = 0; i < Skill_ControllerMaxNum; i++)
-                {
-                    TextBox damageBeforeHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageBeforeHalf") as TextBox;
-                    TextBox damageAfterHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageAfterHalf") as TextBox;
-                    TextBox damageArithmeticAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DamageArithmeticAvg") as TextBox;
-                    TextBox damageHarmonicAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DamageHarmonicAvg") as TextBox;
-                    TextBox dpsArithmeticAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DpsArithmeticAvg") as TextBox;
-                    TextBox dpsHarmonicAvg = GetControlByName("Skill" + (i + 1).ToString() + "_DpsHarmonicAvg") as TextBox;
-                    TextBox cooldownTime = GetControlByName("Skill" + (i + 1).ToString() + "_CooldownTime") as TextBox;
+                ComboBox skillName = GetControlByName("Skill" + (i + 1).ToString() + "_Name") as ComboBox;
+                TextBox damageBeforeHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageBeforeHalf") as TextBox;
+                TextBox damageAfterHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageAfterHalf") as TextBox;
+                TextBox damageArithmeticMean = GetControlByName("Skill" + (i + 1).ToString() + "_DamageArithmeticAvg") as TextBox;
+                TextBox damageHarmonicMean = GetControlByName("Skill" + (i + 1).ToString() + "_DamageHarmonicAvg") as TextBox;
+                TextBox damageMagnification = GetControlByName("Skill" + (i + 1).ToString() + "_DamageMagnification") as TextBox;
+                TextBox dpsArithmeticMean = GetControlByName("Skill" + (i + 1).ToString() + "_DpsArithmeticAvg") as TextBox;
+                TextBox dpsHarmonicMean = GetControlByName("Skill" + (i + 1).ToString() + "_DpsHarmonicAvg") as TextBox;
+                TextBox dpsMagnification = GetControlByName("Skill" + (i + 1).ToString() + "_DpsShare") as TextBox;
+                TextBox cooldownTime = GetControlByName("Skill" + (i + 1).ToString() + "_CooldownTime") as TextBox;
 
-                    damageBeforeHalf.Text = calculateResult[i].Damage_BeforeHalf.ToString();
-                    damageAfterHalf.Text = calculateResult[i].Damage_AfterHalf.ToString();
-                    damageArithmeticAvg.Text = calculateResult[i].Damage_ArithmeticMean.ToString();
-                    damageHarmonicAvg.Text = calculateResult[i].Damage_HarmonicMean.ToString();
-                    dpsArithmeticAvg.Text = calculateResult[i].Dps_ArithmeticMean.ToString();
-                    dpsHarmonicAvg.Text = calculateResult[i].Dps_HarmonicMean.ToString();
-                    cooldownTime.Text = calculateResult[i].CooldownTime.ToString();
+                if (skillName.Text != "선택 안 함")
+                {
+                    damageBeforeHalf.Text = skillDamageList[i].damageBeforeHalf.ToString();
+                    damageAfterHalf.Text = skillDamageList[i].damageAfterHalf.ToString();
+                    damageArithmeticMean.Text = skillDamageList[i].damageArithmeticMean.ToString();
+                    damageHarmonicMean.Text = skillDamageList[i].damageHarmonicMean.ToString();
+                    damageMagnification.Text = minDamageHarmonicMean == 0 ? "0" : Math.Round(skillDamageList[i].damageHarmonicMean / minDamageHarmonicMean * 100, 2).ToString() + "%";
+                    dpsArithmeticMean.Text = skillDamageList[i].dpsArithmeticMean.ToString();
+                    dpsHarmonicMean.Text = skillDamageList[i].dpsHarmonicMean.ToString();
+                    dpsMagnification.Text = minDpsHarmonicMean == 0 ? "0" : Math.Round(skillDamageList[i].dpsHarmonicMean / minDpsHarmonicMean * 100, 2).ToString() + "%";
+                    cooldownTime.Text = skillDamageList[i].cooldownTime.ToString();
+                }
+                else
+                {
+                    damageBeforeHalf.Text = damageAfterHalf.Text = damageArithmeticMean.Text = damageHarmonicMean.Text = damageMagnification.Text = dpsArithmeticMean.Text = dpsHarmonicMean.Text = dpsMagnification.Text = cooldownTime.Text = "";
                 }
             }
-
-            SumOfSelectedSkill(printCalcRes);
+        }
+        private void ShowSkillDetailed(int controlnum)
+        {
+            DetailedInfo detailedInfo = new DetailedInfo(skillDamageList[controlnum - 1].DetailedInfo_BeforeHalf, skillDamageList[controlnum - 1].DetailedInfo_AfterHalf);
+            detailedInfo.Show();
         }
 
 
         /// <summary>
-        /// 선택한 스킬들로 데미지 합, 평균 데미지 합, DPS 합을 구함.
+        /// 선택한 스킬들로 데미지 합, 평균 데미지 합, DPS 합을 구한다.
         /// </summary>
-        private void SumOfSelectedSkill(bool printCalcRes = true)
+        private void CalculateSumOfSkillDamage(bool show = true)
         {
-            decimal sumOfDamageBeforeHalf = 0;
-            decimal sumOfDamageAfterHalf = 0;
-            decimal sumOfDamageArithmeticMean = 0;
-            decimal sumOfDamageHarmonicMean = 0;
-            decimal sumOfDpsArithmeticMean = 0;
-            decimal sumOfDpsHarmonicMean = 0;
+            sumOfSkillDamage = (0, 0, 0, 0, 0, 0);
 
             for (int i = 0; i < Skill_ControllerMaxNum; i++)
             {
@@ -299,53 +316,137 @@ namespace LoaCalc
 
                 if (selectedSkill.Check)
                 {
-                    sumOfDamageBeforeHalf += calculateResult[i].Damage_BeforeHalf;
-                    sumOfDamageAfterHalf += calculateResult[i].Damage_AfterHalf;
-                    sumOfDamageArithmeticMean += calculateResult[i].Damage_ArithmeticMean;
-                    sumOfDamageHarmonicMean += calculateResult[i].Damage_HarmonicMean;
-                    sumOfDpsArithmeticMean += calculateResult[i].Dps_ArithmeticMean;
-                    sumOfDpsHarmonicMean += calculateResult[i].Dps_HarmonicMean;
+                    sumOfSkillDamage.damageBeforeHalf += skillDamageList[i].damageBeforeHalf;
+                    sumOfSkillDamage.damageAfterHalf += skillDamageList[i].damageAfterHalf;
+                    sumOfSkillDamage.damageArithmeticMean += skillDamageList[i].damageArithmeticMean;
+                    sumOfSkillDamage.damageHarmonicMean += skillDamageList[i].damageHarmonicMean;
+                    sumOfSkillDamage.dpsArithmeticMean += skillDamageList[i].dpsArithmeticMean;
+                    sumOfSkillDamage.dpsHarmonicMean += skillDamageList[i].dpsHarmonicMean;
                 }
             }
 
-            resultSum.damageBeforeHalf = sumOfDamageBeforeHalf;
-            resultSum.damageAfterHalf = sumOfDamageAfterHalf;
-            resultSum.damageArithmeticMean = sumOfDamageArithmeticMean;
-            resultSum.damageHarmonicMean = sumOfDamageHarmonicMean;
-            resultSum.dpsArithmeticMean = sumOfDpsArithmeticMean;
-            resultSum.dpsHarmonicMean = sumOfDpsHarmonicMean;
-
-            if (printCalcRes)
-            {
-                for (int i = 0; i < Skill_ControllerMaxNum; i++)
-                {
-                    CustomCheckBox selectedSkill = GetControlByName("Skill" + (i + 1).ToString() + "_IncludeInFinalDps") as CustomCheckBox;
-                    TextBox dpsShare = GetControlByName("Skill" + (i + 1).ToString() + "_DpsShare") as TextBox;
-
-                    if (selectedSkill.Check)
-                    {
-                        dpsShare.Text = Math.Round((calculateResult[i].Dps_HarmonicMean / sumOfDpsHarmonicMean) * 100, 2).ToString() + "%";
-                    }
-                    else dpsShare.Text = "0";
-                }
-
-                SkillSum_DamageBeforeHalf.Text = resultSum.damageBeforeHalf.ToString();
-                SkillSum_DamageAfterHalf.Text = resultSum.damageAfterHalf.ToString();
-                SkillSum_DamageArithmeticAvg.Text = resultSum.damageArithmeticMean.ToString();
-                SkillSum_DamageHarmonicAvg.Text = resultSum.damageHarmonicMean.ToString();
-                SkillSum_DpsArithmeticAvg.Text = resultSum.dpsArithmeticMean.ToString();
-                SkillSum_DpsHarmonicAvg.Text = resultSum.dpsHarmonicMean.ToString();
-            }
+            if (show) ShowSumOfSkillDamage();
+        }
+        private void ShowSumOfSkillDamage()
+        {
+            SkillSum_DamageBeforeHalf.Text = sumOfSkillDamage.damageBeforeHalf.ToString();
+            SkillSum_DamageAfterHalf.Text = sumOfSkillDamage.damageAfterHalf.ToString();
+            SkillSum_DamageArithmeticAvg.Text = sumOfSkillDamage.damageArithmeticMean.ToString();
+            SkillSum_DamageHarmonicAvg.Text = sumOfSkillDamage.damageHarmonicMean.ToString();
+            SkillSum_DpsArithmeticAvg.Text = sumOfSkillDamage.dpsArithmeticMean.ToString();
+            SkillSum_DpsHarmonicAvg.Text = sumOfSkillDamage.dpsHarmonicMean.ToString();
         }
 
 
         /// <summary>
-        /// 스킬 상세 정보.
+        /// 최적 특성을 구한다.
         /// </summary>
-        private void SkillDetailed(int controlnum)
+        private void CalculateOptimalCombatStats(int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper)
         {
-            DetailedInfo detailedInfo = new DetailedInfo(calculateResult[controlnum - 1].DetailedInfo_BeforeHalf, calculateResult[controlnum - 1].DetailedInfo_AfterHalf);
-            detailedInfo.Show();
+            var accessoryValueList = new List<int> { 50, 50, 50, 120, 120, 500, 500, 300, 300, 200, 200 };
+            var combatStats = new List<int> { 0, 0, 0 };
+            var optiamlCombatStats = new List<decimal> { 0, 0, 0, 0 };
+
+            CombatStat_Crit.Visible = CombatStat_Specialization.Visible = CombatStat_Swiftness.Visible = false;
+            ProcessingMessageCalcOptimalCombatStats.Visible = true;
+            Delay(1);
+
+            int count = 0;
+            for (int x1 = 0; x1 < 3; x1++)
+            {
+                for (int x2 = 0; x2 < 3; x2++)
+                {
+                    if (x1 == x2) continue;
+                    for (int y1 = 0; y1 < 3; y1++)
+                    {
+                        for (int y2 = 0; y2 < 3; y2++)
+                        {
+                            if (y1 == y2) continue;
+                            combatStats[0] = accessoryValueList[0];
+                            combatStats[1] = accessoryValueList[1];
+                            combatStats[2] = accessoryValueList[2];
+                            combatStats[x1] += accessoryValueList[3];
+                            combatStats[x2] += accessoryValueList[4];
+                            combatStats[y1] += accessoryValueList[5];
+                            combatStats[y2] += accessoryValueList[6];
+                            SubCalcOptimalCombatStats(7, accessoryValueList, combatStats, optiamlCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count);
+                        }
+                    }
+                }
+            }
+
+            CombatStat_Crit.Text = optiamlCombatStats[0].ToString();
+            CombatStat_Specialization.Text = optiamlCombatStats[1].ToString();
+            CombatStat_Swiftness.Text = optiamlCombatStats[2].ToString();
+
+            CalculateSkillDamage();
+            CalculateSumOfSkillDamage();
+
+            CombatStat_Crit.Visible = CombatStat_Specialization.Visible = CombatStat_Swiftness.Visible = true;
+            ProcessingMessageCalcOptimalCombatStats.Visible = false;
+            Delay(1);
+        }
+        private void SubCalcOptimalCombatStats(int index, List<int> accessoryValueList, List<int> combatStats, List<decimal> optimalCombatStats, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper, ref int count)
+        {
+            if (index == accessoryValueList.Count)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    count++;
+
+                    int temp = combatStats[i];
+                    combatStats[i] = Decimal.ToInt32(Math.Round(combatStats[i] * 1.1m));
+
+                    if ((critLower <= combatStats[0] && combatStats[0] <= critUpper) && (specLower <= combatStats[1] && combatStats[1] <= specUpper) && (swiftLower <= combatStats[2] && combatStats[2] <= swiftUpper))
+                    {
+                        CombatStat_Crit.Text = combatStats[0].ToString();
+                        CombatStat_Specialization.Text = combatStats[1].ToString();
+                        CombatStat_Swiftness.Text = combatStats[2].ToString();
+
+                        CalculateSkillDamage(show: false);
+                        CalculateSumOfSkillDamage(show: false);
+
+                        decimal dps = sumOfSkillDamage.dpsHarmonicMean;
+
+                        if (optimalCombatStats[3] < dps)
+                        {
+                            optimalCombatStats[0] = combatStats[0];
+                            optimalCombatStats[1] = combatStats[1];
+                            optimalCombatStats[2] = combatStats[2];
+                            optimalCombatStats[3] = dps;
+                        }
+
+                        ShowProcessing(count);
+                        Delay(1);
+                    }
+
+                    combatStats[i] = temp;
+                }
+                return;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                combatStats[i] += accessoryValueList[index];
+
+                if ((critLower <= combatStats[0] && combatStats[0] <= critUpper) && (specLower <= combatStats[1] && combatStats[1] <= specUpper) && (swiftLower <= combatStats[2] && combatStats[2] <= swiftUpper))
+                {
+                    SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStats, optimalCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count);
+                }
+                else
+                {
+                    count += (int)Math.Pow(3, 10 - index);
+                    ShowProcessing(count);
+                    Delay(1);
+                }
+
+                combatStats[i] -= accessoryValueList[index];
+            }
+        }
+        private void ShowProcessing(decimal count)
+        {
+            string ProcessingString = "최적 특성비 구하는 중";
+            ProcessingMessageCalcOptimalCombatStats.Text = ProcessingString + " " + Math.Round((count / 8748m) * 100m).ToString() + "%";        
         }
 
 
@@ -465,123 +566,6 @@ namespace LoaCalc
 
 
 
-        private int ProcessingCountingCalcOptimalCombatStats = 0;
-        /// <summary>
-        /// 최적 특성을 구한다.
-        /// </summary>
-        private void CalculateOptimalCombatStats(int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper)
-        {
-            var accessoryValueList = new List<int> { 50, 50, 50, 120, 120, 500, 500, 300, 300, 200, 200 };
-            var combatStatsList = new List<int> { 0, 0, 0 };
-            var result = new List<decimal> { 0, 0, 0, 0 };
-
-            ProcessingMessageCalcOptimalCombatStats.Visible = true;
-            ProcessingCountingCalcOptimalCombatStats = 0;
-            Delay(1);
-
-            for (int x1 = 0; x1 < 3; x1++)
-            {
-                for (int x2 = 0; x2 < 3; x2++)
-                {
-                    if (x1 == x2) continue;
-                    for (int y1 = 0; y1 < 3; y1++)
-                    {
-                        for (int y2 = 0; y2 < 3; y2++)
-                        {
-                            if (y1 == y2) continue;
-                            combatStatsList[0] = accessoryValueList[0];
-                            combatStatsList[1] = accessoryValueList[1];
-                            combatStatsList[2] = accessoryValueList[2];
-                            combatStatsList[x1] += accessoryValueList[3];
-                            combatStatsList[x2] += accessoryValueList[4];
-                            combatStatsList[y1] += accessoryValueList[5];
-                            combatStatsList[y2] += accessoryValueList[6];
-                            SubCalcOptimalCombatStats(7, accessoryValueList, combatStatsList, result, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper);
-                        }
-                    }
-                }
-            }
-
-            ProcessingMessageCalcOptimalCombatStats.Visible = false;
-            Delay(1);
-
-            if (result[3] == 0)
-            {
-                MessageBox.Show("Dps합계에 포함되는 스킬이 없습니다. 적어도 한 개의 스킬을 체크해주세요!!");
-                CombatStat_Crit.Text = "0";
-                CombatStat_Specialization.Text = "0";
-                CombatStat_Swiftness.Text = "0";
-            }
-            else
-            {
-                CombatStat_Crit.Text = result[0].ToString();
-                CombatStat_Specialization.Text = result[1].ToString();
-                CombatStat_Swiftness.Text = result[2].ToString();
-            }
-
-            SkillCalculate();         
-        }
-
-        private void SubCalcOptimalCombatStats(
-            int index, List<int> accessoryValueList, List<int> combatStatsList, List<decimal> result, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper)
-        {
-            if (index == accessoryValueList.Count)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    ProcessingCountingCalcOptimalCombatStats++;
-
-                    int temp = combatStatsList[i];
-                    combatStatsList[i] = Decimal.ToInt32(Math.Round(combatStatsList[i] * 1.1m));
-
-                    if (!(critLower <= combatStatsList[0] && combatStatsList[0] <= critUpper) || !(specLower <= combatStatsList[1] && combatStatsList[1] <= specUpper) || !(swiftLower <= combatStatsList[2] && combatStatsList[2] <= swiftUpper))
-                    {
-                        combatStatsList[i] = temp;
-                        continue;
-                    }
-                    else
-                    {
-                        CombatStat_Crit.Text = combatStatsList[0].ToString();
-                        CombatStat_Specialization.Text = combatStatsList[1].ToString();
-                        CombatStat_Swiftness.Text = combatStatsList[2].ToString();
-
-                        SkillCalculate(printCalcRes: false);
-
-                        decimal dps = resultSum.dpsHarmonicMean;
-
-                        if (result[3] < dps)
-                        {
-                            result[0] = combatStatsList[0];
-                            result[1] = combatStatsList[1];
-                            result[2] = combatStatsList[2];
-                            result[3] = dps;
-                        }
-
-                        combatStatsList[i] = temp;
-                        ShowProcessing();
-                        Delay(1);
-                    }
-                }
-                return;
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                combatStatsList[i] += accessoryValueList[index];
-                SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStatsList, result, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper);
-                combatStatsList[i] -= accessoryValueList[index];
-            }
-        }
-
-        
-        private void ShowProcessing()
-        {
-            string ProcessingString = "최적 특성비 구하는 중";
-            ProcessingMessageCalcOptimalCombatStats.Text = ProcessingString + " " + Math.Round((ProcessingCountingCalcOptimalCombatStats / 8748m) * 100m).ToString() + "%";
-        }
-        
-
-
 
         //*********************************************************//
         //                        컨트롤 제어                      //
@@ -654,17 +638,33 @@ namespace LoaCalc
         /// </summary>
         private void CalcOptimalCombatStats_Click(object sender, EventArgs e)
         {
-            MessageBox_ReqAutoCombatStats reqAutoStats = new MessageBox_ReqAutoCombatStats();
-            reqAutoStats.ShowDialog();
-
-            var result = reqAutoStats.messageBoxResult;
-
-        /*    MessageBox.Show(result.dialogResult.ToString() +
-                ": [" + result.critLower + ", " + result.critUpper + "], [" + result.specLower + ", " + result.specUpper + "], [" + result.swiftLower + ", " + result.swiftUpper + "]");*/
-
-            if (result.dialogResult == DialogResult.Yes)
+            bool existSelectedSkill = false;
+            for (int i = 0; i < Skill_ControllerMaxNum; i++)
             {
-                CalculateOptimalCombatStats(result.critLower, result.critUpper, result.specLower, result.specUpper, result.swiftLower, result.swiftUpper);
+                CustomCheckBox selectedSkill = GetControlByName("Skill" + (i + 1).ToString() + "_IncludeInFinalDps") as CustomCheckBox;
+
+                if (selectedSkill.Check)
+                {
+                    existSelectedSkill = true;
+                    break;
+                }
+            }
+
+            if (existSelectedSkill)
+            {
+                MessageBox_ReqAutoCombatStats reqAutoStats = new MessageBox_ReqAutoCombatStats();
+                reqAutoStats.ShowDialog();
+
+                var condition = reqAutoStats.messageBoxResult;
+
+                if (condition.dialogResult == DialogResult.Yes)
+                {
+                    CalculateOptimalCombatStats(condition.critLower, condition.critUpper, condition.specLower, condition.specUpper, condition.swiftLower, condition.swiftUpper);
+                }
+            }
+            else
+            {
+                MessageBox.Show("\'합계\'에 포함되는 스킬이 없습니다" + Environment.NewLine + "\'합계\'에 포함할 스킬을 체크해주세요");
             }
         }
 
@@ -1075,7 +1075,8 @@ namespace LoaCalc
         /// </summary>
         private void Calculate_Click(object sender, EventArgs e)
         {
-            SkillCalculate();
+            CalculateSkillDamage();
+            CalculateSumOfSkillDamage();
         }
 
 
@@ -1244,7 +1245,8 @@ namespace LoaCalc
                     }
                 }
 
-                SkillCalculate();
+                CalculateSkillDamage();
+                CalculateSumOfSkillDamage();
                 MessageBox.Show("프리셋 로딩 완료");
             }
         }
@@ -1285,7 +1287,7 @@ namespace LoaCalc
                 }
             }
 
-            SkillDetailed(controlnum);
+            ShowSkillDetailed(controlnum);
         }
 
 
@@ -1294,7 +1296,7 @@ namespace LoaCalc
         /// </summary>
         private void Skill_IncludeInFinalDps_Click(object sender, EventArgs e)
         {
-            SumOfSelectedSkill();
+            CalculateSumOfSkillDamage();
         }
 
 

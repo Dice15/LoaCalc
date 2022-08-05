@@ -63,6 +63,66 @@ namespace LoaCalc.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap SkillDamage_Topbar {
+            get {
+                object obj = ResourceManager.GetObject("SkillDamage_Topbar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap SkillDamageAvg_Topbar {
+            get {
+                object obj = ResourceManager.GetObject("SkillDamageAvg_Topbar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap SkillDamageAvg_Topbar2 {
+            get {
+                object obj = ResourceManager.GetObject("SkillDamageAvg_Topbar2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap SkillDps_Topbar {
+            get {
+                object obj = ResourceManager.GetObject("SkillDps_Topbar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap SkillDps_Topbar2 {
+            get {
+                object obj = ResourceManager.GetObject("SkillDps_Topbar2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap SkillSetting_Topbar {
+            get {
+                object obj = ResourceManager.GetObject("SkillSetting_Topbar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap whiteLineBox {
             get {
                 object obj = ResourceManager.GetObject("whiteLineBox", resourceCulture);

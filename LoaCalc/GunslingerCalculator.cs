@@ -21,23 +21,23 @@ namespace LoaCalc
             public string DetailedInfo_BeforeHalf = "";
             public string DetailedInfo_AfterHalf = "";
 
-            public decimal Damage_BeforeHalf = 0;
-            public decimal Damage_AfterHalf = 0;
+            public decimal damageBeforeHalf = 0;
+            public decimal damageAfterHalf = 0;
 
-            public decimal Damage_ArithmeticMean = 0;
-            public decimal Damage_HarmonicMean = 0;
+            public decimal damageArithmeticMean = 0;
+            public decimal damageHarmonicMean = 0;
 
-            public decimal Dps_ArithmeticMean = 0;
-            public decimal Dps_HarmonicMean = 0;
+            public decimal dpsArithmeticMean = 0;
+            public decimal dpsHarmonicMean = 0;
 
-            public decimal CooldownTime = 0;
+            public decimal cooldownTime = 0;
         }
 
 
         public static decimal AttackPower = 50000;  // 고정 공격력
 
 
-        public static List<Result> Calculate(Gunslinger character)
+        public static List<Result> CalculateSkillDamage(Gunslinger character)
         {
             // 캐릭터 스탯 불러오기
             var characterStats = new Dictionary<string, CharacterStats>
@@ -61,28 +61,28 @@ namespace LoaCalc
                     // 약무 전
                     skill = character.GetSkill(skillOption, 100, characterStats["Hp100"]);
                     result.DetailedInfo_BeforeHalf = skill.GetDetailedInfo();
-                    result.Damage_BeforeHalf = DamageFormula(skill);
-                    result.CooldownTime = CooldownFormula(skill);
+                    result.damageBeforeHalf = DamageFormula(skill);
+                    result.cooldownTime = CooldownFormula(skill);
 
                     // 약무 후
                     skill = character.GetSkill(skillOption, 50, characterStats["Hp50"]);
                     result.DetailedInfo_AfterHalf = skill.GetDetailedInfo();
-                    result.Damage_AfterHalf = DamageFormula(skill);
+                    result.damageAfterHalf = DamageFormula(skill);
 
                     // 평균 데미지 및 DPS
-                    result.Damage_ArithmeticMean = ArithmeticMean(new List<decimal> { result.Damage_BeforeHalf, result.Damage_AfterHalf });
-                    result.Damage_HarmonicMean = HarmonicMean(new List<decimal> { result.Damage_BeforeHalf, result.Damage_AfterHalf });
-                    result.Dps_ArithmeticMean = result.Damage_ArithmeticMean / result.CooldownTime;
-                    result.Dps_HarmonicMean = result.Damage_HarmonicMean / result.CooldownTime;
+                    result.damageArithmeticMean = ArithmeticMean(new List<decimal> { result.damageBeforeHalf, result.damageAfterHalf });
+                    result.damageHarmonicMean = HarmonicMean(new List<decimal> { result.damageBeforeHalf, result.damageAfterHalf });
+                    result.dpsArithmeticMean = result.damageArithmeticMean / result.cooldownTime;
+                    result.dpsHarmonicMean = result.damageHarmonicMean / result.cooldownTime;
 
                     // 소수 부분 제거 (쿨타임만 소수 둘째자리 까지 표현)
-                    result.Damage_BeforeHalf = Math.Round(result.Damage_BeforeHalf);
-                    result.Damage_AfterHalf = Math.Round(result.Damage_AfterHalf);
-                    result.Damage_ArithmeticMean = Math.Round(result.Damage_ArithmeticMean);
-                    result.Damage_HarmonicMean = Math.Round(result.Damage_HarmonicMean);
-                    result.Dps_ArithmeticMean = Math.Round(result.Dps_ArithmeticMean);
-                    result.Dps_HarmonicMean = Math.Round(result.Dps_HarmonicMean);
-                    result.CooldownTime = Math.Round(result.CooldownTime, 2);
+                    result.damageBeforeHalf = Math.Round(result.damageBeforeHalf);
+                    result.damageAfterHalf = Math.Round(result.damageAfterHalf);
+                    result.damageArithmeticMean = Math.Round(result.damageArithmeticMean);
+                    result.damageHarmonicMean = Math.Round(result.damageHarmonicMean);
+                    result.dpsArithmeticMean = Math.Round(result.dpsArithmeticMean);
+                    result.dpsHarmonicMean = Math.Round(result.dpsHarmonicMean);
+                    result.cooldownTime = Math.Round(result.cooldownTime, 2);
 
                     // 소수 둘째자리 까지만 표기
                     /*result.Damage_BeforeHalf = Math.Round(result.Damage_BeforeHalf, 2);
@@ -155,13 +155,16 @@ namespace LoaCalc
             decimal sum = 0;
             decimal cnt = 0;
 
-            foreach(var num in numList)
+            foreach (var num in numList)
             {
-                sum += 1 / num;
-                cnt++;
+                if (num > 0)
+                {
+                    sum += 1 / num;
+                    cnt++;
+                }
             }
 
-            return sum == 0 ? -1 : cnt / sum;
+            return sum == 0 ? 0 : cnt / sum;
         }
     }
 }

@@ -131,5 +131,23 @@
   <ItemGroup>
     <None Include="Resources\whiteLineBoxCollage4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDamage_Topbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDamageAvg_Topbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDps_Topbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillSetting_Topbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDamageAvg_Topbar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDps_Topbar2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
