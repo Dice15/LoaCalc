@@ -7,646 +7,30 @@ namespace LoaCalc
 {
 
     /// <summary>
-    /// 스탯 클래스
-    /// </summary>
-    public class CharacterStats
-    {
-        private Stats notCategorizedStats = new Stats();
-        private Dictionary<SettingInfo.Skill.NAME, Stats> categorizedStatsByName = new Dictionary<SettingInfo.Skill.NAME, Stats>();
-        private Dictionary<SettingInfo.Skill.CATEGORY, Stats> categorizedStatsByCategory = new Dictionary<SettingInfo.Skill.CATEGORY, Stats>();
-        private Dictionary<SettingInfo.Skill.TYPE, Stats> categorizedStatsByType = new Dictionary<SettingInfo.Skill.TYPE, Stats>();
-        private Dictionary<SettingInfo.Skill.ATTACKTYPE, Stats> categorizedStatsByAttackType = new Dictionary<SettingInfo.Skill.ATTACKTYPE, Stats>();
-        private Dictionary<SettingInfo.Skill.CLASSENGRAVING, Stats> categorizedStatsByClassEngraving = new Dictionary<SettingInfo.Skill.CLASSENGRAVING, Stats>();
-
-
-        public void AddStat(Stats stats)
-        {
-            notCategorizedStats.Add(stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.NAME name)
-        {
-            if (categorizedStatsByName.ContainsKey(name)) categorizedStatsByName[name].Add(stats.Copy());
-            else categorizedStatsByName.Add(name, stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.CATEGORY name)
-        {
-            if (categorizedStatsByCategory.ContainsKey(name)) categorizedStatsByCategory[name].Add(stats.Copy());
-            else categorizedStatsByCategory.Add(name, stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.TYPE name)
-        {
-            if (categorizedStatsByType.ContainsKey(name)) categorizedStatsByType[name].Add(stats.Copy());
-            else categorizedStatsByType.Add(name, stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.ATTACKTYPE name)
-        {
-            if (categorizedStatsByAttackType.ContainsKey(name)) categorizedStatsByAttackType[name].Add(stats.Copy());
-            else categorizedStatsByAttackType.Add(name, stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.CLASSENGRAVING name)
-        {
-            if (categorizedStatsByClassEngraving.ContainsKey(name)) categorizedStatsByClassEngraving[name].Add(stats.Copy());
-            else categorizedStatsByClassEngraving.Add(name, stats.Copy());
-        }
-        public Stats GetSkillStat(CombatSkill.Part part)
-        {
-            Stats stats = new Stats();
-
-            stats.Add(notCategorizedStats.Copy());
-
-            foreach (var name in part.name)
-            {
-                if (categorizedStatsByName.ContainsKey(name)) 
-                    stats.Add(categorizedStatsByName[name]);
-            }
-           
-            foreach (var category in part.category)
-            {
-                if (categorizedStatsByCategory.ContainsKey(category))
-                    stats.Add(categorizedStatsByCategory[category]);
-            }
-
-            foreach (var type in part.type)
-            {
-                if (categorizedStatsByType.ContainsKey(type))
-                    stats.Add(categorizedStatsByType[type]);
-            }
-
-            foreach (var attackType in part.attackType)
-            {
-                if (categorizedStatsByAttackType.ContainsKey(attackType))
-                    stats.Add(categorizedStatsByAttackType[attackType]);
-            }
-
-            foreach (var classEngraving in part.classEngraving)
-            {
-                if (categorizedStatsByClassEngraving.ContainsKey(classEngraving))
-                    stats.Add(categorizedStatsByClassEngraving[classEngraving]);
-            }
-
-            return stats;
-        }
-        public new string ToString()
-        {
-            string s = "";
-
-       /*     s += "[분류 기준: 스킬명]" + Environment.NewLine;
-
-            foreach (var criteria in categorizedStats)
-            {
-                s += "[분류 기준: " + criteria.Key.ToString() + "]" + Environment.NewLine;
-
-                foreach (var criteriaName in criteria.Value)
-                {
-                    s += "* 분류명: " + criteriaName.Key.ToString() + Environment.NewLine + criteriaName.Value.ToString() + Environment.NewLine;
-                }
-
-                s += Environment.NewLine;
-            }*/
-
-            return s;
-        }
-    }
-
-
-
-    /// <summary>
-    /// 전투 스킬 클래스
-    /// </summary>
-    public class CombatSkill
-    {
-        public class Part
-        {
-            // 스킬 옵션
-            public List<SettingInfo.Skill.NAME> name = new List<SettingInfo.Skill.NAME>();                                 // 스킬 이름
-            public List<SettingInfo.Skill.CATEGORY> category = new List<SettingInfo.Skill.CATEGORY>();                     // 스킬 분류: 일반 스킬, 각성 스킬 / 핸드건 스탠스, 샷건 스탠스, 라이플 스탠스 / 난무 스킬, 집중 스킬 / 루인 스킬, 스택트 스킬
-            public List<SettingInfo.Skill.TYPE> type = new List<SettingInfo.Skill.TYPE>();                                 // 스킬 타입: 일반, 지점, 콤보 / 홀딩, 캐스팅 / 차지
-            public List<SettingInfo.Skill.ATTACKTYPE> attackType = new List<SettingInfo.Skill.ATTACKTYPE>();               // 공격 타입: 타대, 백 어택, 헤드 어택
-            public List<SettingInfo.Skill.CLASSENGRAVING> classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING>();   // 직업 각인: 피메 핸드건 스탠스 / 피메 샷건 스탠스 / 피메 라이플 스탠스 / 사시 핸드건 스탠스 / 사시 샷건 스탠스 / 사시 라이플 스탠스
-
-            // 스킬 계수
-            public decimal constant = 0;
-            public decimal ratio = 0;
-
-            // 적용된 스탯
-            public Stats appliedStats = new Stats();
-
-            public Part Copy() => new Part
-            {
-                name = name.ToList(),
-                category = category.ToList(),
-                type = type.ToList(),
-                attackType = attackType.ToList(),
-                classEngraving = classEngraving.ToList(),
-                constant = constant,
-                ratio = ratio,
-                appliedStats = appliedStats.Copy()
-            };
-        }
-
-
-        public SettingInfo.Skill.NAME name = SettingInfo.Skill.NAME.레인_오브_불릿;
-        public decimal cooldownTime = 0;
-        public List<Part> partList = new List<Part>();
-
-
-        public string GetDetailedInfo()
-        {
-            string s = "[\"" + name + "\"]" + Environment.NewLine + Environment.NewLine;
-            s += "쿨타임: " + cooldownTime + Environment.NewLine + Environment.NewLine;
-
-            for (int i = 0; i < partList.Count; i++)
-            {
-                s += ">> Part" + (i + 1).ToString() + Environment.NewLine;
-                s += "- 스킬 이름: " + "{" + (partList[i].name.Count > 0 ? partList[i].name.ConvertAll(name => name.ToStr()).Aggregate((x, y) => x + ", " + y) : "") + "}" + Environment.NewLine;
-                s += "- 스킬 분류: " + "{" + (partList[i].category.Count > 0 ? partList[i].category.ConvertAll(category => category.ToStr()).Aggregate((x, y) => x + ", " + y) : "") + "}" + Environment.NewLine;
-                s += "- 스킬 타입: " + "{" + (partList[i].type.Count > 0 ? partList[i].type.ConvertAll(type => type.ToStr()).Aggregate((x, y) => x + ", " + y) + "}" : "") + Environment.NewLine;
-                s += "- 공격 타입: " + "{" + (partList[i].attackType.Count > 0 ? partList[i].attackType.ConvertAll(attackType => attackType.ToStr()).Aggregate((x, y) => x + ", " + y) : "") + "}" + Environment.NewLine;
-                s += "- 직업 각인: " + "{" + (partList[i].classEngraving.Count > 0 ? partList[i].classEngraving.ConvertAll(classEngraving => classEngraving.ToStr()).Aggregate((x, y) => x + ", " + y) : "") + "}" + Environment.NewLine;
-                s += "- 상수: " + partList[i].constant + Environment.NewLine;
-                s += "- 계수: " + partList[i].ratio + Environment.NewLine + Environment.NewLine;
-                s += partList[i].appliedStats.ToString() + Environment.NewLine + Environment.NewLine;
-            }
-            s += Environment.NewLine;
-
-            return s;
-        }
-    }
-
-
-
-    /// <summary>
-    /// 건슬링어 클래스
+    /// 건슬링어 직업을 구현한 클래스. 
+    /// LostArkCharacter클래스를 상속 받아서 구현한다.
+    /// 세팅 정보 및 스펙 적용은 상속 받은 클래스에 구현이 되어있으므로 스킬만 구현을 하면 된다.
     /// </summary>     
-    public class Gunslinger
+    public class Gunslinger : AbstractLostArkClass
     {
-        public class Setting
-        {
-            private SettingInfo.CombatStats combatStats = new SettingInfo.CombatStats();
-            private List<SettingInfo.Engraving> engravingList = new List<SettingInfo.Engraving>();
-            private List<SettingInfo.Card> cardList = new List<SettingInfo.Card>();
-            private List<SettingInfo.Gem> gemList = new List<SettingInfo.Gem>();
-            private List<SettingInfo.Gear> gearList = new List<SettingInfo.Gear>();
-            private SettingInfo.WeaponQual weaponQual = new SettingInfo.WeaponQual();
-            private List<SettingInfo.Buff> buffList = new List<SettingInfo.Buff>();
-            private List<SettingInfo.Skill> skillList = new List<SettingInfo.Skill>();
-
-
-            public void SetCombatStats(string critical, string specialization, string swiftness)
-            {
-                combatStats.critical = int.Parse(critical);
-                combatStats.specialization = int.Parse(specialization);
-                combatStats.swiftness = int.Parse(swiftness);
-            }
-            public void SetEngraving(SettingInfo.Engraving.NAME name, SettingInfo.Engraving.LEV lev)
-            {
-                engravingList.Add(new SettingInfo.Engraving { name = name, lev = lev });
-            }
-            public void SetCard(SettingInfo.Card.NAME name, SettingInfo.Card.SET set, SettingInfo.Card.AWAKENING awakening)
-            {
-                cardList.Add(new SettingInfo.Card { name = name, set = set, awakening = awakening });
-            }
-            public void SetGem(SettingInfo.Gem.NAME name, SettingInfo.Gem.LEV lev, SettingInfo.Skill.NAME targetSkill)
-            {
-                gemList.Add(new SettingInfo.Gem { name = name, lev = lev, targetSkill = targetSkill });
-            }
-            public void SetGear(SettingInfo.Gear.NAME name, SettingInfo.Gear.SET set, SettingInfo.Gear.LEV setLev)
-            {
-                gearList.Add(new SettingInfo.Gear { name = name, set = set, setLev = setLev });
-            }
-            public void SetWeaponQual(string additionalDamage)
-            {
-                weaponQual.additionalDamage = decimal.Parse(additionalDamage);
-            }
-            public void SetBuff(SettingInfo.Buff.NAME name)
-            {
-                buffList.Add(new SettingInfo.Buff { name = name });
-            }
-            public void SetEmptySkill()
-            {
-                skillList.Add(null);
-            }
-            public void SetSkill(SettingInfo.Skill.NAME name, SettingInfo.Skill.LEV lev, SettingInfo.Skill.TRIPOD tp1, SettingInfo.Skill.TRIPOD tp2, SettingInfo.Skill.TRIPOD tp3)
-            {
-                skillList.Add(new SettingInfo.Skill { name = name, lev = lev, tp1 = tp1, tp2 = tp2, tp3 = tp3 });
-            }
-            public SettingInfo.CombatStats GetCombatStats() => combatStats.Copy();
-            public List<SettingInfo.Engraving> GetEngravingList() => engravingList.ConvertAll(engraving => engraving.Copy());
-            public List<SettingInfo.Card> GetCardList() => cardList.ConvertAll(card => card.Copy());
-            public List<SettingInfo.Gem> GetGemList() => gemList.ConvertAll(gem => gem.Copy());
-            public List<SettingInfo.Gear> GetGearList() => gearList.ConvertAll(gear => gear.Copy());
-            public SettingInfo.WeaponQual GetWeaponQual() => weaponQual.Copy();
-            public List<SettingInfo.Buff> GetBuffList() => buffList.ConvertAll(buff => buff.Copy());
-            public List<SettingInfo.Skill> GetSkillList() => skillList;
-            public void Clear()
-            {
-                combatStats = new SettingInfo.CombatStats();
-                engravingList = new List<SettingInfo.Engraving>();
-                cardList = new List<SettingInfo.Card>();
-                gemList = new List<SettingInfo.Gem>();
-                gearList = new List<SettingInfo.Gear>();
-                weaponQual = new SettingInfo.WeaponQual();
-                buffList = new List<SettingInfo.Buff>();
-                skillList = new List<SettingInfo.Skill>();
-            }
-        }
-        
-        
-        public Setting setting = new Setting();
-
-
-        //*********************************************************//
-        //               세팅을 바탕으로 스탯을 계산               //
-        //*********************************************************//
-      
-        public CharacterStats GetStats(int hpCondition)
-        {
-            CharacterStats stats = new CharacterStats();
-
-            ApplyBasicStat(stats);
-            ApplyingCombatStat(stats);
-            ApplyingEngraving(stats, hpCondition);
-            ApplyingCard(stats);
-            ApplyingGem(stats);
-            ApplyingGear(stats);
-            ApplyingWeaponQual(stats);
-            ApplyBuff(stats);
-
-            return stats;
-        }
-        private void ApplyBasicStat(CharacterStats stats)
-        {
-            // 기본 공속 100, 기본 이속 100, 기본 치피 200
-            stats.AddStat(new Stats { attackSpeed = new ValueP(100), moveSpeed = new ValueP(100), criticalDamage = new ValueP(200) });
-
-            // 백 어택 보너스
-            stats.AddStat(new Stats { damage = new ValueM(5), criticalRate = new ValueP(10) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
-
-            // 헤드 어택 보너스
-            stats.AddStat(new Stats { damage = new ValueM(20) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
-        }
-        private void ApplyingCombatStat(CharacterStats stats)
-        {
-            var combatStats = setting.GetCombatStats();
-
-            // 치명
-            stats.AddStat(new Stats { criticalRate = new ValueP(combatStats.critical * 0.035775m) });
-
-            // 특화
-            stats.AddStat(new Stats { criticalDamage = new ValueP(combatStats.specialization * 0.03575m * 3) }, SettingInfo.Skill.CATEGORY.핸드건_스탠스);
-            stats.AddStat(new Stats { damage = new ValueM(combatStats.specialization * 0.03575m * 0.6m) }, SettingInfo.Skill.CATEGORY.샷건_스탠스);
-            stats.AddStat(new Stats { damage = new ValueM(combatStats.specialization * 0.03575m) }, SettingInfo.Skill.CATEGORY.라이플_스탠스);
-            stats.AddStat(new Stats { damage = new ValueM(combatStats.specialization * 0.05465m) }, SettingInfo.Skill.CATEGORY.각성_스킬);
-
-            // 신속
-            stats.AddStat(new Stats { attackSpeed = new ValueP(combatStats.swiftness / 58.21m) });
-            stats.AddStat(new Stats { moveSpeed = new ValueP(combatStats.swiftness / 58.21m) });
-            stats.AddStat(new Stats { skillCoolDown = new ValueM(-1 * (combatStats.swiftness / 46.58m)) });
-        }
-        private void ApplyingEngraving(CharacterStats stats, int hpCondition)
-        {
-            var lev_sToi = new Dictionary<SettingInfo.Engraving.LEV, int>
-            {
-                { SettingInfo.Engraving.LEV.__1레벨, 0 }, { SettingInfo.Engraving.LEV.__2레벨, 1 }, { SettingInfo.Engraving.LEV.__3레벨, 2 }
-            };
-
-            foreach (var engraving in setting.GetEngravingList())
-            {
-                int lev = lev_sToi[engraving.lev];
-
-                if (engraving.name == SettingInfo.Engraving.NAME.원한)  // 피해 4% / 10% / 20%
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 4, 10, 20 }[lev]) });
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.예리한_둔기)  // 치피 10% / 25% / 50%, 피해 -2%
-                {
-                    stats.AddStat(new Stats { criticalDamage = new ValueP(new decimal[] { 10, 25, 50 }[lev]) });
-                    stats.AddStat(new Stats { damage = new ValueM(-2) });
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.저주받은_인형)  // 공격력 3% / 8% / 16% (공격력 각인 끼리 합적용)
-                {
-                    stats.AddStat(new Stats { attackPowerPer = new ValueM(new decimal[] { 3, 8, 16 }[lev], ValueM.Group.AttackPowerPer_Engraving) });
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.질량_증가)  // 공격력 4% / 10% / 18% (공격력 각인 끼리 합적용), 공속 -10%
-                {
-                    stats.AddStat(new Stats { attackPowerPer = new ValueM(new decimal[] { 4, 10, 18 }[lev], ValueM.Group.AttackPowerPer_Engraving) });
-                    stats.AddStat(new Stats { attackSpeed = new ValueP(-10) });
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.타격의_대가)  // '타대' 피해 3% / 8% / 16%
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 3, 8, 16 }[lev]) }, SettingInfo.Skill.ATTACKTYPE.타대);
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.기습의_대가)  // '백 어택' 피해 5% / 12% / 25%
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 5, 12, 25 }[lev]) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.아드레날린)  // 치적 5% / 10%/ 15%, 공격력 1.8% / 3.6% / 6% (공격력 각인 끼리 합적용)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(new decimal[] { 5, 10, 15 }[lev]) });
-                    stats.AddStat(new Stats { attackPowerPer = new ValueM(new decimal[] { 1.8m, 3.6m, 6m }[lev], ValueM.Group.AttackPowerPer_Engraving) });
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.돌격대장)  // 피해 4% / 8.8% / 18%
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 4, 8.8m, 18 }[lev]) });
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.피스메이커)
-                {
-                    // 핸드건 스탠스 상태에서 공속 8% / 12% / 16%
-                    stats.AddStat(new Stats { attackSpeed = new ValueP(new decimal[] { 8, 12, 16 }[lev]) }, SettingInfo.Skill.CLASSENGRAVING.피스메이커_핸드건_스탠스);
-
-                    // 샷건 스탠스 상태에서 치적 10%, 피해 5% / 10% / 15%
-                    stats.AddStat(new Stats { criticalRate = new ValueP(10) }, SettingInfo.Skill.CLASSENGRAVING.피스메이커_샷건_스탠스);
-                    stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 5, 10, 15 }[lev]) }, SettingInfo.Skill.CLASSENGRAVING.피스메이커_샷건_스탠스);
-
-                    // 라이플 스탠스 상태에서 피해 10%, 약무 이후 '추가로' 10/20/30% 증가 ('추가로' -> 합적용)
-                    if (hpCondition <= 50)
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 20, 30, 40 }[lev]) }, SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스);
-                    else
-                        stats.AddStat(new Stats { damage = new ValueM(10) }, SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스);
-                }
-                else if (engraving.name == SettingInfo.Engraving.NAME.사냥의_시간)
-                {
-                    // 핸드건 스킬과 라이플 스킬의 치명타 적중률이 22% / 33% / 45% 증가
-                    stats.AddStat(new Stats { criticalRate = new ValueP(new decimal[] { 22, 33, 45 }[lev]) }, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_핸드건_스탠스);
-                    stats.AddStat(new Stats { criticalRate = new ValueP(new decimal[] { 22, 33, 45 }[lev]) }, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_라이플_스탠스);
-
-                    // 샷건 스킬을 사용할 수 없다 (데미지 100% 감소로 구현)
-                    stats.AddStat(new Stats { damage = new ValueM(-100) }, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_샷건_스탠스);
-                }
-            }
-        }
-        private void ApplyingCard(CharacterStats stats)
-        {
-            foreach (var card in setting.GetCardList())
-            {
-                if (card.name == SettingInfo.Card.NAME.남겨진_바람의_절벽)
-                {
-                    if (card.set == SettingInfo.Card.SET.__6세트)
-                    {
-                        if (card.awakening == SettingInfo.Card.AWAKENING.__12각성)
-                        {
-                            stats.AddStat(new Stats { criticalRate = new ValueP(7) });
-                        }
-                    }
-                }
-                else if (card.name == SettingInfo.Card.NAME.세상을_구하는_빛)
-                {
-                    if (card.set == SettingInfo.Card.SET.__6세트)
-                    {
-                        if (card.awakening == SettingInfo.Card.AWAKENING.__18각성)
-                        {
-                            stats.AddStat(new Stats { damage = new ValueM(7) });
-                        }
-                        else if (card.awakening == SettingInfo.Card.AWAKENING.__30각성)
-                        {
-                            stats.AddStat(new Stats { damage = new ValueM(15) });
-                        }
-                    }
-                }
-            }
-        }
-        private void ApplyingGem(CharacterStats stats)
-        {
-            var lev_sToi = new Dictionary<SettingInfo.Gem.LEV, int>
-            {
-                { SettingInfo.Gem.LEV.__7레벨, 0 }, { SettingInfo.Gem.LEV.__8레벨, 1 }, { SettingInfo.Gem.LEV.__9레벨, 2 }, { SettingInfo.Gem.LEV.__10레벨, 3 }
-            };
-
-            foreach (var gem in setting.GetGemList())
-            {
-                int lev = lev_sToi[gem.lev];
-
-                if (gem.name == SettingInfo.Gem.NAME.멸화)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 21, 24, 30, 40 }[lev]) }, gem.targetSkill);
-                }
-                else if (gem.name == SettingInfo.Gem.NAME.홍염)
-                {
-                    stats.AddStat(new Stats { skillCoolDown = new ValueM(new decimal[] { -14, -16, -18, -20 }[lev]) }, gem.targetSkill);
-                }
-            }
-        }
-        private void ApplyingGear(CharacterStats stats)
-        {
-            var lev_sToi = new Dictionary<SettingInfo.Gear.LEV, int> { { SettingInfo.Gear.LEV.__1레벨, 0 }, { SettingInfo.Gear.LEV.__2레벨, 1 }, { SettingInfo.Gear.LEV.__3레벨, 2 } };
-
-            foreach (var gear in setting.GetGearList())
-            {
-                int lev = lev_sToi[gear.setLev];
-
-                if (gear.name == SettingInfo.Gear.NAME.악몽)
-                {
-                    if (gear.set == SettingInfo.Gear.SET.__6세트)
-                    {
-                        // 2세트: 피해 17% (각성 스킬 제외)
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, 17 }[lev]) });
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, -17 }[lev]) }, SettingInfo.Skill.CATEGORY.각성_스킬);
-
-                        // 4세트: 마나중독 발동 시 추피 20%
-                        stats.AddStat(new Stats { additionalDamage = new ValueP(new decimal[] { 0, 0, 20 }[lev]) });
-
-                        // 6세트: 마나중독 발동 시 피해 20% '추가 증가'
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, 20 }[lev]) });
-                    }
-                }
-                else if (gear.name == SettingInfo.Gear.NAME.구원)
-                {
-                    if (gear.set == SettingInfo.Gear.SET.__6세트)
-                    {
-                        // 2+4+6세트: 추피 63%
-                        stats.AddStat(new Stats { additionalDamage = new ValueP(new decimal[] { 0, 0, 63 }[lev]) });
-
-                        // 4세트: 공속 10%
-                        stats.AddStat(new Stats { attackSpeed = new ValueP(10) });
-
-                        // 6세트: 피해 5%
-                        stats.AddStat(new Stats { damage = new ValueM(5) });
-                    }
-                }
-                else if (gear.name == SettingInfo.Gear.NAME.환각)
-                {
-                    if (gear.set == SettingInfo.Gear.SET.__6세트)
-                    {
-                        // 4세트: 치적 20%
-                        stats.AddStat(new Stats { criticalRate = new ValueP(new decimal[] { 15, 18, 20 }[lev]) });
-
-                        // 6세트: 피증 15%, 치적 8% '추가 증가'
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 12, 14, 15 }[lev]) });
-                        stats.AddStat(new Stats { criticalRate = new ValueP(new decimal[] { 5, 7, 8 }[lev]) });
-                    }
-                }
-                else if (gear.name == SettingInfo.Gear.NAME.사멸)
-                {
-                    if (gear.set == SettingInfo.Gear.SET.__6세트)
-                    {
-                        // 2세트: '백 어택' 또는 '헤드 어택' 적중 시 치피 +65% (적중 실패 시 치피 +22%)
-                        stats.AddStat(new Stats { criticalDamage = new ValueP(new decimal[] { 0, 0, 65 }[lev]) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
-                        stats.AddStat(new Stats { criticalDamage = new ValueP(new decimal[] { 0, 0, 65 }[lev]) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
-
-                        // 4세트: 치적 +22%
-                        stats.AddStat(new Stats { criticalRate = new ValueP(new decimal[] { 0, 0, 22 }[lev]) });
-
-                        // 6세트: '백 어택' 또는 '헤드 어택' 적중 시 피해 +26% (적중 실패 시 피해 +9%)
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, 26 }[lev]) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, 26 }[lev]) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
-                    }
-                }
-                else if (gear.name == SettingInfo.Gear.NAME.지배)
-                {
-                    if (gear.set == SettingInfo.Gear.SET.__6세트)
-                    {
-                        // 2세트: 각성기 피해 -10%, 각성기 쿨타임 -20%
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, -10 }[lev]) }, SettingInfo.Skill.CATEGORY.각성_스킬);
-                        stats.AddStat(new Stats { skillCoolDown = new ValueM(-20) }, SettingInfo.Skill.CATEGORY.각성_스킬);
-
-                        // 4세트: 내면의 각성 발동 시 쿨탐 -18%, 피증 31% (각성기 제외)
-                        stats.AddStat(new Stats { skillCoolDown = new ValueM(-18) });
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, 31 }[lev]) });
-
-                        stats.AddStat(new Stats { skillCoolDown = new ValueM(18) }, SettingInfo.Skill.CATEGORY.각성_스킬);
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, -31 }[lev]) }, SettingInfo.Skill.CATEGORY.각성_스킬);
-
-                        // 6세트: 강화 발동 시 피증 20%
-                        stats.AddStat(new Stats { damage = new ValueM(new decimal[] { 0, 0, 20 }[lev]) });
-                    }
-                }
-            }
-        }
-        private void ApplyingWeaponQual(CharacterStats stats)
-        {
-            stats.AddStat(new Stats { additionalDamage = new ValueP(setting.GetWeaponQual().additionalDamage) });
-        }
-        private void ApplyBuff(CharacterStats stats)
-        {
-            foreach (var buff in setting.GetBuffList())
-            {
-                if (buff.name == SettingInfo.Buff.NAME.건슬링어_치적_시너지)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(10) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.갈망_6세트_버프)
-                {
-                    stats.AddStat(new Stats { attackSpeed = new ValueP(12) });
-                    stats.AddStat(new Stats { moveSpeed = new ValueP(12) });
-                    stats.AddStat(new Stats { additionalDamage = new ValueP(12) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.서폿_낙인)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(10) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.서폿_공증)
-                {
-                    stats.AddStat(new Stats { attackPowerPer = new ValueM(6, ValueM.Group.AttackPowerPer_Supporter) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.서폿_2버블)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(15) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.데빌헌터_치적_시너지)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(10) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.아르카나_치적_시너지)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(10) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.기상술사_치적_시너지)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(10) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.배틀마스터_치적_시너지)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(18) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.창술사_치적_시너지)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(18) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.스트라이커_치적_시너지)
-                {
-                    stats.AddStat(new Stats { criticalRate = new ValueP(18) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.블래스터_방깍_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.디스트로이어_방깍_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.워로드_방깍_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.서머너_방깍_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.리퍼_방깍_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(12 * 0.6m) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.버서커_피증_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(6) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.호크아이_피증_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(6) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.인파이터_피증_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(6) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.소서리스_피증_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(6) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.데모닉_피증_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(6) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.스카우터_공증_시너지)
-                {
-                    stats.AddStat(new Stats { attackPowerPer = new ValueM(6) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.기공사_공증_시너지)
-                {
-                    stats.AddStat(new Stats { attackPowerPer = new ValueM(6) });
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.워로드_백헤드_피증_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
-                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
-                }
-                else if (buff.name == SettingInfo.Buff.NAME.블레이드_백헤드_피증_시너지)
-                {
-                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.백_어택);
-                    stats.AddStat(new Stats { damage = new ValueM(12) }, SettingInfo.Skill.ATTACKTYPE.헤드_어택);
-                }
-            }
-        }
-
-
-
         //***************************************************************************//
+        //                                                                           //
         //                                 스킬 구현                                 //
         //                                                                           //
-        //  Part Skill 선언 -> Tripod 적용 -> Part Skill Stats 적용 순서로 구현한다  //
         //***************************************************************************//
-
-        // Memo: 도트 스킬은 트포렙에 영향을 받고, 장판 스킬은 트포렙과 스킬렙 둘 다 영향을 받는다
-
-        public CombatSkill GetSkill(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)
+      
+        public CombatSkill GetSkill(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)
         {
             if (skillSetting.name == SettingInfo.Skill.NAME.AT02_유탄) return AT02Grenade(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.메테오_스트림) return MeteorStream(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.이퀄리브리엄) return Equilibrium(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.레인_오브_불릿) return BulletRain(skillSetting, hpCondition, characterStats);
+            else if (skillSetting.name == SettingInfo.Skill.NAME.심판의_시간) return HourOfJudgment(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.샷건_연사) return ShotgunRapidFire(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.최후의_만찬) return LastRequest(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.절멸의_탄환) return DualBuckshot(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.마탄의_사수) return Sharpshooter(skillSetting, hpCondition, characterStats);
+            else if (skillSetting.name == SettingInfo.Skill.NAME.스파이럴_플레임) return SpiralFlame(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.대재앙 
                 || skillSetting.name == SettingInfo.Skill.NAME.대재앙_샷건) return Catastrophe(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.퍼펙트_샷) return PerfectShot(skillSetting, hpCondition, characterStats);
@@ -660,7 +44,8 @@ namespace LoaCalc
                 || skillSetting.name == SettingInfo.Skill.NAME.대구경_폭발_탄환_라이플) return HighCaliberHEBullet(skillSetting, hpCondition, characterStats);
             return new CombatSkill();
         }
-        private CombatSkill AT02Grenade(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // AT02 유탄
+        
+        private CombatSkill AT02Grenade(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // AT02 유탄
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -699,7 +84,7 @@ namespace LoaCalc
             };
 
             // 최종 스킬
-            var AT02Grenade = new CombatSkill { name = SettingInfo.Skill.NAME.AT02_유탄, cooldownTime = 6m, partList = new List<CombatSkill.Part> { part1 } };
+            var AT02Grenade = new CombatSkill { name = SettingInfo.Skill.NAME.AT02_유탄, cooldownTime = 6, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계
             if (levIndex >= 1)
@@ -758,7 +143,8 @@ namespace LoaCalc
 
             return AT02Grenade;
         }
-        private CombatSkill MeteorStream(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 메테오 스트림
+        
+        private CombatSkill MeteorStream(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 메테오 스트림
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -770,7 +156,7 @@ namespace LoaCalc
                 { SettingInfo.Skill.LEV.__12레벨, 5 }
             }[skillSetting.lev];
 
-            // 부분 스킬
+            // 부분 스킬: 탄환 낙하
             var part1 = new CombatSkill.Part
             {
                 name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.메테오_스트림 },
@@ -784,7 +170,7 @@ namespace LoaCalc
             };
 
             // 최종 스킬
-            var meteorStream = new CombatSkill { name = SettingInfo.Skill.NAME.메테오_스트림, cooldownTime = 20m, partList = new List<CombatSkill.Part> { part1 } };
+            var meteorStream = new CombatSkill { name = SettingInfo.Skill.NAME.메테오_스트림, cooldownTime = 20, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계
             if (levIndex >= 1)
@@ -835,7 +221,8 @@ namespace LoaCalc
 
             return meteorStream;
         }
-        private CombatSkill Equilibrium(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 이퀄리브리엄
+       
+        private CombatSkill Equilibrium(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 이퀄리브리엄
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -874,7 +261,7 @@ namespace LoaCalc
             };
 
             // 최종 스킬
-            var equilibrium = new CombatSkill { name = SettingInfo.Skill.NAME.이퀄리브리엄, cooldownTime = 16m, partList = new List<CombatSkill.Part> { part1 } };
+            var equilibrium = new CombatSkill { name = SettingInfo.Skill.NAME.이퀄리브리엄, cooldownTime = 16, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계
             if (levIndex >= 1)
@@ -928,7 +315,8 @@ namespace LoaCalc
 
             return equilibrium;
         }
-        private CombatSkill BulletRain(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 레인 오브 불릿
+       
+        private CombatSkill BulletRain(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 레인 오브 불릿
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -940,7 +328,7 @@ namespace LoaCalc
                 { SettingInfo.Skill.LEV.__12레벨, 5 }
             }[skillSetting.lev];
 
-            // 부분 스킬
+            // 부분 스킬: 전방 난사
             var part1 = new CombatSkill.Part
             {
                 name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.레인_오브_불릿 },
@@ -954,7 +342,7 @@ namespace LoaCalc
             };
 
             // 최종 스킬
-            var bulletRain = new CombatSkill { name = SettingInfo.Skill.NAME.레인_오브_불릿, cooldownTime = 22m, partList = new List<CombatSkill.Part> { part1 } };
+            var bulletRain = new CombatSkill { name = SettingInfo.Skill.NAME.레인_오브_불릿, cooldownTime = 22, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계
             if (levIndex >= 1)
@@ -1007,7 +395,105 @@ namespace LoaCalc
 
             return bulletRain;
         }
-        private CombatSkill ShotgunRapidFire(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 샷건 연사
+       
+        private CombatSkill HourOfJudgment(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 심판의 시간
+        {
+            var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
+            {
+                { SettingInfo.Skill.LEV.__1레벨, 0 },
+                { SettingInfo.Skill.LEV.__4레벨, 1 },
+                { SettingInfo.Skill.LEV.__7레벨, 2 },
+                { SettingInfo.Skill.LEV.__10레벨, 3 },
+                { SettingInfo.Skill.LEV.__11레벨, 4 },
+                { SettingInfo.Skill.LEV.__12레벨, 5 }
+            }[skillSetting.lev];
+
+            // 부분 스킬: 폭발 공격
+            var part1 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.심판의_시간 },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.샷건_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_샷건_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_샷건_스탠스 },
+
+                constant = new decimal[] { 43.00996027m, 114.0764625m, 147.0370797m, 167.8420083m, 154.2778513m, 146.951656m }[levIndex],
+                ratio = new decimal[] { 4.278078818m, 4.277832512m, 4.277832512m, 4.277832512m, 4.653940887m, 4.885960591m }[levIndex] * 3
+            };
+
+            // 부분 스킬: 파편 공격
+            var part2 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.심판의_시간 },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.샷건_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_샷건_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_샷건_스탠스 },
+
+                constant = new decimal[] { 43.00253281m, 112.1805204m, 145.8346765m, 166.4011052m, 152.980525m, 145.7016129m }[levIndex],
+                ratio = new decimal[] { 1.069704433m, 1.069704433m, 1.069704433m, 1.069704433m, 1.163546798m, 1.221674877m }[levIndex] * 3
+            };
+
+            // 최종 스킬
+            var hourOfJudgment = new CombatSkill { name = SettingInfo.Skill.NAME.심판의_시간, cooldownTime = 30, partList = new List<CombatSkill.Part> { part1, part2 } };
+
+            // 트라이포드 1단계  
+            if (levIndex >= 1)
+            {
+                switch (skillSetting.tp1)
+                {
+                    case SettingInfo.Skill.TRIPOD.빠른_준비:   // 재사용 대기시간 -11초
+                        hourOfJudgment.cooldownTime = 30 - 11;
+                        break;
+                    case SettingInfo.Skill.TRIPOD.마력_조절:
+                        break;
+                    case SettingInfo.Skill.TRIPOD.회피의_달인:
+                        break;
+                }
+            }
+
+            // 트라이포드 2단계
+            if (levIndex >= 2)
+            {
+                switch (skillSetting.tp2)
+                {
+                    case SettingInfo.Skill.TRIPOD.징역_선고:   // 탄환이 한 개로 줄지만, 탄환 피해가 460% 증가한다
+                        part1.ratio /= 3m;
+                        part2.ratio /= 3m;
+                        part1.appliedStats.damage.Add(460m);
+                        break;
+                    case SettingInfo.Skill.TRIPOD.최종_판결:   // 탄환 피해 +65%
+                        part1.appliedStats.damage.Add(65);
+                        break;
+                    case SettingInfo.Skill.TRIPOD.증거_인멸:   // 탄환이 5개로 늘어난다
+                        part1.ratio *= (5m / 3m);
+                        part2.ratio *= (5m / 3m);
+                        break;
+                }
+            }
+
+            // 트라이포드 3단계
+            if (levIndex >= 3)
+            {
+                switch (skillSetting.tp3)
+                {
+                    case SettingInfo.Skill.TRIPOD.강화_파편:    // 피해 +80%
+                        part1.appliedStats.damage.Add(80);
+                        part2.appliedStats.damage.Add(80);
+                        break;
+                    case SettingInfo.Skill.TRIPOD.확산_파편:
+                        break;
+                }
+            }
+
+            // 캐릭터 스탯 적용
+            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+
+            return hourOfJudgment;
+        }
+     
+        private CombatSkill ShotgunRapidFire(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 샷건 연사
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1033,7 +519,7 @@ namespace LoaCalc
             };    
            
             // 최종 스킬
-            var shotgunRapidFire = new CombatSkill { name = SettingInfo.Skill.NAME.샷건_연사, cooldownTime = 36m, partList = new List<CombatSkill.Part> { part1 } };
+            var shotgunRapidFire = new CombatSkill { name = SettingInfo.Skill.NAME.샷건_연사, cooldownTime = 36, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계  
             if (levIndex >= 1)
@@ -1065,7 +551,7 @@ namespace LoaCalc
                     case SettingInfo.Skill.TRIPOD.회피의_달인:
                         break;
                     case SettingInfo.Skill.TRIPOD.빠른_준비:   // 재사용 대기시간 -15초
-                        shotgunRapidFire.cooldownTime = 36m - 15m;
+                        shotgunRapidFire.cooldownTime = 36 - 15;
                         break;
                 }
             }
@@ -1089,7 +575,8 @@ namespace LoaCalc
 
             return shotgunRapidFire;
         }
-        private CombatSkill LastRequest(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 최후의 만찬
+     
+        private CombatSkill LastRequest(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 최후의 만찬
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1101,7 +588,7 @@ namespace LoaCalc
                 { SettingInfo.Skill.LEV.__12레벨, 5 }
             }[skillSetting.lev];
 
-            // 부분 스킬
+            // 부분 스킬: 폭발 탄환
             var part1 = new CombatSkill.Part
             {
                 name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.최후의_만찬 },
@@ -1114,8 +601,34 @@ namespace LoaCalc
                 ratio = new decimal[] { 19.51502463m, 19.51527094m, 19.51502463m, 19.51527094m, 21.22980296m, 22.2864532m }[levIndex]
             };
 
+            // 부분 스킬: 화염탄 (정보: 특화 적용, 보적 미적용, 트포-강한폭발 미적용, 스킬 레벨과 상관없이 트포렙에만 영향을 받는다)
+            var part2 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.샷건_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_샷건_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_샷건_스탠스 },
+
+                constant = 143.5680918m,
+                ratio = 4.165270936m * 3
+            };
+
+            // 부분 스킬: 뜨거운열기 (정보: 특화 적용, 보적 적용, 스킬 레벨과 트포렙 두 개의 영향을 받는다)
+            var part3 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.최후의_만찬 },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.샷건_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_샷건_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_샷건_스탠스 },
+
+                constant = new decimal[] { 42.70537499m, 112.74219m, 146.0523825m, 167.8321237m, 154.6741443m, 147.3915047m }[levIndex],
+                ratio = new decimal[] { 2.341625616m, 2.341625616m, 2.341625616m, 2.341625616m, 2.54729064m, 2.673152709m }[levIndex] * 5
+            };
+
             // 최종 스킬
-            var lastRequest = new CombatSkill { name = SettingInfo.Skill.NAME.최후의_만찬, cooldownTime = 36m, partList = new List<CombatSkill.Part> { part1 } };
+            var lastRequest = new CombatSkill { name = SettingInfo.Skill.NAME.최후의_만찬, cooldownTime = 36, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계  
             if (levIndex >= 1)
@@ -1123,9 +636,10 @@ namespace LoaCalc
                 switch (skillSetting.tp1)
                 {
                     case SettingInfo.Skill.TRIPOD.빠른_준비:   // 재사용 대기시간 -13초
-                        lastRequest.cooldownTime = 36m - 13m;
+                        lastRequest.cooldownTime = 36 - 13;
                         break;
-                    case SettingInfo.Skill.TRIPOD.화염탄:
+                    case SettingInfo.Skill.TRIPOD.화염탄:   // 3초간 화상
+                        lastRequest.partList = new List<CombatSkill.Part> { part1, part2 };
                         break;
                     case SettingInfo.Skill.TRIPOD.냉기탄:
                         break;
@@ -1137,7 +651,11 @@ namespace LoaCalc
             {
                 switch (skillSetting.tp2)
                 {
-                    case SettingInfo.Skill.TRIPOD.뜨거운_열기:
+                    case SettingInfo.Skill.TRIPOD.뜨거운_열기:   // 5초간 장판딜
+                        if (skillSetting.tp1 == SettingInfo.Skill.TRIPOD.화염탄)
+                            lastRequest.partList = new List<CombatSkill.Part> { part1, part2, part3 };                       
+                        else
+                            lastRequest.partList = new List<CombatSkill.Part> { part1, part3 };                        
                         break;
                     case SettingInfo.Skill.TRIPOD.강한_폭발:   // 피해 +45%
                         part1.appliedStats.damage.Add(45);
@@ -1152,8 +670,10 @@ namespace LoaCalc
             {
                 switch (skillSetting.tp3)
                 {
-                    case SettingInfo.Skill.TRIPOD.더블_샷:    // 기본 피해량의 97.6%인 샷건을 두 방을 쏜다
+                    case SettingInfo.Skill.TRIPOD.더블_샷:    // 기본 피해량의 97.6%인 샷건을 두 방을 쏜다. 화염탄 화상은 2중첩, 뜨거운 열기는 두 개가 생긴다
                         part1.appliedStats.damage.Add(95.2m);
+                        if (skillSetting.tp1 == SettingInfo.Skill.TRIPOD.화염탄) part2.ratio *= 2;
+                        if (skillSetting.tp2 == SettingInfo.Skill.TRIPOD.뜨거운_열기) part3.ratio *= 2;
                         break;
                     case SettingInfo.Skill.TRIPOD.연발_사격:    // 피해 +119.6%
                         part1.appliedStats.damage.Add(119.6m);
@@ -1163,10 +683,13 @@ namespace LoaCalc
 
             // 캐릭터 스탯 적용
             part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
 
             return lastRequest;
         }
-        private CombatSkill DualBuckshot(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 절멸의 탄환
+      
+        private CombatSkill DualBuckshot(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 절멸의 탄환
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1205,7 +728,7 @@ namespace LoaCalc
             };
 
             // 최종 스킬
-            var dualBuckshot = new CombatSkill { name = SettingInfo.Skill.NAME.절멸의_탄환, cooldownTime = 30m, partList = new List<CombatSkill.Part> { part1, part1, part2 } };
+            var dualBuckshot = new CombatSkill { name = SettingInfo.Skill.NAME.절멸의_탄환, cooldownTime = 30, partList = new List<CombatSkill.Part> { part1, part1, part2 } };
 
             // 트라이포드 1단계  
             if (levIndex >= 1)
@@ -1265,7 +788,8 @@ namespace LoaCalc
 
             return dualBuckshot;
         }
-        private CombatSkill Sharpshooter(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 마탄의 사수
+     
+        private CombatSkill Sharpshooter(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 마탄의 사수
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1290,7 +814,7 @@ namespace LoaCalc
                 ratio = new decimal[] { 35.85714286m, 35.85714286m, 35.85714286m, 35.85714286m, 39.00640394m, 40.94778325m }[levIndex]
             };
 
-            // 부분 스킬: 가디언의 숨결 (참고 사항: 특화의 샷건 방무 미적용)
+            // 부분 스킬: 가디언의 숨결 (특화의 샷건 방무 미적용)
             var part2 = new CombatSkill.Part
             {
                 name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.마탄의_사수 },
@@ -1303,8 +827,21 @@ namespace LoaCalc
                 ratio = new decimal[] { 35.85714286m, 35.85714286m, 35.85714286m, 35.85714286m, 39.00640394m, 40.94778325m }[levIndex] * 1.02m
             };
 
+            // 부분 스킬: 가디언의 숨결 화상 (특화 적용, 보석 미적용, 트포-특탄 및 사면초가의 영향을 받지 않는다, 트포렙에 영향을 받는다)
+            var part3 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.샷건_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_샷건_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_샷건_스탠스 },
+
+                constant = 145.6502242m,
+                ratio = 0.164778325m * 7 * 5
+            };
+
             // 최종 스킬
-            var sharpshooter = new CombatSkill { name = SettingInfo.Skill.NAME.마탄의_사수, cooldownTime = 30m, partList = new List<CombatSkill.Part> { part1 } };
+            var sharpshooter = new CombatSkill { name = SettingInfo.Skill.NAME.마탄의_사수, cooldownTime = 30, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계  
             if (levIndex >= 1)
@@ -1349,8 +886,8 @@ namespace LoaCalc
             {
                 switch (skillSetting.tp3)
                 {
-                    case SettingInfo.Skill.TRIPOD.가디언의_숨결:   // 기본 피해량의 102%에 해댱하는 추가 피해를 준다
-                        sharpshooter.partList = new List<CombatSkill.Part> { part1, part2 };
+                    case SettingInfo.Skill.TRIPOD.가디언의_숨결:   // 화상 상태를 부여하며, 화상 7회 중첩 시 '기본 피해량'의 102%에 해당하는 추가 피해를 준다
+                        sharpshooter.partList = new List<CombatSkill.Part> { part1, part2, part3 };
                         break;
                     case SettingInfo.Skill.TRIPOD.혹한의_안식처:
                         break;
@@ -1360,10 +897,123 @@ namespace LoaCalc
             // 캐릭터 스탯 적용
             part1.appliedStats.Add(characterStats.GetSkillStat(part1));
             part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
 
             return sharpshooter;
         }
-        private CombatSkill Catastrophe(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 대재앙
+      
+        private CombatSkill SpiralFlame(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 스파이럴 플레임
+        {
+            var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
+            {
+                { SettingInfo.Skill.LEV.__1레벨, 0 },
+                { SettingInfo.Skill.LEV.__4레벨, 1 },
+                { SettingInfo.Skill.LEV.__7레벨, 2 },
+                { SettingInfo.Skill.LEV.__10레벨, 3 },
+                { SettingInfo.Skill.LEV.__11레벨, 4 },
+                { SettingInfo.Skill.LEV.__12레벨, 5 }
+            }[skillSetting.lev];
+
+            // 부분 스킬: 불꽃 탄환
+            var part1 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.스파이럴_플레임 },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.라이플_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_라이플_스탠스 },
+
+                constant = new decimal[] { 42.91676763m, 113.5634238m, 146.4580809m, 167.424582m, 153.9625794m, 146.7152026m }[levIndex],
+                ratio = new decimal[] { 16.26403941m, 16.26403941m, 16.26403941m, 16.26403941m, 17.69261084m, 18.57339901m }[levIndex]
+            };
+
+            // 부분 스킬: 불길 (후폭풍 트포 선택 시 후폭풍으로 변경)
+            var part2 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.스파이럴_플레임 },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.라이플_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_라이플_스탠스 },
+
+                constant = new decimal[] { 42.78343023m, 112.8597384m, 146.0537791m, 167.4454942m, 153.9368632m, 146.6847048m }[levIndex],
+                ratio = new decimal[] { 1.355665025m, 1.355665025m, 1.355665025m, 1.355665025m, 1.474630542m, 1.547536946m }[levIndex] * 3
+            };
+
+            // 부분 스킬: 맹렬한 불꽃 (참고: 마탄의 '가디언의 숨결'처럼 특화 미적용)
+            var part3 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.스파이럴_플레임 },
+                category = new List<SettingInfo.Skill.CATEGORY> { },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_라이플_스탠스 },
+
+                constant = new decimal[] { 42.89009498m, 113.4226594m, 146.3772049m, 167.4287653m, 153.9574354m, 146.7091038m }[levIndex],
+                ratio = new decimal[] { 20.33103448m, 20.33103448m, 20.33103448m, 20.33103448m, 22.11650246m, 23.21600985m }[levIndex] * 0.45m   // 기본피해량(탄두+불길) * 0.45
+            };
+
+            // 최종 스킬
+            var spiralFlame = new CombatSkill { name = SettingInfo.Skill.NAME.스파이럴_플레임, cooldownTime = 27, partList = new List<CombatSkill.Part> { part1, part2 } };
+
+            // 트라이포드 1단계  
+            if (levIndex >= 1)
+            {
+                switch (skillSetting.tp1)
+                {
+                    case SettingInfo.Skill.TRIPOD.냉기탄:   // 불길 효과가 사라진다
+                        spiralFlame.partList = new List<CombatSkill.Part> { part1 };
+                        break;
+                    case SettingInfo.Skill.TRIPOD.맹렬한_불꽃:   // '기본 피해량'의 45%에 해당하는 추가 피해를 준다 (이때 기본 피해량은 탄두+불길이다)
+                        spiralFlame.partList = new List<CombatSkill.Part> { part1, part2, part3 };
+                        break;
+                    case SettingInfo.Skill.TRIPOD.재빠른_조준:
+                        break;
+                }
+            }
+
+            // 트라이포드 2단계
+            if (levIndex >= 2)
+            {
+                switch (skillSetting.tp2)
+                {
+                    case SettingInfo.Skill.TRIPOD.성장_탄환:   // 피해 +80% (불길, 맹렬한 불꽃에는 적용되지 않는다)
+                        part1.appliedStats.damage.Add(80);
+                        break;
+                    case SettingInfo.Skill.TRIPOD.고속_탄환:
+                        break;
+                    case SettingInfo.Skill.TRIPOD.마무리_사격:   // 약무 탄두 치적 +100%
+                        if (hpCondition <= 50)
+                        {
+                            part1.appliedStats.criticalRate.Add(100);
+                        }
+                        break;
+                }
+            }
+
+            // 트라이포드 3단계
+            if (levIndex >= 3)
+            {
+                switch (skillSetting.tp3)
+                {
+                    case SettingInfo.Skill.TRIPOD.총열_강화:   // 불길 피해 +350%
+                        part2.appliedStats.damage.Add(350);
+                        break;
+                    case SettingInfo.Skill.TRIPOD.후폭풍:   // 탄두 피해 +64%
+                        part1.appliedStats.damage.Add(64);
+                        break;
+                }
+            }
+
+            // 캐릭터 스탯 적용
+            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
+
+            return spiralFlame;
+        }
+       
+        private CombatSkill Catastrophe(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 대재앙
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1406,7 +1056,7 @@ namespace LoaCalc
             };
 
             // 최종 스킬
-            var catastrophe = new CombatSkill { name = SettingInfo.Skill.NAME.대재앙, cooldownTime = 24m, partList = new List<CombatSkill.Part> { part1 } };
+            var catastrophe = new CombatSkill { name = SettingInfo.Skill.NAME.대재앙, cooldownTime = 24, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계  
             if (levIndex >= 1)
@@ -1463,7 +1113,8 @@ namespace LoaCalc
 
             return catastrophe;
         }
-        private CombatSkill PerfectShot(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 퍼펙트 샷
+      
+        private CombatSkill PerfectShot(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 퍼펙트 샷
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1475,7 +1126,7 @@ namespace LoaCalc
                 { SettingInfo.Skill.LEV.__12레벨, 5 }
             }[skillSetting.lev];
 
-            // 부분 스킬
+            // 부분 스킬: 대구경 탄환
             var part1 = new CombatSkill.Part
             {
                 name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.퍼펙트_샷 },
@@ -1488,15 +1139,29 @@ namespace LoaCalc
                 ratio = new decimal[] { 26.18349754m, 26.18349754m, 26.18349754m, 26.18349754m, 28.48399015m, 29.90172414m }[levIndex]
             };
 
+            // 부분 스킬: 출혈 효과 (특화 적용, 보석 미적용, 트포-정밀 사격/마무리사격/강화된 사격 미적용, 스킬 레벨 및 트포렙에 영향을 받는다)
+            var part2 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.라이플_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_라이플_스탠스 },
+
+                constant = new decimal[] { 43.63392107m, 114.5294266m, 148.6280437m, 169.4081102m, 155.7320367m, 148.6239341m }[levIndex],
+                ratio = new decimal[] { 2.933497537m, 2.933743842m, 2.933497537m, 2.933743842m, 3.19137931m, 3.350738916m }[levIndex] * 5
+            };
+
             // 최종 스킬
-            var perfectShot = new CombatSkill { name = SettingInfo.Skill.NAME.퍼펙트_샷, cooldownTime = 30m, partList = new List<CombatSkill.Part> { part1 } };
+            var perfectShot = new CombatSkill { name = SettingInfo.Skill.NAME.퍼펙트_샷, cooldownTime = 30, partList = new List<CombatSkill.Part> { part1 } };
 
             // 트라이포드 1단계
             if (levIndex >= 1)
             {
                 switch (skillSetting.tp1)
                 {
-                    case SettingInfo.Skill.TRIPOD.출혈_효과:
+                    case SettingInfo.Skill.TRIPOD.출혈_효과:   // 5초간 출혈 상태를 부여한다
+                        perfectShot.partList = new List<CombatSkill.Part> { part1, part2 };
                         break;
                     case SettingInfo.Skill.TRIPOD.안정된_자세:
                         break;
@@ -1537,10 +1202,12 @@ namespace LoaCalc
             
             // 캐릭터 스탯 적용
             part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
 
             return perfectShot;
         }
-        private CombatSkill FocusedShot(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 포커스 샷
+      
+        private CombatSkill FocusedShot(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 포커스 샷
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1592,7 +1259,7 @@ namespace LoaCalc
             };
 
             // 최종 스킬
-            var focusedShot = new CombatSkill { name = SettingInfo.Skill.NAME.포커스_샷, cooldownTime = 27m, partList = new List<CombatSkill.Part> { part1, part1, part3 } };
+            var focusedShot = new CombatSkill { name = SettingInfo.Skill.NAME.포커스_샷, cooldownTime = 27, partList = new List<CombatSkill.Part> { part1, part1, part3 } };
 
             // 트라이포드 1단계
             if (levIndex >= 1)
@@ -1652,7 +1319,8 @@ namespace LoaCalc
 
             return focusedShot;
         }
-        private CombatSkill TargetDown(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 타겟 다운
+      
+        private CombatSkill TargetDown(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 타겟 다운
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1716,8 +1384,34 @@ namespace LoaCalc
                 ratio = new decimal[] { 11.13004926m, 11.13029557m, 11.13029557m, 11.13029557m, 12.10812808m, 12.71083744m }[levIndex]
             };
 
+            // 부분 스킬: 작렬철강탄 (특화 미적용, 보석 적용, 트포-정조준 미적용 but 천계 적용, 트포 레벨에 영향을 받음)
+            var part5 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { SettingInfo.Skill.NAME.타겟_다운 },
+                category = new List<SettingInfo.Skill.CATEGORY> { },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_라이플_스탠스 },
+
+                constant = new decimal[] { 42.94680004m, 113.4740755m, 146.3572993m, 167.2911549m, 153.8635855m, 146.646514m }[levIndex],
+                ratio = new decimal[] { 11.13004926m, 11.13029557m, 11.13029557m, 11.13029557m, 12.10812808m, 12.71083744m }[levIndex] * 0.45m
+            };
+
+            // 부분 스킬: 작렬철강탄 출혈 (특화 적용, 보석 미적용, 트포-정조준/천계 미적용, 스킬 레벨과 트포 레벨 모두에 영향을 받음)
+            var part6 = new CombatSkill.Part
+            {
+                name = new List<SettingInfo.Skill.NAME> { },
+                category = new List<SettingInfo.Skill.CATEGORY> { SettingInfo.Skill.CATEGORY.라이플_스탠스 },
+                type = new List<SettingInfo.Skill.TYPE> { SettingInfo.Skill.TYPE.일반 },
+                attackType = new List<SettingInfo.Skill.ATTACKTYPE> { SettingInfo.Skill.ATTACKTYPE.타대 },
+                classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스, SettingInfo.Skill.CLASSENGRAVING.사냥의_시간_라이플_스탠스 },
+
+                constant = new decimal[] { 83.3431085m, 214.3108504m, 285.7478006m, 321.4662757m, 297.0731707m, 281.7994859m }[levIndex],
+                ratio = new decimal[] { 0.083990148m, 0.083990148m, 0.083990148m, 0.083990148m, 0.0908867m, 0.095812808m }[levIndex] * 3 * 4
+            };
+
             // 최종 스킬
-            var targetDown = new CombatSkill { name = SettingInfo.Skill.NAME.타겟_다운, cooldownTime = 36m, partList = new List<CombatSkill.Part> { part1, part2, part3 } };
+            var targetDown = new CombatSkill { name = SettingInfo.Skill.NAME.타겟_다운, cooldownTime = 36, partList = new List<CombatSkill.Part> { part1, part2, part3 } };
 
             // 트라이포드 1단계
             if (levIndex >= 1)
@@ -1742,7 +1436,8 @@ namespace LoaCalc
                         targetDown.partList = new List<CombatSkill.Part> { part1, part2, part3, part4 };
                         part4.appliedStats.damage.Add(150);
                         break;
-                    case SettingInfo.Skill.TRIPOD.작렬철강탄:
+                    case SettingInfo.Skill.TRIPOD.작렬철강탄:   // 출혈 상태를 부여하며, 출혈 3회 중첩 시 '기본 피해량'의 45%에 해당하는 추가 피해를 준다
+                        targetDown.partList = new List<CombatSkill.Part> { part1, part2, part3, part5, part6 };
                         break;
                     case SettingInfo.Skill.TRIPOD.반자동_라이플:   // 피해 +50%
                         part1.appliedStats.damage.Add(50);
@@ -1768,6 +1463,7 @@ namespace LoaCalc
                         part2.appliedStats.criticalRate.Add(35);
                         part3.appliedStats.criticalRate.Add(35);
                         part4.appliedStats.criticalRate.Add(35);
+                        part5.appliedStats.criticalRate.Add(35);
                         if (hpCondition <= 50)
                         {
                             part2.appliedStats.criticalDamage.Add(197);
@@ -1783,10 +1479,14 @@ namespace LoaCalc
             part2.appliedStats.Add(characterStats.GetSkillStat(part2));
             part3.appliedStats.Add(characterStats.GetSkillStat(part3));
             part4.appliedStats.Add(characterStats.GetSkillStat(part4));
+            part5.appliedStats.Add(characterStats.GetSkillStat(part5));
+            part6.appliedStats.Add(characterStats.GetSkillStat(part6));
+
 
             return targetDown;
         }
-        private CombatSkill TwilightEye(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 황혼의 눈
+      
+        private CombatSkill TwilightEye(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 황혼의 눈
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1816,14 +1516,15 @@ namespace LoaCalc
             else if (skillSetting.name == SettingInfo.Skill.NAME.황혼의_눈_라이플) part1.classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스 };
 
             // 최종 스킬
-            var twilightEye = new CombatSkill { name = SettingInfo.Skill.NAME.황혼의_눈, cooldownTime = 300m, partList = new List<CombatSkill.Part> { part1 } };
+            var twilightEye = new CombatSkill { name = SettingInfo.Skill.NAME.황혼의_눈, cooldownTime = 300, partList = new List<CombatSkill.Part> { part1 } };
 
             // 캐릭터 스탯 적용
             part1.appliedStats.Add(characterStats.GetSkillStat(part1));
 
             return twilightEye;
         }
-        private CombatSkill HighCaliberHEBullet(SettingInfo.Skill skillSetting, int hpCondition, CharacterStats characterStats)   // 대구경_폭발_탄환
+   
+        private CombatSkill HighCaliberHEBullet(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)   // 대구경_폭발_탄환
         {
             var levIndex = new Dictionary<SettingInfo.Skill.LEV, int>
             {
@@ -1853,7 +1554,7 @@ namespace LoaCalc
             else if (skillSetting.name == SettingInfo.Skill.NAME.대구경_폭발_탄환_라이플) part1.classEngraving = new List<SettingInfo.Skill.CLASSENGRAVING> { SettingInfo.Skill.CLASSENGRAVING.피스메이커_라이플_스탠스 };
 
             // 최종 스킬
-            var highCaliberHEBullet = new CombatSkill { name = SettingInfo.Skill.NAME.대구경_폭발_탄환, cooldownTime = 300m, partList = new List<CombatSkill.Part> { part1 } };
+            var highCaliberHEBullet = new CombatSkill { name = SettingInfo.Skill.NAME.대구경_폭발_탄환, cooldownTime = 300, partList = new List<CombatSkill.Part> { part1 } };
 
             // 캐릭터 스탯 적용
             part1.appliedStats.Add(characterStats.GetSkillStat(part1));
@@ -1861,5 +1562,16 @@ namespace LoaCalc
             return highCaliberHEBullet;
         }
 
+
+
+
+
+        //***************************************************************************//
+        //                                                                           //
+        //                             스킬 데미지 계산                              //
+        //                                                                           //
+        //***************************************************************************//
+        
+        
     }
 }

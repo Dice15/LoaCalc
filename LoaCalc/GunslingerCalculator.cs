@@ -5,12 +5,7 @@ using System.Text;
 
 namespace LoaCalc
 {
-    // TODO: 스킬 구현
-    // TODO: 총 DPS 구하는 기능 구현 (+ 스킬 선택 기능)
-    // 폼 컨트롤의 데이터가 바뀌는 즉시 자동 업데이트 기능 추가
-    // TODO: 세부 정보 창에서 텍스트박스 드래그 막기
 
-    
     /// <summary>
     /// 건슬링어 클래스의 데미지 계산이 구현되어 있는 클래스.
     /// </summary>
@@ -37,10 +32,36 @@ namespace LoaCalc
         public static decimal AttackPower = 50000;  // 고정 공격력
 
 
+
+        /* 
+        로직 변경
+
+        직업 클래스: AbstractLostArkJob
+        {
+            class Result
+            {
+
+            }
+
+            List<Result> GetAllSkillDamage()
+            {
+                List<Result> resultList;
+
+                for(this.스킬세팅정보)
+                    Calculator.CalculateSkillDamage(combatSkill);
+
+                return resultList;
+            }
+
+            // 최적 특성도 여기서 구현?
+        }
+
+        */
+
         public static List<Result> CalculateSkillDamage(Gunslinger character)
         {
             // 캐릭터 스탯 불러오기
-            var characterStats = new Dictionary<string, CharacterStats>
+            var characterStats = new Dictionary<string, PackedStats>
             {
                 { "Hp100", character.GetStats(100) },
                 { "Hp50", character.GetStats(50) },
@@ -83,15 +104,6 @@ namespace LoaCalc
                     result.dpsArithmeticMean = Math.Round(result.dpsArithmeticMean);
                     result.dpsHarmonicMean = Math.Round(result.dpsHarmonicMean);
                     result.cooldownTime = Math.Round(result.cooldownTime, 2);
-
-                    // 소수 둘째자리 까지만 표기
-                    /*result.Damage_BeforeHalf = Math.Round(result.Damage_BeforeHalf, 2);
-                    result.Damage_AfterHalf = Math.Round(result.Damage_AfterHalf, 2);
-                    result.Damage_ArithmeticMean = Math.Round(result.Damage_ArithmeticMean, 2);
-                    result.Damage_HarmonicMean = Math.Round(result.Damage_HarmonicMean, 2);
-                    result.Dps_ArithmeticAvg = Math.Round(result.Dps_ArithmeticAvg, 2);
-                    result.Dps_HarmonicAvg = Math.Round(result.Dps_HarmonicAvg, 2);
-                    result.CooldownTime = Math.Round(result.CooldownTime, 2);*/
                 }
 
                 resultList.Add(result);

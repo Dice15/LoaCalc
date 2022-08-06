@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CombatSkill.cs" />
     <Compile Include="CustomCheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -62,12 +63,14 @@
       <DependentUpon>DetailedInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="AbstractLostArkClass.cs" />
     <Compile Include="MessageBox_ReqAutoCombatStats.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MessageBox_ReqAutoCombatStats.Designer.cs">
       <DependentUpon>MessageBox_ReqAutoCombatStats.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingInfo.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="Gunslinger.cs" />
     <Compile Include="GunslingerCalculator.cs" />
