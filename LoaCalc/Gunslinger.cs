@@ -8,18 +8,37 @@ namespace LoaCalc
 
     /// <summary>
     /// 건슬링어 직업을 구현한 클래스. 
-    /// LostArkCharacter클래스를 상속 받아서 구현한다.
+    /// AbstractLostArkJob클래스를 상속 받아서 구현한다.
     /// 세팅 정보 및 스펙 적용은 상속 받은 클래스에 구현이 되어있으므로 스킬만 구현을 하면 된다.
     /// </summary>     
-    public class Gunslinger : AbstractLostArkClass
+    public class Gunslinger : AbstractLostArkJob
     {
+
         //***************************************************************************//
-        //                                                                           //
-        //                                 스킬 구현                                 //
-        //                                                                           //
+        //                              건슬링어 특화                                //
         //***************************************************************************//
       
-        public CombatSkill GetSkill(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)
+        protected override PackedStats Specialization(SettingInfo.CombatStats combatStats)
+        {
+            PackedStats stats = new PackedStats();
+
+            stats.AddStats(new Stats { criticalDamage = new ValueP(combatStats.specialization * 0.03575m * 3) }, category: SettingInfo.Skill.CATEGORY.핸드건_스탠스);
+            stats.AddStats(new Stats { damage = new ValueM(combatStats.specialization * 0.03575m * 0.6m) }, category: SettingInfo.Skill.CATEGORY.샷건_스탠스);
+            stats.AddStats(new Stats { damage = new ValueM(combatStats.specialization * 0.03575m) }, category: SettingInfo.Skill.CATEGORY.라이플_스탠스);
+            stats.AddStats(new Stats { damage = new ValueM(combatStats.specialization * 0.05465m) }, category: SettingInfo.Skill.CATEGORY.각성_스킬);
+
+            return stats;
+        }
+
+
+
+
+
+        //***************************************************************************//
+        //                            건슬링어 스킬 구현                             //
+        //***************************************************************************//
+
+        public CombatSkill GetCombatSkill(SettingInfo.Skill skillSetting, int hpCondition, PackedStats characterStats)
         {
             if (skillSetting.name == SettingInfo.Skill.NAME.AT02_유탄) return AT02Grenade(skillSetting, hpCondition, characterStats);
             else if (skillSetting.name == SettingInfo.Skill.NAME.메테오_스트림) return MeteorStream(skillSetting, hpCondition, characterStats);
@@ -138,8 +157,8 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
 
             return AT02Grenade;
         }
@@ -217,7 +236,7 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
 
             return meteorStream;
         }
@@ -310,8 +329,8 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
 
             return equilibrium;
         }
@@ -391,7 +410,7 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
 
             return bulletRain;
         }
@@ -487,8 +506,8 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
 
             return hourOfJudgment;
         }
@@ -571,7 +590,7 @@ namespace LoaCalc
             }
            
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
 
             return shotgunRapidFire;
         }
@@ -682,9 +701,9 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
-            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStats(part3));
 
             return lastRequest;
         }
@@ -783,8 +802,8 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
 
             return dualBuckshot;
         }
@@ -895,9 +914,9 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
-            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStats(part3));
 
             return sharpshooter;
         }
@@ -1006,9 +1025,9 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
-            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStats(part3));
 
             return spiralFlame;
         }
@@ -1108,8 +1127,8 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
 
             return catastrophe;
         }
@@ -1201,8 +1220,8 @@ namespace LoaCalc
             }
             
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
 
             return perfectShot;
         }
@@ -1313,9 +1332,9 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
-            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStats(part3));
 
             return focusedShot;
         }
@@ -1475,12 +1494,12 @@ namespace LoaCalc
             }
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
-            part2.appliedStats.Add(characterStats.GetSkillStat(part2));
-            part3.appliedStats.Add(characterStats.GetSkillStat(part3));
-            part4.appliedStats.Add(characterStats.GetSkillStat(part4));
-            part5.appliedStats.Add(characterStats.GetSkillStat(part5));
-            part6.appliedStats.Add(characterStats.GetSkillStat(part6));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
+            part2.appliedStats.Add(characterStats.GetSkillStats(part2));
+            part3.appliedStats.Add(characterStats.GetSkillStats(part3));
+            part4.appliedStats.Add(characterStats.GetSkillStats(part4));
+            part5.appliedStats.Add(characterStats.GetSkillStats(part5));
+            part6.appliedStats.Add(characterStats.GetSkillStats(part6));
 
 
             return targetDown;
@@ -1519,7 +1538,7 @@ namespace LoaCalc
             var twilightEye = new CombatSkill { name = SettingInfo.Skill.NAME.황혼의_눈, cooldownTime = 300, partList = new List<CombatSkill.Part> { part1 } };
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
 
             return twilightEye;
         }
@@ -1557,7 +1576,7 @@ namespace LoaCalc
             var highCaliberHEBullet = new CombatSkill { name = SettingInfo.Skill.NAME.대구경_폭발_탄환, cooldownTime = 300, partList = new List<CombatSkill.Part> { part1 } };
 
             // 캐릭터 스탯 적용
-            part1.appliedStats.Add(characterStats.GetSkillStat(part1));
+            part1.appliedStats.Add(characterStats.GetSkillStats(part1));
 
             return highCaliberHEBullet;
         }
@@ -1567,11 +1586,60 @@ namespace LoaCalc
 
 
         //***************************************************************************//
-        //                                                                           //
         //                             스킬 데미지 계산                              //
-        //                                                                           //
         //***************************************************************************//
-        
-        
+
+        // 전투 특성 계산: 전체 업뎃 -> 특성만 따로 반복 업뎃으로 구함
+
+        public class ResultCalculateCombatSkill
+        {
+            public (string beforeHalf, string afterHalf) detailedInfo = ("", "");
+            public (decimal beforeHalf, decimal afterHalf, decimal arithmeticMean, decimal harmonicMean) damage = (0, 0, 0, 0);
+            public (decimal beforeHalf, decimal afterHalf, decimal arithmeticMean, decimal harmonicMean) dps = (0, 0, 0, 0);
+            public decimal cooldown = 0;
+        }
+
+        public List<ResultCalculateCombatSkill> CalculateCombatSkill()
+        {
+            // 캐릭터 스탯 불러오기
+            var characterStats = new Dictionary<string, PackedStats> { { "Hp100", GetStats(100) }, { "Hp50", GetStats(50) } };
+
+            // 캐릭터 스탯을 기반으로 스킬 스탯 및 데미지 계산
+            var resultList = new List<ResultCalculateCombatSkill>();
+
+            foreach (var skillSetting in setting.GetSkillList())
+            {
+                var result = new ResultCalculateCombatSkill();
+
+                if (skillSetting != null)
+                {
+                    CombatSkill combatSkill;
+
+                    // 약무 전
+                    combatSkill = GetCombatSkill(skillSetting, 100, characterStats["Hp100"]);
+                    result.detailedInfo.beforeHalf = combatSkill.GetDetailedInfo();
+                    result.damage.beforeHalf = Calculator.CalculateDamage(combatSkill);
+                    result.cooldown = Calculator.CalculateCooldown(combatSkill);
+
+                    // 약무 후
+                    combatSkill = GetCombatSkill(skillSetting, 50, characterStats["Hp50"]);
+                    result.detailedInfo.afterHalf = combatSkill.GetDetailedInfo();
+                    result.damage.afterHalf = Calculator.CalculateDamage(combatSkill);
+
+                    // 평균 데미지 및 DPS
+                    result.damage.arithmeticMean = Calculator.ArithmeticMean(new List<decimal> { result.damage.beforeHalf, result.damage.afterHalf });
+                    result.damage.harmonicMean = Calculator.HarmonicMean(new List<decimal> { result.damage.beforeHalf, result.damage.afterHalf });
+                    result.dps.arithmeticMean = result.damage.arithmeticMean / result.cooldown;
+                    result.dps.harmonicMean = result.damage.harmonicMean / result.cooldown;
+                }
+
+                resultList.Add(result);
+            }
+
+            return resultList;
+        }
     }
+
+
+
 }

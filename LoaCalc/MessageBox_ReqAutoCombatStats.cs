@@ -20,7 +20,7 @@ namespace LoaCalc
             1045,1050,1067,1070,1150,1155,1170,1177,1250,1265,1270,1287,1350,1370,1375,1397,1470,1485,1507,1550,1617,1670,1705,1837
         };
 
-        private (DialogResult dialogResult, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper) result = (DialogResult.No, 50, 1837, 50, 1837, 50, 1837);
+        private (DialogResult dialogResult, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper) result = (DialogResult.No, 50, 1837, 50, 1837, 50, 970);
 
         public (DialogResult dialogResult, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper) messageBoxResult
         {
@@ -44,7 +44,8 @@ namespace LoaCalc
             Swift_Lower.Items.AddRange(numList.ConvertAll(num => num.ToString()).ToArray());
             Swift_Upper.Items.AddRange(numList.ConvertAll(num => num.ToString()).ToArray());
             Crit_Lower.SelectedIndex = Spec_Lower.SelectedIndex = Swift_Lower.SelectedIndex = 0;
-            Crit_Upper.SelectedIndex = Spec_Upper.SelectedIndex = Swift_Upper.SelectedIndex = Crit_Lower.Items.Count - 1;
+            Crit_Upper.SelectedIndex = Spec_Upper.SelectedIndex  = Crit_Upper.Items.Count - 1;
+            Swift_Upper.SelectedIndex = numList.IndexOf(970);
         }
 
 
@@ -57,7 +58,7 @@ namespace LoaCalc
         {
             bool existError = false;
 
-            result = (DialogResult.Yes, 50, 1837, 50, 1837, 50, 1837);
+            result = (DialogResult.Yes, 50, 1837, 50, 1837, 50, 970);
             
             if (Crit_Lower.SelectedIndex <= Crit_Upper.SelectedIndex)
             {
@@ -94,6 +95,7 @@ namespace LoaCalc
 
             if (existError)
             {
+                result = (DialogResult.No, 50, 1837, 50, 1837, 50, 970);
                 MessageBox.Show("오류!! 하한값이 상한보다 큽니다");
             }
             else this.Hide();
@@ -105,7 +107,7 @@ namespace LoaCalc
         /// </summary>
         private void No_Click(object sender, EventArgs e)
         {
-            result = (DialogResult.No, 50, 1837, 50, 1837, 50, 1837);
+            result = (DialogResult.No, 50, 1837, 50, 1837, 50, 970);
             this.Hide();
         }
 

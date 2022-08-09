@@ -175,7 +175,7 @@
             this.Weapon_AdditionalDamage = new System.Windows.Forms.TextBox();
             this.Buff1_Name = new System.Windows.Forms.ComboBox();
             this.Buff2_Name = new System.Windows.Forms.ComboBox();
-            this.Calculate = new System.Windows.Forms.Button();
+            this.DpsCalculate = new System.Windows.Forms.Button();
             this.Skill1_DamageBeforeHalf = new System.Windows.Forms.TextBox();
             this.Skill1_DamageAfterHalf = new System.Windows.Forms.TextBox();
             this.Skill1_DamageHarmonicAvg = new System.Windows.Forms.TextBox();
@@ -340,11 +340,6 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
@@ -417,9 +412,7 @@
             this.label72 = new System.Windows.Forms.Label();
             this.Preset4_Save = new System.Windows.Forms.Button();
             this.label76 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label78 = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.SkillSum_DpsHarmonicAvg = new System.Windows.Forms.TextBox();
             this.SkillSum_DpsArithmeticAvg = new System.Windows.Forms.TextBox();
             this.SkillSum_DamageHarmonicAvg = new System.Windows.Forms.TextBox();
@@ -485,13 +478,24 @@
             this.Skill3_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
             this.Skill2_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
             this.Skill1_IncludeInFinalDps = new LoaCalc.CustomCheckBox(this.components);
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.DpsByCombatStatsRatio = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DpsByCombatStatsRatio)).BeginInit();
             this.SuspendLayout();
             // 
             // CombatStat_Crit
@@ -500,7 +504,7 @@
             this.CombatStat_Crit.Location = new System.Drawing.Point(92, 41);
             this.CombatStat_Crit.Name = "CombatStat_Crit";
             this.CombatStat_Crit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CombatStat_Crit.Size = new System.Drawing.Size(76, 29);
+            this.CombatStat_Crit.Size = new System.Drawing.Size(244, 29);
             this.CombatStat_Crit.TabIndex = 0;
             this.CombatStat_Crit.TextChanged += new System.EventHandler(this.CombatStat_TextChanged);
             // 
@@ -510,7 +514,7 @@
             this.CombatStat_Specialization.Location = new System.Drawing.Point(92, 76);
             this.CombatStat_Specialization.Name = "CombatStat_Specialization";
             this.CombatStat_Specialization.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CombatStat_Specialization.Size = new System.Drawing.Size(76, 29);
+            this.CombatStat_Specialization.Size = new System.Drawing.Size(244, 29);
             this.CombatStat_Specialization.TabIndex = 1;
             // 
             // CombatStat_Swiftness
@@ -519,12 +523,12 @@
             this.CombatStat_Swiftness.Location = new System.Drawing.Point(92, 111);
             this.CombatStat_Swiftness.Name = "CombatStat_Swiftness";
             this.CombatStat_Swiftness.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CombatStat_Swiftness.Size = new System.Drawing.Size(76, 29);
+            this.CombatStat_Swiftness.Size = new System.Drawing.Size(244, 29);
             this.CombatStat_Swiftness.TabIndex = 3;
             // 
             // Skill1_Lev
             // 
-            this.Skill1_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill1_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill1_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_Lev.FormattingEnabled = true;
@@ -537,7 +541,7 @@
             // 
             // Skill1_Tp1
             // 
-            this.Skill1_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill1_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill1_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_Tp1.FormattingEnabled = true;
@@ -546,10 +550,11 @@
             this.Skill1_Tp1.Name = "Skill1_Tp1";
             this.Skill1_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill1_Tp1.TabIndex = 18;
+            this.Skill1_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill1_Tp2
             // 
-            this.Skill1_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill1_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill1_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_Tp2.FormattingEnabled = true;
@@ -558,10 +563,11 @@
             this.Skill1_Tp2.Name = "Skill1_Tp2";
             this.Skill1_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill1_Tp2.TabIndex = 19;
+            this.Skill1_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill1_Tp3
             // 
-            this.Skill1_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill1_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill1_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_Tp3.FormattingEnabled = true;
@@ -570,10 +576,11 @@
             this.Skill1_Tp3.Name = "Skill1_Tp3";
             this.Skill1_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill1_Tp3.TabIndex = 20;
+            this.Skill1_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill2_Tp3
             // 
-            this.Skill2_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill2_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill2_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_Tp3.FormattingEnabled = true;
@@ -582,10 +589,11 @@
             this.Skill2_Tp3.Name = "Skill2_Tp3";
             this.Skill2_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill2_Tp3.TabIndex = 25;
+            this.Skill2_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill2_Tp2
             // 
-            this.Skill2_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill2_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill2_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_Tp2.FormattingEnabled = true;
@@ -594,10 +602,11 @@
             this.Skill2_Tp2.Name = "Skill2_Tp2";
             this.Skill2_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill2_Tp2.TabIndex = 24;
+            this.Skill2_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill2_Tp1
             // 
-            this.Skill2_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill2_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill2_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_Tp1.FormattingEnabled = true;
@@ -606,10 +615,11 @@
             this.Skill2_Tp1.Name = "Skill2_Tp1";
             this.Skill2_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill2_Tp1.TabIndex = 23;
+            this.Skill2_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill2_Lev
             // 
-            this.Skill2_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill2_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill2_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_Lev.FormattingEnabled = true;
@@ -622,7 +632,7 @@
             // 
             // Skill3_Tp3
             // 
-            this.Skill3_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill3_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill3_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_Tp3.FormattingEnabled = true;
@@ -631,10 +641,11 @@
             this.Skill3_Tp3.Name = "Skill3_Tp3";
             this.Skill3_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill3_Tp3.TabIndex = 30;
+            this.Skill3_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill3_Tp2
             // 
-            this.Skill3_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill3_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill3_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_Tp2.FormattingEnabled = true;
@@ -643,10 +654,11 @@
             this.Skill3_Tp2.Name = "Skill3_Tp2";
             this.Skill3_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill3_Tp2.TabIndex = 29;
+            this.Skill3_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill3_Tp1
             // 
-            this.Skill3_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill3_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill3_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_Tp1.FormattingEnabled = true;
@@ -655,10 +667,11 @@
             this.Skill3_Tp1.Name = "Skill3_Tp1";
             this.Skill3_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill3_Tp1.TabIndex = 28;
+            this.Skill3_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill3_Lev
             // 
-            this.Skill3_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill3_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill3_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_Lev.FormattingEnabled = true;
@@ -671,7 +684,7 @@
             // 
             // Skill4_Tp3
             // 
-            this.Skill4_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill4_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill4_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_Tp3.FormattingEnabled = true;
@@ -680,10 +693,11 @@
             this.Skill4_Tp3.Name = "Skill4_Tp3";
             this.Skill4_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill4_Tp3.TabIndex = 35;
+            this.Skill4_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill4_Tp2
             // 
-            this.Skill4_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill4_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill4_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_Tp2.FormattingEnabled = true;
@@ -692,10 +706,11 @@
             this.Skill4_Tp2.Name = "Skill4_Tp2";
             this.Skill4_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill4_Tp2.TabIndex = 34;
+            this.Skill4_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill4_Tp1
             // 
-            this.Skill4_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill4_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill4_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_Tp1.FormattingEnabled = true;
@@ -704,10 +719,11 @@
             this.Skill4_Tp1.Name = "Skill4_Tp1";
             this.Skill4_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill4_Tp1.TabIndex = 33;
+            this.Skill4_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill4_Lev
             // 
-            this.Skill4_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill4_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill4_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_Lev.FormattingEnabled = true;
@@ -720,7 +736,7 @@
             // 
             // Skill5_Tp3
             // 
-            this.Skill5_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill5_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill5_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_Tp3.FormattingEnabled = true;
@@ -729,10 +745,11 @@
             this.Skill5_Tp3.Name = "Skill5_Tp3";
             this.Skill5_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill5_Tp3.TabIndex = 40;
+            this.Skill5_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill5_Tp2
             // 
-            this.Skill5_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill5_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill5_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_Tp2.FormattingEnabled = true;
@@ -741,10 +758,11 @@
             this.Skill5_Tp2.Name = "Skill5_Tp2";
             this.Skill5_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill5_Tp2.TabIndex = 39;
+            this.Skill5_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill5_Tp1
             // 
-            this.Skill5_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill5_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill5_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_Tp1.FormattingEnabled = true;
@@ -753,10 +771,11 @@
             this.Skill5_Tp1.Name = "Skill5_Tp1";
             this.Skill5_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill5_Tp1.TabIndex = 38;
+            this.Skill5_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill5_Lev
             // 
-            this.Skill5_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill5_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill5_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_Lev.FormattingEnabled = true;
@@ -769,7 +788,7 @@
             // 
             // Skill6_Tp3
             // 
-            this.Skill6_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill6_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill6_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_Tp3.FormattingEnabled = true;
@@ -778,10 +797,11 @@
             this.Skill6_Tp3.Name = "Skill6_Tp3";
             this.Skill6_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill6_Tp3.TabIndex = 45;
+            this.Skill6_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill6_Tp2
             // 
-            this.Skill6_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill6_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill6_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_Tp2.FormattingEnabled = true;
@@ -790,10 +810,11 @@
             this.Skill6_Tp2.Name = "Skill6_Tp2";
             this.Skill6_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill6_Tp2.TabIndex = 44;
+            this.Skill6_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill6_Tp1
             // 
-            this.Skill6_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill6_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill6_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_Tp1.FormattingEnabled = true;
@@ -802,10 +823,11 @@
             this.Skill6_Tp1.Name = "Skill6_Tp1";
             this.Skill6_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill6_Tp1.TabIndex = 43;
+            this.Skill6_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill6_Lev
             // 
-            this.Skill6_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill6_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill6_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_Lev.FormattingEnabled = true;
@@ -818,7 +840,7 @@
             // 
             // Skill7_Tp3
             // 
-            this.Skill7_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill7_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill7_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_Tp3.FormattingEnabled = true;
@@ -827,10 +849,11 @@
             this.Skill7_Tp3.Name = "Skill7_Tp3";
             this.Skill7_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill7_Tp3.TabIndex = 50;
+            this.Skill7_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill7_Tp2
             // 
-            this.Skill7_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill7_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill7_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_Tp2.FormattingEnabled = true;
@@ -839,10 +862,11 @@
             this.Skill7_Tp2.Name = "Skill7_Tp2";
             this.Skill7_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill7_Tp2.TabIndex = 49;
+            this.Skill7_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill7_Tp1
             // 
-            this.Skill7_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill7_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill7_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_Tp1.FormattingEnabled = true;
@@ -851,10 +875,11 @@
             this.Skill7_Tp1.Name = "Skill7_Tp1";
             this.Skill7_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill7_Tp1.TabIndex = 48;
+            this.Skill7_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill7_Lev
             // 
-            this.Skill7_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill7_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill7_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_Lev.FormattingEnabled = true;
@@ -867,7 +892,7 @@
             // 
             // Skill8_Tp3
             // 
-            this.Skill8_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill8_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill8_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_Tp3.FormattingEnabled = true;
@@ -876,10 +901,11 @@
             this.Skill8_Tp3.Name = "Skill8_Tp3";
             this.Skill8_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill8_Tp3.TabIndex = 55;
+            this.Skill8_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill8_Tp2
             // 
-            this.Skill8_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill8_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill8_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_Tp2.FormattingEnabled = true;
@@ -888,10 +914,11 @@
             this.Skill8_Tp2.Name = "Skill8_Tp2";
             this.Skill8_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill8_Tp2.TabIndex = 54;
+            this.Skill8_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill8_Tp1
             // 
-            this.Skill8_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill8_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill8_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_Tp1.FormattingEnabled = true;
@@ -900,10 +927,11 @@
             this.Skill8_Tp1.Name = "Skill8_Tp1";
             this.Skill8_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill8_Tp1.TabIndex = 53;
+            this.Skill8_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill8_Lev
             // 
-            this.Skill8_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill8_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill8_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_Lev.FormattingEnabled = true;
@@ -916,7 +944,7 @@
             // 
             // Skill9_Tp3
             // 
-            this.Skill9_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill9_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill9_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_Tp3.FormattingEnabled = true;
@@ -925,10 +953,11 @@
             this.Skill9_Tp3.Name = "Skill9_Tp3";
             this.Skill9_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill9_Tp3.TabIndex = 60;
+            this.Skill9_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill9_Tp2
             // 
-            this.Skill9_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill9_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill9_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_Tp2.FormattingEnabled = true;
@@ -937,10 +966,11 @@
             this.Skill9_Tp2.Name = "Skill9_Tp2";
             this.Skill9_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill9_Tp2.TabIndex = 59;
+            this.Skill9_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill9_Tp1
             // 
-            this.Skill9_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill9_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill9_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_Tp1.FormattingEnabled = true;
@@ -949,10 +979,11 @@
             this.Skill9_Tp1.Name = "Skill9_Tp1";
             this.Skill9_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill9_Tp1.TabIndex = 58;
+            this.Skill9_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill9_Lev
             // 
-            this.Skill9_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill9_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill9_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_Lev.FormattingEnabled = true;
@@ -965,7 +996,7 @@
             // 
             // Skill10_Tp3
             // 
-            this.Skill10_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill10_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill10_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_Tp3.FormattingEnabled = true;
@@ -974,10 +1005,11 @@
             this.Skill10_Tp3.Name = "Skill10_Tp3";
             this.Skill10_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill10_Tp3.TabIndex = 65;
+            this.Skill10_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill10_Tp2
             // 
-            this.Skill10_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill10_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill10_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_Tp2.FormattingEnabled = true;
@@ -986,10 +1018,11 @@
             this.Skill10_Tp2.Name = "Skill10_Tp2";
             this.Skill10_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill10_Tp2.TabIndex = 64;
+            this.Skill10_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill10_Tp1
             // 
-            this.Skill10_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill10_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill10_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_Tp1.FormattingEnabled = true;
@@ -998,10 +1031,11 @@
             this.Skill10_Tp1.Name = "Skill10_Tp1";
             this.Skill10_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill10_Tp1.TabIndex = 63;
+            this.Skill10_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill10_Lev
             // 
-            this.Skill10_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill10_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill10_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_Lev.FormattingEnabled = true;
@@ -1014,7 +1048,7 @@
             // 
             // Skill1_Name
             // 
-            this.Skill1_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill1_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill1_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_Name.FormattingEnabled = true;
@@ -1027,7 +1061,7 @@
             // 
             // Skill2_Name
             // 
-            this.Skill2_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill2_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill2_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_Name.FormattingEnabled = true;
@@ -1040,7 +1074,7 @@
             // 
             // Skill3_Name
             // 
-            this.Skill3_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill3_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill3_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_Name.FormattingEnabled = true;
@@ -1053,7 +1087,7 @@
             // 
             // Skill4_Name
             // 
-            this.Skill4_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill4_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill4_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_Name.FormattingEnabled = true;
@@ -1066,7 +1100,7 @@
             // 
             // Skill8_Name
             // 
-            this.Skill8_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill8_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill8_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_Name.FormattingEnabled = true;
@@ -1079,7 +1113,7 @@
             // 
             // Skill7_Name
             // 
-            this.Skill7_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill7_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill7_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_Name.FormattingEnabled = true;
@@ -1092,7 +1126,7 @@
             // 
             // Skill6_Name
             // 
-            this.Skill6_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill6_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill6_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_Name.FormattingEnabled = true;
@@ -1105,7 +1139,7 @@
             // 
             // Skill5_Name
             // 
-            this.Skill5_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill5_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill5_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_Name.FormattingEnabled = true;
@@ -1118,7 +1152,7 @@
             // 
             // Skill10_Name
             // 
-            this.Skill10_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill10_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill10_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_Name.FormattingEnabled = true;
@@ -1131,7 +1165,7 @@
             // 
             // Skill9_Name
             // 
-            this.Skill9_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill9_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill9_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_Name.FormattingEnabled = true;
@@ -1236,6 +1270,7 @@
             this.Engraving7_Lev.Name = "Engraving7_Lev";
             this.Engraving7_Lev.Size = new System.Drawing.Size(74, 29);
             this.Engraving7_Lev.TabIndex = 79;
+            this.Engraving7_Lev.SelectedIndexChanged += new System.EventHandler(this.Engraving_Lev_SelectedIndexChanged);
             // 
             // Engraving6_Lev
             // 
@@ -1247,6 +1282,7 @@
             this.Engraving6_Lev.Name = "Engraving6_Lev";
             this.Engraving6_Lev.Size = new System.Drawing.Size(74, 29);
             this.Engraving6_Lev.TabIndex = 77;
+            this.Engraving6_Lev.SelectedIndexChanged += new System.EventHandler(this.Engraving_Lev_SelectedIndexChanged);
             // 
             // Engraving5_Lev
             // 
@@ -1258,6 +1294,7 @@
             this.Engraving5_Lev.Name = "Engraving5_Lev";
             this.Engraving5_Lev.Size = new System.Drawing.Size(74, 29);
             this.Engraving5_Lev.TabIndex = 75;
+            this.Engraving5_Lev.SelectedIndexChanged += new System.EventHandler(this.Engraving_Lev_SelectedIndexChanged);
             // 
             // Engraving4_Lev
             // 
@@ -1269,6 +1306,7 @@
             this.Engraving4_Lev.Name = "Engraving4_Lev";
             this.Engraving4_Lev.Size = new System.Drawing.Size(74, 29);
             this.Engraving4_Lev.TabIndex = 73;
+            this.Engraving4_Lev.SelectedIndexChanged += new System.EventHandler(this.Engraving_Lev_SelectedIndexChanged);
             // 
             // Engraving3_Lev
             // 
@@ -1280,6 +1318,7 @@
             this.Engraving3_Lev.Name = "Engraving3_Lev";
             this.Engraving3_Lev.Size = new System.Drawing.Size(74, 29);
             this.Engraving3_Lev.TabIndex = 71;
+            this.Engraving3_Lev.SelectedIndexChanged += new System.EventHandler(this.Engraving_Lev_SelectedIndexChanged);
             // 
             // Engraving2_Lev
             // 
@@ -1291,6 +1330,7 @@
             this.Engraving2_Lev.Name = "Engraving2_Lev";
             this.Engraving2_Lev.Size = new System.Drawing.Size(74, 29);
             this.Engraving2_Lev.TabIndex = 69;
+            this.Engraving2_Lev.SelectedIndexChanged += new System.EventHandler(this.Engraving_Lev_SelectedIndexChanged);
             // 
             // Engraving1_Lev
             // 
@@ -1302,6 +1342,7 @@
             this.Engraving1_Lev.Name = "Engraving1_Lev";
             this.Engraving1_Lev.Size = new System.Drawing.Size(74, 29);
             this.Engraving1_Lev.TabIndex = 67;
+            this.Engraving1_Lev.SelectedIndexChanged += new System.EventHandler(this.Engraving_Lev_SelectedIndexChanged);
             // 
             // Card3_Name
             // 
@@ -1349,6 +1390,7 @@
             this.Card3_Sets.Name = "Card3_Sets";
             this.Card3_Sets.Size = new System.Drawing.Size(74, 29);
             this.Card3_Sets.TabIndex = 85;
+            this.Card3_Sets.SelectedIndexChanged += new System.EventHandler(this.Card_Sets_SelectedIndexChanged);
             // 
             // Card2_Sets
             // 
@@ -1360,6 +1402,7 @@
             this.Card2_Sets.Name = "Card2_Sets";
             this.Card2_Sets.Size = new System.Drawing.Size(74, 29);
             this.Card2_Sets.TabIndex = 83;
+            this.Card2_Sets.SelectedIndexChanged += new System.EventHandler(this.Card_Sets_SelectedIndexChanged);
             // 
             // Card1_Sets
             // 
@@ -1371,6 +1414,7 @@
             this.Card1_Sets.Name = "Card1_Sets";
             this.Card1_Sets.Size = new System.Drawing.Size(74, 29);
             this.Card1_Sets.TabIndex = 81;
+            this.Card1_Sets.SelectedIndexChanged += new System.EventHandler(this.Card_Sets_SelectedIndexChanged);
             // 
             // Card3_Awakening
             // 
@@ -1382,6 +1426,7 @@
             this.Card3_Awakening.Name = "Card3_Awakening";
             this.Card3_Awakening.Size = new System.Drawing.Size(74, 29);
             this.Card3_Awakening.TabIndex = 88;
+            this.Card3_Awakening.SelectedIndexChanged += new System.EventHandler(this.Card_Awakening_SelectedIndexChanged);
             // 
             // Card2_Awakening
             // 
@@ -1393,6 +1438,7 @@
             this.Card2_Awakening.Name = "Card2_Awakening";
             this.Card2_Awakening.Size = new System.Drawing.Size(74, 29);
             this.Card2_Awakening.TabIndex = 87;
+            this.Card2_Awakening.SelectedIndexChanged += new System.EventHandler(this.Card_Awakening_SelectedIndexChanged);
             // 
             // Card1_Awakening
             // 
@@ -1404,10 +1450,11 @@
             this.Card1_Awakening.Name = "Card1_Awakening";
             this.Card1_Awakening.Size = new System.Drawing.Size(74, 29);
             this.Card1_Awakening.TabIndex = 86;
+            this.Card1_Awakening.SelectedIndexChanged += new System.EventHandler(this.Card_Awakening_SelectedIndexChanged);
             // 
             // Skill15_Name
             // 
-            this.Skill15_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill15_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill15_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_Name.FormattingEnabled = true;
@@ -1420,7 +1467,7 @@
             // 
             // Skill14_Name
             // 
-            this.Skill14_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill14_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill14_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_Name.FormattingEnabled = true;
@@ -1433,7 +1480,7 @@
             // 
             // Skill13_Name
             // 
-            this.Skill13_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill13_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill13_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_Name.FormattingEnabled = true;
@@ -1446,7 +1493,7 @@
             // 
             // Skill12_Name
             // 
-            this.Skill12_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill12_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill12_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_Name.FormattingEnabled = true;
@@ -1459,7 +1506,7 @@
             // 
             // Skill11_Name
             // 
-            this.Skill11_Name.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_Name.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill11_Name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill11_Name.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_Name.FormattingEnabled = true;
@@ -1472,7 +1519,7 @@
             // 
             // Skill15_Tp3
             // 
-            this.Skill15_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill15_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill15_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_Tp3.FormattingEnabled = true;
@@ -1481,10 +1528,11 @@
             this.Skill15_Tp3.Name = "Skill15_Tp3";
             this.Skill15_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill15_Tp3.TabIndex = 113;
+            this.Skill15_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill15_Tp2
             // 
-            this.Skill15_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill15_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill15_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_Tp2.FormattingEnabled = true;
@@ -1493,10 +1541,11 @@
             this.Skill15_Tp2.Name = "Skill15_Tp2";
             this.Skill15_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill15_Tp2.TabIndex = 112;
+            this.Skill15_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill15_Tp1
             // 
-            this.Skill15_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill15_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill15_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_Tp1.FormattingEnabled = true;
@@ -1505,10 +1554,11 @@
             this.Skill15_Tp1.Name = "Skill15_Tp1";
             this.Skill15_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill15_Tp1.TabIndex = 111;
+            this.Skill15_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill15_Lev
             // 
-            this.Skill15_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill15_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill15_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_Lev.FormattingEnabled = true;
@@ -1521,7 +1571,7 @@
             // 
             // Skill14_Tp3
             // 
-            this.Skill14_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill14_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill14_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_Tp3.FormattingEnabled = true;
@@ -1530,10 +1580,11 @@
             this.Skill14_Tp3.Name = "Skill14_Tp3";
             this.Skill14_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill14_Tp3.TabIndex = 108;
+            this.Skill14_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill14_Tp2
             // 
-            this.Skill14_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill14_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill14_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_Tp2.FormattingEnabled = true;
@@ -1542,10 +1593,11 @@
             this.Skill14_Tp2.Name = "Skill14_Tp2";
             this.Skill14_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill14_Tp2.TabIndex = 107;
+            this.Skill14_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill14_Tp1
             // 
-            this.Skill14_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill14_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill14_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_Tp1.FormattingEnabled = true;
@@ -1554,10 +1606,11 @@
             this.Skill14_Tp1.Name = "Skill14_Tp1";
             this.Skill14_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill14_Tp1.TabIndex = 106;
+            this.Skill14_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill14_Lev
             // 
-            this.Skill14_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill14_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill14_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_Lev.FormattingEnabled = true;
@@ -1570,7 +1623,7 @@
             // 
             // Skill13_Tp3
             // 
-            this.Skill13_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill13_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill13_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_Tp3.FormattingEnabled = true;
@@ -1579,10 +1632,11 @@
             this.Skill13_Tp3.Name = "Skill13_Tp3";
             this.Skill13_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill13_Tp3.TabIndex = 103;
+            this.Skill13_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill13_Tp2
             // 
-            this.Skill13_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill13_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill13_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_Tp2.FormattingEnabled = true;
@@ -1591,10 +1645,11 @@
             this.Skill13_Tp2.Name = "Skill13_Tp2";
             this.Skill13_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill13_Tp2.TabIndex = 102;
+            this.Skill13_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill13_Tp1
             // 
-            this.Skill13_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill13_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill13_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_Tp1.FormattingEnabled = true;
@@ -1603,10 +1658,11 @@
             this.Skill13_Tp1.Name = "Skill13_Tp1";
             this.Skill13_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill13_Tp1.TabIndex = 101;
+            this.Skill13_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill13_Lev
             // 
-            this.Skill13_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill13_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill13_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_Lev.FormattingEnabled = true;
@@ -1619,7 +1675,7 @@
             // 
             // Skill12_Tp3
             // 
-            this.Skill12_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill12_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill12_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_Tp3.FormattingEnabled = true;
@@ -1628,10 +1684,11 @@
             this.Skill12_Tp3.Name = "Skill12_Tp3";
             this.Skill12_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill12_Tp3.TabIndex = 98;
+            this.Skill12_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill12_Tp2
             // 
-            this.Skill12_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill12_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill12_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_Tp2.FormattingEnabled = true;
@@ -1640,10 +1697,11 @@
             this.Skill12_Tp2.Name = "Skill12_Tp2";
             this.Skill12_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill12_Tp2.TabIndex = 97;
+            this.Skill12_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill12_Tp1
             // 
-            this.Skill12_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill12_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill12_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_Tp1.FormattingEnabled = true;
@@ -1652,10 +1710,11 @@
             this.Skill12_Tp1.Name = "Skill12_Tp1";
             this.Skill12_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill12_Tp1.TabIndex = 96;
+            this.Skill12_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill12_Lev
             // 
-            this.Skill12_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill12_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill12_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_Lev.FormattingEnabled = true;
@@ -1668,7 +1727,7 @@
             // 
             // Skill11_Tp3
             // 
-            this.Skill11_Tp3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_Tp3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill11_Tp3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill11_Tp3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_Tp3.FormattingEnabled = true;
@@ -1677,10 +1736,11 @@
             this.Skill11_Tp3.Name = "Skill11_Tp3";
             this.Skill11_Tp3.Size = new System.Drawing.Size(140, 29);
             this.Skill11_Tp3.TabIndex = 93;
+            this.Skill11_Tp3.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill11_Tp2
             // 
-            this.Skill11_Tp2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_Tp2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill11_Tp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill11_Tp2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_Tp2.FormattingEnabled = true;
@@ -1689,10 +1749,11 @@
             this.Skill11_Tp2.Name = "Skill11_Tp2";
             this.Skill11_Tp2.Size = new System.Drawing.Size(140, 29);
             this.Skill11_Tp2.TabIndex = 92;
+            this.Skill11_Tp2.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill11_Tp1
             // 
-            this.Skill11_Tp1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_Tp1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill11_Tp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill11_Tp1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_Tp1.FormattingEnabled = true;
@@ -1701,10 +1762,11 @@
             this.Skill11_Tp1.Name = "Skill11_Tp1";
             this.Skill11_Tp1.Size = new System.Drawing.Size(140, 29);
             this.Skill11_Tp1.TabIndex = 91;
+            this.Skill11_Tp1.SelectedIndexChanged += new System.EventHandler(this.Skill_Tp3_SelectedIndexChanged);
             // 
             // Skill11_Lev
             // 
-            this.Skill11_Lev.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_Lev.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Skill11_Lev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Skill11_Lev.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_Lev.FormattingEnabled = true;
@@ -1737,6 +1799,7 @@
             this.Gem1_Lev.Name = "Gem1_Lev";
             this.Gem1_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem1_Lev.TabIndex = 115;
+            this.Gem1_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem1_TargetSkillName
             // 
@@ -1748,6 +1811,7 @@
             this.Gem1_TargetSkillName.Name = "Gem1_TargetSkillName";
             this.Gem1_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem1_TargetSkillName.TabIndex = 116;
+            this.Gem1_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem2_TargetSkillName
             // 
@@ -1759,6 +1823,7 @@
             this.Gem2_TargetSkillName.Name = "Gem2_TargetSkillName";
             this.Gem2_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem2_TargetSkillName.TabIndex = 119;
+            this.Gem2_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem2_Lev
             // 
@@ -1770,6 +1835,7 @@
             this.Gem2_Lev.Name = "Gem2_Lev";
             this.Gem2_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem2_Lev.TabIndex = 118;
+            this.Gem2_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem2_Name
             // 
@@ -1793,6 +1859,7 @@
             this.Gem4_TargetSkillName.Name = "Gem4_TargetSkillName";
             this.Gem4_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem4_TargetSkillName.TabIndex = 125;
+            this.Gem4_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem4_Lev
             // 
@@ -1804,6 +1871,7 @@
             this.Gem4_Lev.Name = "Gem4_Lev";
             this.Gem4_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem4_Lev.TabIndex = 124;
+            this.Gem4_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem4_Name
             // 
@@ -1827,6 +1895,7 @@
             this.Gem3_TargetSkillName.Name = "Gem3_TargetSkillName";
             this.Gem3_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem3_TargetSkillName.TabIndex = 122;
+            this.Gem3_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem3_Lev
             // 
@@ -1838,6 +1907,7 @@
             this.Gem3_Lev.Name = "Gem3_Lev";
             this.Gem3_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem3_Lev.TabIndex = 121;
+            this.Gem3_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem3_Name
             // 
@@ -1861,6 +1931,7 @@
             this.Gem8_TargetSkillName.Name = "Gem8_TargetSkillName";
             this.Gem8_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem8_TargetSkillName.TabIndex = 137;
+            this.Gem8_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem8_Lev
             // 
@@ -1872,6 +1943,7 @@
             this.Gem8_Lev.Name = "Gem8_Lev";
             this.Gem8_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem8_Lev.TabIndex = 136;
+            this.Gem8_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem8_Name
             // 
@@ -1895,6 +1967,7 @@
             this.Gem7_TargetSkillName.Name = "Gem7_TargetSkillName";
             this.Gem7_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem7_TargetSkillName.TabIndex = 134;
+            this.Gem7_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem7_Lev
             // 
@@ -1906,6 +1979,7 @@
             this.Gem7_Lev.Name = "Gem7_Lev";
             this.Gem7_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem7_Lev.TabIndex = 133;
+            this.Gem7_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem7_Name
             // 
@@ -1929,6 +2003,7 @@
             this.Gem6_TargetSkillName.Name = "Gem6_TargetSkillName";
             this.Gem6_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem6_TargetSkillName.TabIndex = 131;
+            this.Gem6_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem6_Lev
             // 
@@ -1940,6 +2015,7 @@
             this.Gem6_Lev.Name = "Gem6_Lev";
             this.Gem6_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem6_Lev.TabIndex = 130;
+            this.Gem6_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem6_Name
             // 
@@ -1963,6 +2039,7 @@
             this.Gem5_TargetSkillName.Name = "Gem5_TargetSkillName";
             this.Gem5_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem5_TargetSkillName.TabIndex = 128;
+            this.Gem5_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem5_Lev
             // 
@@ -1974,6 +2051,7 @@
             this.Gem5_Lev.Name = "Gem5_Lev";
             this.Gem5_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem5_Lev.TabIndex = 127;
+            this.Gem5_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem5_Name
             // 
@@ -1997,6 +2075,7 @@
             this.Gem11_TargetSkillName.Name = "Gem11_TargetSkillName";
             this.Gem11_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem11_TargetSkillName.TabIndex = 146;
+            this.Gem11_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem11_Lev
             // 
@@ -2008,6 +2087,7 @@
             this.Gem11_Lev.Name = "Gem11_Lev";
             this.Gem11_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem11_Lev.TabIndex = 145;
+            this.Gem11_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem11_Name
             // 
@@ -2031,6 +2111,7 @@
             this.Gem10_TargetSkillName.Name = "Gem10_TargetSkillName";
             this.Gem10_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem10_TargetSkillName.TabIndex = 143;
+            this.Gem10_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem10_Lev
             // 
@@ -2042,6 +2123,7 @@
             this.Gem10_Lev.Name = "Gem10_Lev";
             this.Gem10_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem10_Lev.TabIndex = 142;
+            this.Gem10_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem10_Name
             // 
@@ -2065,6 +2147,7 @@
             this.Gem9_TargetSkillName.Name = "Gem9_TargetSkillName";
             this.Gem9_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem9_TargetSkillName.TabIndex = 140;
+            this.Gem9_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem9_Lev
             // 
@@ -2076,6 +2159,7 @@
             this.Gem9_Lev.Name = "Gem9_Lev";
             this.Gem9_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem9_Lev.TabIndex = 139;
+            this.Gem9_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem9_Name
             // 
@@ -2099,6 +2183,7 @@
             this.Gear3_SetsBonusLev.Name = "Gear3_SetsBonusLev";
             this.Gear3_SetsBonusLev.Size = new System.Drawing.Size(197, 29);
             this.Gear3_SetsBonusLev.TabIndex = 155;
+            this.Gear3_SetsBonusLev.SelectedIndexChanged += new System.EventHandler(this.Gear_SetsBonusLev_SelectedIndexChanged);
             // 
             // Gear3_SetsBonus
             // 
@@ -2110,6 +2195,7 @@
             this.Gear3_SetsBonus.Name = "Gear3_SetsBonus";
             this.Gear3_SetsBonus.Size = new System.Drawing.Size(74, 29);
             this.Gear3_SetsBonus.TabIndex = 154;
+            this.Gear3_SetsBonus.SelectedIndexChanged += new System.EventHandler(this.Gear_SetsBonus_SelectedIndexChanged);
             // 
             // Gear3_Name
             // 
@@ -2133,6 +2219,7 @@
             this.Gear2_SetsBonusLev.Name = "Gear2_SetsBonusLev";
             this.Gear2_SetsBonusLev.Size = new System.Drawing.Size(197, 29);
             this.Gear2_SetsBonusLev.TabIndex = 152;
+            this.Gear2_SetsBonusLev.SelectedIndexChanged += new System.EventHandler(this.Gear_SetsBonusLev_SelectedIndexChanged);
             // 
             // Gear2_SetsBonus
             // 
@@ -2144,6 +2231,7 @@
             this.Gear2_SetsBonus.Name = "Gear2_SetsBonus";
             this.Gear2_SetsBonus.Size = new System.Drawing.Size(74, 29);
             this.Gear2_SetsBonus.TabIndex = 151;
+            this.Gear2_SetsBonus.SelectedIndexChanged += new System.EventHandler(this.Gear_SetsBonus_SelectedIndexChanged);
             // 
             // Gear2_Name
             // 
@@ -2167,6 +2255,7 @@
             this.Gear1_SetsBonusLev.Name = "Gear1_SetsBonusLev";
             this.Gear1_SetsBonusLev.Size = new System.Drawing.Size(197, 29);
             this.Gear1_SetsBonusLev.TabIndex = 149;
+            this.Gear1_SetsBonusLev.SelectedIndexChanged += new System.EventHandler(this.Gear_SetsBonusLev_SelectedIndexChanged);
             // 
             // Gear1_SetsBonus
             // 
@@ -2178,6 +2267,7 @@
             this.Gear1_SetsBonus.Name = "Gear1_SetsBonus";
             this.Gear1_SetsBonus.Size = new System.Drawing.Size(74, 29);
             this.Gear1_SetsBonus.TabIndex = 148;
+            this.Gear1_SetsBonus.SelectedIndexChanged += new System.EventHandler(this.Gear_SetsBonus_SelectedIndexChanged);
             // 
             // Gear1_Name
             // 
@@ -2225,20 +2315,21 @@
             this.Buff2_Name.TabIndex = 158;
             this.Buff2_Name.SelectedIndexChanged += new System.EventHandler(this.Buff_Name_SelectedIndexChanged);
             // 
-            // Calculate
+            // DpsCalculate
             // 
-            this.Calculate.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Calculate.Location = new System.Drawing.Point(1778, 470);
-            this.Calculate.Name = "Calculate";
-            this.Calculate.Size = new System.Drawing.Size(276, 57);
-            this.Calculate.TabIndex = 159;
-            this.Calculate.Text = "DPS 계산";
-            this.Calculate.UseVisualStyleBackColor = true;
-            this.Calculate.Click += new System.EventHandler(this.Calculate_Click);
+            this.DpsCalculate.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.DpsCalculate.Location = new System.Drawing.Point(1769, 336);
+            this.DpsCalculate.Name = "DpsCalculate";
+            this.DpsCalculate.Size = new System.Drawing.Size(276, 100);
+            this.DpsCalculate.TabIndex = 159;
+            this.DpsCalculate.Text = "DPS 계산";
+            this.DpsCalculate.UseVisualStyleBackColor = true;
+            this.DpsCalculate.Visible = false;
+            this.DpsCalculate.Click += new System.EventHandler(this.Calculate_Click);
             // 
             // Skill1_DamageBeforeHalf
             // 
-            this.Skill1_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DamageBeforeHalf.Location = new System.Drawing.Point(787, 531);
             this.Skill1_DamageBeforeHalf.Name = "Skill1_DamageBeforeHalf";
@@ -2249,7 +2340,7 @@
             // 
             // Skill1_DamageAfterHalf
             // 
-            this.Skill1_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DamageAfterHalf.Location = new System.Drawing.Point(888, 531);
             this.Skill1_DamageAfterHalf.Name = "Skill1_DamageAfterHalf";
@@ -2260,7 +2351,7 @@
             // 
             // Skill1_DamageHarmonicAvg
             // 
-            this.Skill1_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 531);
             this.Skill1_DamageHarmonicAvg.Name = "Skill1_DamageHarmonicAvg";
@@ -2271,7 +2362,7 @@
             // 
             // Skill1_DamageArithmeticAvg
             // 
-            this.Skill1_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 531);
             this.Skill1_DamageArithmeticAvg.Name = "Skill1_DamageArithmeticAvg";
@@ -2282,7 +2373,7 @@
             // 
             // Skill1_DpsHarmonicAvg
             // 
-            this.Skill1_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 531);
             this.Skill1_DpsHarmonicAvg.Name = "Skill1_DpsHarmonicAvg";
@@ -2293,7 +2384,7 @@
             // 
             // Skill1_DpsArithmeticAvg
             // 
-            this.Skill1_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 531);
             this.Skill1_DpsArithmeticAvg.Name = "Skill1_DpsArithmeticAvg";
@@ -2326,7 +2417,7 @@
             // 
             // Skill2_DpsHarmonicAvg
             // 
-            this.Skill2_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 574);
             this.Skill2_DpsHarmonicAvg.Name = "Skill2_DpsHarmonicAvg";
@@ -2337,7 +2428,7 @@
             // 
             // Skill2_DpsArithmeticAvg
             // 
-            this.Skill2_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 574);
             this.Skill2_DpsArithmeticAvg.Name = "Skill2_DpsArithmeticAvg";
@@ -2348,7 +2439,7 @@
             // 
             // Skill2_DamageHarmonicAvg
             // 
-            this.Skill2_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 574);
             this.Skill2_DamageHarmonicAvg.Name = "Skill2_DamageHarmonicAvg";
@@ -2359,7 +2450,7 @@
             // 
             // Skill2_DamageArithmeticAvg
             // 
-            this.Skill2_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 574);
             this.Skill2_DamageArithmeticAvg.Name = "Skill2_DamageArithmeticAvg";
@@ -2370,7 +2461,7 @@
             // 
             // Skill2_DamageAfterHalf
             // 
-            this.Skill2_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DamageAfterHalf.Location = new System.Drawing.Point(888, 574);
             this.Skill2_DamageAfterHalf.Name = "Skill2_DamageAfterHalf";
@@ -2381,7 +2472,7 @@
             // 
             // Skill2_DamageBeforeHalf
             // 
-            this.Skill2_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DamageBeforeHalf.Location = new System.Drawing.Point(787, 574);
             this.Skill2_DamageBeforeHalf.Name = "Skill2_DamageBeforeHalf";
@@ -2403,7 +2494,7 @@
             // 
             // Skill3_DpsHarmonicAvg
             // 
-            this.Skill3_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 618);
             this.Skill3_DpsHarmonicAvg.Name = "Skill3_DpsHarmonicAvg";
@@ -2414,7 +2505,7 @@
             // 
             // Skill3_DpsArithmeticAvg
             // 
-            this.Skill3_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 618);
             this.Skill3_DpsArithmeticAvg.Name = "Skill3_DpsArithmeticAvg";
@@ -2425,7 +2516,7 @@
             // 
             // Skill3_DamageHarmonicAvg
             // 
-            this.Skill3_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 618);
             this.Skill3_DamageHarmonicAvg.Name = "Skill3_DamageHarmonicAvg";
@@ -2436,7 +2527,7 @@
             // 
             // Skill3_DamageArithmeticAvg
             // 
-            this.Skill3_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 618);
             this.Skill3_DamageArithmeticAvg.Name = "Skill3_DamageArithmeticAvg";
@@ -2447,7 +2538,7 @@
             // 
             // Skill3_DamageAfterHalf
             // 
-            this.Skill3_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DamageAfterHalf.Location = new System.Drawing.Point(888, 618);
             this.Skill3_DamageAfterHalf.Name = "Skill3_DamageAfterHalf";
@@ -2458,7 +2549,7 @@
             // 
             // Skill3_DamageBeforeHalf
             // 
-            this.Skill3_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DamageBeforeHalf.Location = new System.Drawing.Point(787, 618);
             this.Skill3_DamageBeforeHalf.Name = "Skill3_DamageBeforeHalf";
@@ -2480,7 +2571,7 @@
             // 
             // Skill6_DpsHarmonicAvg
             // 
-            this.Skill6_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 751);
             this.Skill6_DpsHarmonicAvg.Name = "Skill6_DpsHarmonicAvg";
@@ -2491,7 +2582,7 @@
             // 
             // Skill6_DpsArithmeticAvg
             // 
-            this.Skill6_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 751);
             this.Skill6_DpsArithmeticAvg.Name = "Skill6_DpsArithmeticAvg";
@@ -2502,7 +2593,7 @@
             // 
             // Skill6_DamageHarmonicAvg
             // 
-            this.Skill6_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 751);
             this.Skill6_DamageHarmonicAvg.Name = "Skill6_DamageHarmonicAvg";
@@ -2513,7 +2604,7 @@
             // 
             // Skill6_DamageArithmeticAvg
             // 
-            this.Skill6_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 751);
             this.Skill6_DamageArithmeticAvg.Name = "Skill6_DamageArithmeticAvg";
@@ -2524,7 +2615,7 @@
             // 
             // Skill6_DamageAfterHalf
             // 
-            this.Skill6_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DamageAfterHalf.Location = new System.Drawing.Point(888, 751);
             this.Skill6_DamageAfterHalf.Name = "Skill6_DamageAfterHalf";
@@ -2535,7 +2626,7 @@
             // 
             // Skill6_DamageBeforeHalf
             // 
-            this.Skill6_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DamageBeforeHalf.Location = new System.Drawing.Point(787, 751);
             this.Skill6_DamageBeforeHalf.Name = "Skill6_DamageBeforeHalf";
@@ -2557,7 +2648,7 @@
             // 
             // Skill5_DpsHarmonicAvg
             // 
-            this.Skill5_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 707);
             this.Skill5_DpsHarmonicAvg.Name = "Skill5_DpsHarmonicAvg";
@@ -2568,7 +2659,7 @@
             // 
             // Skill5_DpsArithmeticAvg
             // 
-            this.Skill5_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 707);
             this.Skill5_DpsArithmeticAvg.Name = "Skill5_DpsArithmeticAvg";
@@ -2579,7 +2670,7 @@
             // 
             // Skill5_DamageHarmonicAvg
             // 
-            this.Skill5_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 707);
             this.Skill5_DamageHarmonicAvg.Name = "Skill5_DamageHarmonicAvg";
@@ -2590,7 +2681,7 @@
             // 
             // Skill5_DamageArithmeticAvg
             // 
-            this.Skill5_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 707);
             this.Skill5_DamageArithmeticAvg.Name = "Skill5_DamageArithmeticAvg";
@@ -2601,7 +2692,7 @@
             // 
             // Skill5_DamageAfterHalf
             // 
-            this.Skill5_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DamageAfterHalf.Location = new System.Drawing.Point(888, 707);
             this.Skill5_DamageAfterHalf.Name = "Skill5_DamageAfterHalf";
@@ -2612,7 +2703,7 @@
             // 
             // Skill5_DamageBeforeHalf
             // 
-            this.Skill5_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DamageBeforeHalf.Location = new System.Drawing.Point(787, 707);
             this.Skill5_DamageBeforeHalf.Name = "Skill5_DamageBeforeHalf";
@@ -2634,7 +2725,7 @@
             // 
             // Skill4_DpsHarmonicAvg
             // 
-            this.Skill4_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 663);
             this.Skill4_DpsHarmonicAvg.Name = "Skill4_DpsHarmonicAvg";
@@ -2645,7 +2736,7 @@
             // 
             // Skill4_DpsArithmeticAvg
             // 
-            this.Skill4_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 663);
             this.Skill4_DpsArithmeticAvg.Name = "Skill4_DpsArithmeticAvg";
@@ -2656,7 +2747,7 @@
             // 
             // Skill4_DamageHarmonicAvg
             // 
-            this.Skill4_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 663);
             this.Skill4_DamageHarmonicAvg.Name = "Skill4_DamageHarmonicAvg";
@@ -2667,7 +2758,7 @@
             // 
             // Skill4_DamageArithmeticAvg
             // 
-            this.Skill4_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 663);
             this.Skill4_DamageArithmeticAvg.Name = "Skill4_DamageArithmeticAvg";
@@ -2678,7 +2769,7 @@
             // 
             // Skill4_DamageAfterHalf
             // 
-            this.Skill4_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DamageAfterHalf.Location = new System.Drawing.Point(888, 663);
             this.Skill4_DamageAfterHalf.Name = "Skill4_DamageAfterHalf";
@@ -2689,7 +2780,7 @@
             // 
             // Skill4_DamageBeforeHalf
             // 
-            this.Skill4_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DamageBeforeHalf.Location = new System.Drawing.Point(787, 663);
             this.Skill4_DamageBeforeHalf.Name = "Skill4_DamageBeforeHalf";
@@ -2711,7 +2802,7 @@
             // 
             // Skill12_DpsHarmonicAvg
             // 
-            this.Skill12_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 1018);
             this.Skill12_DpsHarmonicAvg.Name = "Skill12_DpsHarmonicAvg";
@@ -2722,7 +2813,7 @@
             // 
             // Skill12_DpsArithmeticAvg
             // 
-            this.Skill12_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 1018);
             this.Skill12_DpsArithmeticAvg.Name = "Skill12_DpsArithmeticAvg";
@@ -2733,7 +2824,7 @@
             // 
             // Skill12_DamageHarmonicAvg
             // 
-            this.Skill12_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 1018);
             this.Skill12_DamageHarmonicAvg.Name = "Skill12_DamageHarmonicAvg";
@@ -2744,7 +2835,7 @@
             // 
             // Skill12_DamageArithmeticAvg
             // 
-            this.Skill12_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 1018);
             this.Skill12_DamageArithmeticAvg.Name = "Skill12_DamageArithmeticAvg";
@@ -2755,7 +2846,7 @@
             // 
             // Skill12_DamageAfterHalf
             // 
-            this.Skill12_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DamageAfterHalf.Location = new System.Drawing.Point(888, 1018);
             this.Skill12_DamageAfterHalf.Name = "Skill12_DamageAfterHalf";
@@ -2766,7 +2857,7 @@
             // 
             // Skill12_DamageBeforeHalf
             // 
-            this.Skill12_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DamageBeforeHalf.Location = new System.Drawing.Point(787, 1018);
             this.Skill12_DamageBeforeHalf.Name = "Skill12_DamageBeforeHalf";
@@ -2788,7 +2879,7 @@
             // 
             // Skill11_DpsHarmonicAvg
             // 
-            this.Skill11_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 972);
             this.Skill11_DpsHarmonicAvg.Name = "Skill11_DpsHarmonicAvg";
@@ -2799,7 +2890,7 @@
             // 
             // Skill11_DpsArithmeticAvg
             // 
-            this.Skill11_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 972);
             this.Skill11_DpsArithmeticAvg.Name = "Skill11_DpsArithmeticAvg";
@@ -2810,7 +2901,7 @@
             // 
             // Skill11_DamageHarmonicAvg
             // 
-            this.Skill11_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 972);
             this.Skill11_DamageHarmonicAvg.Name = "Skill11_DamageHarmonicAvg";
@@ -2821,7 +2912,7 @@
             // 
             // Skill11_DamageArithmeticAvg
             // 
-            this.Skill11_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 972);
             this.Skill11_DamageArithmeticAvg.Name = "Skill11_DamageArithmeticAvg";
@@ -2832,7 +2923,7 @@
             // 
             // Skill11_DamageAfterHalf
             // 
-            this.Skill11_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DamageAfterHalf.Location = new System.Drawing.Point(888, 972);
             this.Skill11_DamageAfterHalf.Name = "Skill11_DamageAfterHalf";
@@ -2843,7 +2934,7 @@
             // 
             // Skill11_DamageBeforeHalf
             // 
-            this.Skill11_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DamageBeforeHalf.Location = new System.Drawing.Point(787, 972);
             this.Skill11_DamageBeforeHalf.Name = "Skill11_DamageBeforeHalf";
@@ -2865,7 +2956,7 @@
             // 
             // Skill10_DpsHarmonicAvg
             // 
-            this.Skill10_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 928);
             this.Skill10_DpsHarmonicAvg.Name = "Skill10_DpsHarmonicAvg";
@@ -2876,7 +2967,7 @@
             // 
             // Skill10_DpsArithmeticAvg
             // 
-            this.Skill10_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 928);
             this.Skill10_DpsArithmeticAvg.Name = "Skill10_DpsArithmeticAvg";
@@ -2887,7 +2978,7 @@
             // 
             // Skill10_DamageHarmonicAvg
             // 
-            this.Skill10_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 928);
             this.Skill10_DamageHarmonicAvg.Name = "Skill10_DamageHarmonicAvg";
@@ -2898,7 +2989,7 @@
             // 
             // Skill10_DamageArithmeticAvg
             // 
-            this.Skill10_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 928);
             this.Skill10_DamageArithmeticAvg.Name = "Skill10_DamageArithmeticAvg";
@@ -2909,7 +3000,7 @@
             // 
             // Skill10_DamageAfterHalf
             // 
-            this.Skill10_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DamageAfterHalf.Location = new System.Drawing.Point(888, 928);
             this.Skill10_DamageAfterHalf.Name = "Skill10_DamageAfterHalf";
@@ -2920,7 +3011,7 @@
             // 
             // Skill10_DamageBeforeHalf
             // 
-            this.Skill10_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DamageBeforeHalf.Location = new System.Drawing.Point(787, 928);
             this.Skill10_DamageBeforeHalf.Name = "Skill10_DamageBeforeHalf";
@@ -2942,7 +3033,7 @@
             // 
             // Skill9_DpsHarmonicAvg
             // 
-            this.Skill9_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 883);
             this.Skill9_DpsHarmonicAvg.Name = "Skill9_DpsHarmonicAvg";
@@ -2953,7 +3044,7 @@
             // 
             // Skill9_DpsArithmeticAvg
             // 
-            this.Skill9_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 883);
             this.Skill9_DpsArithmeticAvg.Name = "Skill9_DpsArithmeticAvg";
@@ -2964,7 +3055,7 @@
             // 
             // Skill9_DamageHarmonicAvg
             // 
-            this.Skill9_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 883);
             this.Skill9_DamageHarmonicAvg.Name = "Skill9_DamageHarmonicAvg";
@@ -2975,7 +3066,7 @@
             // 
             // Skill9_DamageArithmeticAvg
             // 
-            this.Skill9_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 883);
             this.Skill9_DamageArithmeticAvg.Name = "Skill9_DamageArithmeticAvg";
@@ -2986,7 +3077,7 @@
             // 
             // Skill9_DamageAfterHalf
             // 
-            this.Skill9_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DamageAfterHalf.Location = new System.Drawing.Point(888, 883);
             this.Skill9_DamageAfterHalf.Name = "Skill9_DamageAfterHalf";
@@ -2997,7 +3088,7 @@
             // 
             // Skill9_DamageBeforeHalf
             // 
-            this.Skill9_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DamageBeforeHalf.Location = new System.Drawing.Point(787, 883);
             this.Skill9_DamageBeforeHalf.Name = "Skill9_DamageBeforeHalf";
@@ -3019,7 +3110,7 @@
             // 
             // Skill8_DpsHarmonicAvg
             // 
-            this.Skill8_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 838);
             this.Skill8_DpsHarmonicAvg.Name = "Skill8_DpsHarmonicAvg";
@@ -3030,7 +3121,7 @@
             // 
             // Skill8_DpsArithmeticAvg
             // 
-            this.Skill8_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 838);
             this.Skill8_DpsArithmeticAvg.Name = "Skill8_DpsArithmeticAvg";
@@ -3041,7 +3132,7 @@
             // 
             // Skill8_DamageHarmonicAvg
             // 
-            this.Skill8_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 838);
             this.Skill8_DamageHarmonicAvg.Name = "Skill8_DamageHarmonicAvg";
@@ -3052,7 +3143,7 @@
             // 
             // Skill8_DamageArithmeticAvg
             // 
-            this.Skill8_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 838);
             this.Skill8_DamageArithmeticAvg.Name = "Skill8_DamageArithmeticAvg";
@@ -3063,7 +3154,7 @@
             // 
             // Skill8_DamageAfterHalf
             // 
-            this.Skill8_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DamageAfterHalf.Location = new System.Drawing.Point(888, 838);
             this.Skill8_DamageAfterHalf.Name = "Skill8_DamageAfterHalf";
@@ -3074,7 +3165,7 @@
             // 
             // Skill8_DamageBeforeHalf
             // 
-            this.Skill8_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DamageBeforeHalf.Location = new System.Drawing.Point(787, 838);
             this.Skill8_DamageBeforeHalf.Name = "Skill8_DamageBeforeHalf";
@@ -3096,7 +3187,7 @@
             // 
             // Skill7_DpsHarmonicAvg
             // 
-            this.Skill7_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 795);
             this.Skill7_DpsHarmonicAvg.Name = "Skill7_DpsHarmonicAvg";
@@ -3107,7 +3198,7 @@
             // 
             // Skill7_DpsArithmeticAvg
             // 
-            this.Skill7_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 795);
             this.Skill7_DpsArithmeticAvg.Name = "Skill7_DpsArithmeticAvg";
@@ -3118,7 +3209,7 @@
             // 
             // Skill7_DamageHarmonicAvg
             // 
-            this.Skill7_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 795);
             this.Skill7_DamageHarmonicAvg.Name = "Skill7_DamageHarmonicAvg";
@@ -3129,7 +3220,7 @@
             // 
             // Skill7_DamageArithmeticAvg
             // 
-            this.Skill7_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 795);
             this.Skill7_DamageArithmeticAvg.Name = "Skill7_DamageArithmeticAvg";
@@ -3140,7 +3231,7 @@
             // 
             // Skill7_DamageAfterHalf
             // 
-            this.Skill7_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DamageAfterHalf.Location = new System.Drawing.Point(888, 795);
             this.Skill7_DamageAfterHalf.Name = "Skill7_DamageAfterHalf";
@@ -3151,7 +3242,7 @@
             // 
             // Skill7_DamageBeforeHalf
             // 
-            this.Skill7_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DamageBeforeHalf.Location = new System.Drawing.Point(787, 795);
             this.Skill7_DamageBeforeHalf.Name = "Skill7_DamageBeforeHalf";
@@ -3173,7 +3264,7 @@
             // 
             // Skill15_DpsHarmonicAvg
             // 
-            this.Skill15_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 1147);
             this.Skill15_DpsHarmonicAvg.Name = "Skill15_DpsHarmonicAvg";
@@ -3184,7 +3275,7 @@
             // 
             // Skill15_DpsArithmeticAvg
             // 
-            this.Skill15_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 1147);
             this.Skill15_DpsArithmeticAvg.Name = "Skill15_DpsArithmeticAvg";
@@ -3195,7 +3286,7 @@
             // 
             // Skill15_DamageHarmonicAvg
             // 
-            this.Skill15_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 1147);
             this.Skill15_DamageHarmonicAvg.Name = "Skill15_DamageHarmonicAvg";
@@ -3206,7 +3297,7 @@
             // 
             // Skill15_DamageArithmeticAvg
             // 
-            this.Skill15_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 1147);
             this.Skill15_DamageArithmeticAvg.Name = "Skill15_DamageArithmeticAvg";
@@ -3217,7 +3308,7 @@
             // 
             // Skill15_DamageAfterHalf
             // 
-            this.Skill15_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DamageAfterHalf.Location = new System.Drawing.Point(888, 1147);
             this.Skill15_DamageAfterHalf.Name = "Skill15_DamageAfterHalf";
@@ -3228,7 +3319,7 @@
             // 
             // Skill15_DamageBeforeHalf
             // 
-            this.Skill15_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DamageBeforeHalf.Location = new System.Drawing.Point(787, 1147);
             this.Skill15_DamageBeforeHalf.Name = "Skill15_DamageBeforeHalf";
@@ -3250,7 +3341,7 @@
             // 
             // Skill14_DpsHarmonicAvg
             // 
-            this.Skill14_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 1104);
             this.Skill14_DpsHarmonicAvg.Name = "Skill14_DpsHarmonicAvg";
@@ -3261,7 +3352,7 @@
             // 
             // Skill14_DpsArithmeticAvg
             // 
-            this.Skill14_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 1104);
             this.Skill14_DpsArithmeticAvg.Name = "Skill14_DpsArithmeticAvg";
@@ -3272,7 +3363,7 @@
             // 
             // Skill14_DamageHarmonicAvg
             // 
-            this.Skill14_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 1104);
             this.Skill14_DamageHarmonicAvg.Name = "Skill14_DamageHarmonicAvg";
@@ -3283,7 +3374,7 @@
             // 
             // Skill14_DamageArithmeticAvg
             // 
-            this.Skill14_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 1104);
             this.Skill14_DamageArithmeticAvg.Name = "Skill14_DamageArithmeticAvg";
@@ -3294,7 +3385,7 @@
             // 
             // Skill14_DamageAfterHalf
             // 
-            this.Skill14_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DamageAfterHalf.Location = new System.Drawing.Point(888, 1104);
             this.Skill14_DamageAfterHalf.Name = "Skill14_DamageAfterHalf";
@@ -3305,7 +3396,7 @@
             // 
             // Skill14_DamageBeforeHalf
             // 
-            this.Skill14_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DamageBeforeHalf.Location = new System.Drawing.Point(787, 1104);
             this.Skill14_DamageBeforeHalf.Name = "Skill14_DamageBeforeHalf";
@@ -3327,7 +3418,7 @@
             // 
             // Skill13_DpsHarmonicAvg
             // 
-            this.Skill13_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DpsHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DpsHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DpsHarmonicAvg.Location = new System.Drawing.Point(1383, 1060);
             this.Skill13_DpsHarmonicAvg.Name = "Skill13_DpsHarmonicAvg";
@@ -3338,7 +3429,7 @@
             // 
             // Skill13_DpsArithmeticAvg
             // 
-            this.Skill13_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DpsArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DpsArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DpsArithmeticAvg.Location = new System.Drawing.Point(1282, 1060);
             this.Skill13_DpsArithmeticAvg.Name = "Skill13_DpsArithmeticAvg";
@@ -3349,7 +3440,7 @@
             // 
             // Skill13_DamageHarmonicAvg
             // 
-            this.Skill13_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DamageHarmonicAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DamageHarmonicAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DamageHarmonicAvg.Location = new System.Drawing.Point(1095, 1060);
             this.Skill13_DamageHarmonicAvg.Name = "Skill13_DamageHarmonicAvg";
@@ -3360,7 +3451,7 @@
             // 
             // Skill13_DamageArithmeticAvg
             // 
-            this.Skill13_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DamageArithmeticAvg.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DamageArithmeticAvg.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DamageArithmeticAvg.Location = new System.Drawing.Point(994, 1060);
             this.Skill13_DamageArithmeticAvg.Name = "Skill13_DamageArithmeticAvg";
@@ -3371,7 +3462,7 @@
             // 
             // Skill13_DamageAfterHalf
             // 
-            this.Skill13_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DamageAfterHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DamageAfterHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DamageAfterHalf.Location = new System.Drawing.Point(888, 1060);
             this.Skill13_DamageAfterHalf.Name = "Skill13_DamageAfterHalf";
@@ -3382,7 +3473,7 @@
             // 
             // Skill13_DamageBeforeHalf
             // 
-            this.Skill13_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DamageBeforeHalf.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DamageBeforeHalf.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DamageBeforeHalf.Location = new System.Drawing.Point(787, 1060);
             this.Skill13_DamageBeforeHalf.Name = "Skill13_DamageBeforeHalf";
@@ -3393,7 +3484,7 @@
             // 
             // Skill15_CooldownTime
             // 
-            this.Skill15_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_CooldownTime.Location = new System.Drawing.Point(1570, 1147);
             this.Skill15_CooldownTime.Name = "Skill15_CooldownTime";
@@ -3404,7 +3495,7 @@
             // 
             // Skill14_CooldownTime
             // 
-            this.Skill14_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_CooldownTime.Location = new System.Drawing.Point(1570, 1104);
             this.Skill14_CooldownTime.Name = "Skill14_CooldownTime";
@@ -3415,7 +3506,7 @@
             // 
             // Skill13_CooldownTime
             // 
-            this.Skill13_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_CooldownTime.Location = new System.Drawing.Point(1570, 1060);
             this.Skill13_CooldownTime.Name = "Skill13_CooldownTime";
@@ -3426,7 +3517,7 @@
             // 
             // Skill12_CooldownTime
             // 
-            this.Skill12_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_CooldownTime.Location = new System.Drawing.Point(1570, 1018);
             this.Skill12_CooldownTime.Name = "Skill12_CooldownTime";
@@ -3437,7 +3528,7 @@
             // 
             // Skill11_CooldownTime
             // 
-            this.Skill11_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_CooldownTime.Location = new System.Drawing.Point(1570, 972);
             this.Skill11_CooldownTime.Name = "Skill11_CooldownTime";
@@ -3448,7 +3539,7 @@
             // 
             // Skill10_CooldownTime
             // 
-            this.Skill10_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_CooldownTime.Location = new System.Drawing.Point(1570, 928);
             this.Skill10_CooldownTime.Name = "Skill10_CooldownTime";
@@ -3459,7 +3550,7 @@
             // 
             // Skill9_CooldownTime
             // 
-            this.Skill9_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_CooldownTime.Location = new System.Drawing.Point(1570, 883);
             this.Skill9_CooldownTime.Name = "Skill9_CooldownTime";
@@ -3470,7 +3561,7 @@
             // 
             // Skill8_CooldownTime
             // 
-            this.Skill8_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_CooldownTime.Location = new System.Drawing.Point(1570, 838);
             this.Skill8_CooldownTime.Name = "Skill8_CooldownTime";
@@ -3481,7 +3572,7 @@
             // 
             // Skill7_CooldownTime
             // 
-            this.Skill7_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_CooldownTime.Location = new System.Drawing.Point(1570, 795);
             this.Skill7_CooldownTime.Name = "Skill7_CooldownTime";
@@ -3492,7 +3583,7 @@
             // 
             // Skill6_CooldownTime
             // 
-            this.Skill6_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_CooldownTime.Location = new System.Drawing.Point(1570, 751);
             this.Skill6_CooldownTime.Name = "Skill6_CooldownTime";
@@ -3503,7 +3594,7 @@
             // 
             // Skill5_CooldownTime
             // 
-            this.Skill5_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_CooldownTime.Location = new System.Drawing.Point(1570, 707);
             this.Skill5_CooldownTime.Name = "Skill5_CooldownTime";
@@ -3514,7 +3605,7 @@
             // 
             // Skill4_CooldownTime
             // 
-            this.Skill4_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_CooldownTime.Location = new System.Drawing.Point(1570, 663);
             this.Skill4_CooldownTime.Name = "Skill4_CooldownTime";
@@ -3525,7 +3616,7 @@
             // 
             // Skill3_CooldownTime
             // 
-            this.Skill3_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_CooldownTime.Location = new System.Drawing.Point(1570, 618);
             this.Skill3_CooldownTime.Name = "Skill3_CooldownTime";
@@ -3536,7 +3627,7 @@
             // 
             // Skill2_CooldownTime
             // 
-            this.Skill2_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_CooldownTime.Location = new System.Drawing.Point(1570, 574);
             this.Skill2_CooldownTime.Name = "Skill2_CooldownTime";
@@ -3547,7 +3638,7 @@
             // 
             // Skill1_CooldownTime
             // 
-            this.Skill1_CooldownTime.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_CooldownTime.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_CooldownTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_CooldownTime.Location = new System.Drawing.Point(1570, 531);
             this.Skill1_CooldownTime.Name = "Skill1_CooldownTime";
@@ -3559,7 +3650,7 @@
             // Preset1_Save
             // 
             this.Preset1_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset1_Save.Location = new System.Drawing.Point(1802, 690);
+            this.Preset1_Save.Location = new System.Drawing.Point(2078, 84);
             this.Preset1_Save.Name = "Preset1_Save";
             this.Preset1_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset1_Save.TabIndex = 282;
@@ -3630,9 +3721,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label1.BackColor = System.Drawing.SystemColors.Menu;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(27, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 30);
@@ -3642,9 +3733,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label2.BackColor = System.Drawing.SystemColors.Menu;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(27, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 30);
@@ -3654,9 +3745,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label3.BackColor = System.Drawing.SystemColors.Menu;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(27, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 30);
@@ -3666,9 +3757,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label4.BackColor = System.Drawing.SystemColors.Menu;
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(22, 248);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 30);
@@ -3678,9 +3769,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label5.BackColor = System.Drawing.SystemColors.Menu;
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(22, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 30);
@@ -3690,9 +3781,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label6.BackColor = System.Drawing.SystemColors.Menu;
             this.label6.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(22, 178);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 30);
@@ -3702,9 +3793,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label7.BackColor = System.Drawing.SystemColors.Menu;
             this.label7.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(22, 353);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 30);
@@ -3714,9 +3805,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label8.BackColor = System.Drawing.SystemColors.Menu;
             this.label8.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(22, 319);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 30);
@@ -3726,9 +3817,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label9.BackColor = System.Drawing.SystemColors.Menu;
             this.label9.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(22, 283);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 30);
@@ -3738,9 +3829,9 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label10.BackColor = System.Drawing.SystemColors.Menu;
             this.label10.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(22, 388);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 30);
@@ -3750,9 +3841,9 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label11.BackColor = System.Drawing.SystemColors.Menu;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(356, 389);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 30);
@@ -3762,9 +3853,9 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label12.BackColor = System.Drawing.SystemColors.Menu;
             this.label12.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(356, 354);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 30);
@@ -3774,9 +3865,9 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label13.BackColor = System.Drawing.SystemColors.Menu;
             this.label13.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label13.ForeColor = System.Drawing.Color.Black;
             this.label13.Location = new System.Drawing.Point(363, 320);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(67, 30);
@@ -3786,9 +3877,9 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label14.BackColor = System.Drawing.SystemColors.Menu;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(363, 284);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 30);
@@ -3798,9 +3889,9 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label15.BackColor = System.Drawing.SystemColors.Menu;
             this.label15.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(363, 249);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(67, 30);
@@ -3810,9 +3901,9 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label16.BackColor = System.Drawing.SystemColors.Menu;
             this.label16.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(363, 215);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(67, 30);
@@ -3822,9 +3913,9 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label17.BackColor = System.Drawing.SystemColors.Menu;
             this.label17.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(363, 179);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(67, 30);
@@ -3834,9 +3925,9 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label18.BackColor = System.Drawing.SystemColors.Menu;
             this.label18.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label18.ForeColor = System.Drawing.Color.Black;
             this.label18.Location = new System.Drawing.Point(363, 144);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(67, 30);
@@ -3846,9 +3937,9 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label19.BackColor = System.Drawing.SystemColors.Menu;
             this.label19.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.Location = new System.Drawing.Point(363, 108);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(67, 30);
@@ -3858,9 +3949,9 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label20.BackColor = System.Drawing.SystemColors.Menu;
             this.label20.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label20.ForeColor = System.Drawing.Color.Black;
             this.label20.Location = new System.Drawing.Point(363, 74);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 30);
@@ -3870,9 +3961,9 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label21.BackColor = System.Drawing.SystemColors.Menu;
             this.label21.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label21.ForeColor = System.Drawing.Color.Black;
             this.label21.Location = new System.Drawing.Point(363, 38);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(67, 30);
@@ -3882,9 +3973,9 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label22.BackColor = System.Drawing.SystemColors.Menu;
             this.label22.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label22.ForeColor = System.Drawing.Color.Black;
             this.label22.Location = new System.Drawing.Point(1485, 41);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(104, 30);
@@ -3894,9 +3985,9 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label23.BackColor = System.Drawing.SystemColors.Menu;
             this.label23.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label23.ForeColor = System.Drawing.Color.Black;
             this.label23.Location = new System.Drawing.Point(1485, 199);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(104, 30);
@@ -3906,9 +3997,9 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label24.BackColor = System.Drawing.SystemColors.Menu;
             this.label24.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label24.ForeColor = System.Drawing.Color.Black;
             this.label24.Location = new System.Drawing.Point(1485, 355);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(104, 30);
@@ -3918,9 +4009,9 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label25.BackColor = System.Drawing.SystemColors.Menu;
             this.label25.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label25.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label25.ForeColor = System.Drawing.Color.Black;
             this.label25.Location = new System.Drawing.Point(1827, 41);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(153, 30);
@@ -3930,9 +4021,9 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label27.BackColor = System.Drawing.SystemColors.Menu;
             this.label27.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label27.ForeColor = System.Drawing.Color.Black;
             this.label27.Location = new System.Drawing.Point(858, 473);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(58, 21);
@@ -3942,9 +4033,9 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label31.BackColor = System.Drawing.SystemColors.Menu;
             this.label31.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label31.ForeColor = System.Drawing.Color.Black;
             this.label31.Location = new System.Drawing.Point(806, 501);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(64, 21);
@@ -3954,9 +4045,9 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label32.BackColor = System.Drawing.SystemColors.Menu;
             this.label32.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label32.ForeColor = System.Drawing.Color.Black;
             this.label32.Location = new System.Drawing.Point(906, 501);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(64, 21);
@@ -3966,9 +4057,9 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label28.BackColor = System.Drawing.SystemColors.Menu;
             this.label28.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label28.ForeColor = System.Drawing.Color.Black;
             this.label28.Location = new System.Drawing.Point(1104, 501);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(80, 21);
@@ -3978,9 +4069,9 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label29.BackColor = System.Drawing.SystemColors.Menu;
             this.label29.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label29.ForeColor = System.Drawing.Color.Black;
             this.label29.Location = new System.Drawing.Point(1005, 501);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(80, 21);
@@ -3990,9 +4081,9 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label30.BackColor = System.Drawing.SystemColors.Menu;
             this.label30.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label30.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label30.ForeColor = System.Drawing.Color.Black;
             this.label30.Location = new System.Drawing.Point(1086, 473);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(96, 21);
@@ -4002,9 +4093,9 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label36.BackColor = System.Drawing.SystemColors.Menu;
             this.label36.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label36.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label36.ForeColor = System.Drawing.Color.Black;
             this.label36.Location = new System.Drawing.Point(1574, 488);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(58, 21);
@@ -4014,9 +4105,9 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label37.BackColor = System.Drawing.SystemColors.Menu;
             this.label37.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label37.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label37.ForeColor = System.Drawing.Color.Black;
             this.label37.Location = new System.Drawing.Point(404, 473);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(80, 21);
@@ -4026,9 +4117,9 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label38.BackColor = System.Drawing.SystemColors.Menu;
             this.label38.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label38.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label38.ForeColor = System.Drawing.Color.Black;
             this.label38.Location = new System.Drawing.Point(159, 501);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(58, 21);
@@ -4038,9 +4129,9 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label39.BackColor = System.Drawing.SystemColors.Menu;
             this.label39.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label39.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label39.ForeColor = System.Drawing.Color.Black;
             this.label39.Location = new System.Drawing.Point(294, 501);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(42, 21);
@@ -4050,9 +4141,9 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label40.BackColor = System.Drawing.SystemColors.Menu;
             this.label40.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label40.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label40.ForeColor = System.Drawing.Color.Black;
             this.label40.Location = new System.Drawing.Point(384, 501);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(89, 21);
@@ -4062,9 +4153,9 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label41.BackColor = System.Drawing.SystemColors.Menu;
             this.label41.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label41.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label41.ForeColor = System.Drawing.Color.Black;
             this.label41.Location = new System.Drawing.Point(527, 501);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(89, 21);
@@ -4074,71 +4165,21 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label42.BackColor = System.Drawing.SystemColors.Menu;
             this.label42.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label42.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label42.ForeColor = System.Drawing.Color.Black;
             this.label42.Location = new System.Drawing.Point(667, 501);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(89, 21);
             this.label42.TabIndex = 339;
             this.label42.Text = "트포 3단계";
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::LoaCalc.Properties.Resources.SkillSetting_Topbar;
-            this.pictureBox6.Location = new System.Drawing.Point(96, 470);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(685, 57);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 333;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::LoaCalc.Properties.Resources.SkillDps_Topbar2;
-            this.pictureBox3.Location = new System.Drawing.Point(1282, 470);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(282, 57);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 326;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::LoaCalc.Properties.Resources.SkillDamageAvg_Topbar2;
-            this.pictureBox2.Location = new System.Drawing.Point(994, 470);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(282, 57);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 322;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LoaCalc.Properties.Resources.SkillDamage_Topbar;
-            this.pictureBox1.Location = new System.Drawing.Point(787, 470);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(201, 57);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 318;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::LoaCalc.Properties.Resources.whiteLineBoxShort2;
-            this.pictureBox4.Location = new System.Drawing.Point(1570, 470);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(65, 57);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 330;
-            this.pictureBox4.TabStop = false;
-            // 
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label43.BackColor = System.Drawing.SystemColors.Menu;
             this.label43.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label43.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label43.ForeColor = System.Drawing.Color.Black;
             this.label43.Location = new System.Drawing.Point(19, 659);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(67, 30);
@@ -4148,9 +4189,9 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label44.BackColor = System.Drawing.SystemColors.Menu;
             this.label44.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label44.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label44.ForeColor = System.Drawing.Color.Black;
             this.label44.Location = new System.Drawing.Point(19, 614);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(67, 30);
@@ -4160,9 +4201,9 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label45.BackColor = System.Drawing.SystemColors.Menu;
             this.label45.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label45.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label45.ForeColor = System.Drawing.Color.Black;
             this.label45.Location = new System.Drawing.Point(19, 571);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(67, 30);
@@ -4172,9 +4213,9 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label46.BackColor = System.Drawing.SystemColors.Menu;
             this.label46.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label46.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label46.ForeColor = System.Drawing.Color.Black;
             this.label46.Location = new System.Drawing.Point(19, 527);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(67, 30);
@@ -4184,9 +4225,9 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label47.BackColor = System.Drawing.SystemColors.Menu;
             this.label47.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label47.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label47.ForeColor = System.Drawing.Color.Black;
             this.label47.Location = new System.Drawing.Point(19, 879);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(67, 30);
@@ -4196,9 +4237,9 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label48.BackColor = System.Drawing.SystemColors.Menu;
             this.label48.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label48.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label48.ForeColor = System.Drawing.Color.Black;
             this.label48.Location = new System.Drawing.Point(19, 833);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(67, 30);
@@ -4208,9 +4249,9 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label49.BackColor = System.Drawing.SystemColors.Menu;
             this.label49.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label49.ForeColor = System.Drawing.Color.Black;
             this.label49.Location = new System.Drawing.Point(19, 790);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(67, 30);
@@ -4220,9 +4261,9 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label50.BackColor = System.Drawing.SystemColors.Menu;
             this.label50.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label50.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label50.ForeColor = System.Drawing.Color.Black;
             this.label50.Location = new System.Drawing.Point(19, 747);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(67, 30);
@@ -4232,9 +4273,9 @@
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label51.BackColor = System.Drawing.SystemColors.Menu;
             this.label51.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label51.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label51.ForeColor = System.Drawing.Color.Black;
             this.label51.Location = new System.Drawing.Point(19, 703);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(67, 30);
@@ -4244,9 +4285,9 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label52.BackColor = System.Drawing.SystemColors.Menu;
             this.label52.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label52.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label52.ForeColor = System.Drawing.Color.Black;
             this.label52.Location = new System.Drawing.Point(13, 1057);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(79, 30);
@@ -4256,9 +4297,9 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label53.BackColor = System.Drawing.SystemColors.Menu;
             this.label53.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label53.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label53.ForeColor = System.Drawing.Color.Black;
             this.label53.Location = new System.Drawing.Point(13, 1014);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(79, 30);
@@ -4268,9 +4309,9 @@
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label54.BackColor = System.Drawing.SystemColors.Menu;
             this.label54.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label54.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label54.ForeColor = System.Drawing.Color.Black;
             this.label54.Location = new System.Drawing.Point(13, 970);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(79, 30);
@@ -4280,9 +4321,9 @@
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label55.BackColor = System.Drawing.SystemColors.Menu;
             this.label55.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label55.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label55.ForeColor = System.Drawing.Color.Black;
             this.label55.Location = new System.Drawing.Point(13, 925);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(79, 30);
@@ -4292,9 +4333,9 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label56.BackColor = System.Drawing.SystemColors.Menu;
             this.label56.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label56.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label56.ForeColor = System.Drawing.Color.Black;
             this.label56.Location = new System.Drawing.Point(13, 1144);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(79, 30);
@@ -4304,9 +4345,9 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label57.BackColor = System.Drawing.SystemColors.Menu;
             this.label57.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label57.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label57.ForeColor = System.Drawing.Color.Black;
             this.label57.Location = new System.Drawing.Point(13, 1101);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(79, 30);
@@ -4316,9 +4357,9 @@
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label58.BackColor = System.Drawing.SystemColors.Menu;
             this.label58.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label58.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label58.ForeColor = System.Drawing.Color.Black;
             this.label58.Location = new System.Drawing.Point(841, 144);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(79, 30);
@@ -4328,9 +4369,9 @@
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label59.BackColor = System.Drawing.SystemColors.Menu;
             this.label59.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label59.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label59.ForeColor = System.Drawing.Color.Black;
             this.label59.Location = new System.Drawing.Point(841, 108);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(79, 30);
@@ -4340,9 +4381,9 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label60.BackColor = System.Drawing.SystemColors.Menu;
             this.label60.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label60.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label60.ForeColor = System.Drawing.Color.Black;
             this.label60.Location = new System.Drawing.Point(841, 74);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(79, 30);
@@ -4352,9 +4393,9 @@
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label61.BackColor = System.Drawing.SystemColors.Menu;
             this.label61.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label61.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label61.ForeColor = System.Drawing.Color.Black;
             this.label61.Location = new System.Drawing.Point(841, 38);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(79, 30);
@@ -4364,9 +4405,9 @@
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label62.BackColor = System.Drawing.SystemColors.Menu;
             this.label62.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label62.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label62.ForeColor = System.Drawing.Color.Black;
             this.label62.Location = new System.Drawing.Point(841, 389);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(79, 30);
@@ -4376,9 +4417,9 @@
             // label63
             // 
             this.label63.AutoSize = true;
-            this.label63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label63.BackColor = System.Drawing.SystemColors.Menu;
             this.label63.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label63.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label63.ForeColor = System.Drawing.Color.Black;
             this.label63.Location = new System.Drawing.Point(841, 354);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(79, 30);
@@ -4388,9 +4429,9 @@
             // label64
             // 
             this.label64.AutoSize = true;
-            this.label64.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label64.BackColor = System.Drawing.SystemColors.Menu;
             this.label64.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label64.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label64.ForeColor = System.Drawing.Color.Black;
             this.label64.Location = new System.Drawing.Point(841, 320);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(79, 30);
@@ -4400,9 +4441,9 @@
             // label65
             // 
             this.label65.AutoSize = true;
-            this.label65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label65.BackColor = System.Drawing.SystemColors.Menu;
             this.label65.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label65.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label65.ForeColor = System.Drawing.Color.Black;
             this.label65.Location = new System.Drawing.Point(841, 284);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(79, 30);
@@ -4412,9 +4453,9 @@
             // label66
             // 
             this.label66.AutoSize = true;
-            this.label66.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label66.BackColor = System.Drawing.SystemColors.Menu;
             this.label66.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label66.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label66.ForeColor = System.Drawing.Color.Black;
             this.label66.Location = new System.Drawing.Point(841, 249);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(79, 30);
@@ -4424,9 +4465,9 @@
             // label67
             // 
             this.label67.AutoSize = true;
-            this.label67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label67.BackColor = System.Drawing.SystemColors.Menu;
             this.label67.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label67.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label67.ForeColor = System.Drawing.Color.Black;
             this.label67.Location = new System.Drawing.Point(841, 215);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(79, 30);
@@ -4436,9 +4477,9 @@
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label68.BackColor = System.Drawing.SystemColors.Menu;
             this.label68.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label68.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label68.ForeColor = System.Drawing.Color.Black;
             this.label68.Location = new System.Drawing.Point(841, 179);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(79, 30);
@@ -4455,6 +4496,7 @@
             this.Gem22_TargetSkillName.Name = "Gem22_TargetSkillName";
             this.Gem22_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem22_TargetSkillName.TabIndex = 387;
+            this.Gem22_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem22_Lev
             // 
@@ -4466,6 +4508,7 @@
             this.Gem22_Lev.Name = "Gem22_Lev";
             this.Gem22_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem22_Lev.TabIndex = 386;
+            this.Gem22_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem22_Name
             // 
@@ -4489,6 +4532,7 @@
             this.Gem21_TargetSkillName.Name = "Gem21_TargetSkillName";
             this.Gem21_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem21_TargetSkillName.TabIndex = 384;
+            this.Gem21_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem21_Lev
             // 
@@ -4500,6 +4544,7 @@
             this.Gem21_Lev.Name = "Gem21_Lev";
             this.Gem21_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem21_Lev.TabIndex = 383;
+            this.Gem21_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem21_Name
             // 
@@ -4523,6 +4568,7 @@
             this.Gem20_TargetSkillName.Name = "Gem20_TargetSkillName";
             this.Gem20_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem20_TargetSkillName.TabIndex = 381;
+            this.Gem20_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem20_Lev
             // 
@@ -4534,6 +4580,7 @@
             this.Gem20_Lev.Name = "Gem20_Lev";
             this.Gem20_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem20_Lev.TabIndex = 380;
+            this.Gem20_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem20_Name
             // 
@@ -4557,6 +4604,7 @@
             this.Gem19_TargetSkillName.Name = "Gem19_TargetSkillName";
             this.Gem19_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem19_TargetSkillName.TabIndex = 378;
+            this.Gem19_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem19_Lev
             // 
@@ -4568,6 +4616,7 @@
             this.Gem19_Lev.Name = "Gem19_Lev";
             this.Gem19_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem19_Lev.TabIndex = 377;
+            this.Gem19_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem19_Name
             // 
@@ -4591,6 +4640,7 @@
             this.Gem18_TargetSkillName.Name = "Gem18_TargetSkillName";
             this.Gem18_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem18_TargetSkillName.TabIndex = 375;
+            this.Gem18_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem18_Lev
             // 
@@ -4602,6 +4652,7 @@
             this.Gem18_Lev.Name = "Gem18_Lev";
             this.Gem18_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem18_Lev.TabIndex = 374;
+            this.Gem18_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem18_Name
             // 
@@ -4625,6 +4676,7 @@
             this.Gem17_TargetSkillName.Name = "Gem17_TargetSkillName";
             this.Gem17_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem17_TargetSkillName.TabIndex = 372;
+            this.Gem17_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem17_Lev
             // 
@@ -4636,6 +4688,7 @@
             this.Gem17_Lev.Name = "Gem17_Lev";
             this.Gem17_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem17_Lev.TabIndex = 371;
+            this.Gem17_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem17_Name
             // 
@@ -4659,6 +4712,7 @@
             this.Gem16_TargetSkillName.Name = "Gem16_TargetSkillName";
             this.Gem16_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem16_TargetSkillName.TabIndex = 369;
+            this.Gem16_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem16_Lev
             // 
@@ -4670,6 +4724,7 @@
             this.Gem16_Lev.Name = "Gem16_Lev";
             this.Gem16_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem16_Lev.TabIndex = 368;
+            this.Gem16_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem16_Name
             // 
@@ -4693,6 +4748,7 @@
             this.Gem15_TargetSkillName.Name = "Gem15_TargetSkillName";
             this.Gem15_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem15_TargetSkillName.TabIndex = 366;
+            this.Gem15_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem15_Lev
             // 
@@ -4704,6 +4760,7 @@
             this.Gem15_Lev.Name = "Gem15_Lev";
             this.Gem15_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem15_Lev.TabIndex = 365;
+            this.Gem15_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem15_Name
             // 
@@ -4727,6 +4784,7 @@
             this.Gem14_TargetSkillName.Name = "Gem14_TargetSkillName";
             this.Gem14_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem14_TargetSkillName.TabIndex = 363;
+            this.Gem14_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem14_Lev
             // 
@@ -4738,6 +4796,7 @@
             this.Gem14_Lev.Name = "Gem14_Lev";
             this.Gem14_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem14_Lev.TabIndex = 362;
+            this.Gem14_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem14_Name
             // 
@@ -4761,6 +4820,7 @@
             this.Gem13_TargetSkillName.Name = "Gem13_TargetSkillName";
             this.Gem13_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem13_TargetSkillName.TabIndex = 360;
+            this.Gem13_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem13_Lev
             // 
@@ -4772,6 +4832,7 @@
             this.Gem13_Lev.Name = "Gem13_Lev";
             this.Gem13_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem13_Lev.TabIndex = 359;
+            this.Gem13_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem13_Name
             // 
@@ -4795,6 +4856,7 @@
             this.Gem12_TargetSkillName.Name = "Gem12_TargetSkillName";
             this.Gem12_TargetSkillName.Size = new System.Drawing.Size(192, 29);
             this.Gem12_TargetSkillName.TabIndex = 357;
+            this.Gem12_TargetSkillName.SelectedIndexChanged += new System.EventHandler(this.Gem_TargetSkillName_SelectedIndexChanged);
             // 
             // Gem12_Lev
             // 
@@ -4806,6 +4868,7 @@
             this.Gem12_Lev.Name = "Gem12_Lev";
             this.Gem12_Lev.Size = new System.Drawing.Size(74, 29);
             this.Gem12_Lev.TabIndex = 356;
+            this.Gem12_Lev.SelectedIndexChanged += new System.EventHandler(this.Gem_Lev_SelectedIndexChanged);
             // 
             // Gem12_Name
             // 
@@ -4822,7 +4885,7 @@
             // ResetSetting
             // 
             this.ResetSetting.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ResetSetting.Location = new System.Drawing.Point(1802, 615);
+            this.ResetSetting.Location = new System.Drawing.Point(2078, 20);
             this.ResetSetting.Name = "ResetSetting";
             this.ResetSetting.Size = new System.Drawing.Size(226, 33);
             this.ResetSetting.TabIndex = 399;
@@ -4833,19 +4896,19 @@
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label69.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label69.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label69.Location = new System.Drawing.Point(1860, 657);
+            this.label69.BackColor = System.Drawing.SystemColors.Menu;
+            this.label69.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label69.ForeColor = System.Drawing.Color.Black;
+            this.label69.Location = new System.Drawing.Point(2136, 59);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(116, 30);
+            this.label69.Size = new System.Drawing.Size(106, 25);
             this.label69.TabIndex = 400;
             this.label69.Text = "1번 프리셋";
             // 
             // Preset1_Load
             // 
             this.Preset1_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset1_Load.Location = new System.Drawing.Point(1918, 690);
+            this.Preset1_Load.Location = new System.Drawing.Point(2194, 84);
             this.Preset1_Load.Name = "Preset1_Load";
             this.Preset1_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset1_Load.TabIndex = 401;
@@ -4856,7 +4919,7 @@
             // Preset2_Load
             // 
             this.Preset2_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset2_Load.Location = new System.Drawing.Point(1918, 765);
+            this.Preset2_Load.Location = new System.Drawing.Point(2194, 150);
             this.Preset2_Load.Name = "Preset2_Load";
             this.Preset2_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset2_Load.TabIndex = 404;
@@ -4867,19 +4930,19 @@
             // label70
             // 
             this.label70.AutoSize = true;
-            this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label70.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label70.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label70.Location = new System.Drawing.Point(1860, 733);
+            this.label70.BackColor = System.Drawing.SystemColors.Menu;
+            this.label70.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label70.ForeColor = System.Drawing.Color.Black;
+            this.label70.Location = new System.Drawing.Point(2136, 124);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(116, 30);
+            this.label70.Size = new System.Drawing.Size(106, 25);
             this.label70.TabIndex = 403;
             this.label70.Text = "2번 프리셋";
             // 
             // Preset2_Save
             // 
             this.Preset2_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset2_Save.Location = new System.Drawing.Point(1802, 765);
+            this.Preset2_Save.Location = new System.Drawing.Point(2078, 150);
             this.Preset2_Save.Name = "Preset2_Save";
             this.Preset2_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset2_Save.TabIndex = 402;
@@ -4890,7 +4953,7 @@
             // Preset3_Load
             // 
             this.Preset3_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset3_Load.Location = new System.Drawing.Point(1918, 838);
+            this.Preset3_Load.Location = new System.Drawing.Point(2194, 214);
             this.Preset3_Load.Name = "Preset3_Load";
             this.Preset3_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset3_Load.TabIndex = 407;
@@ -4901,19 +4964,19 @@
             // label71
             // 
             this.label71.AutoSize = true;
-            this.label71.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label71.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label71.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label71.Location = new System.Drawing.Point(1860, 807);
+            this.label71.BackColor = System.Drawing.SystemColors.Menu;
+            this.label71.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label71.ForeColor = System.Drawing.Color.Black;
+            this.label71.Location = new System.Drawing.Point(2136, 189);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(116, 30);
+            this.label71.Size = new System.Drawing.Size(106, 25);
             this.label71.TabIndex = 406;
             this.label71.Text = "3번 프리셋";
             // 
             // Preset3_Save
             // 
             this.Preset3_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset3_Save.Location = new System.Drawing.Point(1802, 838);
+            this.Preset3_Save.Location = new System.Drawing.Point(2078, 214);
             this.Preset3_Save.Name = "Preset3_Save";
             this.Preset3_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset3_Save.TabIndex = 405;
@@ -4924,7 +4987,7 @@
             // Preset4_Load
             // 
             this.Preset4_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset4_Load.Location = new System.Drawing.Point(1918, 911);
+            this.Preset4_Load.Location = new System.Drawing.Point(2194, 278);
             this.Preset4_Load.Name = "Preset4_Load";
             this.Preset4_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset4_Load.TabIndex = 410;
@@ -4935,19 +4998,19 @@
             // label72
             // 
             this.label72.AutoSize = true;
-            this.label72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label72.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label72.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label72.Location = new System.Drawing.Point(1860, 880);
+            this.label72.BackColor = System.Drawing.SystemColors.Menu;
+            this.label72.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label72.ForeColor = System.Drawing.Color.Black;
+            this.label72.Location = new System.Drawing.Point(2136, 253);
             this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(116, 30);
+            this.label72.Size = new System.Drawing.Size(106, 25);
             this.label72.TabIndex = 409;
             this.label72.Text = "4번 프리셋";
             // 
             // Preset4_Save
             // 
             this.Preset4_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset4_Save.Location = new System.Drawing.Point(1802, 911);
+            this.Preset4_Save.Location = new System.Drawing.Point(2078, 278);
             this.Preset4_Save.Name = "Preset4_Save";
             this.Preset4_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset4_Save.TabIndex = 408;
@@ -4958,9 +5021,9 @@
             // label76
             // 
             this.label76.AutoSize = true;
-            this.label76.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label76.BackColor = System.Drawing.SystemColors.Menu;
             this.label76.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label76.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label76.ForeColor = System.Drawing.Color.Black;
             this.label76.Location = new System.Drawing.Point(1654, 478);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(96, 42);
@@ -4968,36 +5031,17 @@
             this.label76.Text = "체크 시\r\n합계에 포함\r\n";
             this.label76.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::LoaCalc.Properties.Resources.whiteLineBoxShort2;
-            this.pictureBox5.Location = new System.Drawing.Point(1641, 470);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(123, 57);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 431;
-            this.pictureBox5.TabStop = false;
-            // 
             // label78
             // 
             this.label78.AutoSize = true;
-            this.label78.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label78.BackColor = System.Drawing.SystemColors.Menu;
             this.label78.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label78.ForeColor = System.Drawing.Color.Red;
             this.label78.Location = new System.Drawing.Point(677, 1214);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(109, 37);
             this.label78.TabIndex = 433;
             this.label78.Text = "<합계>";
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox7.Location = new System.Drawing.Point(12, 1208);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(2305, 3);
-            this.pictureBox7.TabIndex = 434;
-            this.pictureBox7.TabStop = false;
             // 
             // SkillSum_DpsHarmonicAvg
             // 
@@ -5067,7 +5111,7 @@
             // 
             // Skill15_DpsShare
             // 
-            this.Skill15_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DpsShare.Location = new System.Drawing.Point(1484, 1147);
             this.Skill15_DpsShare.Name = "Skill15_DpsShare";
@@ -5078,7 +5122,7 @@
             // 
             // Skill14_DpsShare
             // 
-            this.Skill14_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DpsShare.Location = new System.Drawing.Point(1484, 1104);
             this.Skill14_DpsShare.Name = "Skill14_DpsShare";
@@ -5089,7 +5133,7 @@
             // 
             // Skill13_DpsShare
             // 
-            this.Skill13_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DpsShare.Location = new System.Drawing.Point(1484, 1060);
             this.Skill13_DpsShare.Name = "Skill13_DpsShare";
@@ -5100,7 +5144,7 @@
             // 
             // Skill12_DpsShare
             // 
-            this.Skill12_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DpsShare.Location = new System.Drawing.Point(1484, 1018);
             this.Skill12_DpsShare.Name = "Skill12_DpsShare";
@@ -5111,7 +5155,7 @@
             // 
             // Skill11_DpsShare
             // 
-            this.Skill11_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DpsShare.Location = new System.Drawing.Point(1484, 972);
             this.Skill11_DpsShare.Name = "Skill11_DpsShare";
@@ -5122,7 +5166,7 @@
             // 
             // Skill10_DpsShare
             // 
-            this.Skill10_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DpsShare.Location = new System.Drawing.Point(1484, 928);
             this.Skill10_DpsShare.Name = "Skill10_DpsShare";
@@ -5133,7 +5177,7 @@
             // 
             // Skill9_DpsShare
             // 
-            this.Skill9_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DpsShare.Location = new System.Drawing.Point(1484, 883);
             this.Skill9_DpsShare.Name = "Skill9_DpsShare";
@@ -5144,7 +5188,7 @@
             // 
             // Skill8_DpsShare
             // 
-            this.Skill8_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DpsShare.Location = new System.Drawing.Point(1484, 838);
             this.Skill8_DpsShare.Name = "Skill8_DpsShare";
@@ -5155,7 +5199,7 @@
             // 
             // Skill7_DpsShare
             // 
-            this.Skill7_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DpsShare.Location = new System.Drawing.Point(1484, 795);
             this.Skill7_DpsShare.Name = "Skill7_DpsShare";
@@ -5166,7 +5210,7 @@
             // 
             // Skill6_DpsShare
             // 
-            this.Skill6_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DpsShare.Location = new System.Drawing.Point(1484, 751);
             this.Skill6_DpsShare.Name = "Skill6_DpsShare";
@@ -5177,7 +5221,7 @@
             // 
             // Skill5_DpsShare
             // 
-            this.Skill5_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DpsShare.Location = new System.Drawing.Point(1484, 707);
             this.Skill5_DpsShare.Name = "Skill5_DpsShare";
@@ -5188,7 +5232,7 @@
             // 
             // Skill4_DpsShare
             // 
-            this.Skill4_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DpsShare.Location = new System.Drawing.Point(1484, 663);
             this.Skill4_DpsShare.Name = "Skill4_DpsShare";
@@ -5199,7 +5243,7 @@
             // 
             // Skill3_DpsShare
             // 
-            this.Skill3_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DpsShare.Location = new System.Drawing.Point(1484, 618);
             this.Skill3_DpsShare.Name = "Skill3_DpsShare";
@@ -5210,7 +5254,7 @@
             // 
             // Skill2_DpsShare
             // 
-            this.Skill2_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DpsShare.Location = new System.Drawing.Point(1484, 574);
             this.Skill2_DpsShare.Name = "Skill2_DpsShare";
@@ -5221,7 +5265,7 @@
             // 
             // Skill1_DpsShare
             // 
-            this.Skill1_DpsShare.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DpsShare.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DpsShare.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DpsShare.Location = new System.Drawing.Point(1484, 531);
             this.Skill1_DpsShare.Name = "Skill1_DpsShare";
@@ -5233,7 +5277,7 @@
             // Preset5_Load
             // 
             this.Preset5_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset5_Load.Location = new System.Drawing.Point(1918, 985);
+            this.Preset5_Load.Location = new System.Drawing.Point(2194, 343);
             this.Preset5_Load.Name = "Preset5_Load";
             this.Preset5_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset5_Load.TabIndex = 459;
@@ -5244,19 +5288,19 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label74.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label74.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label74.Location = new System.Drawing.Point(1860, 954);
+            this.label74.BackColor = System.Drawing.SystemColors.Menu;
+            this.label74.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label74.ForeColor = System.Drawing.Color.Black;
+            this.label74.Location = new System.Drawing.Point(2136, 318);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(116, 30);
+            this.label74.Size = new System.Drawing.Size(106, 25);
             this.label74.TabIndex = 458;
             this.label74.Text = "5번 프리셋";
             // 
             // Preset5_Save
             // 
             this.Preset5_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset5_Save.Location = new System.Drawing.Point(1802, 985);
+            this.Preset5_Save.Location = new System.Drawing.Point(2078, 343);
             this.Preset5_Save.Name = "Preset5_Save";
             this.Preset5_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset5_Save.TabIndex = 457;
@@ -5267,7 +5311,7 @@
             // Preset6_Load
             // 
             this.Preset6_Load.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset6_Load.Location = new System.Drawing.Point(1918, 1059);
+            this.Preset6_Load.Location = new System.Drawing.Point(2194, 408);
             this.Preset6_Load.Name = "Preset6_Load";
             this.Preset6_Load.Size = new System.Drawing.Size(110, 33);
             this.Preset6_Load.TabIndex = 462;
@@ -5278,19 +5322,19 @@
             // label75
             // 
             this.label75.AutoSize = true;
-            this.label75.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label75.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label75.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label75.Location = new System.Drawing.Point(1860, 1028);
+            this.label75.BackColor = System.Drawing.SystemColors.Menu;
+            this.label75.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label75.ForeColor = System.Drawing.Color.Black;
+            this.label75.Location = new System.Drawing.Point(2136, 383);
             this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(116, 30);
+            this.label75.Size = new System.Drawing.Size(106, 25);
             this.label75.TabIndex = 461;
             this.label75.Text = "6번 프리셋";
             // 
             // Preset6_Save
             // 
             this.Preset6_Save.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Preset6_Save.Location = new System.Drawing.Point(1802, 1059);
+            this.Preset6_Save.Location = new System.Drawing.Point(2078, 408);
             this.Preset6_Save.Name = "Preset6_Save";
             this.Preset6_Save.Size = new System.Drawing.Size(110, 33);
             this.Preset6_Save.TabIndex = 460;
@@ -5300,12 +5344,12 @@
             // 
             // AutoCombatStats
             // 
-            this.AutoCombatStats.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.AutoCombatStats.Location = new System.Drawing.Point(174, 39);
+            this.AutoCombatStats.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold);
+            this.AutoCombatStats.Location = new System.Drawing.Point(1789, 470);
             this.AutoCombatStats.Name = "AutoCombatStats";
-            this.AutoCombatStats.Size = new System.Drawing.Size(162, 104);
+            this.AutoCombatStats.Size = new System.Drawing.Size(515, 57);
             this.AutoCombatStats.TabIndex = 463;
-            this.AutoCombatStats.Text = "최적 특성 계산\r\n(현세팅 기준)";
+            this.AutoCombatStats.Text = "최적 특성비 계산";
             this.AutoCombatStats.UseVisualStyleBackColor = true;
             this.AutoCombatStats.Click += new System.EventHandler(this.CalcOptimalCombatStats_Click);
             // 
@@ -5315,7 +5359,7 @@
             this.ProcessingMessageCalcOptimalCombatStats.BackColor = System.Drawing.Color.MediumPurple;
             this.ProcessingMessageCalcOptimalCombatStats.Font = new System.Drawing.Font("맑은 고딕", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ProcessingMessageCalcOptimalCombatStats.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ProcessingMessageCalcOptimalCombatStats.Location = new System.Drawing.Point(461, 414);
+            this.ProcessingMessageCalcOptimalCombatStats.Location = new System.Drawing.Point(513, 380);
             this.ProcessingMessageCalcOptimalCombatStats.Name = "ProcessingMessageCalcOptimalCombatStats";
             this.ProcessingMessageCalcOptimalCombatStats.Size = new System.Drawing.Size(1148, 106);
             this.ProcessingMessageCalcOptimalCombatStats.TabIndex = 464;
@@ -5327,7 +5371,7 @@
             this.label79.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label79.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label79.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label79.Location = new System.Drawing.Point(1799, 353);
+            this.label79.Location = new System.Drawing.Point(1799, 343);
             this.label79.Name = "label79";
             this.label79.Size = new System.Drawing.Size(202, 85);
             this.label79.TabIndex = 465;
@@ -5335,7 +5379,7 @@
             // 
             // Skill15_DamageMagnification
             // 
-            this.Skill15_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill15_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill15_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill15_DamageMagnification.Location = new System.Drawing.Point(1196, 1147);
             this.Skill15_DamageMagnification.Name = "Skill15_DamageMagnification";
@@ -5346,7 +5390,7 @@
             // 
             // Skill14_DamageMagnification
             // 
-            this.Skill14_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill14_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill14_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill14_DamageMagnification.Location = new System.Drawing.Point(1196, 1104);
             this.Skill14_DamageMagnification.Name = "Skill14_DamageMagnification";
@@ -5357,7 +5401,7 @@
             // 
             // Skill13_DamageMagnification
             // 
-            this.Skill13_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill13_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill13_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill13_DamageMagnification.Location = new System.Drawing.Point(1196, 1060);
             this.Skill13_DamageMagnification.Name = "Skill13_DamageMagnification";
@@ -5368,7 +5412,7 @@
             // 
             // Skill12_DamageMagnification
             // 
-            this.Skill12_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill12_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill12_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill12_DamageMagnification.Location = new System.Drawing.Point(1196, 1018);
             this.Skill12_DamageMagnification.Name = "Skill12_DamageMagnification";
@@ -5379,7 +5423,7 @@
             // 
             // Skill11_DamageMagnification
             // 
-            this.Skill11_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill11_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill11_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill11_DamageMagnification.Location = new System.Drawing.Point(1196, 972);
             this.Skill11_DamageMagnification.Name = "Skill11_DamageMagnification";
@@ -5390,7 +5434,7 @@
             // 
             // Skill10_DamageMagnification
             // 
-            this.Skill10_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill10_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill10_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill10_DamageMagnification.Location = new System.Drawing.Point(1196, 928);
             this.Skill10_DamageMagnification.Name = "Skill10_DamageMagnification";
@@ -5401,7 +5445,7 @@
             // 
             // Skill9_DamageMagnification
             // 
-            this.Skill9_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill9_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill9_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill9_DamageMagnification.Location = new System.Drawing.Point(1196, 883);
             this.Skill9_DamageMagnification.Name = "Skill9_DamageMagnification";
@@ -5412,7 +5456,7 @@
             // 
             // Skill8_DamageMagnification
             // 
-            this.Skill8_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill8_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill8_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill8_DamageMagnification.Location = new System.Drawing.Point(1196, 838);
             this.Skill8_DamageMagnification.Name = "Skill8_DamageMagnification";
@@ -5423,7 +5467,7 @@
             // 
             // Skill7_DamageMagnification
             // 
-            this.Skill7_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill7_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill7_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill7_DamageMagnification.Location = new System.Drawing.Point(1196, 795);
             this.Skill7_DamageMagnification.Name = "Skill7_DamageMagnification";
@@ -5434,7 +5478,7 @@
             // 
             // Skill6_DamageMagnification
             // 
-            this.Skill6_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill6_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill6_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill6_DamageMagnification.Location = new System.Drawing.Point(1196, 751);
             this.Skill6_DamageMagnification.Name = "Skill6_DamageMagnification";
@@ -5445,7 +5489,7 @@
             // 
             // Skill5_DamageMagnification
             // 
-            this.Skill5_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill5_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill5_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill5_DamageMagnification.Location = new System.Drawing.Point(1196, 707);
             this.Skill5_DamageMagnification.Name = "Skill5_DamageMagnification";
@@ -5456,7 +5500,7 @@
             // 
             // Skill4_DamageMagnification
             // 
-            this.Skill4_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill4_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill4_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill4_DamageMagnification.Location = new System.Drawing.Point(1196, 663);
             this.Skill4_DamageMagnification.Name = "Skill4_DamageMagnification";
@@ -5467,7 +5511,7 @@
             // 
             // Skill3_DamageMagnification
             // 
-            this.Skill3_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill3_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill3_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill3_DamageMagnification.Location = new System.Drawing.Point(1196, 618);
             this.Skill3_DamageMagnification.Name = "Skill3_DamageMagnification";
@@ -5478,7 +5522,7 @@
             // 
             // Skill2_DamageMagnification
             // 
-            this.Skill2_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill2_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill2_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill2_DamageMagnification.Location = new System.Drawing.Point(1196, 574);
             this.Skill2_DamageMagnification.Name = "Skill2_DamageMagnification";
@@ -5489,7 +5533,7 @@
             // 
             // Skill1_DamageMagnification
             // 
-            this.Skill1_DamageMagnification.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Skill1_DamageMagnification.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Skill1_DamageMagnification.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Skill1_DamageMagnification.Location = new System.Drawing.Point(1196, 531);
             this.Skill1_DamageMagnification.Name = "Skill1_DamageMagnification";
@@ -5501,9 +5545,9 @@
             // label77
             // 
             this.label77.AutoSize = true;
-            this.label77.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label77.BackColor = System.Drawing.SystemColors.Menu;
             this.label77.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label77.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label77.ForeColor = System.Drawing.Color.Black;
             this.label77.Location = new System.Drawing.Point(1215, 501);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(42, 21);
@@ -5513,9 +5557,9 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label33.BackColor = System.Drawing.SystemColors.Menu;
             this.label33.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label33.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label33.ForeColor = System.Drawing.Color.Black;
             this.label33.Location = new System.Drawing.Point(1502, 501);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(42, 21);
@@ -5525,9 +5569,9 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label34.BackColor = System.Drawing.SystemColors.Menu;
             this.label34.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label34.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label34.ForeColor = System.Drawing.Color.Black;
             this.label34.Location = new System.Drawing.Point(1393, 501);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(80, 21);
@@ -5537,9 +5581,9 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label35.BackColor = System.Drawing.SystemColors.Menu;
             this.label35.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label35.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label35.ForeColor = System.Drawing.Color.Black;
             this.label35.Location = new System.Drawing.Point(1293, 501);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(80, 21);
@@ -5549,9 +5593,9 @@
             // label73
             // 
             this.label73.AutoSize = true;
-            this.label73.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label73.BackColor = System.Drawing.SystemColors.Menu;
             this.label73.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label73.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label73.ForeColor = System.Drawing.Color.Black;
             this.label73.Location = new System.Drawing.Point(1407, 473);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(41, 21);
@@ -5693,12 +5737,115 @@
             this.Skill1_IncludeInFinalDps.TabIndex = 415;
             this.Skill1_IncludeInFinalDps.Click += new System.EventHandler(this.Skill_IncludeInFinalDps_Click);
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox7.Location = new System.Drawing.Point(12, 1208);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(2305, 3);
+            this.pictureBox7.TabIndex = 434;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::LoaCalc.Properties.Resources.Cooldown_Topbar_Black;
+            this.pictureBox5.Location = new System.Drawing.Point(1641, 470);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(123, 57);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 431;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::LoaCalc.Properties.Resources.SkillSetting_Topbar_Black;
+            this.pictureBox6.Location = new System.Drawing.Point(96, 470);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(685, 57);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 333;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::LoaCalc.Properties.Resources.SkillDps_Topbar_Black;
+            this.pictureBox3.Location = new System.Drawing.Point(1282, 470);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(282, 57);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 326;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::LoaCalc.Properties.Resources.SkillDamageAvg_Topbar_Black;
+            this.pictureBox2.Location = new System.Drawing.Point(994, 470);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(282, 57);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 322;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LoaCalc.Properties.Resources.SkillDamage_Topbar_Black;
+            this.pictureBox1.Location = new System.Drawing.Point(787, 470);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(201, 57);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 318;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::LoaCalc.Properties.Resources.Cooldown_Topbar_Black;
+            this.pictureBox4.Location = new System.Drawing.Point(1570, 470);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(65, 57);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 330;
+            this.pictureBox4.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(1789, 347);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(276, 100);
+            this.button1.TabIndex = 486;
+            this.button1.Text = "DPS 분석";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold);
+            this.button2.Location = new System.Drawing.Point(1737, 356);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(276, 100);
+            this.button2.TabIndex = 487;
+            this.button2.Text = "특성비 분석";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            // 
+            // DpsByCombatStatsRatio
+            // 
+            this.DpsByCombatStatsRatio.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.DpsByCombatStatsRatio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DpsByCombatStatsRatio.Location = new System.Drawing.Point(1789, 539);
+            this.DpsByCombatStatsRatio.Name = "DpsByCombatStatsRatio";
+            this.DpsByCombatStatsRatio.RowTemplate.Height = 23;
+            this.DpsByCombatStatsRatio.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DpsByCombatStatsRatio.Size = new System.Drawing.Size(510, 635);
+            this.DpsByCombatStatsRatio.TabIndex = 488;
+            // 
             // GunslingerSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(2069, 1261);
+            this.BackColor = System.Drawing.SystemColors.Menu;
+            this.ClientSize = new System.Drawing.Size(2331, 1261);
+            this.Controls.Add(this.DpsByCombatStatsRatio);
             this.Controls.Add(this.ProcessingMessageCalcOptimalCombatStats);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.label34);
@@ -6006,7 +6153,6 @@
             this.Controls.Add(this.Skill1_DamageArithmeticAvg);
             this.Controls.Add(this.Skill1_DamageAfterHalf);
             this.Controls.Add(this.Skill1_DamageBeforeHalf);
-            this.Controls.Add(this.Calculate);
             this.Controls.Add(this.Buff2_Name);
             this.Controls.Add(this.Buff1_Name);
             this.Controls.Add(this.Weapon_AdditionalDamage);
@@ -6155,18 +6301,22 @@
             this.Controls.Add(this.CombatStat_Crit);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DpsCalculate);
+            this.Controls.Add(this.button2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "GunslingerSetting";
             this.Text = "건슬링어 세팅";
             this.Load += new System.EventHandler(this.GunslingerSetting_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DpsByCombatStatsRatio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6320,7 +6470,7 @@
         private System.Windows.Forms.TextBox Weapon_AdditionalDamage;
         private System.Windows.Forms.ComboBox Buff1_Name;
         private System.Windows.Forms.ComboBox Buff2_Name;
-        private System.Windows.Forms.Button Calculate;
+        private System.Windows.Forms.Button DpsCalculate;
         private System.Windows.Forms.TextBox Skill1_DamageBeforeHalf;
         private System.Windows.Forms.TextBox Skill1_DamageAfterHalf;
         private System.Windows.Forms.TextBox Skill1_DamageHarmonicAvg;
@@ -6630,6 +6780,9 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView DpsByCombatStatsRatio;
     }
 }
 

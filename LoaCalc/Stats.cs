@@ -7,7 +7,7 @@ namespace LoaCalc
 {
 
     /// <summary>
-    /// 기본 스탯
+    /// 캐릭터 스탯.
     /// </summary>
     public class Stats
     {
@@ -21,6 +21,7 @@ namespace LoaCalc
         public ValueM skillCoolDown = new ValueM();
 
         public Stats() { }
+       
         public Stats(Stats stats)
         {
             attackSpeed = new ValueP(stats.attackSpeed);
@@ -32,6 +33,7 @@ namespace LoaCalc
             attackPowerPer = new ValueM(stats.attackPowerPer);
             skillCoolDown = new ValueM(stats.skillCoolDown);
         }
+       
         public void Add(Stats stat)
         {
             attackSpeed.Add(stat.attackSpeed);
@@ -43,6 +45,7 @@ namespace LoaCalc
             attackPowerPer.Add(stat.attackPowerPer);
             skillCoolDown.Add(stat.skillCoolDown);
         }
+       
         public Stats Copy() => new Stats
         {
             attackSpeed = attackSpeed.Copy(),
@@ -54,6 +57,7 @@ namespace LoaCalc
             attackPowerPer = attackPowerPer.Copy(),
             skillCoolDown = skillCoolDown.Copy(),
         };
+       
         public new string ToString()
         {
             string s = "";
@@ -84,66 +88,147 @@ namespace LoaCalc
         private Dictionary<SettingInfo.Skill.ATTACKTYPE, Stats> categorizedStatsByAttackType = new Dictionary<SettingInfo.Skill.ATTACKTYPE, Stats>();
         private Dictionary<SettingInfo.Skill.CLASSENGRAVING, Stats> categorizedStatsByClassEngraving = new Dictionary<SettingInfo.Skill.CLASSENGRAVING, Stats>();
 
-        public void AddStat(Stats stats)
+
+        public void AddPackedStats(PackedStats packedStats)
         {
-            notCategorizedStats.Add(stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.NAME name)
+            AddStats(packedStats.notCategorizedStats);
+            foreach (var item in packedStats.categorizedStatsByName) AddStats(item.Value, name: item.Key);
+            foreach (var item in packedStats.categorizedStatsByCategory) AddStats(item.Value, category: item.Key);
+            foreach (var item in packedStats.categorizedStatsByType) AddStats(item.Value, type: item.Key);
+            foreach (var item in packedStats.categorizedStatsByAttackType) AddStats(item.Value, attackType: item.Key);
+            foreach (var item in packedStats.categorizedStatsByClassEngraving) AddStats(item.Value, classEngraving: item.Key);
+        }     
+      
+        public void AddStats(Stats stats,
+            SettingInfo.Skill.NAME? name = null,
+            List<SettingInfo.Skill.NAME> nameList = null,
+            SettingInfo.Skill.CATEGORY? category = null,
+            List<SettingInfo.Skill.CATEGORY> categoryList = null,
+            SettingInfo.Skill.TYPE? type = null,
+            List<SettingInfo.Skill.TYPE> typeList = null,
+            SettingInfo.Skill.ATTACKTYPE? attackType = null,
+            List<SettingInfo.Skill.ATTACKTYPE> attackTypeList = null,
+            SettingInfo.Skill.CLASSENGRAVING? classEngraving = null,
+            List<SettingInfo.Skill.CLASSENGRAVING> classEngravingList = null)
         {
-            if (categorizedStatsByName.ContainsKey(name)) categorizedStatsByName[name].Add(stats.Copy());
-            else categorizedStatsByName.Add(name, stats.Copy());
+            if (name == null && nameList == null && category == null && categoryList == null && type == null && typeList == null && attackType == null && attackTypeList == null && classEngraving == null && classEngravingList == null)
+            {
+                notCategorizedStats.Add(stats.Copy());
+            }
+            else
+            {
+                if (name != null)
+                {
+                    var _name = name.GetValueOrDefault();
+                    if (categorizedStatsByName.ContainsKey(_name)) categorizedStatsByName[_name].Add(stats.Copy());
+                    else categorizedStatsByName.Add(_name, stats.Copy());
+                }
+                else if (nameList != null)
+                {
+                    foreach (var _name in nameList)
+                    {
+                        if (categorizedStatsByName.ContainsKey(_name)) categorizedStatsByName[_name].Add(stats.Copy());
+                        else categorizedStatsByName.Add(_name, stats.Copy());
+                    }
+                }
+
+
+                if (category != null)
+                {
+                    var _category = category.GetValueOrDefault();
+                    if (categorizedStatsByCategory.ContainsKey(_category)) categorizedStatsByCategory[_category].Add(stats.Copy());
+                    else categorizedStatsByCategory.Add(_category, stats.Copy());
+                }
+                else if (categoryList != null)
+                {
+                    foreach (var _category in categoryList)
+                    {
+                        if (categorizedStatsByCategory.ContainsKey(_category)) categorizedStatsByCategory[_category].Add(stats.Copy());
+                        else categorizedStatsByCategory.Add(_category, stats.Copy());
+                    }
+                }
+
+
+                if (type != null)
+                {
+                    var _type = type.GetValueOrDefault();
+                    if (categorizedStatsByType.ContainsKey(_type)) categorizedStatsByType[_type].Add(stats.Copy());
+                    else categorizedStatsByType.Add(_type, stats.Copy());
+                }
+                else if (typeList != null)
+                {
+                    foreach (var _type in typeList)
+                    {
+                        if (categorizedStatsByType.ContainsKey(_type)) categorizedStatsByType[_type].Add(stats.Copy());
+                        else categorizedStatsByType.Add(_type, stats.Copy());
+                    }
+                }
+
+
+                if (attackType != null)
+                {
+                    var _attackType = attackType.GetValueOrDefault();
+                    if (categorizedStatsByAttackType.ContainsKey(_attackType)) categorizedStatsByAttackType[_attackType].Add(stats.Copy());
+                    else categorizedStatsByAttackType.Add(_attackType, stats.Copy());
+                }
+                else if (attackTypeList != null)
+                {
+                    foreach (var _attackType in attackTypeList)
+                    {
+                        if (categorizedStatsByAttackType.ContainsKey(_attackType)) categorizedStatsByAttackType[_attackType].Add(stats.Copy());
+                        else categorizedStatsByAttackType.Add(_attackType, stats.Copy());
+                    }
+                }
+
+
+                if (classEngraving != null)
+                {
+                    var _classEngraving = classEngraving.GetValueOrDefault();
+                    if (categorizedStatsByClassEngraving.ContainsKey(_classEngraving)) categorizedStatsByClassEngraving[_classEngraving].Add(stats.Copy());
+                    else categorizedStatsByClassEngraving.Add(_classEngraving, stats.Copy());
+                }
+                else if (classEngravingList != null)
+                {
+                    foreach (var _classEngraving in classEngravingList)
+                    {
+                        if (categorizedStatsByClassEngraving.ContainsKey(_classEngraving)) categorizedStatsByClassEngraving[_classEngraving].Add(stats.Copy());
+                        else categorizedStatsByClassEngraving.Add(_classEngraving, stats.Copy());
+                    }
+                }
+            }
         }
-        public void AddStat(Stats stats, SettingInfo.Skill.CATEGORY name)
-        {
-            if (categorizedStatsByCategory.ContainsKey(name)) categorizedStatsByCategory[name].Add(stats.Copy());
-            else categorizedStatsByCategory.Add(name, stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.TYPE name)
-        {
-            if (categorizedStatsByType.ContainsKey(name)) categorizedStatsByType[name].Add(stats.Copy());
-            else categorizedStatsByType.Add(name, stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.ATTACKTYPE name)
-        {
-            if (categorizedStatsByAttackType.ContainsKey(name)) categorizedStatsByAttackType[name].Add(stats.Copy());
-            else categorizedStatsByAttackType.Add(name, stats.Copy());
-        }
-        public void AddStat(Stats stats, SettingInfo.Skill.CLASSENGRAVING name)
-        {
-            if (categorizedStatsByClassEngraving.ContainsKey(name)) categorizedStatsByClassEngraving[name].Add(stats.Copy());
-            else categorizedStatsByClassEngraving.Add(name, stats.Copy());
-        }
-        public Stats GetSkillStat(CombatSkill.Part part)
+        
+        public Stats GetSkillStats(CombatSkill.Part partSkill)
         {
             Stats stats = new Stats();
 
             stats.Add(notCategorizedStats.Copy());
 
-            foreach (var name in part.name)
+            foreach (var name in partSkill.name)
             {
                 if (categorizedStatsByName.ContainsKey(name))
                     stats.Add(categorizedStatsByName[name]);
             }
 
-            foreach (var category in part.category)
+            foreach (var category in partSkill.category)
             {
                 if (categorizedStatsByCategory.ContainsKey(category))
                     stats.Add(categorizedStatsByCategory[category]);
             }
 
-            foreach (var type in part.type)
+            foreach (var type in partSkill.type)
             {
                 if (categorizedStatsByType.ContainsKey(type))
                     stats.Add(categorizedStatsByType[type]);
             }
 
-            foreach (var attackType in part.attackType)
+            foreach (var attackType in partSkill.attackType)
             {
                 if (categorizedStatsByAttackType.ContainsKey(attackType))
                     stats.Add(categorizedStatsByAttackType[attackType]);
             }
 
-            foreach (var classEngraving in part.classEngraving)
+            foreach (var classEngraving in partSkill.classEngraving)
             {
                 if (categorizedStatsByClassEngraving.ContainsKey(classEngraving))
                     stats.Add(categorizedStatsByClassEngraving[classEngraving]);
@@ -151,6 +236,7 @@ namespace LoaCalc
 
             return stats;
         }
+       
         public new string ToString()
         {
             string s = "";
@@ -182,6 +268,7 @@ namespace LoaCalc
         public ValueM() { }
         public ValueM(decimal value, Group group = Group.None) { Add(value, group); }
         public ValueM(ValueM valuem) { Add(valuem); }
+       
         public void Add(decimal value, Group group = Group.None)  // 그룹이 없을 시 -> 기본그룹(값끼리 곱적용)
         {
             if (group == Group.None)
@@ -203,11 +290,13 @@ namespace LoaCalc
                 else groupValues.Add(group, value);
             }
         }
+     
         public void Add(ValueM valueM)
         {
             foreach (var group in valueM.groupValues)
                 Add(group.Value, group.Key);
         }
+       
         public ValueM Copy()
         {
             ValueM valueM = new ValueM();
@@ -217,6 +306,7 @@ namespace LoaCalc
 
             return valueM;
         }
+      
         public decimal GetValue()
         {
             decimal result = 1;
@@ -226,7 +316,9 @@ namespace LoaCalc
 
             return (result - 1) * 100;
         }
+       
         public void clear() { groupValues.Clear(); }
+      
         public new string ToString()
         {
             string s = "";

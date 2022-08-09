@@ -73,7 +73,7 @@
     <Compile Include="SettingInfo.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="Gunslinger.cs" />
-    <Compile Include="GunslingerCalculator.cs" />
+    <Compile Include="Calculator.cs" />
     <Compile Include="GunslingerSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +151,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SkillDps_Topbar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cooldown_Topbar_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDamage_Topbar_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDamageAvg_Topbar_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillDps_Topbar_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillSetting_Topbar_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillBox_Black.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

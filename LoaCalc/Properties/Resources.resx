@@ -118,14 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Cooldown_Topbar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cooldown_Topbar_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkillBox_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SkillBox_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SkillDamageAvg_Topbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SkillDamageAvg_Topbar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SkillDamageAvg_Topbar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SkillDamageAvg_Topbar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SkillDamageAvg_Topbar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SkillDamageAvg_Topbar_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SkillDamage_Topbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SkillDamage_Topbar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkillDamage_Topbar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SkillDamage_Topbar_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SkillDps_Topbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SkillDps_Topbar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,8 +145,14 @@
   <data name="SkillDps_Topbar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SkillDps_Topbar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SkillDps_Topbar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SkillDps_Topbar_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SkillSetting_Topbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SkillSetting_Topbar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkillSetting_Topbar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SkillSetting_Topbar_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="whiteLineBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\whiteLineBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -58,9 +58,10 @@ namespace LoaCalc
         private Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>> skillTp2List = new Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>>();
         private Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>> skillTp3List = new Dictionary<SettingInfo.Skill.NAME, List<SettingInfo.Skill.TRIPOD>>();
 
-        private List<GunslingerCalculator.Result> skillDamageList = new List<GunslingerCalculator.Result>();
+        private Gunslinger character = new Gunslinger();
+        private List<Gunslinger.ResultCalculateCombatSkill> combatSkillDamageList = new List<Gunslinger.ResultCalculateCombatSkill>();
         private (decimal damageBeforeHalf, decimal damageAfterHalf, decimal damageArithmeticMean, decimal damageHarmonicMean, decimal dpsArithmeticMean, decimal dpsHarmonicMean) sumOfSkillDamage = (0, 0, 0, 0, 0, 0);
-
+ 
 
 
 
@@ -124,7 +125,7 @@ namespace LoaCalc
             skillTp3List = SettingInfo.Skill.GetTripod3List();
 
             // 계산 결과
-            skillDamageList = Enumerable.Repeat(new GunslingerCalculator.Result(), Skill_ControllerMaxNum + 1).ToList();
+            combatSkillDamageList = Enumerable.Repeat(new Gunslinger.ResultCalculateCombatSkill(), Skill_ControllerMaxNum + 1).ToList();
             sumOfSkillDamage = (0, 0, 0, 0, 0, 0);
         }
 
@@ -140,9 +141,8 @@ namespace LoaCalc
                 ComboBox engravingName = GetControlByName("Engraving" + (i + 1).ToString() + "_Name") as ComboBox;
                 ComboBox engravingLev = GetControlByName("Engraving" + (i + 1).ToString() + "_Lev") as ComboBox;
 
-                engravingName.Items.Add("선택 안 함");
-                engravingName.Items.AddRange(engravingNameList.ConvertAll(name => name.ToStr()).ToArray());
-                engravingLev.Items.AddRange(engravingLevList.ConvertAll(lev => lev.ToStr()).ToArray());
+                engravingName.Items.AddRange(new List<string> { "선택 안 함" }.Union(engravingNameList.ConvertAll(name => name.ToStr())).ToArray());
+                engravingLev.Items.AddRange(new List<string> { "미사용" }.Union(engravingLevList.ConvertAll(lev => lev.ToStr())).ToArray());
             }
 
             // 카드
@@ -152,8 +152,7 @@ namespace LoaCalc
                 ComboBox cardSet = GetControlByName("Card" + (i + 1).ToString() + "_Sets") as ComboBox;
                 ComboBox cardAwakening = GetControlByName("Card" + (i + 1).ToString() + "_Awakening") as ComboBox;
 
-                cardName.Items.Add("선택 안 함");
-                cardName.Items.AddRange(cardNameList.ConvertAll(name => name.ToStr()).ToArray());
+                cardName.Items.AddRange(new List<string> { "선택 안 함" }.Union(cardNameList.ConvertAll(name => name.ToStr())).ToArray());
             }
 
             // 보석
@@ -163,10 +162,9 @@ namespace LoaCalc
                 ComboBox gemLev = GetControlByName("Gem" + (i + 1).ToString() + "_Lev") as ComboBox;
                 ComboBox gemTargetskill = GetControlByName("Gem" + (i + 1).ToString() + "_TargetSkillName") as ComboBox;
 
-                gemName.Items.Add("선택 안 함");
-                gemName.Items.AddRange(gemNameList.ConvertAll(name => name.ToStr()).ToArray());
-                gemLev.Items.AddRange(gemLevList.ConvertAll(lev => lev.ToStr()).ToArray());
-                gemTargetskill.Items.AddRange(gemTargetSkillList.ConvertAll(targetSkill => targetSkill.ToStr()).ToArray());
+                gemName.Items.AddRange(new List<string> { "선택 안 함" }.Union(gemNameList.ConvertAll(name => name.ToStr())).ToArray());
+                gemLev.Items.AddRange(new List<string> { "미사용" }.Union(gemLevList.ConvertAll(lev => lev.ToStr())).ToArray());
+                gemTargetskill.Items.AddRange(new List<string> { "미사용" }.Union(gemTargetSkillList.ConvertAll(targetSkill => targetSkill.ToStr())).ToArray());
             }
 
             // 장비 세트
@@ -176,8 +174,7 @@ namespace LoaCalc
                 ComboBox gearSet = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonus") as ComboBox;
                 ComboBox gearSetLev = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonusLev") as ComboBox;
 
-                gearName.Items.Add("선택 안 함");
-                gearName.Items.AddRange(gearNameList.ConvertAll(name => name.ToStr()).ToArray());
+                gearName.Items.AddRange(new List<string> { "선택 안 함" }.Union(gearNameList.ConvertAll(name => name.ToStr())).ToArray());
             }
 
             // 버프 (시너지)
@@ -185,8 +182,7 @@ namespace LoaCalc
             {
                 ComboBox buffName = GetControlByName("Buff" + (i + 1).ToString() + "_Name") as ComboBox;
 
-                buffName.Items.Add("선택 안 함");
-                buffName.Items.AddRange(buffNameList.ConvertAll(name => name.ToStr()).ToArray());
+                buffName.Items.AddRange(new List<string> { "선택 안 함" }.Union(buffNameList.ConvertAll(name => name.ToStr())).ToArray());
             }
 
             // 스킬
@@ -198,10 +194,32 @@ namespace LoaCalc
                 ComboBox skillTp2 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp2") as ComboBox;
                 ComboBox skillTp3 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp3") as ComboBox;
 
-                skillName.Items.Add("선택 안 함");
-                skillName.Items.AddRange(skillNameList.ConvertAll(name => name.ToStr()).ToArray());
+                skillName.Items.AddRange(new List<string> { "선택 안 함" }.Union(skillNameList.ConvertAll(name => name.ToStr())).ToArray());
                 skillLev.Items.AddRange(skillLevList.ConvertAll(lev => lev.ToStr()).ToArray());
             }
+
+            // 특성별 Dps
+            DpsByCombatStatsRatio.DefaultCellStyle.Alignment= DataGridViewContentAlignment.MiddleRight;
+            DpsByCombatStatsRatio.Columns.AddRange(new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { Name = "치명", HeaderText = "치명", Width = 100, SortMode = DataGridViewColumnSortMode.NotSortable, AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    HeaderCell = new DataGridViewColumnHeaderCell { Style = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } } },
+                new DataGridViewTextBoxColumn { Name = "특화", HeaderText = "특화", Width = 100, SortMode = DataGridViewColumnSortMode.NotSortable, AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    HeaderCell = new DataGridViewColumnHeaderCell { Style = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } } },
+                new DataGridViewTextBoxColumn { Name = "신속", HeaderText = "신속", Width = 100, SortMode = DataGridViewColumnSortMode.NotSortable, AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    HeaderCell = new DataGridViewColumnHeaderCell { Style = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } } },
+                new DataGridViewTextBoxColumn { Name = "Dps", HeaderText = "Dps", Width = 100, SortMode = DataGridViewColumnSortMode.NotSortable, AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    HeaderCell = new DataGridViewColumnHeaderCell { Style = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } } },
+                new DataGridViewTextBoxColumn { Name = "Dps배율", HeaderText = "Dps배율", Width = 90, SortMode = DataGridViewColumnSortMode.NotSortable, AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    HeaderCell = new DataGridViewColumnHeaderCell { Style = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } } }
+            });
+            DpsByCombatStatsRatio.Font = new Font("맑은 고딕", 12, FontStyle.Regular);
+            DpsByCombatStatsRatio.RowHeadersVisible = false;
+            DpsByCombatStatsRatio.ReadOnly = true;
+            DpsByCombatStatsRatio.AllowUserToAddRows = false;
+            DpsByCombatStatsRatio.AllowUserToDeleteRows = false;
+            DpsByCombatStatsRatio.AllowUserToResizeColumns = false;
+            DpsByCombatStatsRatio.AllowUserToResizeRows = false;
 
             // 모든 컨트롤 값 초기화
             FormCtrlInitializer();
@@ -250,24 +268,20 @@ namespace LoaCalc
         /// <summary>
         /// 캐릭터 세팅을 기준으로 스킬 데미지를 계산한다.
         /// </summary>
-        private void CalculateSkillDamage(bool show = true)
+        private void CalculateCombatSkillDamage(bool show = true)
         {
-            var character = new Gunslinger();
+            combatSkillDamageList = character.CalculateCombatSkill();
 
-            UpdateSetting(character);
-
-            skillDamageList = GunslingerCalculator.CalculateSkillDamage(character);
-
-            if (show) ShowSkillDamage();
+            if (show) ShowCombatSkillDamage();
         }
-        private void ShowSkillDamage()
+        private void ShowCombatSkillDamage()
         {
-            decimal minDamageHarmonicMean = skillDamageList.Where(damage => damage.damageHarmonicMean != 0).DefaultIfEmpty(new GunslingerCalculator.Result()).Min(damage => damage.damageHarmonicMean);
-            decimal minDpsHarmonicMean = skillDamageList.Where(damage => damage.dpsHarmonicMean != 0).DefaultIfEmpty(new GunslingerCalculator.Result()).Min(damage => damage.dpsHarmonicMean);
+            var minDamage = combatSkillDamageList.Where(combatSkill => combatSkill.damage.harmonicMean != 0).DefaultIfEmpty(new Gunslinger.ResultCalculateCombatSkill()).Min(combatSkill => combatSkill.damage.harmonicMean);
+            var minDps = combatSkillDamageList.Where(combatSkill => combatSkill.dps.harmonicMean != 0).DefaultIfEmpty(new Gunslinger.ResultCalculateCombatSkill()).Min(combatSkill => combatSkill.dps.harmonicMean);
 
             for (int i = 0; i < Skill_ControllerMaxNum; i++)
             {
-                ComboBox skillName = GetControlByName("Skill" + (i + 1).ToString() + "_Name") as ComboBox;
+                ComboBox name = GetControlByName("Skill" + (i + 1).ToString() + "_Name") as ComboBox;
                 TextBox damageBeforeHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageBeforeHalf") as TextBox;
                 TextBox damageAfterHalf = GetControlByName("Skill" + (i + 1).ToString() + "_DamageAfterHalf") as TextBox;
                 TextBox damageArithmeticMean = GetControlByName("Skill" + (i + 1).ToString() + "_DamageArithmeticAvg") as TextBox;
@@ -278,27 +292,27 @@ namespace LoaCalc
                 TextBox dpsMagnification = GetControlByName("Skill" + (i + 1).ToString() + "_DpsShare") as TextBox;
                 TextBox cooldownTime = GetControlByName("Skill" + (i + 1).ToString() + "_CooldownTime") as TextBox;
 
-                if (skillName.Text != "선택 안 함")
+                if (name.SelectedIndex <= 0)
                 {
-                    damageBeforeHalf.Text = skillDamageList[i].damageBeforeHalf.ToString();
-                    damageAfterHalf.Text = skillDamageList[i].damageAfterHalf.ToString();
-                    damageArithmeticMean.Text = skillDamageList[i].damageArithmeticMean.ToString();
-                    damageHarmonicMean.Text = skillDamageList[i].damageHarmonicMean.ToString();
-                    damageMagnification.Text = minDamageHarmonicMean == 0 ? "0" : Math.Round(skillDamageList[i].damageHarmonicMean / minDamageHarmonicMean * 100, 2).ToString() + "%";
-                    dpsArithmeticMean.Text = skillDamageList[i].dpsArithmeticMean.ToString();
-                    dpsHarmonicMean.Text = skillDamageList[i].dpsHarmonicMean.ToString();
-                    dpsMagnification.Text = minDpsHarmonicMean == 0 ? "0" : Math.Round(skillDamageList[i].dpsHarmonicMean / minDpsHarmonicMean * 100, 2).ToString() + "%";
-                    cooldownTime.Text = skillDamageList[i].cooldownTime.ToString();
+                    damageBeforeHalf.Text = damageAfterHalf.Text = damageArithmeticMean.Text = damageHarmonicMean.Text = damageMagnification.Text = dpsArithmeticMean.Text = dpsHarmonicMean.Text = dpsMagnification.Text = cooldownTime.Text = "";
                 }
                 else
                 {
-                    damageBeforeHalf.Text = damageAfterHalf.Text = damageArithmeticMean.Text = damageHarmonicMean.Text = damageMagnification.Text = dpsArithmeticMean.Text = dpsHarmonicMean.Text = dpsMagnification.Text = cooldownTime.Text = "";
+                    damageBeforeHalf.Text = Math.Round(combatSkillDamageList[i].damage.beforeHalf).ToString();
+                    damageAfterHalf.Text = Math.Round(combatSkillDamageList[i].damage.afterHalf).ToString();
+                    damageArithmeticMean.Text = Math.Round(combatSkillDamageList[i].damage.arithmeticMean).ToString();
+                    damageHarmonicMean.Text = Math.Round(combatSkillDamageList[i].damage.harmonicMean).ToString();
+                    damageMagnification.Text = Math.Round(minDamage == 0 ? 0 : combatSkillDamageList[i].damage.harmonicMean / minDamage * 100, 2).ToString("F2") + "%";
+                    dpsArithmeticMean.Text = Math.Round(combatSkillDamageList[i].dps.arithmeticMean).ToString();
+                    dpsHarmonicMean.Text = Math.Round(combatSkillDamageList[i].dps.harmonicMean).ToString();
+                    dpsMagnification.Text = Math.Round(minDps == 0 ? 0 : combatSkillDamageList[i].dps.harmonicMean / minDps * 100, 2).ToString("F2") + "%";
+                    cooldownTime.Text = Math.Round(combatSkillDamageList[i].cooldown, 2).ToString();
                 }
             }
         }
         private void ShowSkillDetailed(int controlnum)
         {
-            DetailedInfo detailedInfo = new DetailedInfo(skillDamageList[controlnum - 1].DetailedInfo_BeforeHalf, skillDamageList[controlnum - 1].DetailedInfo_AfterHalf);
+            DetailedInfo detailedInfo = new DetailedInfo(combatSkillDamageList[controlnum - 1].detailedInfo.beforeHalf, combatSkillDamageList[controlnum - 1].detailedInfo.afterHalf);
             detailedInfo.Show();
         }
 
@@ -316,12 +330,12 @@ namespace LoaCalc
 
                 if (selectedSkill.Check)
                 {
-                    sumOfSkillDamage.damageBeforeHalf += skillDamageList[i].damageBeforeHalf;
-                    sumOfSkillDamage.damageAfterHalf += skillDamageList[i].damageAfterHalf;
-                    sumOfSkillDamage.damageArithmeticMean += skillDamageList[i].damageArithmeticMean;
-                    sumOfSkillDamage.damageHarmonicMean += skillDamageList[i].damageHarmonicMean;
-                    sumOfSkillDamage.dpsArithmeticMean += skillDamageList[i].dpsArithmeticMean;
-                    sumOfSkillDamage.dpsHarmonicMean += skillDamageList[i].dpsHarmonicMean;
+                    sumOfSkillDamage.damageBeforeHalf += combatSkillDamageList[i].damage.beforeHalf;
+                    sumOfSkillDamage.damageAfterHalf += combatSkillDamageList[i].damage.afterHalf;
+                    sumOfSkillDamage.damageArithmeticMean += combatSkillDamageList[i].damage.arithmeticMean;
+                    sumOfSkillDamage.damageHarmonicMean += combatSkillDamageList[i].damage.harmonicMean;
+                    sumOfSkillDamage.dpsArithmeticMean += combatSkillDamageList[i].dps.arithmeticMean;
+                    sumOfSkillDamage.dpsHarmonicMean += combatSkillDamageList[i].dps.harmonicMean;
                 }
             }
 
@@ -329,12 +343,12 @@ namespace LoaCalc
         }
         private void ShowSumOfSkillDamage()
         {
-            SkillSum_DamageBeforeHalf.Text = sumOfSkillDamage.damageBeforeHalf.ToString();
-            SkillSum_DamageAfterHalf.Text = sumOfSkillDamage.damageAfterHalf.ToString();
-            SkillSum_DamageArithmeticAvg.Text = sumOfSkillDamage.damageArithmeticMean.ToString();
-            SkillSum_DamageHarmonicAvg.Text = sumOfSkillDamage.damageHarmonicMean.ToString();
-            SkillSum_DpsArithmeticAvg.Text = sumOfSkillDamage.dpsArithmeticMean.ToString();
-            SkillSum_DpsHarmonicAvg.Text = sumOfSkillDamage.dpsHarmonicMean.ToString();
+            SkillSum_DamageBeforeHalf.Text = Math.Round(sumOfSkillDamage.damageBeforeHalf).ToString();
+            SkillSum_DamageAfterHalf.Text = Math.Round(sumOfSkillDamage.damageAfterHalf).ToString();
+            SkillSum_DamageArithmeticAvg.Text = Math.Round(sumOfSkillDamage.damageArithmeticMean).ToString();
+            SkillSum_DamageHarmonicAvg.Text = Math.Round(sumOfSkillDamage.damageHarmonicMean).ToString();
+            SkillSum_DpsArithmeticAvg.Text = Math.Round(sumOfSkillDamage.dpsArithmeticMean).ToString();
+            SkillSum_DpsHarmonicAvg.Text = Math.Round(sumOfSkillDamage.dpsHarmonicMean).ToString();
         }
 
 
@@ -347,11 +361,14 @@ namespace LoaCalc
             var combatStats = new List<int> { 0, 0, 0 };
             var optiamlCombatStats = new List<decimal> { 0, 0, 0, 0 };
 
-            CombatStat_Crit.Visible = CombatStat_Specialization.Visible = CombatStat_Swiftness.Visible = false;
             ProcessingMessageCalcOptimalCombatStats.Visible = true;
             Delay(1);
 
-            int count = 0;
+            var count = 0;
+            var checkDuplication = new HashSet<string>();
+            UpdateAllSetting();
+            DpsByCombatStatsRatio.Rows.Clear();
+
             for (int x1 = 0; x1 < 3; x1++)
             {
                 for (int x2 = 0; x2 < 3; x2++)
@@ -369,24 +386,22 @@ namespace LoaCalc
                             combatStats[x2] += accessoryValueList[4];
                             combatStats[y1] += accessoryValueList[5];
                             combatStats[y2] += accessoryValueList[6];
-                            SubCalcOptimalCombatStats(7, accessoryValueList, combatStats, optiamlCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count);
+                            SubCalcOptimalCombatStats(7, accessoryValueList, combatStats, optiamlCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count, checkDuplication);
                         }
                     }
                 }
             }
 
-            CombatStat_Crit.Text = optiamlCombatStats[0].ToString();
-            CombatStat_Specialization.Text = optiamlCombatStats[1].ToString();
-            CombatStat_Swiftness.Text = optiamlCombatStats[2].ToString();
+            DpsByCombatStatsRatio.Sort(DpsByCombatStatsRatio.Columns["Dps"], ListSortDirection.Descending);
+            int minDps = int.Parse(DpsByCombatStatsRatio.Rows[DpsByCombatStatsRatio.Rows.Count - 1].Cells[3].Value.ToString());
 
-            CalculateSkillDamage();
-            CalculateSumOfSkillDamage();
+            for (int i = 0; i < DpsByCombatStatsRatio.Rows.Count; i++)
+                DpsByCombatStatsRatio.Rows[i].Cells[4].Value = Math.Round(((decimal)DpsByCombatStatsRatio.Rows[i].Cells[3].Value / (decimal)minDps) * 100m, 2).ToString("F2") + "%";
 
-            CombatStat_Crit.Visible = CombatStat_Specialization.Visible = CombatStat_Swiftness.Visible = true;
             ProcessingMessageCalcOptimalCombatStats.Visible = false;
             Delay(1);
         }
-        private void SubCalcOptimalCombatStats(int index, List<int> accessoryValueList, List<int> combatStats, List<decimal> optimalCombatStats, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper, ref int count)
+        private void SubCalcOptimalCombatStats(int index, List<int> accessoryValueList, List<int> combatStats, List<decimal> optimalCombatStats, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper, ref int count, HashSet<string> checkDuplication)
         {
             if (index == accessoryValueList.Count)
             {
@@ -398,26 +413,31 @@ namespace LoaCalc
                     combatStats[i] = Decimal.ToInt32(Math.Round(combatStats[i] * 1.1m));
 
                     if ((critLower <= combatStats[0] && combatStats[0] <= critUpper) && (specLower <= combatStats[1] && combatStats[1] <= specUpper) && (swiftLower <= combatStats[2] && combatStats[2] <= swiftUpper))
-                    {
-                        CombatStat_Crit.Text = combatStats[0].ToString();
-                        CombatStat_Specialization.Text = combatStats[1].ToString();
-                        CombatStat_Swiftness.Text = combatStats[2].ToString();
+                    {         
+                        var checkStr = combatStats[0].ToString() + "_" + combatStats[1].ToString() + "_" + combatStats[2].ToString();
 
-                        CalculateSkillDamage(show: false);
-                        CalculateSumOfSkillDamage(show: false);
-
-                        decimal dps = sumOfSkillDamage.dpsHarmonicMean;
-
-                        if (optimalCombatStats[3] < dps)
+                        if (!checkDuplication.Contains(checkStr))
                         {
-                            optimalCombatStats[0] = combatStats[0];
-                            optimalCombatStats[1] = combatStats[1];
-                            optimalCombatStats[2] = combatStats[2];
-                            optimalCombatStats[3] = dps;
-                        }
+                            checkDuplication.Add(checkStr);
 
-                        ShowProcessing(count);
-                        Delay(1);
+                            character.setting.SetCombatStats(combatStats[0], combatStats[1], combatStats[2]);
+                            CalculateCombatSkillDamage(show: false);
+                            CalculateSumOfSkillDamage(show: false);
+
+                            decimal dps = sumOfSkillDamage.dpsHarmonicMean;
+
+                            if (optimalCombatStats[3] < dps)
+                            {
+                                optimalCombatStats[0] = combatStats[0];
+                                optimalCombatStats[1] = combatStats[1];
+                                optimalCombatStats[2] = combatStats[2];
+                                optimalCombatStats[3] = dps;
+                            }
+
+                            DpsByCombatStatsRatio.Rows.Add(combatStats[0], combatStats[1], combatStats[2], Math.Round(dps), 0);
+                            ShowProcessing(count);
+                            Delay(1);
+                        }
                     }
 
                     combatStats[i] = temp;
@@ -431,7 +451,7 @@ namespace LoaCalc
 
                 if ((critLower <= combatStats[0] && combatStats[0] <= critUpper) && (specLower <= combatStats[1] && combatStats[1] <= specUpper) && (swiftLower <= combatStats[2] && combatStats[2] <= swiftUpper))
                 {
-                    SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStats, optimalCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count);
+                    SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStats, optimalCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count, checkDuplication);
                 }
                 else
                 {
@@ -453,115 +473,140 @@ namespace LoaCalc
         /// <summary>
         /// 캐릭터 세팅을 업데이트 한다.
         /// </summary>
-        private void UpdateSetting(Gunslinger character)
+        private void UpdateSetting(bool combatStats = false, bool engraving = false, bool card = false, bool gem = false, bool gear = false, bool weaponQual = false, bool buff = false, bool skill = false)
         {
-            // 세팅값 초기화 
-            character.setting.Clear();
-
-            // 전투 특성
-            if (CombatStat_Crit.Text == "") CombatStat_Crit.Text = "0";
-            if (CombatStat_Specialization.Text == "") CombatStat_Specialization.Text = "0";
-            if (CombatStat_Swiftness.Text == "") CombatStat_Swiftness.Text = "0";
-            character.setting.SetCombatStats(CombatStat_Crit.Text, CombatStat_Specialization.Text, CombatStat_Swiftness.Text);
-
-            // 각인
-            for (int i = 0; i < Engraving_ControllerMaxNum; i++)
+            if (combatStats)   // 전투 특성
             {
-                ComboBox engravingName = GetControlByName("Engraving" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox engravingLev = GetControlByName("Engraving" + (i + 1).ToString() + "_Lev") as ComboBox;
-
-                if (engravingName.Text != "선택 안 함")
-                {
-                    var name = engravingNameList[engravingName.SelectedIndex - 1];
-                    var lev = engravingLevList[engravingLev.SelectedIndex];
-                    character.setting.SetEngraving(name, lev);
-                }
+                if (CombatStat_Crit.Text == "") CombatStat_Crit.Text = "0";
+                if (CombatStat_Specialization.Text == "") CombatStat_Specialization.Text = "0";
+                if (CombatStat_Swiftness.Text == "") CombatStat_Swiftness.Text = "0";
+                character.setting.SetCombatStats(int.Parse(CombatStat_Crit.Text), int.Parse(CombatStat_Specialization.Text), int.Parse(CombatStat_Swiftness.Text));
             }
 
-            // 카드
-            for (int i = 0; i < Card_ControllerMaxNum; i++)
+            if (engraving)   // 각인
             {
-                ComboBox cardName = GetControlByName("Card" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox cardSet = GetControlByName("Card" + (i + 1).ToString() + "_Sets") as ComboBox;
-                ComboBox cardAwakening = GetControlByName("Card" + (i + 1).ToString() + "_Awakening") as ComboBox;
-
-                if (cardName.Text != "선택 안 함")
+                var selectedEngravingList = new List<(SettingInfo.Engraving.NAME name, SettingInfo.Engraving.LEV lev)?>();
+                for (int i = 0; i < Engraving_ControllerMaxNum; i++)
                 {
-                    var name = cardNameList[cardName.SelectedIndex - 1];
-                    var set = cardSetList[name][cardSet.SelectedIndex];
-                    var awakening = cardAwakeningList[name][cardAwakening.SelectedIndex];
-                    character.setting.SetCard(name, set, awakening);
+                    ComboBox engravingName = GetControlByName("Engraving" + (i + 1).ToString() + "_Name") as ComboBox;
+                    ComboBox engravingLev = GetControlByName("Engraving" + (i + 1).ToString() + "_Lev") as ComboBox;
+
+                    if (engravingName.SelectedIndex <= 0 || engravingLev.SelectedIndex <= 0) selectedEngravingList.Add(null);
+                    else selectedEngravingList.Add((engravingNameList[engravingName.SelectedIndex - 1], engravingLevList[engravingLev.SelectedIndex - 1]));
                 }
+                character.setting.SetEngraving(selectedEngravingList);
             }
 
-            // 보석
-            for (int i = 0; i < Gem_ControllerMaxNum; i++)
+            if (card)   // 카드
             {
-                ComboBox gemName = GetControlByName("Gem" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox gemLev = GetControlByName("Gem" + (i + 1).ToString() + "_Lev") as ComboBox;
-                ComboBox gemTargetskill = GetControlByName("Gem" + (i + 1).ToString() + "_TargetSkillName") as ComboBox;
-
-                if (gemName.Text != "선택 안 함")
+                var selectedCardList = new List<(SettingInfo.Card.NAME name, SettingInfo.Card.SET set, SettingInfo.Card.AWAKENING awakening)?>();
+                for (int i = 0; i < Card_ControllerMaxNum; i++)
                 {
-                    var name = gemNameList[gemName.SelectedIndex - 1];
-                    var lev = gemLevList[gemLev.SelectedIndex];
-                    var target = gemTargetSkillList[gemTargetskill.SelectedIndex];
-                    character.setting.SetGem(name, lev, target);
+                    ComboBox cardName = GetControlByName("Card" + (i + 1).ToString() + "_Name") as ComboBox;
+                    ComboBox cardSet = GetControlByName("Card" + (i + 1).ToString() + "_Sets") as ComboBox;
+                    ComboBox cardAwakening = GetControlByName("Card" + (i + 1).ToString() + "_Awakening") as ComboBox;
+
+                    if (cardName.SelectedIndex <= 0 || cardSet.SelectedIndex <= 0 || cardAwakening.SelectedIndex <= 0) selectedCardList.Add(null);
+                    else
+                    {
+                        var name = cardNameList[cardName.SelectedIndex - 1];
+                        var set = cardSetList[name][cardSet.SelectedIndex - 1];
+                        var awakening = cardAwakeningList[name][cardAwakening.SelectedIndex - 1];
+                        selectedCardList.Add((name, set, awakening));
+                    }
                 }
+                character.setting.SetCard(selectedCardList);
             }
 
-            // 장비 세트
-            for (int i = 0; i < Gear_ControllerMaxNum; i++)
+            if (gem)   // 보석
             {
-                ComboBox gearName = GetControlByName("Gear" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox gearSet = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonus") as ComboBox;
-                ComboBox gearSetLev = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonusLev") as ComboBox;
-
-                if (gearName.Text != "선택 안 함")
+                var selectedGemList = new List<(SettingInfo.Gem.NAME name, SettingInfo.Gem.LEV lev, SettingInfo.Skill.NAME targetSkill)?>();
+                for (int i = 0; i < Gem_ControllerMaxNum; i++)
                 {
-                    var name = gearNameList[gearName.SelectedIndex - 1];
-                    var set = gearSetList[name][gearSet.SelectedIndex];
-                    var setLev = gearSetLevList[name][gearSetLev.SelectedIndex];
-                    character.setting.SetGear(name, set, setLev);
+                    ComboBox gemName = GetControlByName("Gem" + (i + 1).ToString() + "_Name") as ComboBox;
+                    ComboBox gemLev = GetControlByName("Gem" + (i + 1).ToString() + "_Lev") as ComboBox;
+                    ComboBox gemTargetskill = GetControlByName("Gem" + (i + 1).ToString() + "_TargetSkillName") as ComboBox;
+
+                    if (gemName.SelectedIndex <= 0 || gemLev.SelectedIndex <= 0 || gemTargetskill.SelectedIndex <= 0) selectedGemList.Add(null);
+                    else
+                    {
+                        var name = gemNameList[gemName.SelectedIndex - 1];
+                        var lev = gemLevList[gemLev.SelectedIndex - 1];
+                        var target = gemTargetSkillList[gemTargetskill.SelectedIndex - 1];
+                        selectedGemList.Add((name, lev, target));
+                    }
                 }
+                character.setting.SetGem(selectedGemList);
             }
 
-            // 무기 품질
-            if (Weapon_AdditionalDamage.Text == "") Weapon_AdditionalDamage.Text = "0";
-            character.setting.SetWeaponQual(Weapon_AdditionalDamage.Text);
-
-            // 버프 (시너지)
-            for (int i = 0; i < Buff_ControllerMaxNum; i++)
+            if (gear)   // 장비 세트
             {
-                ComboBox buffName = GetControlByName("Buff" + (i + 1).ToString() + "_Name") as ComboBox;
-
-                if (buffName.Text != "선택 안 함")
+                var selectedGearList = new List<(SettingInfo.Gear.NAME name, SettingInfo.Gear.SET set, SettingInfo.Gear.LEV setLev)?>();
+                for (int i = 0; i < Gear_ControllerMaxNum; i++)
                 {
-                    var name = buffNameList[buffName.SelectedIndex - 1];
-                    character.setting.SetBuff(name);
+                    ComboBox gearName = GetControlByName("Gear" + (i + 1).ToString() + "_Name") as ComboBox;
+                    ComboBox gearSet = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonus") as ComboBox;
+                    ComboBox gearSetLev = GetControlByName("Gear" + (i + 1).ToString() + "_SetsBonusLev") as ComboBox;
+
+                    if (gearName.SelectedIndex <= 0 || gearSet.SelectedIndex <= 0 || gearSetLev.SelectedIndex <= 0) selectedGearList.Add(null);
+                    else
+                    {
+                        var name = gearNameList[gearName.SelectedIndex - 1];
+                        var set = gearSetList[name][gearSet.SelectedIndex - 1];
+                        var setLev = gearSetLevList[name][gearSetLev.SelectedIndex - 1];
+                        selectedGearList.Add((name, set, setLev));
+                    }
                 }
+                character.setting.SetGear(selectedGearList);
             }
 
-            // 스킬
-            for (int i = 0; i < Skill_ControllerMaxNum; i++)
+            if (weaponQual)   // 무기 품질
             {
-                ComboBox skillName = GetControlByName("Skill" + (i + 1).ToString() + "_Name") as ComboBox;
-                ComboBox skillLev = GetControlByName("Skill" + (i + 1).ToString() + "_Lev") as ComboBox;
-                ComboBox skillTp1 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp1") as ComboBox;
-                ComboBox skillTp2 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp2") as ComboBox;
-                ComboBox skillTp3 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp3") as ComboBox;
-
-                if (skillName.Text != "선택 안 함")
-                {
-                    var name = skillNameList[skillName.SelectedIndex - 1];
-                    var lev = skillLevList[skillLev.SelectedIndex];
-                    var tp1 = skillTp1List[name][skillTp1.SelectedIndex == -1 ? 0 : skillTp1.SelectedIndex];  // 비활성화 된 경우 인덱스의 값은 -1인 데 0으로 바꿔도 상관이 없다
-                    var tp2 = skillTp2List[name][skillTp2.SelectedIndex == -1 ? 0 : skillTp2.SelectedIndex];
-                    var tp3 = skillTp3List[name][skillTp3.SelectedIndex == -1 ? 0 : skillTp3.SelectedIndex];
-                    character.setting.SetSkill(name, lev, tp1, tp2, tp3);
-                }
-                else character.setting.SetEmptySkill();
+                if (Weapon_AdditionalDamage.Text == "") Weapon_AdditionalDamage.Text = "0";
+                character.setting.SetWeaponQual(decimal.Parse(Weapon_AdditionalDamage.Text));
             }
+
+            if (buff)   // 버프 (시너지)
+            {
+                var selectedBuffList = new List<SettingInfo.Buff.NAME?>();
+                for (int i = 0; i < Buff_ControllerMaxNum; i++)
+                {
+                    ComboBox buffName = GetControlByName("Buff" + (i + 1).ToString() + "_Name") as ComboBox;
+
+                    if (buffName.SelectedIndex <= 0) selectedBuffList.Add(null);
+                    else selectedBuffList.Add(buffNameList[buffName.SelectedIndex - 1]);
+                }
+                character.setting.SetBuff(selectedBuffList);
+            }
+
+            if (skill)   // 스킬
+            {
+                var selectedSkillList = new List<(SettingInfo.Skill.NAME name, SettingInfo.Skill.LEV lev, SettingInfo.Skill.TRIPOD tp1, SettingInfo.Skill.TRIPOD tp2, SettingInfo.Skill.TRIPOD tp3)?>();
+                for (int i = 0; i < Skill_ControllerMaxNum; i++)
+                {
+                    ComboBox skillName = GetControlByName("Skill" + (i + 1).ToString() + "_Name") as ComboBox;
+                    ComboBox skillLev = GetControlByName("Skill" + (i + 1).ToString() + "_Lev") as ComboBox;
+                    ComboBox skillTp1 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp1") as ComboBox;
+                    ComboBox skillTp2 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp2") as ComboBox;
+                    ComboBox skillTp3 = GetControlByName("Skill" + (i + 1).ToString() + "_Tp3") as ComboBox;
+
+                    if (skillName.SelectedIndex <= 0 || skillLev.SelectedIndex < 0) selectedSkillList.Add(null);
+                    else
+                    {
+                        var name = skillNameList[skillName.SelectedIndex - 1];
+                        var lev = skillLevList[skillLev.SelectedIndex];
+                        var tp1 = skillTp1List[name][skillTp1.SelectedIndex == -1 ? 0 : skillTp1.SelectedIndex];
+                        var tp2 = skillTp2List[name][skillTp2.SelectedIndex == -1 ? 0 : skillTp2.SelectedIndex];
+                        var tp3 = skillTp3List[name][skillTp3.SelectedIndex == -1 ? 0 : skillTp3.SelectedIndex];
+                        selectedSkillList.Add((name, lev, tp1, tp2, tp3));
+                    }
+                }
+                character.setting.SetSkill(selectedSkillList);
+            }
+        }
+        private void UpdateAllSetting()
+        {
+            UpdateSetting(combatStats: true, engraving: true, card: true, gem: true, gear: true, weaponQual: true, buff: true, skill: true);
         }
 
 
@@ -629,6 +674,10 @@ namespace LoaCalc
                 combatStat.Text = CombatStat_PrevText[combatStat.Name];
                 combatStat.Select(combatStat.Text.Length, 0);
             }
+
+            UpdateSetting(combatStats: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
         }
         private Dictionary<string, string> CombatStat_PrevText = new Dictionary<string, string>();
 
@@ -691,12 +740,9 @@ namespace LoaCalc
             ComboBox engravingName = sender as ComboBox;
             ComboBox engravingLev = GetControlByName("Engraving" + controlnum.ToString() + "_Lev") as ComboBox;
 
-            if (engravingName.SelectedIndex == -1 || engravingName.SelectedIndex == Engraving_Name_PrevSelectedIndex[controlnum]) return;
-            else
+            if (!(engravingName.SelectedIndex == -1 || engravingName.SelectedIndex == Engraving_Name_PrevSelectedIndex[controlnum]))
             {
-                Engraving_Name_PrevSelectedIndex[controlnum] = engravingName.SelectedIndex;
-
-                if (engravingName.SelectedItem.ToString() == "선택 안 함")
+                if (engravingName.SelectedIndex == 0)
                 {
                     engravingLev.SelectedIndex = -1;
                     engravingLev.Enabled = false;
@@ -706,9 +752,22 @@ namespace LoaCalc
                     engravingLev.SelectedIndex = 0;
                     engravingLev.Enabled = true;
                 }
+
+                Engraving_Name_PrevSelectedIndex[controlnum] = engravingName.SelectedIndex;
             }
         }
         private List<int> Engraving_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Engraving_ControllerMaxNum + 1).ToList();
+
+
+        /// <summary>
+        /// 각인 레벨 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Engraving_Lev_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSetting(engraving: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
+        }
 
 
         /// <summary>
@@ -734,10 +793,9 @@ namespace LoaCalc
             ComboBox cardSet = GetControlByName("Card" + controlnum.ToString() + "_Sets") as ComboBox;
             ComboBox cardAwakening = GetControlByName("Card" + controlnum.ToString() + "_Awakening") as ComboBox;
 
-            if (cardName.SelectedIndex == -1 || cardName.SelectedIndex == Card_Name_PrevSelectedIndex[controlnum]) return;
-            else
+            if (!(cardName.SelectedIndex == -1 || cardName.SelectedIndex == Card_Name_PrevSelectedIndex[controlnum]))
             {
-                if (cardName.SelectedItem.ToString() == "선택 안 함")
+                if (cardName.SelectedIndex==0)
                 {
                     cardSet.Items.Clear();
                     cardAwakening.Items.Clear();
@@ -753,8 +811,8 @@ namespace LoaCalc
                     cardSet.Items.Clear();
                     cardAwakening.Items.Clear();
 
-                    cardSet.Items.AddRange(cardSetList[cardNameList[cardName.SelectedIndex - 1]].ConvertAll(set => set.ToStr()).ToArray());
-                    cardAwakening.Items.AddRange(cardAwakeningList[cardNameList[cardName.SelectedIndex - 1]].ConvertAll(awakening => awakening.ToStr()).ToArray());
+                    cardSet.Items.AddRange(new List<string> { "미사용" }.Union(cardSetList[cardNameList[cardName.SelectedIndex - 1]].ConvertAll(set => set.ToStr())).ToArray());
+                    cardAwakening.Items.AddRange(new List<string> { "미사용" }.Union(cardAwakeningList[cardNameList[cardName.SelectedIndex - 1]].ConvertAll(awakening => awakening.ToStr())).ToArray());
 
                     cardSet.SelectedIndex = 0;
                     cardAwakening.SelectedIndex = 0;
@@ -764,13 +822,37 @@ namespace LoaCalc
                 }
 
                 Card_Name_PrevSelectedIndex[controlnum] = cardName.SelectedIndex;
+
+
             }
         }
         private List<int> Card_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Card_ControllerMaxNum + 1).ToList();
 
 
         /// <summary>
-        /// 보석 이름 선택 시 발생하는 이벤트.
+        /// 카드 세트 개수 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Card_Sets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSetting(card: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
+        }
+
+
+        /// <summary>
+        /// 카드 세트 각성 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Card_Awakening_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSetting(card: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
+        }
+
+
+        /// <summary>
+        /// 보석 종류 선택 시 발생하는 이벤트.
         /// </summary>
         private void Gem_Name_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -782,7 +864,7 @@ namespace LoaCalc
                 string id = (sender as ComboBox).Name.Split('_')[0];
 
                 if (num.Length == id.Count(c => ('0' <= c && c <= '9')) && id.Contains(num))
-                {                 
+                {
                     controlnum = i + 1;
                     break;
                 }
@@ -792,24 +874,23 @@ namespace LoaCalc
             ComboBox gemLev = GetControlByName("Gem" + controlnum.ToString() + "_Lev") as ComboBox;
             ComboBox gemTargerskillname = GetControlByName("Gem" + controlnum.ToString() + "_TargetSkillName") as ComboBox;
 
-            if (gemName.SelectedIndex == -1 || gemName.SelectedIndex == Gem_Name_PrevSelectedIndex[controlnum]) return;
-            else
+            if (!(gemName.SelectedIndex == -1 || gemName.SelectedIndex == Gem_Name_PrevSelectedIndex[controlnum]))
             {
-                if (gemName.SelectedItem.ToString() == "선택 안 함")
+                if (gemName.SelectedIndex == 0)
                 {
                     gemLev.SelectedIndex = -1;
-                    gemLev.Enabled = false;
-
                     gemTargerskillname.SelectedIndex = -1;
+
+                    gemLev.Enabled = false;
                     gemTargerskillname.Enabled = false;
                 }
                 else
                 {
                     gemLev.SelectedIndex = 0;
-                    gemLev.Enabled = true;
+                    gemTargerskillname.SelectedIndex = -1;
 
-                    gemTargerskillname.SelectedIndex = 0;
-                    gemTargerskillname.Enabled = true;
+                    gemLev.Enabled = true;
+                    gemTargerskillname.Enabled = false;
                 }
 
                 Gem_Name_PrevSelectedIndex[controlnum] = gemName.SelectedIndex;
@@ -817,6 +898,59 @@ namespace LoaCalc
 
         }
         private List<int> Gem_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Gem_ControllerMaxNum + 1).ToList();
+
+
+        /// <summary>
+        /// 보석 레벨 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Gem_Lev_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int controlnum = 0;
+
+            for (int i = 0; i < Gem_ControllerMaxNum; i++)
+            {
+                string num = (i + 1).ToString();
+                string id = (sender as ComboBox).Name.Split('_')[0];
+
+                if (num.Length == id.Count(c => ('0' <= c && c <= '9')) && id.Contains(num))
+                {
+                    controlnum = i + 1;
+                    break;
+                }
+            }
+
+            ComboBox gemName = GetControlByName("Gem" + controlnum.ToString() + "_Name") as ComboBox;
+            ComboBox gemLev = GetControlByName("Gem" + controlnum.ToString() + "_Lev") as ComboBox;
+            ComboBox gemTargerskillname = GetControlByName("Gem" + controlnum.ToString() + "_TargetSkillName") as ComboBox;
+
+            if (!(gemLev.SelectedIndex == -1 || gemLev.SelectedIndex == Gem_Lev_PrevSelectedIndex[controlnum]))
+            {
+                if (gemLev.SelectedIndex == 0)
+                {
+                    gemTargerskillname.SelectedIndex = -1;
+                    gemTargerskillname.Enabled = false;
+                }
+                else
+                {
+                    gemTargerskillname.SelectedIndex = 0;
+                    gemTargerskillname.Enabled = true;
+                }
+
+                Gem_Lev_PrevSelectedIndex[controlnum] = gemLev.SelectedIndex;
+            }
+        }
+        private List<int> Gem_Lev_PrevSelectedIndex = Enumerable.Repeat(-1, Gem_ControllerMaxNum + 1).ToList();
+
+
+        /// <summary>
+        /// 보석 적용 스킬 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Gem_TargetSkillName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSetting(gem: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
+        }
 
 
         /// <summary>
@@ -842,10 +976,9 @@ namespace LoaCalc
             ComboBox gearSet = GetControlByName("Gear" + controlnum.ToString() + "_SetsBonus") as ComboBox;
             ComboBox gearSetlev = GetControlByName("Gear" + controlnum.ToString() + "_SetsBonusLev") as ComboBox;
 
-            if (gearName.SelectedIndex == -1 || gearName.SelectedIndex == Gear_Name_PrevSelectedIndex[controlnum]) return;
-            else
+            if (!(gearName.SelectedIndex == -1 || gearName.SelectedIndex == Gear_Name_PrevSelectedIndex[controlnum]))
             {
-                if (gearName.SelectedItem.ToString() == "선택 안 함")
+                if (gearName.SelectedIndex == 0)
                 {
                     gearSet.Items.Clear();
                     gearSetlev.Items.Clear();
@@ -861,20 +994,71 @@ namespace LoaCalc
                     gearSet.Items.Clear();
                     gearSetlev.Items.Clear();
 
-                    gearSet.Items.AddRange(gearSetList[gearNameList[gearName.SelectedIndex - 1]].ConvertAll(set => set.ToStr()).ToArray());
-                    gearSetlev.Items.AddRange(gearSetLevList[gearNameList[gearName.SelectedIndex - 1]].ConvertAll(setLev => setLev.ToStr()).ToArray());
+                    gearSet.Items.AddRange(new List<string> { "미사용" }.Union(gearSetList[gearNameList[gearName.SelectedIndex - 1]].ConvertAll(set => set.ToStr())).ToArray());
+                    gearSetlev.Items.AddRange(new List<string> { "미사용" }.Union(gearSetLevList[gearNameList[gearName.SelectedIndex - 1]].ConvertAll(setLev => setLev.ToStr())).ToArray());
 
                     gearSet.SelectedIndex = 0;
-                    gearSetlev.SelectedIndex = 0;
+                    gearSetlev.SelectedIndex = -1;
 
                     gearSet.Enabled = true;
-                    gearSetlev.Enabled = true;
+                    gearSetlev.Enabled = false;
                 }
 
                 Gear_Name_PrevSelectedIndex[controlnum] = gearName.SelectedIndex;
             }
         }
         private List<int> Gear_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Gear_ControllerMaxNum + 1).ToList();
+
+
+        /// <summary>
+        /// 장비 세트 개수 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Gear_SetsBonus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int controlnum = 1;
+
+            for (int i = 0; i < Gear_ControllerMaxNum; i++)
+            {
+                string num = (i + 1).ToString();
+                string id = (sender as ComboBox).Name.Split('_')[0];
+
+                if (num.Length == id.Count(c => ('0' <= c && c <= '9')) && id.Contains(num))
+                {
+                    controlnum = i + 1;
+                    break;
+                }
+            }
+
+            ComboBox gearName = GetControlByName("Gear" + controlnum.ToString() + "_Name") as ComboBox;
+            ComboBox gearSet = GetControlByName("Gear" + controlnum.ToString() + "_SetsBonus") as ComboBox;
+            ComboBox gearSetlev = GetControlByName("Gear" + controlnum.ToString() + "_SetsBonusLev") as ComboBox;
+
+            if (!(gearSet.SelectedIndex == -1 || gearSet.SelectedIndex == Gear_Set_PrevSelectedIndex[controlnum]))
+            {
+                if (gearSet.SelectedIndex == 0)
+                {
+                    gearSetlev.SelectedIndex = -1;
+                    gearSetlev.Enabled = false;
+                }
+                else
+                {
+                    gearSetlev.SelectedIndex = 0;
+                    gearSetlev.Enabled = true;
+                }
+            }
+        }
+        private List<int> Gear_Set_PrevSelectedIndex = Enumerable.Repeat(-1, Gear_ControllerMaxNum + 1).ToList();
+
+
+        /// <summary>
+        /// 장비 세트 레벨 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Gear_SetsBonusLev_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSetting(gear: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
+        }
 
 
         /// <summary>
@@ -893,6 +1077,10 @@ namespace LoaCalc
                 weaponAD.Text = Weapon_AdditionalDamage_PrevText;
                 weaponAD.Select(weaponAD.Text.Length, 0);
             }
+
+            UpdateSetting(weaponQual: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
         }
         private string Weapon_AdditionalDamage_PrevText = "0";
 
@@ -918,10 +1106,13 @@ namespace LoaCalc
 
             ComboBox buffName = GetControlByName("Buff" + controlnum.ToString() + "_Name") as ComboBox;
 
-            if (buffName.SelectedIndex == -1 || buffName.SelectedIndex == Buff_Name_PrevSelectedIndex[controlnum]) return;
-            else
+            if (!(buffName.SelectedIndex == -1 || buffName.SelectedIndex == Buff_Name_PrevSelectedIndex[controlnum]))
             {
                 Buff_Name_PrevSelectedIndex[controlnum] = buffName.SelectedIndex;
+
+                UpdateSetting(buff: true);
+                CalculateCombatSkillDamage();
+                CalculateSumOfSkillDamage();
             }
         }
         private List<int> Buff_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Buff_ControllerMaxNum + 1).ToList();
@@ -952,10 +1143,9 @@ namespace LoaCalc
             ComboBox skillTp2 = GetControlByName("Skill" + controlnum.ToString() + "_Tp2") as ComboBox;
             ComboBox skillTp3 = GetControlByName("Skill" + controlnum.ToString() + "_Tp3") as ComboBox;
 
-            if (skillName.SelectedIndex == -1 || skillName.SelectedIndex == Skill_Name_PrevSelectedIndex[controlnum]) return;
-            else
+            if (!(skillName.SelectedIndex == -1 || skillName.SelectedIndex == Skill_Name_PrevSelectedIndex[controlnum]))
             {
-                if (skillName.SelectedItem.ToString() == "선택 안 함")
+                if (skillName.SelectedIndex == 0)
                 {
                     skillTp1.Items.Clear();
                     skillTp2.Items.Clear();
@@ -990,6 +1180,10 @@ namespace LoaCalc
                 }
 
                 Skill_Name_PrevSelectedIndex[controlnum] = skillName.SelectedIndex;
+
+                UpdateSetting(skill: true);
+                CalculateCombatSkillDamage();
+                CalculateSumOfSkillDamage();
             }
         }
         private List<int> Skill_Name_PrevSelectedIndex = Enumerable.Repeat(-1, Skill_ControllerMaxNum + 1).ToList();
@@ -1020,10 +1214,9 @@ namespace LoaCalc
             ComboBox skillTp2 = GetControlByName("Skill" + controlnum.ToString() + "_Tp2") as ComboBox;
             ComboBox skillTp3 = GetControlByName("Skill" + controlnum.ToString() + "_Tp3") as ComboBox;
 
-            if (skillLev.SelectedIndex == -1 || skillLev.SelectedIndex == Skill_Lev_PrevSelectedIndex[controlnum]) return;
-            else
+            if (!(skillLev.SelectedIndex == -1 || skillLev.SelectedIndex == Skill_Lev_PrevSelectedIndex[controlnum]))
             {
-                if (skillLev.SelectedItem.ToString() == SettingInfo.Skill.LEV.__1레벨.ToStr())
+                if (skillLev.SelectedIndex == 0)
                 {
                     skillTp1.SelectedIndex = -1;
                     skillTp2.SelectedIndex = -1;
@@ -1033,7 +1226,7 @@ namespace LoaCalc
                     skillTp2.Enabled = false;
                     skillTp3.Enabled = false;
                 }
-                else if (skillLev.SelectedItem.ToString() == SettingInfo.Skill.LEV.__4레벨.ToStr())
+                else if (skillLev.SelectedIndex == 1)
                 {
                     skillTp1.SelectedIndex = skillTp1.Enabled == false ? 0 : skillTp1.SelectedIndex;
                     skillTp2.SelectedIndex = -1;
@@ -1043,7 +1236,7 @@ namespace LoaCalc
                     skillTp2.Enabled = false;
                     skillTp3.Enabled = false;
                 }
-                else if (skillLev.SelectedItem.ToString() == SettingInfo.Skill.LEV.__7레벨.ToStr())
+                else if (skillLev.SelectedIndex == 2)
                 {
                     skillTp1.SelectedIndex = skillTp1.Enabled == false ? 0 : skillTp1.SelectedIndex;
                     skillTp2.SelectedIndex = skillTp2.Enabled == false ? 0 : skillTp2.SelectedIndex;
@@ -1065,9 +1258,24 @@ namespace LoaCalc
                 }
 
                 Skill_Lev_PrevSelectedIndex[controlnum] = skillLev.SelectedIndex;
+
+                UpdateSetting(skill: true);
+                CalculateCombatSkillDamage();
+                CalculateSumOfSkillDamage();
             }
         }
         private List<int> Skill_Lev_PrevSelectedIndex = Enumerable.Repeat(-1, Skill_ControllerMaxNum + 1).ToList();
+
+
+        /// <summary>
+        /// 스킬 트라이포드 선택 시 발생하는 이벤트.
+        /// </summary>
+        private void Skill_Tp3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSetting(skill: true);
+            CalculateCombatSkillDamage();
+            CalculateSumOfSkillDamage();
+        }
 
 
         /// <summary>
@@ -1075,7 +1283,8 @@ namespace LoaCalc
         /// </summary>
         private void Calculate_Click(object sender, EventArgs e)
         {
-            CalculateSkillDamage();
+            UpdateAllSetting();
+            CalculateCombatSkillDamage();
             CalculateSumOfSkillDamage();
         }
 
@@ -1245,7 +1454,8 @@ namespace LoaCalc
                     }
                 }
 
-                CalculateSkillDamage();
+                UpdateAllSetting();
+                CalculateCombatSkillDamage();
                 CalculateSumOfSkillDamage();
                 MessageBox.Show("프리셋 로딩 완료");
             }
@@ -1302,6 +1512,18 @@ namespace LoaCalc
 
         private void GunslingerSetting_Load(object sender, EventArgs e)
         {
+        }
+
+
+
+
+
+
+        private void DataGridView_CombatSkill_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            (sender as DataGridView).BeginEdit(true);
+            ComboBox combo = (sender as DataGridView).EditingControl as ComboBox;
+            combo.DroppedDown = true;
         }
     }
 }

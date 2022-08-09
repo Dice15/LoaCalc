@@ -22,7 +22,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Engraving1_Lev",
-    "data": "2"
+    "data": "3"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -32,7 +32,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Engraving2_Lev",
-    "data": "2"
+    "data": "3"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -42,7 +42,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Engraving3_Lev",
-    "data": "2"
+    "data": "3"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -52,17 +52,17 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Engraving4_Lev",
-    "data": "2"
+    "data": "3"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Engraving5_Name",
-    "data": "9"
+    "data": "10"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Engraving5_Lev",
-    "data": "2"
+    "data": "3"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -72,7 +72,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Engraving6_Lev",
-    "data": "0"
+    "data": "1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -92,12 +92,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Card1_Sets",
-    "data": "0"
+    "data": "1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Card1_Awakening",
-    "data": "2"
+    "data": "3"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -137,12 +137,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem1_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem1_TargetSkillName",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -152,12 +152,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem2_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem2_TargetSkillName",
-    "data": "4"
+    "data": "6"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -167,12 +167,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem3_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem3_TargetSkillName",
-    "data": "7"
+    "data": "8"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -182,12 +182,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem4_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem4_TargetSkillName",
-    "data": "8"
+    "data": "9"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -197,12 +197,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem5_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem5_TargetSkillName",
-    "data": "0"
+    "data": "11"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -212,12 +212,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem6_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem6_TargetSkillName",
-    "data": "1"
+    "data": "13"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -227,42 +227,42 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem7_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem7_TargetSkillName",
-    "data": "2"
+    "data": "14"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem8_Name",
-    "data": "1"
+    "data": "0"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem8_Lev",
-    "data": "3"
+    "data": "-1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem8_TargetSkillName",
-    "data": "5"
+    "data": "-1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem9_Name",
-    "data": "1"
+    "data": "0"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem9_Lev",
-    "data": "3"
+    "data": "-1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem9_TargetSkillName",
-    "data": "6"
+    "data": "-1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -302,12 +302,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem12_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem12_TargetSkillName",
-    "data": "3"
+    "data": "8"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -317,12 +317,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem13_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem13_TargetSkillName",
-    "data": "4"
+    "data": "9"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -332,12 +332,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem14_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem14_TargetSkillName",
-    "data": "7"
+    "data": "13"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -347,12 +347,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem15_Lev",
-    "data": "3"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem15_TargetSkillName",
-    "data": "8"
+    "data": "14"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -467,12 +467,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gear1_SetsBonus",
-    "data": "0"
+    "data": "1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gear1_SetsBonusLev",
-    "data": "0"
+    "data": "1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -547,7 +547,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill1_Name",
-    "data": "1"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -577,7 +577,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill2_Name",
-    "data": "2"
+    "data": "6"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -607,12 +607,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Name",
-    "data": "6"
+    "data": "8"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Lev",
-    "data": "4"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -622,12 +622,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Tp2",
-    "data": "0"
+    "data": "1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Tp3",
-    "data": "1"
+    "data": "0"
   },
   {
     "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -637,7 +637,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Name",
-    "data": "4"
+    "data": "9"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -647,12 +647,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Tp1",
-    "data": "0"
+    "data": "2"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Tp2",
-    "data": "1"
+    "data": "0"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -667,17 +667,17 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Name",
-    "data": "5"
+    "data": "11"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Lev",
-    "data": "5"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Tp1",
-    "data": "2"
+    "data": "0"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -697,7 +697,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill6_Name",
-    "data": "9"
+    "data": "14"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -727,7 +727,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill7_Name",
-    "data": "10"
+    "data": "15"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
