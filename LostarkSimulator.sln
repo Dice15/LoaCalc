@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LostarkSimulator", "LostarkSimulator\LostarkSimulator.csproj", "{7373BFD3-F7C0-4279-898A-5FBDFCB1ACD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7373BFD3-F7C0-4279-898A-5FBDFCB1ACD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7373BFD3-F7C0-4279-898A-5FBDFCB1ACD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7373BFD3-F7C0-4279-898A-5FBDFCB1ACD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7373BFD3-F7C0-4279-898A-5FBDFCB1ACD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8384F0B8-1D72-47D6-86AD-EAF2770D5C7C}
+	EndGlobalSection
+EndGlobal
