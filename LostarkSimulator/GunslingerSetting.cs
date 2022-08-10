@@ -237,7 +237,7 @@ namespace LostarkSimulator
             {
                 if (control.GetType() == typeof(TextBox))
                 {
-                    (control as TextBox).Text = "";
+                    (control as TextBox).Text = "0";
                 }
                 else if (control.GetType() == typeof(ComboBox))
                 {
@@ -357,7 +357,7 @@ namespace LostarkSimulator
         /// <summary>
         /// 최적 특성을 구한다.
         /// </summary>
-        private void CalculateOptimalCombatStats(int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper)
+        private void CalculateOptimalCombatStats(int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper, string meanType)
         {
             var accessoryValueList = new List<int> { 50, 50, 50, 120, 120, 500, 500, 300, 300, 200, 200 };
             var combatStats = new List<int> { 0, 0, 0 };
@@ -368,12 +368,8 @@ namespace LostarkSimulator
 
             var count = 0;
             var checkDuplication = new HashSet<string>();
-            var saveValue = new List<int> 
-            {
-                CombatStat_Crit.Text == "0" ? 0 : int.Parse(CombatStat_Crit.Text), 
-                CombatStat_Specialization.Text == "0" ? 0 : int.Parse(CombatStat_Specialization.Text),
-                CombatStat_Swiftness.Text == "0" ? 0 : int.Parse(CombatStat_Swiftness.Text)
-            };
+            var saveValue = new List<int> { CombatStat_Crit.Text.ToInt(), CombatStat_Specialization.Text.ToInt(), CombatStat_Swiftness.Text.ToInt() };
+
             UpdateAllSetting();
             DpsByCombatStatsRatio.Rows.Clear();
 
@@ -394,25 +390,26 @@ namespace LostarkSimulator
                             combatStats[x2] += accessoryValueList[4];
                             combatStats[y1] += accessoryValueList[5];
                             combatStats[y2] += accessoryValueList[6];
-                            SubCalcOptimalCombatStats(7, accessoryValueList, combatStats, optiamlCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count, checkDuplication);
+                            SubCalcOptimalCombatStats(7, accessoryValueList, combatStats, optiamlCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count, checkDuplication, meanType);
                         }
                     }
                 }
             }
 
-            character.setting.SetCombatStats(saveValue[0], saveValue[1], saveValue[2]);
+            character.setting.SetCombatStats(saveValue[0], saveValue[1], saveValue[2]);           
+            UpdateAllSetting();
             CalculateCombatSkillDamage(show: false);
             CalculateSumOfSkillDamage(show: false);
 
             DpsByCombatStatsRatio.Sort(DpsByCombatStatsRatio.Columns["Dps"], ListSortDirection.Descending);
-            int minDps = int.Parse(DpsByCombatStatsRatio.Rows[DpsByCombatStatsRatio.Rows.Count - 1].Cells[3].Value.ToString());
+            int minDps = DpsByCombatStatsRatio.Rows[DpsByCombatStatsRatio.Rows.Count - 1].Cells[3].Value.ToString().ToInt();
             for (int i = 0; i < DpsByCombatStatsRatio.Rows.Count; i++)
                 DpsByCombatStatsRatio.Rows[i].Cells[4].Value = Math.Round(((decimal)DpsByCombatStatsRatio.Rows[i].Cells[3].Value / (decimal)minDps) * 100m, 2).ToString("F2") + "%";
 
             ProcessingMessageCalcOptimalCombatStats.Visible = false;
             Delay(1);
         }
-        private void SubCalcOptimalCombatStats(int index, List<int> accessoryValueList, List<int> combatStats, List<decimal> optimalCombatStats, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper, ref int count, HashSet<string> checkDuplication)
+        private void SubCalcOptimalCombatStats(int index, List<int> accessoryValueList, List<int> combatStats, List<decimal> optimalCombatStats, int critLower, int critUpper, int specLower, int specUpper, int swiftLower, int swiftUpper, ref int count, HashSet<string> checkDuplication, string meanType)
         {
             if (index == accessoryValueList.Count)
             {
@@ -424,7 +421,7 @@ namespace LostarkSimulator
                     combatStats[i] = Decimal.ToInt32(Math.Round(combatStats[i] * 1.1m));
 
                     if ((critLower <= combatStats[0] && combatStats[0] <= critUpper) && (specLower <= combatStats[1] && combatStats[1] <= specUpper) && (swiftLower <= combatStats[2] && combatStats[2] <= swiftUpper))
-                    {         
+                    {
                         var checkStr = combatStats[0].ToString() + "_" + combatStats[1].ToString() + "_" + combatStats[2].ToString();
 
                         if (!checkDuplication.Contains(checkStr))
@@ -435,17 +432,29 @@ namespace LostarkSimulator
                             CalculateCombatSkillDamage(show: false);
                             CalculateSumOfSkillDamage(show: false);
 
-                            decimal dps = sumOfSkillDamage.dpsHarmonicMean;
-
-                            if (optimalCombatStats[3] < dps)
+                            if (meanType == "ArithmeticMean")
                             {
-                                optimalCombatStats[0] = combatStats[0];
-                                optimalCombatStats[1] = combatStats[1];
-                                optimalCombatStats[2] = combatStats[2];
-                                optimalCombatStats[3] = dps;
+                                if (optimalCombatStats[3] < sumOfSkillDamage.dpsArithmeticMean)
+                                {
+                                    optimalCombatStats[0] = combatStats[0];
+                                    optimalCombatStats[1] = combatStats[1];
+                                    optimalCombatStats[2] = combatStats[2];
+                                    optimalCombatStats[3] = sumOfSkillDamage.dpsArithmeticMean;
+                                }
+                                DpsByCombatStatsRatio.Rows.Add(combatStats[0], combatStats[1], combatStats[2], Math.Round(sumOfSkillDamage.dpsArithmeticMean), 0);
+                            }
+                            else
+                            {
+                                if (optimalCombatStats[3] < sumOfSkillDamage.dpsHarmonicMean)
+                                {
+                                    optimalCombatStats[0] = combatStats[0];
+                                    optimalCombatStats[1] = combatStats[1];
+                                    optimalCombatStats[2] = combatStats[2];
+                                    optimalCombatStats[3] = sumOfSkillDamage.dpsHarmonicMean;
+                                }
+                                DpsByCombatStatsRatio.Rows.Add(combatStats[0], combatStats[1], combatStats[2], Math.Round(sumOfSkillDamage.dpsHarmonicMean), 0);
                             }
 
-                            DpsByCombatStatsRatio.Rows.Add(combatStats[0], combatStats[1], combatStats[2], Math.Round(dps), 0);
                             ShowProcessing(count);
                             Delay(1);
                         }
@@ -462,7 +471,7 @@ namespace LostarkSimulator
 
                 if ((critLower <= combatStats[0] && combatStats[0] <= critUpper) && (specLower <= combatStats[1] && combatStats[1] <= specUpper) && (swiftLower <= combatStats[2] && combatStats[2] <= swiftUpper))
                 {
-                    SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStats, optimalCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count, checkDuplication);
+                    SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStats, optimalCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count, checkDuplication, meanType);
                 }
                 else
                 {
@@ -488,10 +497,10 @@ namespace LostarkSimulator
         {
             if (combatStats)   // 전투 특성
             {
-                if (CombatStat_Crit.Text == "") CombatStat_Crit.Text = "0";
-                if (CombatStat_Specialization.Text == "") CombatStat_Specialization.Text = "0";
-                if (CombatStat_Swiftness.Text == "") CombatStat_Swiftness.Text = "0";
-                character.setting.SetCombatStats(int.Parse(CombatStat_Crit.Text), int.Parse(CombatStat_Specialization.Text), int.Parse(CombatStat_Swiftness.Text));
+                if (!int.TryParse(CombatStat_Crit.Text, out int crit)) CombatStat_Crit.Text = "0";
+                if (!int.TryParse(CombatStat_Specialization.Text, out int spec)) CombatStat_Specialization.Text = "0";
+                if (!int.TryParse(CombatStat_Swiftness.Text, out int swift)) CombatStat_Swiftness.Text = "0";
+                character.setting.SetCombatStats(crit, spec, swift);
             }
 
             if (engraving)   // 각인
@@ -573,10 +582,10 @@ namespace LostarkSimulator
 
             if (weaponQual)   // 무기 품질
             {
-                if (Weapon_AdditionalDamage.Text == "") Weapon_AdditionalDamage.Text = "0";
-                character.setting.SetWeaponQual(decimal.Parse(Weapon_AdditionalDamage.Text));
+                if (!decimal.TryParse(Weapon_AdditionalDamage.Text, out decimal weaponAD)) Weapon_AdditionalDamage.Text = "0";
+                character.setting.SetWeaponQual(weaponAD);
             }
-
+            
             if (buff)   // 버프 (시너지)
             {
                 var selectedBuffList = new List<SettingInfo.Buff.NAME?>();
@@ -719,7 +728,10 @@ namespace LostarkSimulator
 
                 if (condition.dialogResult == DialogResult.Yes)
                 {
-                    CalculateOptimalCombatStats(condition.critLower, condition.critUpper, condition.specLower, condition.specUpper, condition.swiftLower, condition.swiftUpper);
+                    if ((sender as Button).Name == "CalculateCombatStatsByArithmeticMean")
+                        CalculateOptimalCombatStats(condition.critLower, condition.critUpper, condition.specLower, condition.specUpper, condition.swiftLower, condition.swiftUpper, "ArithmeticMean");
+                    else
+                        CalculateOptimalCombatStats(condition.critLower, condition.critUpper, condition.specLower, condition.specUpper, condition.swiftLower, condition.swiftUpper, "HarmonicMean");
                 }
             }
             else
@@ -1479,7 +1491,7 @@ namespace LostarkSimulator
                     UpdateAllSetting();
                     CalculateCombatSkillDamage();
                     CalculateSumOfSkillDamage();
-                    MessageBox.Show("저장된 프리셋이 없어서 새프리셋은 생성합니다");
+                    MessageBox.Show("저장된 프리셋이 없어서 새프리셋을 생성합니다");
                 }
 
        
@@ -1535,13 +1547,38 @@ namespace LostarkSimulator
         }
 
 
-        private void GunslingerSetting_Load(object sender, EventArgs e)
+        /// <summary>
+        /// 해상도 변경 버튼 클릭시 발생하는 이벤트
+        /// </summary>
+        private void ResolutionSetting_Click(object sender, EventArgs e)
         {
+            var resolutionButton = sender as Button;
+            if (resolutionButton.Name == "ResolutionOrigin") this.Size = new Size(2347, 1310);
+            else if (resolutionButton.Name == "Resolution1920") this.Size = new Size(1920, 1080);
+            else if (resolutionButton.Name == "Resolution1280") this.Size = new Size(1280, 720);
+            else if (resolutionButton.Name == "Resolution960") this.Size = new Size(960, 540);
         }
 
 
+        /// <summary>
+        /// 해상도 변경시 스크롤바 제어.
+        /// </summary>
+        protected override void OnScroll(ScrollEventArgs se)
+        {
+            if (se.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                this.VerticalScroll.Value = se.NewValue;
+            }
+            else if (se.ScrollOrientation == ScrollOrientation.HorizontalScroll)
+            {
+                this.HorizontalScroll.Value = se.NewValue;
+            }
+            this.Invalidate();
 
+            Delay(1);
 
+            base.OnScroll(se);
+        }
 
 
         private void DataGridView_CombatSkill_CellClick(object sender, DataGridViewCellEventArgs e)

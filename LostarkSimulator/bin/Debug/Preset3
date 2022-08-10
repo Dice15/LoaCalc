@@ -552,7 +552,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill1_Lev",
-    "data": "2"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -567,7 +567,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill1_Tp3",
-    "data": "-1"
+    "data": "0"
   },
   {
     "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -582,7 +582,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill2_Lev",
-    "data": "2"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -597,7 +597,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill2_Tp3",
-    "data": "-1"
+    "data": "1"
   },
   {
     "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -612,7 +612,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Lev",
-    "data": "2"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -627,7 +627,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Tp3",
-    "data": "-1"
+    "data": "1"
   },
   {
     "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -642,7 +642,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Lev",
-    "data": "2"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -657,7 +657,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Tp3",
-    "data": "-1"
+    "data": "0"
   },
   {
     "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -672,7 +672,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Lev",
-    "data": "2"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -687,7 +687,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Tp3",
-    "data": "-1"
+    "data": "1"
   },
   {
     "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -702,7 +702,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill6_Lev",
-    "data": "2"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -717,7 +717,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill6_Tp3",
-    "data": "-1"
+    "data": "1"
   },
   {
     "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",

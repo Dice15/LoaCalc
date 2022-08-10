@@ -18,5 +18,17 @@ namespace LostarkSimulator
 
             return res;
         }
+
+        public static int ToInt(this string str)
+        {
+            int.TryParse(str, out int res);
+            return res;
+        }
+
+        public static decimal ToDecimal(this string str)
+        {
+            decimal.TryParse(str, out decimal res);
+            return res;
+        }
     }
 }

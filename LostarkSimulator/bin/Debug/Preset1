@@ -172,7 +172,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem3_TargetSkillName",
-    "data": "8"
+    "data": "11"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -187,7 +187,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem4_TargetSkillName",
-    "data": "9"
+    "data": "8"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -202,7 +202,7 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Gem5_TargetSkillName",
-    "data": "11"
+    "data": "9"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -570,7 +570,7 @@
     "data": "0"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill1_IncludeInFinalDps",
     "data": "True"
   },
@@ -600,19 +600,19 @@
     "data": "1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill2_IncludeInFinalDps",
     "data": "True"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Name",
-    "data": "8"
+    "data": "11"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Lev",
-    "data": "5"
+    "data": "4"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -622,22 +622,22 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Tp2",
-    "data": "1"
+    "data": "0"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill3_Tp3",
-    "data": "0"
+    "data": "1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill3_IncludeInFinalDps",
     "data": "True"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Name",
-    "data": "9"
+    "data": "8"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -647,12 +647,12 @@
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Tp1",
-    "data": "2"
+    "data": "0"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill4_Tp2",
-    "data": "0"
+    "data": "1"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -660,24 +660,24 @@
     "data": "0"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill4_IncludeInFinalDps",
     "data": "True"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Name",
-    "data": "11"
+    "data": "9"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Lev",
-    "data": "4"
+    "data": "5"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
     "name": "Skill5_Tp1",
-    "data": "0"
+    "data": "2"
   },
   {
     "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -690,7 +690,7 @@
     "data": "0"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill5_IncludeInFinalDps",
     "data": "True"
   },
@@ -720,7 +720,7 @@
     "data": "1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill6_IncludeInFinalDps",
     "data": "True"
   },
@@ -750,7 +750,7 @@
     "data": "0"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill7_IncludeInFinalDps",
     "data": "True"
   },
@@ -780,7 +780,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill8_IncludeInFinalDps",
     "data": "False"
   },
@@ -810,7 +810,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill9_IncludeInFinalDps",
     "data": "False"
   },
@@ -840,7 +840,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill10_IncludeInFinalDps",
     "data": "False"
   },
@@ -870,7 +870,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill11_IncludeInFinalDps",
     "data": "False"
   },
@@ -900,7 +900,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill12_IncludeInFinalDps",
     "data": "False"
   },
@@ -930,7 +930,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill13_IncludeInFinalDps",
     "data": "False"
   },
@@ -960,7 +960,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill14_IncludeInFinalDps",
     "data": "False"
   },
@@ -990,7 +990,7 @@
     "data": "-1"
   },
   {
-    "type": "LoaCalc.CustomCheckBox, LoaCalc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "name": "Skill15_IncludeInFinalDps",
     "data": "False"
   }
