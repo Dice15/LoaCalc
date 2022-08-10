@@ -1,0 +1,16 @@
+E:\document\github\LostarkSimulator\LostarkSimulator\bin\Release\LostarkSimulator.exe.config
+E:\document\github\LostarkSimulator\LostarkSimulator\bin\Release\LostarkSimulator.exe
+E:\document\github\LostarkSimulator\LostarkSimulator\bin\Release\LostarkSimulator.pdb
+E:\document\github\LostarkSimulator\LostarkSimulator\bin\Release\Newtonsoft.Json.dll
+E:\document\github\LostarkSimulator\LostarkSimulator\bin\Release\Newtonsoft.Json.xml
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.csproj.AssemblyReference.cache
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.csproj.SuggestedBindingRedirects.cache
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.DetailedInfo.resources
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.GunslingerSetting.resources
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.MessageBox_ReqAutoCombatStats.resources
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.Properties.Resources.resources
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.csproj.GenerateResource.cache
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.csproj.CoreCompileInputs.cache
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.csproj.CopyComplete
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.exe
+E:\document\github\LostarkSimulator\LostarkSimulator\obj\Release\LostarkSimulator.pdb

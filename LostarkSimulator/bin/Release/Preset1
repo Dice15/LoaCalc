@@ -1,0 +1,997 @@
+[
+  {
+    "type": "System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "CombatStat_Crit",
+    "data": "110"
+  },
+  {
+    "type": "System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "CombatStat_Specialization",
+    "data": "322"
+  },
+  {
+    "type": "System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "CombatStat_Swiftness",
+    "data": "22"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving1_Name",
+    "data": "1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving1_Lev",
+    "data": "3"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving2_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving2_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving3_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving3_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving4_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving4_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving5_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving5_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving6_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving6_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving7_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Engraving7_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card1_Name",
+    "data": "1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card1_Sets",
+    "data": "1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card1_Awakening",
+    "data": "2"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card2_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card2_Sets",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card2_Awakening",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card3_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card3_Sets",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Card3_Awakening",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem1_Name",
+    "data": "1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem1_Lev",
+    "data": "4"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem1_TargetSkillName",
+    "data": "4"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem2_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem2_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem2_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem3_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem3_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem3_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem4_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem4_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem4_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem5_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem5_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem5_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem6_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem6_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem6_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem7_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem7_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem7_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem8_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem8_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem8_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem9_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem9_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem9_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem10_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem10_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem10_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem11_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem11_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem11_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem12_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem12_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem12_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem13_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem13_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem13_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem14_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem14_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem14_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem15_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem15_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem15_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem16_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem16_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem16_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem17_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem17_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem17_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem18_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem18_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem18_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem19_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem19_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem19_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem20_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem20_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem20_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem21_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem21_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem21_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem22_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem22_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gem22_TargetSkillName",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear1_Name",
+    "data": "4"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear1_SetsBonus",
+    "data": "1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear1_SetsBonusLev",
+    "data": "1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear2_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear2_SetsBonus",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear2_SetsBonusLev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear3_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear3_SetsBonus",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Gear3_SetsBonusLev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Weapon_AdditionalDamage",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Buff1_Name",
+    "data": "20"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Buff2_Name",
+    "data": "1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Buff3_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Buff4_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Buff5_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Buff6_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Buff7_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill1_Name",
+    "data": "4"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill1_Lev",
+    "data": "5"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill1_Tp1",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill1_Tp2",
+    "data": "2"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill1_Tp3",
+    "data": "0"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill1_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill2_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill2_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill2_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill2_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill2_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill2_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill3_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill3_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill3_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill3_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill3_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill3_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill4_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill4_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill4_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill4_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill4_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill4_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill5_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill5_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill5_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill5_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill5_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill5_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill6_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill6_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill6_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill6_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill6_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill6_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill7_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill7_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill7_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill7_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill7_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill7_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill8_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill8_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill8_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill8_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill8_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill8_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill9_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill9_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill9_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill9_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill9_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill9_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill10_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill10_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill10_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill10_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill10_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill10_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill11_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill11_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill11_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill11_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill11_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill11_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill12_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill12_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill12_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill12_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill12_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill12_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill13_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill13_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill13_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill13_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill13_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill13_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill14_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill14_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill14_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill14_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill14_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill14_IncludeInFinalDps",
+    "data": "False"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill15_Name",
+    "data": "0"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill15_Lev",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill15_Tp1",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill15_Tp2",
+    "data": "-1"
+  },
+  {
+    "type": "System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "name": "Skill15_Tp3",
+    "data": "-1"
+  },
+  {
+    "type": "LostarkSimulator.CustomCheckBox, LostarkSimulator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "name": "Skill15_IncludeInFinalDps",
+    "data": "False"
+  }
+]

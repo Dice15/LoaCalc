@@ -1463,12 +1463,26 @@ namespace LostarkSimulator
                             customCheckBox.Check = bool.Parse(formCtrl.data);
                         }
                     }
+
+                    UpdateAllSetting();
+                    CalculateCombatSkillDamage();
+                    CalculateSumOfSkillDamage();
+                    MessageBox.Show("프리셋 로딩 완료");
+                }
+                else
+                {
+                    List<FormCtrl> FormCtrlList = new List<FormCtrl>();
+                    var serializedList = JsonConvert.SerializeObject(FormCtrlList, Formatting.Indented);
+
+                    File.WriteAllText(currDirectory + @"\" + fileName, serializedList);
+
+                    UpdateAllSetting();
+                    CalculateCombatSkillDamage();
+                    CalculateSumOfSkillDamage();
+                    MessageBox.Show("저장된 프리셋이 없어서 새프리셋은 생성합니다");
                 }
 
-                UpdateAllSetting();
-                CalculateCombatSkillDamage();
-                CalculateSumOfSkillDamage();
-                MessageBox.Show("프리셋 로딩 완료");
+       
             }
         }
 
