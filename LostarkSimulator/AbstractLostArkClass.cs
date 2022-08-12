@@ -411,8 +411,8 @@ namespace LostarkSimulator
                         // 4세트: 치적 20%
                         stats.AddStats(new Stats { criticalRate = new ValueP(new decimal[] { 15, 18, 20 }[lev]) });
 
-                        // 6세트: 피증 15%, 치적 8% '추가 증가'
-                        stats.AddStats(new Stats { damage = new ValueM(new decimal[] { 12, 14, 15 }[lev]) });
+                        // 2 + 6세트: 피증 17 + 15%, 치적 8%
+                        stats.AddStats(new Stats { damage = new ValueM(new decimal[] { 13 + 12, 15 + 14, 17 + 15 }[lev]) });
                         stats.AddStats(new Stats { criticalRate = new ValueP(new decimal[] { 5, 7, 8 }[lev]) });
                     }
                 }
