@@ -795,7 +795,6 @@ namespace LostarkSimulator
                         part2.appliedStats.damage.Add(290.5m);
                         break;
                     case SettingInfo.Skill.TRIPOD.반동_회피:   // 피해 +190%
-                        part1.appliedStats.damage.Add(190);
                         part2.appliedStats.damage.Add(190);
                         break;
                 }
