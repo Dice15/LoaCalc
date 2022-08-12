@@ -459,6 +459,10 @@ namespace LostarkSimulator
                             Delay(1);
                         }
                     }
+                    else
+                    {
+               
+                    }
 
                     combatStats[i] = temp;
                 }
@@ -469,12 +473,12 @@ namespace LostarkSimulator
             {
                 combatStats[i] += accessoryValueList[index];
 
-                if ((critLower <= combatStats[0] && combatStats[0] <= critUpper) && (specLower <= combatStats[1] && combatStats[1] <= specUpper) && (swiftLower <= combatStats[2] && combatStats[2] <= swiftUpper))
-                {
+                if ((combatStats[0] <= critUpper) && (combatStats[1] <= specUpper) && (combatStats[2] <= swiftUpper))
+                { 
                     SubCalcOptimalCombatStats(index + 1, accessoryValueList, combatStats, optimalCombatStats, critLower, critUpper, specLower, specUpper, swiftLower, swiftUpper, ref count, checkDuplication, meanType);
                 }
                 else
-                {
+                {    
                     count += (int)Math.Pow(3, 10 - index);
                     ShowProcessing(count);
                     Delay(1);
